@@ -1,8 +1,9 @@
 {
-  "recommendations": [
-    "ms-python.python",
-    "ms-python.pylint",
-    "ms-vscode-remote.remote-containers",
-    "innoverio.vscode-dbt-power-user"
-  ]
+   "recommendations":[
+      "ms-azuretools.vscode-docker",
+      "ms-python.python",
+      "ms-python.pylint",
+      "ms-vscode-remote.remote-containers",
+      "innoverio.vscode-dbt-power-user"
+   ]
 }

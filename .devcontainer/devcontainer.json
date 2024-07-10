@@ -1,0 +1,17 @@
+{
+	"build":{
+	   "dockerfile":"Dockerfile"
+	},
+	"customizations":{
+	   "vscode":{
+		  "extensions":[
+			 "dorzey.vscode-sqlfluff",
+			 "ms-azuretools.vscode-docker",
+			 "ms-python.python",
+			 "ms-python.pylint",
+			 "ms-vscode-remote.remote-containers",
+			 "innoverio.vscode-dbt-power-user"
+		  ]
+	   }
+	}
+ }

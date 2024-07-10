@@ -6,12 +6,6 @@ LABEL authors="analytics"
 
 USER root
 
-# Install Git
-
-RUN apt-get update \
-&& apt-get install -y git \
-&& rm -rf /var/lib/apt/lists/*
-
 # Create & activate a virtual environment
 
 RUN python -m venv /opt/analytics/.venv

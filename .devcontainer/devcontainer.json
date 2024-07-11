@@ -1,4 +1,5 @@
 {
+    "name": "Python Dev Container",
     "build": {
         "dockerfile": "Dockerfile"
     },
@@ -18,5 +19,5 @@
             }
         }
     },
-    "postCreateCommand": "python3 -m venv .venv && . .venv/bin/activate && pip install -r ${workspaceFolder}/requirements.txt"
+    "postCreateCommand": "python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt"
 }

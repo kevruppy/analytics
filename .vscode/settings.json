@@ -1,3 +1,5 @@
 {
-    "sqlfluff.executablePath":"${workspaceFolder}/.venv/bin/sqlfluff"
+    "sqlfluff.config": "/workspaces/analytics/.sqlfluff",
+    "sqlfluff.executablePath":"/workspaces/analytics/.venv/bin/sqlfluff",
+    "sqlfluff.linter.run": "onType"
 }

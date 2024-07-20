@@ -1,0 +1,7 @@
+dbt_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # TODO: use env var
+      path: '/workspaces/analytics/analytics.duckdb'

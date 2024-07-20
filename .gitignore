@@ -1,1 +1,10 @@
 .venv
+
+# dbt
+
+dbt_analytics/dbt_packages/
+dbt_analytics/logs/
+dbt_analytics/target/
+dbt_analytics/.user.yml
+
+*.duckdb

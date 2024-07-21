@@ -9,7 +9,10 @@ sql_file_exts = .sql
 #[sqlfluff:templater:dbt]
 #project_dir = ./
 
-# this one is important!
+[sqlfluff:indentation]
+indent_unit = tab
+tab_space_size = 4
+
 [sqlfluff:layout:type:comma]
 spacing_after = touch
 line_position = leading

@@ -1,5 +1,11 @@
 {
-    "sqlfluff.config": "/workspaces/analytics/.sqlfluff",
+    "files.associations":{
+       "**/dbt_analytics/**/*.sql":"jinja-sql",
+       ".yml":"jinja-yaml"
+    },
+    "sqlfluff.config":"/workspaces/analytics/.sqlfluff",
     "sqlfluff.executablePath":"/workspaces/analytics/.venv/bin/sqlfluff",
-    "sqlfluff.linter.run": "onType"
-}
+    "sqlfluff.linter.run":"onType",
+    "dbt.enableNewLineagePanel":true,
+    "dbt.perspectiveTheme":"Pro Dark"
+ }

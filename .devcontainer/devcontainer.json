@@ -1,25 +1,25 @@
 {
-   "name": "Python Dev Container",
-   "build": {
-     "dockerfile": "Dockerfile"
+   "name":"Python Dev Container",
+   "build":{
+      "dockerfile":"Dockerfile"
    },
-   "customizations": {
-     "vscode": {
-       "extensions": [
-         "dorzey.vscode-sqlfluff",
-         "ms-azuretools.vscode-docker",
-         "ms-python.python",
-         "ms-python.pylint",
-         "ms-vscode-remote.remote-containers",
-         "innoverio.vscode-dbt-power-user",
-         "mechatroner.rainbow-csv"
-       ],
-       "settings": {
-         "python.terminal.activateEnvInCurrentTerminal": true,
-         "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-         "python.envFile": "${workspaceFolder}/.env"
-       }
-     }
+   "customizations":{
+      "vscode":{
+         "extensions":[
+            "dorzey.vscode-sqlfluff",
+            "ms-azuretools.vscode-docker",
+            "ms-python.python",
+            "ms-python.pylint",
+            "ms-vscode-remote.remote-containers",
+            "innoverio.vscode-dbt-power-user",
+            "mechatroner.rainbow-csv"
+         ],
+         "settings":{
+            "python.terminal.activateEnvInCurrentTerminal":true,
+            "python.defaultInterpreterPath":"${workspaceFolder}/.venv/bin/python",
+            "python.envFile":"${workspaceFolder}/.env"
+         }
+      }
    },
-   "postCreateCommand": "python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt"
- }
+   "postCreateCommand":"python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt"
+}

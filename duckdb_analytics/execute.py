@@ -1,7 +1,9 @@
-import os
+import glob
 import logging
+import os
 from pathlib import Path
 from typing import List, Optional
+
 import duckdb
 
 
@@ -30,7 +32,6 @@ def create_db(db_dir: str, db_name: str) -> str:
             logging.info(f'Database "{db_name}" deleted')
 
         with duckdb.connect(str(full_db_name)):
-            logging.info(f'Creating Database "{db_name}"...')
             logging.info(f'Database "{db_name}" created')
 
     except Exception as e:
@@ -76,11 +77,12 @@ def execute_sql_statements(db_path: str, sql_files: List[str]):
             with open(file, 'r', encoding='utf-8') as f:
                 stmt_list = f.read().strip().split(';')
                 for stmt in stmt_list:
-                    if stmt.strip():
-                        stmt = stmt.strip()
+                    stmt = stmt.strip()
+                    if stmt:
                         try:
                             con.execute(stmt)
                         except Exception as e:
+                            logging.error(f'Execution of statement failed: {stmt}\nError: {e}')
                             raise e
         logging.info('All SQL statements executed')
 
@@ -89,11 +91,24 @@ def main():
     db_dir = os.getenv('DB_DIR')
     db_name = os.getenv('DB_NAME')
     sql_dir = os.getenv('SQL_DIR')
+    
+    if not db_dir or not db_name or not sql_dir:
+        logging.error('Environment variables DB_DIR, DB_NAME, and SQL_DIR must be set')
+        raise ValueError('Missing required environment variables')
 
     try:
         db = create_db(db_dir=db_dir, db_name=db_name)
         sql_files = get_file_names(sql_dir=sql_dir)
         execute_sql_statements(db_path=db, sql_files=sql_files)
+        logging.info('Removing temp files...')
+        temp_files = Path('.').glob('TMP_DUCK_DB_EXPORT_*')
+        if temp_files:
+            for file in temp_files:
+                logging.info(f'Deleting file: "{file}"')
+                os.remove(file)
+        else:
+            logging.info('No temp files found')
+        logging.info('SUCCESS: Database setup finished')
     except Exception as e:
         logging.error(f'An error occurred during database setup: {e}')
         raise

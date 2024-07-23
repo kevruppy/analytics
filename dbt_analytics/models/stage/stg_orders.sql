@@ -1,6 +1,5 @@
 {{
   config(
-	description = 'TBD',
 	enabled = true,
     materialized = 'table'
   )

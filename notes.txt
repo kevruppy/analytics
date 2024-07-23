@@ -1,0 +1,11 @@
+TODO:
+
+- replace hardcoded paths with VS Code variables (workspacefolder)
+- check how sqlfluff can fix generic dbt test
+- check if all VS Code settings can be put into .settings instead of devcontainer
+- make order model incremental
+- add more cfg to order model
+- run dbt clean at times
+- check how to proceed with seeds
+- check sqlfluff dbt settings
+- add _added_at and _updated_at + surrogate key to order model (and its schema yml)

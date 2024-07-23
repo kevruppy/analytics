@@ -1,0 +1,46 @@
+version: 2
+
+models:  
+  - name: stg_orders
+    description: Contains raw order data. Orders appear multiple times due to status changes
+    data_tests:
+      - row_count_source_match:
+          source_name: raw
+          table_name: orders
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - ORDER_ID
+            - STATUS_NAME
+    columns:
+      - name: ORDER_ID
+        description: Identifier of an order
+        data_tests:
+          - not_null
+      - name: STATUS_NAME
+        description: Status of an order
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
+      - name: PRODUCT_NAME
+        description: Name of the product ordered
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
+      - name: CREATION_DATE
+        description: Date when order was created
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              max_value: "current_date()"
+      - name: STATUS_CHANGE_DATE
+        description: Date when status of an order was updated
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              max_value: "current_date()"
+          - dbt_utils.expression_is_true:
+              expression: ">= CREATION_DATE"
+      - name: IS_TEST_ORDER
+        description: Flag if order was a test
+        data_tests:
+          - not_null

@@ -1,0 +1,5 @@
+# run `dbt deps` to install
+
+packages:
+  - git: "https://github.com/dbt-labs/dbt-utils.git"
+    revision: 1.2.0

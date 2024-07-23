@@ -6,6 +6,7 @@
      "ms-python.pylint",
      "ms-vscode-remote.remote-containers",
      "innoverio.vscode-dbt-power-user",
-     "mechatroner.rainbow-csv"
+     "mechatroner.rainbow-csv",
+     "redhat.vscode-yaml"
    ]
  }

@@ -9,3 +9,34 @@ TODO:
 - check how to proceed with seeds
 - check sqlfluff dbt settings
 - add _added_at and _updated_at + surrogate key to order model (and its schema yml)
+- python formatters
+- pre-commit hooks
+- add gitlens extension
+- add differen mat strategies
+- build dim & fact models
+- semantical layer
+- check integration with GoogleSheets
+- check some BI tool
+- check dbt cloud
+- check github actions
+- check github branching
+- check how this project would work with BigQuery
+- check dbt tags
+- revisit folder structure
+- check best practives for dockerfile
+- check if we set requirements the right way
+- check dbt hooks (before, post model execution)
+- check scheduling
+- cli script to build dbt project (or Python? maybe a class?)
+
+- add more data e.g. nps, product info, web traffic, customer whatever
+- use different file formats (for sure: parquet)
+
+
+
+Links:
+https://github.com/dbt-labs/dbt-utils
+https://hub.getdbt.com/
+https://github.com/Velir/dbt-ga4
+https://docs.getdbt.com/reference/resource-configs/contract
+https://github.com/dbt-labs/dbt-jsonschema

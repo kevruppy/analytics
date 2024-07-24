@@ -26,8 +26,5 @@ models:
       +materialized: table
       +schema: stage
 
-seeds:
-  +schema: lookup
-
 query-comment:
   append: True

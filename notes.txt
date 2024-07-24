@@ -28,6 +28,7 @@ TODO:
 
 
 Links:
+https://docs.getdbt.com/docs/build/dbt-tips
 https://github.com/dbt-labs/dbt-utils
 https://hub.getdbt.com/
 https://github.com/Velir/dbt-ga4

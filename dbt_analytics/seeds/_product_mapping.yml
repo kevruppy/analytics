@@ -3,8 +3,6 @@ version: 2
 seeds:
   - name: product_mapping
     description: Maps products to product_type & product_group (= product hierarchy)
-    config:
-      ...
     columns:
       - name: PRODUCT_GROUP
       - name: PRODUCT_TYPE

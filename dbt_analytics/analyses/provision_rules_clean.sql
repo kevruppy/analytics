@@ -1,0 +1,4 @@
+SELECT *
+FROM main_stage.stg_provision_rules 
+QUALIFY ROW_NUMBER() OVER (PARTITION BY _CHECK_SUM ORDER BY RANDOM()) = 1
+ORDER BY 1,2,3

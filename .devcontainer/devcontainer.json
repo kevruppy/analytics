@@ -13,14 +13,10 @@
             "ms-vscode-remote.remote-containers",
             "innoverio.vscode-dbt-power-user",
             "mechatroner.rainbow-csv",
-            "redhat.vscode-yaml"
-         ],
-         "settings":{
-            "python.terminal.activateEnvInCurrentTerminal":true,
-            "python.defaultInterpreterPath":"${workspaceFolder}/.venv/bin/python",
-            "python.envFile":"${workspaceFolder}/.env"
-         }
+            "redhat.vscode-yaml",
+            "eamodio.gitlens"
+         ]
       }
    },
-   "postCreateCommand":"python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt"
+   "postCreateCommand":"python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt && cd /workspaces/analytics/dbt_analytics && /workspaces/analytics/.venv/bin/dbt deps"
 }

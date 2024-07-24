@@ -3,6 +3,9 @@
        "**/dbt_analytics/**/*.sql":"jinja-sql",
        ".yml":"jinja-yaml"
     },
+    "python.terminal.activateEnvInCurrentTerminal":true,
+    "python.defaultInterpreterPath":"/workspaces/analytics/.venv/bin/python",
+    "python.envFile":"/workspaces/analytics/.env",
     "sqlfluff.config":"/workspaces/analytics/.sqlfluff",
     "sqlfluff.executablePath":"/workspaces/analytics/.venv/bin/sqlfluff",
     "sqlfluff.linter.run":"onType",
@@ -26,5 +29,5 @@
         "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/packages-latest.json": [
             "/workspaces/analytics/dbt_analytics/packages.yml"
         ]
-    },
+    }
 }

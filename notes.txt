@@ -3,7 +3,7 @@ TODO:
 - check documenation feature
 - check how we can autosort dbt yaml files
 - check how to proceed with seeds
-- add _added_at and _updated_at + surrogate key to order model (and its schema yml)
+- add _added_at and _updated_at
 - python formatters
 - pre-commit hooks
 - add differen mat strategies

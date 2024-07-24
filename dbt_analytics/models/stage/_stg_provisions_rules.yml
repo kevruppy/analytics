@@ -1,0 +1,51 @@
+version: 2
+
+models:  
+  - name: stg_provision_rules
+    config:
+      materialized: table
+      enabled: True
+    description: Contains raw provision rules. There might be multiple rules per product
+    data_tests:
+      - row_count_source_match:
+          source_name: raw
+          table_name: provision_rules
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - PRODUCT_NAME
+            - START_DATE
+            - END_DATE
+          config:
+            severity: warn
+    columns:
+      - name: _CHECK_SUM
+        description: Hashed concatenation ['_PRODUCT_NAME', '_START_DATE', '_END_DATE'] to remove duplicates downstream
+      - name: PRODUCT_NAME
+        description: Name of the product to which rule applies
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
+      - name: START_DATE
+        description: Date since when rule is valid
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              max_value: "current_date()"
+      - name: END_DATE
+        description: Date until rule is valid
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              max_value: "current_date()"
+          - dbt_utils.expression_is_true:
+              expression: "> START_DATE"
+      - name: BASE_PROVISION
+        description: Base provision according to this rule
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+      - name: PLACEMENT_PROVISION
+        description: Placement provision according to this rule (can be null)
+      - name: PROPORTIONAL_PROVISION
+        description: Proportional provision according to this rule (can be null)

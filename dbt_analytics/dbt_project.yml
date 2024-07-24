@@ -14,7 +14,6 @@ snapshot-paths: ["snapshots"]
 
 # Directories to be removed by `dbt clean`
 clean-targets:
-  - "dbt_packages"
   - "logs"
   - "target"
 

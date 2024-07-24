@@ -1,15 +1,11 @@
 TODO:
 - revisit postCreateCommand
-- check how sqlfluff can fix generic dbt test
-- make order model incremental
-- add more cfg to order model
-- run dbt clean at times
+- check documenation feature
+- check how we can autosort dbt yaml files
 - check how to proceed with seeds
-- check sqlfluff dbt settings
 - add _added_at and _updated_at + surrogate key to order model (and its schema yml)
 - python formatters
 - pre-commit hooks
-- add gitlens extension
 - add differen mat strategies
 - build dim & fact models
 - semantical layer
@@ -19,7 +15,6 @@ TODO:
 - check github actions
 - check github branching
 - check how this project would work with BigQuery
-- check dbt tags
 - revisit folder structure
 - check best practives for dockerfile
 - check if we set requirements the right way

@@ -1,7 +1,10 @@
 version: 2
 
 models:  
-  - name: ss
+  - name: stg_orders
+    config:
+      materialized: incremental
+      enabled: True
     description: Contains raw order data. Orders appear multiple times due to status changes
     data_tests:
       - row_count_source_match:

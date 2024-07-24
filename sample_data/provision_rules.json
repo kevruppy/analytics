@@ -15,6 +15,7 @@
       "baseProvision": 65,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 17.5
       },
       "placementProvision": "10"
@@ -36,6 +37,7 @@
       "baseProvision": 170,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 45
       },
       "placementProvision": "10"
@@ -49,6 +51,7 @@
       "baseProvision": 170,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 45
       },
       "placementProvision": "15"
@@ -62,6 +65,7 @@
       "baseProvision": 30,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 7.5
       }
     }
@@ -74,6 +78,7 @@
       "baseProvision": 27.5,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 15
       }
     }
@@ -134,6 +139,7 @@
       "baseProvision": 170,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 45
       }
     }
@@ -146,6 +152,7 @@
       "baseProvision": 180,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 50
       }
     }
@@ -158,6 +165,7 @@
       "baseProvision": 80,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 15
       },
       "placementProvision": "5"
@@ -171,6 +179,7 @@
       "baseProvision": 65,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 17.5
       },
       "placementProvision": "10"
@@ -184,6 +193,7 @@
       "baseProvision": 180,
       "proportionalProvision": {
         "unit": "month",
+        "target": 100,
         "value": 50
       }
     }

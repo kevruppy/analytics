@@ -5,3 +5,4 @@ sources:
     schema: raw_data
     tables:
       - name: orders
+      - name: provision_rules

@@ -1,10 +1,3 @@
-{{
-  config(
-	enabled = true,
-    materialized = 'table'
-  )
-}}
-
 WITH CTE AS (
 	SELECT
 		JSON_EXTRACT_STRING(
@@ -12,6 +5,10 @@ WITH CTE AS (
 		) AS _EXTRACT
 	FROM
 		{{ source('raw', 'orders') }}
+	{% if is_incremental() %}
+		WHERE
+			_EXTRACT[5]::DATE > (SELECT MAX(STATUS_CHANGE_DATE) AS WATERMARK FROM {{ this }})
+	{% endif %}
 )
 
 SELECT

@@ -5,5 +5,15 @@ seeds:
     description: Maps products to product_type & product_group (= product hierarchy)
     columns:
       - name: PRODUCT_GROUP
+        description: Highest level of product hierarchy
       - name: PRODUCT_TYPE
+        description: Middle level of product hierarchy
       - name: PRODUCT_NAME
+        description: Lowest level of product hierarchy
+    config:
+      delimiter: ","
+      schema: mapping
+      column_types:
+        PRODUCT_GROUP: VARCHAR
+        PRODUCT_TYPE: VARCHAR
+        PRODUCT_NAME: VARCHAR

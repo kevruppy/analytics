@@ -1,8 +1,8 @@
-name: 'dbt_analytics'
-version: '1.0.0'
+name: "dbt_analytics"
+version: "1.0.0"
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'dbt_analytics'
+profile: "dbt_analytics"
 
 # These configurations specify where dbt should look for different types of files
 model-paths: ["models"]
@@ -16,15 +16,6 @@ snapshot-paths: ["snapshots"]
 clean-targets:
   - "logs"
   - "target"
-
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-models:
-  dbt_analytics:
-    stage:
-      +materialized: table
-      +schema: stage
 
 query-comment:
   append: True

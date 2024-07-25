@@ -2,6 +2,7 @@ version: 2
 
 models:  
   - name: stg_orders
+    schema: stage
     config:
       materialized: incremental
       enabled: True

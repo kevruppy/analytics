@@ -20,20 +20,24 @@ models:
             severity: warn
     columns:
       - name: _CHECK_SUM
-        description: Hashed concatenation ['_PRODUCT_NAME', '_START_DATE', '_END_DATE'] to remove duplicates downstream
+        description: Hashed concatenation of product, start and end to remove duplicates downstream
+        data_type: VARCHAR
       - name: PRODUCT_NAME
         description: Name of the product to which rule applies
+        data_type: VARCHAR
         data_tests:
           - not_null
           - dbt_utils.not_empty_string
       - name: START_DATE
         description: Date since when rule is valid
+        data_type: DATE
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
               max_value: "current_date()"
       - name: END_DATE
         description: Date until rule is valid
+        data_type: DATE
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
@@ -42,11 +46,14 @@ models:
               expression: "> START_DATE"
       - name: BASE_PROVISION
         description: Base provision according to this rule
+        data_type: FLOAT
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
               min_value: 0
       - name: PLACEMENT_PROVISION
         description: Placement provision according to this rule (can be null)
+        data_type: FLOAT
       - name: PROPORTIONAL_PROVISION
         description: Proportional provision according to this rule (can be null)
+        data_type: JSON

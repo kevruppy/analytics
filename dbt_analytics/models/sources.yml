@@ -5,4 +5,24 @@ sources:
     schema: raw_data
     tables:
       - name: orders
+        description: Contains raw data for orders (JSON)
+        columns:
+          - name: _ID
+            description: Incremental id
+          - name: _ADDED_ON
+            description: Timestamp when record was added
+          - name: LOAD_RESULT
+            description: Raw load result
+            data_tests:
+              - not_null
       - name: provision_rules
+        description: Contains raw data for provision rules (JSON)
+        columns:
+          - name: _ID
+            description: Incremental id
+          - name: _ADDED_ON
+            description: Timestamp when record was added
+          - name: LOAD_RESULT
+            description: Raw load result
+            data_tests:
+            - not_null

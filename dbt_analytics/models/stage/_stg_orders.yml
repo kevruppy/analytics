@@ -2,8 +2,8 @@ version: 2
 
 models:  
   - name: stg_orders
-    schema: stage
     config:
+      schema: stage
       materialized: incremental
       enabled: True
     description: Contains raw order data. Orders appear multiple times due to status changes

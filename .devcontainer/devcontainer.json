@@ -1,11 +1,10 @@
 {
-   "name":"Python Dev Container",
-   "build":{
-      "dockerfile":"Dockerfile"
+   "build": {
+      "dockerfile": "Dockerfile"
    },
-   "customizations":{
-      "vscode":{
-         "extensions":[
+   "customizations": {
+      "vscode": {
+         "extensions": [
             "dorzey.vscode-sqlfluff",
             "ms-azuretools.vscode-docker",
             "ms-python.python",
@@ -14,9 +13,11 @@
             "innoverio.vscode-dbt-power-user",
             "mechatroner.rainbow-csv",
             "redhat.vscode-yaml",
-            "eamodio.gitlens"
+            "eamodio.gitlens",
+            "richie5um2.vscode-sort-json"
          ]
       }
    },
-   "postCreateCommand":"python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt && cd /workspaces/analytics/dbt_analytics && /workspaces/analytics/.venv/bin/dbt deps"
+   "name": "Python Dev Container",
+   "postCreateCommand": "python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt && cd /workspaces/analytics/dbt_analytics && /workspaces/analytics/.venv/bin/dbt deps"
 }

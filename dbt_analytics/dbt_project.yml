@@ -17,5 +17,15 @@ clean-targets:
   - "logs"
   - "target"
 
+models:
+  +persist_docs:
+    relation: true
+    columns: true
+
+seeds:
+  +persist_docs:
+    relation: true
+    columns: true
+
 query-comment:
   append: True

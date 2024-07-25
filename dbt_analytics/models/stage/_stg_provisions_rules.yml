@@ -2,8 +2,8 @@ version: 2
 
 models:  
   - name: stg_provision_rules
-    schema: stage
     config:
+      schema: stage
       materialized: table
       enabled: True
     description: Contains raw provision rules. There might be multiple rules per product

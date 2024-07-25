@@ -11,6 +11,7 @@ seeds:
       - name: PRODUCT_NAME
         description: Lowest level of product hierarchy
     config:
+      enabled: True
       delimiter: ","
       schema: mapping
       column_types:

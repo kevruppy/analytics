@@ -1,18 +1,16 @@
 TODO:
-- check how we can autosort dbt yaml files (VS Code tasks)
-- add _added_at and _updated_at
+
+- check prettier
 - python formatters
 - pre-commit hooks (seems to require mounting option in devcontainer json)
 - add differen mat strategies
 - build dim & fact models
 - semantical layer
-- check integration with GoogleSheets
 - check some BI tool
 - check dbt cloud
 - check github actions
 - check github branching
 - check how this project would work with BigQuery
-- revisit folder structure
 - check best practives for dockerfile
 - check if we set requirements the right way
 - check dbt hooks (before, post model execution)
@@ -22,7 +20,9 @@ TODO:
 - add more data e.g. nps, product info, web traffic, customer whatever
 - use different file formats (for sure: parquet)
 
-
+out of scope:
+- check how we can autosort dbt yaml files (VS Code tasks)
+- add _added_at and _updated_at
 
 Links:
 https://docs.getdbt.com/docs/build/dbt-tips

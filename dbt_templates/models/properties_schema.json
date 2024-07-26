@@ -1,10 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": [
-    "version",
-    "models"
-  ],
+  "required": ["version", "models"],
   "properties": {
     "version": {
       "type": "integer",
@@ -14,12 +11,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "name",
-          "description",
-          "config",
-          "columns"
-        ],
+        "required": ["name", "description", "config", "columns"],
         "properties": {
           "name": {
             "type": "string"
@@ -29,11 +21,7 @@
           },
           "config": {
             "type": "object",
-            "required": [
-              "enabled",
-              "schema",
-              "materialized"
-            ],
+            "required": ["enabled", "schema", "materialized"],
             "properties": {
               "enabled": {
                 "type": "boolean"
@@ -54,11 +42,7 @@
             "type": "array",
             "items": {
               "type": "object",
-              "required": [
-                "name",
-                "description",
-                "data_type"
-              ],
+              "required": ["name", "description", "data_type"],
               "properties": {
                 "name": {
                   "type": "string"

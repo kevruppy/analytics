@@ -1,6 +1,6 @@
 version: 2
 
-models:  
+models:
   - name: stg_orders
     description: Contains raw order data. Orders appear multiple times due to status changes
     config:

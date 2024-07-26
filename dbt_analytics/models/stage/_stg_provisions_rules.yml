@@ -1,6 +1,6 @@
 version: 2
 
-models:  
+models:
   - name: stg_provision_rules
     description: Contains raw provision rules. There might be multiple rules per product
     config:

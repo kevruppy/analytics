@@ -2,7 +2,7 @@ TODO:
 - check how we can autosort dbt yaml files (VS Code tasks)
 - add _added_at and _updated_at
 - python formatters
-- pre-commit hooks
+- pre-commit hooks (seems to require mounting option in devcontainer json)
 - add differen mat strategies
 - build dim & fact models
 - semantical layer

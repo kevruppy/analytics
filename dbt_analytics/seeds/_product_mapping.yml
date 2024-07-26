@@ -3,13 +3,6 @@ version: 2
 seeds:
   - name: product_mapping
     description: Maps products to product_type & product_group (= product hierarchy)
-    columns:
-      - name: PRODUCT_GROUP
-        description: Highest level of product hierarchy
-      - name: PRODUCT_TYPE
-        description: Middle level of product hierarchy
-      - name: PRODUCT_NAME
-        description: Lowest level of product hierarchy
     config:
       enabled: True
       delimiter: ","
@@ -18,3 +11,10 @@ seeds:
         PRODUCT_GROUP: VARCHAR
         PRODUCT_TYPE: VARCHAR
         PRODUCT_NAME: VARCHAR
+    columns:
+      - name: PRODUCT_GROUP
+        description: Highest level of product hierarchy
+      - name: PRODUCT_TYPE
+        description: Middle level of product hierarchy
+      - name: PRODUCT_NAME
+        description: Lowest level of product hierarchy

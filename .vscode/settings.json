@@ -18,6 +18,11 @@
     "sqlfluff.executablePath": "/workspaces/analytics/.venv/bin/sqlfluff",
     "sqlfluff.linter.run": "onType",
     "yaml.schemas": {
-        "/workspaces/analytics/dbt_templates/models/properties_schema.json": ["/workspaces/analytics/dbt_analytics/models/**/_*.yml"]
+        "/workspaces/analytics/dbt_templates/models/properties_schema.json": [
+            "/workspaces/analytics/dbt_analytics/models/**/_*.yml"
+        ],
+        "/workspaces/analytics/dbt_templates/seeds/properties_schema.json": [
+            "/workspaces/analytics/dbt_analytics/seeds/**/_*.yml"
+        ]
     }
 }

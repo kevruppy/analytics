@@ -1,16 +1,19 @@
 {
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
   },
-  "[yml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "dbt.enableNewLineagePanel": true,
   "dbt.perspectiveTheme": "Pro Dark",
@@ -25,6 +28,17 @@
   "python.defaultInterpreterPath": "/workspaces/analytics/.venv/bin/python",
   "python.envFile": "/workspaces/analytics/.env",
   "python.terminal.activateEnvInCurrentTerminal": true,
+  "sortJSON.contextMenu": {
+    "sortJSONAlphaNum": false,
+    "sortJSONAlphaNumReverse": false,
+    "sortJSONKeyLength": false,
+    "sortJSONKeyLengthReverse": false,
+    "sortJSONReverse": false,
+    "sortJSONType": false,
+    "sortJSONTypeReverse": false,
+    "sortJSONValues": false,
+    "sortJSONValuesReverse": false
+  },
   "sortJSON.excludedPaths": ["/workspaces/analytics/dbt_templates"],
   "sqlfluff.config": "/workspaces/analytics/.sqlfluff",
   "sqlfluff.executablePath": "/workspaces/analytics/.venv/bin/sqlfluff",

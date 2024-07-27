@@ -43,3 +43,16 @@ FROM
 		'/workspaces/analytics/sample_data/provision_rules.json'
 		,RECORDS = FALSE
 	);
+
+/*
+NET PROMOTOR SCORE (NPS)
+*/
+
+INSERT INTO RAW_DATA.NET_PROMOTOR_SCORES (TRANSACTION_ID,RATING_DATE,RATING,TOOL)
+SELECT
+	TRANSACTION_ID
+	,RATING_DATE
+	,RATING
+	,TOOL
+FROM
+	'/workspaces/analytics/sample_data/nps.parquet'; --noqa

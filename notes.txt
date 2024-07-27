@@ -1,5 +1,8 @@
 TODO:
 
+- dbt test to check if value is of form "string-number"
+- add more data e.g. nps, product info, web traffic, customer whatever
+
 - prettify dbt stuff (make test.py a pre-commit hook)
 
 - pre-commit hooks (seems to require mounting option in devcontainer json)
@@ -20,8 +23,7 @@ TODO:
 - check scheduling
 - cli script to build dbt project (or Python? maybe a class?)
 
-- add more data e.g. nps, product info, web traffic, customer whatever
-- use different file formats (for sure: parquet)
+
 
 out of scope:
 - python formatters (no need for ruff, pylint is fine)

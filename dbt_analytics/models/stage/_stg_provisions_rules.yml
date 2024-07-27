@@ -34,14 +34,14 @@ models:
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
-              max_value: "current_date()"
+              max_value: "CURRENT_DATE()"
       - name: END_DATE
         description: Date until rule is valid
         data_type: DATE
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
-              max_value: "current_date()"
+              max_value: "CURRENT_DATE()"
           - dbt_utils.expression_is_true:
               expression: "> START_DATE"
       - name: BASE_PROVISION

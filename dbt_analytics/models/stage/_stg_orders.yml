@@ -39,14 +39,14 @@ models:
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
-              max_value: "current_date()"
+              max_value: "CURRENT_DATE()"
       - name: STATUS_CHANGE_DATE
         description: Date when status of an order was updated
         data_type: DATE
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
-              max_value: "current_date()"
+              max_value: "CURRENT_DATE()"
           - dbt_utils.expression_is_true:
               expression: ">= CREATION_DATE"
       - name: IS_TEST_ORDER

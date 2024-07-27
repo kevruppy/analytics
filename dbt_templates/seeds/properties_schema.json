@@ -9,9 +9,9 @@
     },
     "seeds": {
       "type": "array",
-      "required": ["name", "description", "config", "columns"],
       "items": {
         "type": "object",
+        "required": ["name", "description", "config", "columns"],
         "properties": {
           "name": {
             "type": "string"

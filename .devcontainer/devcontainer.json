@@ -16,7 +16,8 @@
         "eamodio.gitlens",
         "richie5um2.vscode-sort-json",
         "esbenp.prettier-vscode",
-        "ms-python.isort"
+        "ms-python.isort",
+        "ms-python.black-formatter"
       ]
     }
   },

@@ -9,6 +9,7 @@
     "**/dbt_analytics/**/*.sql": "jinja-sql",
     ".yml": "jinja-yaml"
   },
+  "isort.check": true,
   "python.defaultInterpreterPath": "/workspaces/analytics/.venv/bin/python",
   "python.envFile": "/workspaces/analytics/.env",
   "python.terminal.activateEnvInCurrentTerminal": true,

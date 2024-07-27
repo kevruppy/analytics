@@ -1,11 +1,9 @@
-import glob
 import logging
 import os
 from pathlib import Path
 from typing import List
 
 import duckdb
-
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 

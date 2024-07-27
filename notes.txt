@@ -1,8 +1,12 @@
 TODO:
 
-- check prettier
+- check prettier & how it works with json-sort
+- prettify dbt stuff (make test.py a pre-commit hook)
 - python formatters
 - pre-commit hooks (seems to require mounting option in devcontainer json)
+
+
+
 - add differen mat strategies
 - build dim & fact models
 - semantical layer
@@ -21,7 +25,6 @@ TODO:
 - use different file formats (for sure: parquet)
 
 out of scope:
-- check how we can autosort dbt yaml files (VS Code tasks)
 - add _added_at and _updated_at
 
 Links:

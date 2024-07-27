@@ -1,4 +1,4 @@
-# run `dbt deps` to install
+# Run `dbt deps` to install
 
 packages:
   - git: "https://github.com/dbt-labs/dbt-utils.git"

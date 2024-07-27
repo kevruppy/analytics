@@ -3,5 +3,5 @@ dbt_analytics:
   outputs:
     dev:
       type: duckdb
-      path: '/workspaces/analytics/analytics.duckdb'
+      path: "/workspaces/analytics/analytics.duckdb"
       threads: 4

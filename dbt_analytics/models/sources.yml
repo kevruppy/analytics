@@ -25,4 +25,4 @@ sources:
           - name: LOAD_RESULT
             description: Raw load result
             data_tests:
-            - not_null
+              - not_null

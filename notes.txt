@@ -1,5 +1,8 @@
 TODO:
 
+- there are multiple formatters for jinja-sql!
+
+
 - dbt test to check if value is of form "string-number"
 - add more data e.g. nps, product info, web traffic, customer whatever
 

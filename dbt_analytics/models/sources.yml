@@ -26,3 +26,26 @@ sources:
             description: Raw load result
             data_tests:
               - not_null
+      - name: net_promotor_scores
+        description: Contains raw data for net promotor scores (NPS)
+        columns:
+          - name: _ID
+            description: Incremental id
+          - name: _ADDED_ON
+            description: Timestamp when record was added
+          - name: TRANSACTION_ID
+            description: Concatenation of product name prefix and order id
+            data_tests:
+              - not_null
+          - name: RATING_DATE
+            description: Date on which rating was collected
+            data_tests:
+              - not_null
+          - name: RATING
+            description: NPS rating given by customer
+            data_tests:
+              - not_null
+          - name: TOOL
+            description: Tool with which the rating was collected
+            data_tests:
+              - not_null

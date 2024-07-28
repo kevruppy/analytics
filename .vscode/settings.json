@@ -20,6 +20,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.sortJSON": "always"
   },
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [100],
   "files.associations": {
     "**/dbt_analytics/**/*.sql": "jinja-sql",
     ".yml": "jinja-yaml"

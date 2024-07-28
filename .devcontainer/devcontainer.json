@@ -17,7 +17,8 @@
         "richie5um2.vscode-sort-json",
         "esbenp.prettier-vscode",
         "ms-python.isort",
-        "ms-python.black-formatter"
+        "ms-python.black-formatter",
+        "oderwat.indent-rainbow"
       ]
     }
   },

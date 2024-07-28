@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_net_promotor_scores
-    description: Contains raw net promotor scores (NPS) data.
+    description: Contains raw net promotor scores (NPS) data
     config:
       enabled: True
       schema: stage
@@ -13,15 +13,13 @@ models:
       - row_count_source_match:
           source_name: raw
           table_name: net_promotor_scores
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - TRANSACTION_ID
     columns:
       - name: TRANSACTION_ID
         description: Concatenation of product name prefix and order id
         data_type: VARCHAR
         data_tests:
           - not_null
+          - unique
           - dbt_utils.not_empty_string
       - name: RATING_DATE
         description: Date on which rating was collected
@@ -29,7 +27,7 @@ models:
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
-              - max_value: "CURRENT_DATE()"
+              max_value: "CURRENT_DATE()"
       - name: RATING
         description: NPS rating given by customer
         data_type: INTEGER

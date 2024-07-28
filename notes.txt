@@ -1,8 +1,10 @@
 TODO:
 
-- there are multiple formatters for jinja-sql!
 
 - add more data e.g. product info, web traffic, customer whatever
+
+
+
 
 - prettify dbt stuff (make test.py a pre-commit hook)
 

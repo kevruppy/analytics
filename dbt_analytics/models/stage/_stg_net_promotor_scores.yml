@@ -7,8 +7,8 @@ models:
       enabled: True
       schema: stage
       materialized: incremental
-      pre_hook: "SET PRESERVE_INSERTION_ORDER = FALSE"
-      post_hook: "SET PRESERVE_INSERTION_ORDER = TRUE"
+      post_hook:
+        sql: "VACUUM ANALYZE {{ this }}"
     data_tests:
       - row_count_source_match:
           source_name: raw

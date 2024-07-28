@@ -1,0 +1,17 @@
+version: 2
+
+seeds:
+  - name: net_promotor_scores_product_abbreviations_mapping
+    description: Maps product abbreviations used in NPS surveys to product names
+    config:
+      enabled: True
+      delimiter: ","
+      schema: mapping
+      column_types:
+        PRODUCT_PREFIX: VARCHAR
+        PRODUCT_NAME: VARCHAR
+    columns:
+      - name: PRODUCT_ABBREVIATION
+        description: Abbreviation for product name
+      - name: PRODUCT_NAME
+        description: Lowest level of product hierarchy

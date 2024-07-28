@@ -1,0 +1,1 @@
+select distinct left(transaction_id,3) from {{ ref('stg_net_promotor_scores') }} order by 1

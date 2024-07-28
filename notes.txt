@@ -1,5 +1,6 @@
 TODO:
 
+- dbt default schema macro
 
 - add more data e.g. product info, web traffic, customer whatever
 

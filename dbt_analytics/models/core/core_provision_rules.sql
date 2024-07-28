@@ -1,0 +1,22 @@
+WITH CTE AS (
+	SELECT
+		LOAD_RESULT ->> 'productName' AS _PRODUCT_NAME
+		,LOAD_RESULT ->> 'start' AS _START_DATE
+		,LOAD_RESULT ->> 'end' AS _END_DATE
+		,LOAD_RESULT ->> 'provision' ->> 'baseProvision' AS _BASE_PROVISION
+		,LOAD_RESULT ->> 'provision' ->> 'placementProvision' AS _PLACEMENT_PROVISION
+		,LOAD_RESULT -> 'provision' -> 'proportionalProvision' AS _PROPORTIONAL_PROVISION
+	FROM
+		{{ source('raw', 'provision_rules') }}
+)
+
+SELECT
+	{{ dbt_utils.generate_surrogate_key(['_PRODUCT_NAME', '_START_DATE', '_END_DATE']) }} AS _CHECK_SUM --noqa
+	,_PRODUCT_NAME AS PRODUCT_NAME
+	,_START_DATE::DATE AS START_DATE
+	,_END_DATE::DATE AS END_DATE
+	,_BASE_PROVISION::FLOAT AS BASE_PROVISION
+	,_PLACEMENT_PROVISION::FLOAT AS PLACEMENT_PROVISION
+	,_PROPORTIONAL_PROVISION AS PROPORTIONAL_PROVISION
+FROM
+	CTE

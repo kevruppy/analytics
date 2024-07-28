@@ -1,6 +1,6 @@
 TODO:
 
-- write json schema for sources!
+- write json schema for sources!!
 - there are multiple formatters for jinja-sql!
 
 - add more data e.g. product info, web traffic, customer whatever

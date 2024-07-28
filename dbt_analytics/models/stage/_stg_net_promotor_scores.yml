@@ -18,9 +18,10 @@ models:
         description: Concatenation of product name prefix and order id
         data_type: VARCHAR
         data_tests:
-          - not_null
           - unique
-          - dbt_utils.not_empty_string
+          # Validates if column follows format "STRING-INTEGER" e.g. "ABC-123"
+          - dbt_utils.expression_is_true:
+              expression: "~ '^[a-zA-Z]+-[0-9]+$'"
       - name: RATING_DATE
         description: Date on which rating was collected
         data_type: DATE

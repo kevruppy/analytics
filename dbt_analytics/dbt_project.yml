@@ -27,5 +27,8 @@ seeds:
     relation: true
     columns: true
 
+sources:
+  +enabled: true
+
 query-comment:
   append: True

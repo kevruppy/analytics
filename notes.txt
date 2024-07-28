@@ -1,10 +1,9 @@
 TODO:
 
+- write json schema for sources!
 - there are multiple formatters for jinja-sql!
 
-
-- dbt test to check if value is of form "string-number"
-- add more data e.g. nps, product info, web traffic, customer whatever
+- add more data e.g. product info, web traffic, customer whatever
 
 - prettify dbt stuff (make test.py a pre-commit hook)
 

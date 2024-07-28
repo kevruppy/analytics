@@ -52,6 +52,9 @@
     ],
     "/workspaces/analytics/dbt_templates/seeds/properties_schema.json": [
       "/workspaces/analytics/dbt_analytics/seeds/**/_*.yml"
+    ],
+    "/workspaces/analytics/dbt_templates/sources/properties_schema.json": [
+      "/workspaces/analytics/dbt_analytics/models/**/sources.yml"
     ]
   }
 }

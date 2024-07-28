@@ -1,4 +1,7 @@
 {
+  "[jinja-sql]": {
+    "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
+  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -10,6 +13,9 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",

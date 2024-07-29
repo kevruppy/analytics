@@ -1,4 +1,5 @@
 {% test value_proportion(model, expression, threshold) %}
+-- TODO: CAN WE LOG VALUE TRIGGERING ERROR (ABOVE THRESHOLD)
 WITH CTE_CHECK AS
 (
 SELECT

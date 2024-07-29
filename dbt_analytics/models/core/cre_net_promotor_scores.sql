@@ -10,7 +10,7 @@ WITH NET_PROMOTOR_SCORES AS (
 		{{ ref('stg_net_promotor_scores') }}
 	{% if is_incremental() %}
 		WHERE
-			SPLIT_PART(TRANSACTION_ID,'-',-1) NOT IN (SELECT DISTINCT ORDER_ID FROM {{ this }})
+			SPLIT_PART(TRANSACTION_ID,'-',-1)::INTEGER NOT IN (SELECT DISTINCT ORDER_ID FROM {{ this }})
 	{% endif %}
 )
 

@@ -1,7 +1,7 @@
 version: 2
 
 seeds:
-  - name: provision_rules_product_mapping
+  - name: map_provision_rules_product
     description: TBD
     config:
       enabled: True

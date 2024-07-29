@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: core_provision_rules
+  - name: cre_provision_rules_placement
     description: Contains raw provision rules. There might be multiple rules per product
     config:
       enabled: True
@@ -44,16 +44,6 @@ models:
               max_value: "CURRENT_DATE()"
           - dbt_utils.expression_is_true:
               expression: "> START_DATE"
-      - name: BASE_PROVISION
-        description: Base provision according to this rule
-        data_type: FLOAT
-        data_tests:
-          - not_null
-          - dbt_utils.accepted_range:
-              min_value: 0
       - name: PLACEMENT_PROVISION
         description: Placement provision according to this rule (can be null)
         data_type: FLOAT
-      - name: PROPORTIONAL_PROVISION
-        description: Proportional provision according to this rule (can be null)
-        data_type: JSON

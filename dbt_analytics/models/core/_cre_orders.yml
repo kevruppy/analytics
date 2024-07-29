@@ -9,7 +9,7 @@ models:
       materialized: incremental
     data_tests:
       - dbt_utils.equal_rowcount:
-          compare_model: ref("stage", "stg_orders")
+          compare_model: ref("stg_orders")
     columns:
       - name: ORDER_ID
         description: Identifier of an order
@@ -19,7 +19,7 @@ models:
         data_type: VARCHAR
         data_tests:
           - accepted_values:
-            values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
+              values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: PRODUCT_NAME
         description: Name of the product ordered
         data_type: VARCHAR

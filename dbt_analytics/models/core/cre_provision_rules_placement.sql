@@ -5,7 +5,7 @@ SELECT
 	,END_DATE
 	,PLACEMENT_PROVISION_VALUE
 FROM
-	{{ ref('core','cre_provision_rules') }}
+	{{ ref('cre_provision_rules') }}
 WHERE
 	PLACEMENT_PROVISION_VALUE IS NOT NULL
 	{% if is_incremental() %}

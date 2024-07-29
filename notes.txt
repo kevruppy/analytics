@@ -1,11 +1,12 @@
 TODO:
 
-- make core provision rules epermeral
-    --> 3 models base, Placement, Proportional
+- valid_from and valid_to for map_product_hierarchy
+--> move some product to another PRODUCT_GROUP
+
 - dbt default schema macro
+- sqlfluff should lint dbt tests properly
 
 - add more data e.g. product info, web traffic, customer whatever
-- think of other name for "dbt_templates"
 
 
 
@@ -28,6 +29,7 @@ TODO:
 - check dbt hooks (before, post model execution)
 - check scheduling
 - cli script to build dbt project (or Python? maybe a class?)
+--> https://docs.getdbt.com/reference/programmatic-invocations
 
 
 

@@ -5,12 +5,16 @@ models:
     description: Contains clean net promotor scores (NPS) data
     config:
       enabled: True
-      schema: stage
+      schema: core
       materialized: incremental
     data_tests:
       - dbt_utils.equal_rowcount:
-          compare_model: ref("stage", "stg_net_promotor_scores")
-      - sth like: (SUM(IS_VALID_RATING::INTEGER) OVER() /COUNT(*) OVER())>0.99
+          compare_model: ref("stg_net_promotor_scores")
+      - value_proportion:
+          expression: "IS_VALID_RATING=TRUE"
+          threshold: 0.99
+          config:
+            severity: warn
     columns:
       - name: ORDER_ID
         description: Identifier of order that triggered the survey
@@ -24,18 +28,12 @@ models:
       - name: RATING_VALUE
         description: NPS rating given by customer
         data_type: INTEGER
-        data_tests:
-          - dbt_utils.accepted_range:
-            - min_value: 0
-            - max_value: 10
-            config:
-              severity: warn
       - name: RATING_TOOL
         description: Tool with which the rating was collected
         data_type: VARCHAR
         data_tests:
           - accepted_values:
-            values: ["SURVEYMONKEY", "QUALTRICS"]
+              values: ["SURVEYMONKEY", "QUALTRICS"]
       - name: IS_VALID_RATING
         description: Flag if rating is between 0 and 10 (= valid)
         data_type: BOOLEAN

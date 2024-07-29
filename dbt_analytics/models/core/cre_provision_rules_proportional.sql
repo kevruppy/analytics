@@ -7,7 +7,7 @@ SELECT
 	,PROPORTIONAL_PROVISION_TARGET_UNIT
 	,PROPORTIONAL_PROVISION_VALUE
 FROM
-	{{ ref('core','cre_provision_rules') }}
+	{{ ref('cre_provision_rules') }}
 WHERE
 	PROPORTIONAL_PROVISION_TARGET_VALUE IS NOT NULL
 	{% if is_incremental() %}

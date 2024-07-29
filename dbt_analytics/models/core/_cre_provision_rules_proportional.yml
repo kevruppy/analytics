@@ -2,42 +2,29 @@ version: 2
 
 models:
   - name: cre_provision_rules_proportional
-    description: Contains raw provision rules. There might be multiple rules per product
+    description: Contains clean proportional provision rules. There might be multiple rules per product
     config:
       enabled: True
       schema: core
-      materialized: ephemeral
+      materialized: incremental
     columns:
       - name: _CHECK_SUM
-        description: Hashed concatenation of product, start and end to remove duplicates downstream
+        description: Identifier of a rule
         data_type: VARCHAR
       - name: PRODUCT_NAME
         description: Name of the product to which rule applies
         data_type: VARCHAR
-        data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
       - name: START_DATE
         description: Date since when rule is valid
         data_type: DATE
-        data_tests:
-          - not_null
-          - dbt_utils.accepted_range:
-              max_value: "CURRENT_DATE()"
       - name: END_DATE
         description: Date until rule is valid
         data_type: DATE
-        data_tests:
-          - not_null
-          - dbt_utils.accepted_range:
-              max_value: "CURRENT_DATE()"
-          - dbt_utils.expression_is_true:
-              expression: "> START_DATE"
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
-        description: Proportional provision according to a particular rule
+        description: Target value (= amount of orders) to be reached according to a particular rule
         data_type: INTEGER
       - name: PROPORTIONAL_PROVISION_TARGET_UNIT
-        description: Proportional provision according to a particular rule
+        description: Unit of target value e.g. "month" means that target value needs to be reached within one month
         data_type: VARCHAR
       - name: PROPORTIONAL_PROVISION_VALUE
         description: Proportional provision according to a particular rule

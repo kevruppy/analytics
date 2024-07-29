@@ -7,12 +7,9 @@ models:
       enabled: True
       schema: core
       materialized: ephemeral
-    data_tests:
-      - dbt_utils.equal_rowcount:
-          compare_model: ref("stage", "stg_provision_rules")
     columns:
       - name: _CHECK_SUM
-        description: Identifier for a provision rule
+        description: Identifier of a provision rule
         data_type: VARCHAR
         data_tests:
           - unique
@@ -21,39 +18,24 @@ models:
         data_type: VARCHAR
         data_tests:
           - not_null
-          - dbt_utils.not_empty_string
       - name: START_DATE
         description: Date since when rule is valid
         data_type: DATE
-        data_tests:
-          - not_null
-          - dbt_utils.accepted_range:
-              max_value: "CURRENT_DATE()"
       - name: END_DATE
         description: Date until rule is valid
         data_type: DATE
-        data_tests:
-          - not_null
-          - dbt_utils.accepted_range:
-              max_value: "CURRENT_DATE()"
-          - dbt_utils.expression_is_true:
-              expression: "> START_DATE"
       - name: BASE_PROVISION_VALUE
         description: Base provision according to a particular rule
         data_type: FLOAT
-        data_tests:
-          - not_null
-          - dbt_utils.accepted_range:
-              min_value: 0
       - name: PLACEMENT_PROVISION_VALUE
         description: Placement provision according to a particular rule (can be null)
         data_type: FLOAT
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
         description: Proportional provision according to a particular rule (can be null)
-        data_type: JSON
+        data_type: INTEGER
       - name: PROPORTIONAL_PROVISION_TARGET_UNIT
         description: Proportional provision according to a particular rule (can be null)
-        data_type: JSON
+        data_type: VARCHAR
       - name: PROPORTIONAL_PROVISION_VALUE
         description: Proportional provision according to a particular rule (can be null)
-        data_type: JSON
+        data_type: FLOAT

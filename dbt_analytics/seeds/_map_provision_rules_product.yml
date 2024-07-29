@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: map_provision_rules_product
-    description: TBD
+    description: Maps product names used in provision rules to common product names
     config:
       enabled: True
       delimiter: ","
@@ -12,6 +12,6 @@ seeds:
         PRODUCT_NAME: VARCHAR
     columns:
       - name: PROVISION_RULES_PRODUCT_NAME
-        description: TBD
+        description: Product name used in provision rules
       - name: PRODUCT_NAME
-        description: TBD
+        description: Lowest level of product hierarchy

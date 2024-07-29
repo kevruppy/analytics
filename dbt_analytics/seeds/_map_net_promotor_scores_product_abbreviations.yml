@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: map_net_promotor_scores_product_abbreviations
-    description: Maps product abbreviations used in NPS surveys to product names
+    description: Maps product abbreviations used in net promotor scores (NPS) surveys to product names
     config:
       enabled: True
       delimiter: ","
@@ -12,6 +12,6 @@ seeds:
         PRODUCT_NAME: VARCHAR
     columns:
       - name: PRODUCT_ABBREVIATION
-        description: Abbreviation for product name
+        description: Abbreviation of product name
       - name: PRODUCT_NAME
         description: Lowest level of product hierarchy

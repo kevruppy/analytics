@@ -7,17 +7,6 @@ models:
       enabled: True
       schema: core
       materialized: ephemeral
-    data_tests:
-      - row_count_source_match:
-          source_name: raw
-          table_name: provision_rules
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - PRODUCT_NAME
-            - START_DATE
-            - END_DATE
-          config:
-            severity: warn
     columns:
       - name: _CHECK_SUM
         description: Hashed concatenation of product, start and end to remove duplicates downstream
@@ -45,7 +34,7 @@ models:
           - dbt_utils.expression_is_true:
               expression: "> START_DATE"
       - name: BASE_PROVISION
-        description: Base provision according to this rule
+        description: Base provision according to a particular rule
         data_type: FLOAT
         data_tests:
           - not_null

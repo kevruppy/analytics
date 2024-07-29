@@ -7,17 +7,6 @@ models:
       enabled: True
       schema: core
       materialized: ephemeral
-    data_tests:
-      - row_count_source_match:
-          source_name: raw
-          table_name: provision_rules
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - PRODUCT_NAME
-            - START_DATE
-            - END_DATE
-          config:
-            severity: warn
     columns:
       - name: _CHECK_SUM
         description: Hashed concatenation of product, start and end to remove duplicates downstream
@@ -45,11 +34,11 @@ models:
           - dbt_utils.expression_is_true:
               expression: "> START_DATE"
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
-        description: Proportional provision according to this rule (can be null)
-        data_type: JSON
+        description: Proportional provision according to a particular rule
+        data_type: INTEGER
       - name: PROPORTIONAL_PROVISION_TARGET_UNIT
-        description: Proportional provision according to this rule (can be null)
+        description: Proportional provision according to a particular rule
         data_type: VARCHAR
       - name: PROPORTIONAL_PROVISION_VALUE
-        description: Proportional provision according to this rule (can be null)
-        data_type: JSON
+        description: Proportional provision according to a particular rule
+        data_type: FLOAT

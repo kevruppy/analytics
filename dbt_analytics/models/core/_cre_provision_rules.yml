@@ -38,22 +38,22 @@ models:
               max_value: "CURRENT_DATE()"
           - dbt_utils.expression_is_true:
               expression: "> START_DATE"
-      - name: BASE_PROVISION
-        description: Base provision according to this rule
+      - name: BASE_PROVISION_VALUE
+        description: Base provision according to a particular rule
         data_type: FLOAT
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
               min_value: 0
-      - name: PLACEMENT_PROVISION
-        description: Placement provision according to this rule (can be null)
+      - name: PLACEMENT_PROVISION_VALUE
+        description: Placement provision according to a particular rule (can be null)
         data_type: FLOAT
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
-        description: Proportional provision according to this rule (can be null)
+        description: Proportional provision according to a particular rule (can be null)
         data_type: JSON
       - name: PROPORTIONAL_PROVISION_TARGET_UNIT
-        description: Proportional provision according to this rule (can be null)
+        description: Proportional provision according to a particular rule (can be null)
         data_type: JSON
       - name: PROPORTIONAL_PROVISION_VALUE
-        description: Proportional provision according to this rule (can be null)
+        description: Proportional provision according to a particular rule (can be null)
         data_type: JSON

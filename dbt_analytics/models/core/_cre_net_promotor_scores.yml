@@ -10,12 +10,13 @@ models:
     data_tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref("stage", "stg_net_promotor_scores")
+      - sth like: (SUM(IS_VALID_RATING::INTEGER) OVER() /COUNT(*) OVER())>0.99
     columns:
       - name: ORDER_ID
-        description: Concatenation of product name prefix and order id
+        description: Identifier of order that triggered the survey
         data_type: INTEGER
       - name: PRODUCT_NAME
-        description: Name of the product ordered
+        description: Name of ordered product that triggered the survey
         data_type: VARCHAR
       - name: RATING_DATE
         description: Date on which rating was collected
@@ -24,7 +25,11 @@ models:
         description: NPS rating given by customer
         data_type: INTEGER
         data_tests:
-          - WARNING BLABLAC
+          - dbt_utils.accepted_range:
+            - min_value: 0
+            - max_value: 10
+            config:
+              severity: warn
       - name: RATING_TOOL
         description: Tool with which the rating was collected
         data_type: VARCHAR
@@ -32,8 +37,7 @@ models:
           - accepted_values:
             values: ["SURVEYMONKEY", "QUALTRICS"]
       - name: IS_VALID_RATING
-        description: BLA
+        description: Flag if rating is between 0 and 10 (= valid)
         data_type: BOOLEAN
         data_tests:
           - not_null
-          - todo: add proportion test (custom)

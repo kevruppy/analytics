@@ -45,15 +45,15 @@ models:
           - dbt_utils.expression_is_true:
               expression: "> START_DATE"
       - name: BASE_PROVISION
-        description: Base provision according to this rule
+        description: Base provision according to a particular rule
         data_type: FLOAT
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
               min_value: 0
       - name: PLACEMENT_PROVISION
-        description: Placement provision according to this rule (can be null)
+        description: Placement provision according to a particular rule (can be null)
         data_type: FLOAT
       - name: PROPORTIONAL_PROVISION
-        description: Proportional provision according to this rule (can be null)
+        description: Proportional provision according to a particular rule (can be null)
         data_type: JSON

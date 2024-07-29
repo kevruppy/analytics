@@ -1,5 +1,7 @@
 TODO:
 
+- make core provision rules epermeral
+    --> 3 models base, Placement, Proportional
 - dbt default schema macro
 
 - add more data e.g. product info, web traffic, customer whatever

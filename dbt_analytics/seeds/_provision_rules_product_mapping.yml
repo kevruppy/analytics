@@ -1,0 +1,17 @@
+version: 2
+
+seeds:
+  - name: provision_rules_product_mapping
+    description: TBD
+    config:
+      enabled: True
+      delimiter: ","
+      schema: mapping
+      column_types:
+        PROVISION_RULES_PRODUCT_NAME: VARCHAR
+        PRODUCT_NAME: VARCHAR
+    columns:
+      - name: PROVISION_RULES_PRODUCT_NAME
+        description: TBD
+      - name: PRODUCT_NAME
+        description: TBD

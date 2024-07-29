@@ -5,8 +5,8 @@ models:
     description: Contains raw provision rules. There might be multiple rules per product
     config:
       enabled: True
-      schema: stage
-      materialized: table
+      schema: core
+      materialized: ephemeral
     data_tests:
       - row_count_source_match:
           source_name: raw

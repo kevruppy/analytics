@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: cre_net_promotor_scores
+    description: Contains clean net promotor scores (NPS) data
+    config:
+      enabled: True
+      schema: stage
+      materialized: incremental
+    data_tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref("stage", "stg_net_promotor_scores")
+    columns:
+      - name: ORDER_ID
+        description: Concatenation of product name prefix and order id
+        data_type: INTEGER
+      - name: PRODUCT_NAME
+        description: Name of the product ordered
+        data_type: VARCHAR
+      - name: RATING_DATE
+        description: Date on which rating was collected
+        data_type: DATE
+      - name: RATING_VALUE
+        description: NPS rating given by customer
+        data_type: INTEGER
+        data_tests:
+          - WARNING BLABLAC
+      - name: RATING_TOOL
+        description: Tool with which the rating was collected
+        data_type: VARCHAR
+        data_tests:
+          - accepted_values
+      - name: IS_VALID_RATING
+        description: BLA
+        data_type: BOOLEAN
+        data_tests:
+          - not_null
+          - todo: add proportion test (custom)

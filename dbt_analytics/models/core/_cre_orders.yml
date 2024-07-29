@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: core_orders
+  - name: cre_orders
     description: Contains clean order data. Orders appear multiple times due to status changes
     config:
       enabled: True
@@ -9,7 +9,7 @@ models:
       materialized: incremental
     data_tests:
       - dbt_utils.equal_rowcount:
-          compare_model: ref("stage", "_stg_orders")
+          compare_model: ref("stage", "stg_orders")
     columns:
       - name: ORDER_ID
         description: Identifier of an order
@@ -17,6 +17,9 @@ models:
       - name: STATUS_NAME
         description: Status of an order
         data_type: VARCHAR
+        data_tests:
+          - accepted_values:
+            values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: PRODUCT_NAME
         description: Name of the product ordered
         data_type: VARCHAR
@@ -29,3 +32,5 @@ models:
       - name: IS_TEST_ORDER
         description: Flag if order was a test
         data_type: BOOLEAN
+        data_tests:
+          - not_null

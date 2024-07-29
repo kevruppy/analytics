@@ -1,7 +1,7 @@
 version: 2
 
 seeds:
-  - name: product_mapping
+  - name: product_hierarchy
     description: Maps products to product_type & product_group (= product hierarchy)
     config:
       enabled: True

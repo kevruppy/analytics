@@ -3,7 +3,7 @@ TODO:
 - dbt default schema macro
 
 - add more data e.g. product info, web traffic, customer whatever
-
+- think of other name for "dbt_templates"
 
 
 

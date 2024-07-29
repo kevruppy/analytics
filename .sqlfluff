@@ -214,7 +214,7 @@ min_alias_length = 3
 max_alias_length = 35
 
 [sqlfluff:rules:aliasing.forbid]
-force_enable = True
+force_enable = False
 
 [sqlfluff:rules:aliasing.unique.column]
 

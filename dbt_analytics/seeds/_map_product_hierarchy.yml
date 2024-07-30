@@ -15,7 +15,7 @@ seeds:
         VALID_TO: DATE
     columns:
       - name: PRODUCT_GROUP
-        description: "{{ var(dsc_product_group) }}"
+        description: "{{ var('dsc_product_group') }}"
       - name: PRODUCT_TYPE
         description: Middle level of product hierarchy
       - name: PRODUCT_NAME

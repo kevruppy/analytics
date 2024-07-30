@@ -14,4 +14,4 @@ seeds:
       - name: PRODUCT_ABBREVIATION
         description: Abbreviation of product name
       - name: PRODUCT_NAME
-        description: Lowest level of product hierarchy
+        description: "{{ var('dsc_product_name') }}"

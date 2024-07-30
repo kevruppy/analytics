@@ -14,4 +14,4 @@ seeds:
       - name: PROVISION_RULES_PRODUCT_NAME
         description: Product name used in provision rules
       - name: PRODUCT_NAME
-        description: Lowest level of product hierarchy
+        description: "{{ var('dsc_product_name') }}"

@@ -34,5 +34,18 @@ query-comment:
   append: True
 
 vars:
-  # default descriptions
+  ### default descriptions
+
+  dsc_valid_from: "Date since when mapping is valid"
+  dsc_valid_to: "Date since until mapping is valid"
+  # product_hierarchy
   dsc_product_group: "Highest level of product hierarchy"
+  dsc_product_type: "Middle level of product hierarchy"
+  dsc_product_name: "Lowest level of product hierarchy"
+  # orders
+  dsc_order_id: "Identifier of an order"
+  dsc_status_name: "Status of an order"
+  dsc_ord_product_name: "Name of the product ordered"
+  dsc_creation_date: "Date when order was created"
+  dsc_status_change_date: "Date when status of an order was changed"
+  dsc_is_test_order: "Flag if order was a test"

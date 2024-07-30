@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: int_orders_status_dates
+    description: Contains for each valid (no test) orders status dates and latest status
+    config:
+      enabled: True
+      schema: intermediate
+      materialized: table
+    columns:
+      - name: ORDER_ID
+        description: "{{ var('dsc_order_id') }}"
+        data_type: INTEGER
+        data_tests:
+          - unique
+      - name: PRODUCT_NAME
+        description: "{{ var('dsc_product_name') }}"
+        data_type: VARCHAR
+      - name: CURRENT_STATUS
+        description: Current status of an order
+        data_type: VARCHAR
+        data_tests:
+          - accepted_values:
+              values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
+      - name: CREATION_DATE
+        description: "{{ var('dsc_creation_date') }}"
+        data_type: DATE
+        data_tests:
+          - not_null
+      - name: FORWARDING_DATE
+        description: Date when order was forwarded
+        data_type: DATE
+      - name: CONFIRMATION_DATE
+        description: Date when order was confirmed
+        data_type: DATE
+      - name: CANCELLATION_DATE
+        description: Date when order was cancelled
+        data_type: DATE

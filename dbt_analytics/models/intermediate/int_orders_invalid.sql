@@ -1,0 +1,11 @@
+SELECT
+	ORDER_ID
+	,MAX(STATUS_CHANGE_DATE) AS STATUS_DATE
+FROM {{ ref('cre_orders') }}
+WHERE
+	IS_TEST_ORDER = TRUE
+	{% if is_incremental() %}
+		AND
+		STATUS_CHANGE_DATE > (SELECT MAX(STATUS_DATE) AS WATERMARK FROM {{ this }})
+	{% endif %}
+GROUP BY ALL

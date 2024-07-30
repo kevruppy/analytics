@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: int_orders_invalid
+    description: Contains invalid orders (IS_TEST_ORDER = TRUE)
+    config:
+      enabled: True
+      schema: intermediate
+      materialized: incremental
+    columns:
+      - name: ORDER_ID
+        description: "{{ var('dsc_order_id') }}"
+        data_type: INTEGER
+        data_tests:
+          - not_null
+          - unique
+      - name: STATUS_DATE
+        description: Status data of test order aka MAX(STATUS_CHANGE_DATE)
+        data_type: DATE

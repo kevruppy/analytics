@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_net_promotor_scores
-    description: Contains enriched net promotor scores (NPS) data
+    description: Contains enriched net promotor scores (NPS) data w.o. invalid or test records
     config:
       enabled: True
       schema: intermediate

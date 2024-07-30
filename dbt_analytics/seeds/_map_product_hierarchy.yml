@@ -17,10 +17,10 @@ seeds:
       - name: PRODUCT_GROUP
         description: "{{ var('dsc_product_group') }}"
       - name: PRODUCT_TYPE
-        description: Middle level of product hierarchy
+        description: "{{ var('dsc_product_type') }}"
       - name: PRODUCT_NAME
-        description: Lowest level of product hierarchy
+        description: "{{ var('dsc_product_name') }}"
       - name: VALID_FROM
-        description: Date since when mapping is valid
+        description: "{{ var('dsc_valid_from') }}"
       - name: VALID_TO
-        description: Date until mapping is valid
+        description: "{{ var('dsc_valid_to') }}"

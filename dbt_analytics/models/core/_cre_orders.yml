@@ -12,25 +12,25 @@ models:
           compare_model: ref("stg_orders")
     columns:
       - name: ORDER_ID
-        description: Identifier of an order
+        description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
       - name: STATUS_NAME
-        description: Status of an order
+        description: "{{ var('dsc_status_name') }}"
         data_type: VARCHAR
         data_tests:
           - accepted_values:
               values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: PRODUCT_NAME
-        description: Name of the product ordered
+        description: "{{ var('dsc_ord_product_name') }}"
         data_type: VARCHAR
       - name: CREATION_DATE
-        description: Date when order was created
+        description: "{{ var('dsc_creation_date') }}"
         data_type: DATE
       - name: STATUS_CHANGE_DATE
-        description: Date when status of an order was updated
+        description: "{{ var('dsc_status_change_date') }}"
         data_type: DATE
       - name: IS_TEST_ORDER
-        description: Flag if order was a test
+        description: "{{ var('dsc_is_test_order') }}"
         data_type: BOOLEAN
         data_tests:
           - not_null

@@ -11,10 +11,16 @@ seeds:
         PRODUCT_GROUP: VARCHAR
         PRODUCT_TYPE: VARCHAR
         PRODUCT_NAME: VARCHAR
+        VALID_FROM: DATE
+        VALID_TO: DATE
     columns:
       - name: PRODUCT_GROUP
-        description: Highest level of product hierarchy
+        description: "{{ var(dsc_product_group) }}"
       - name: PRODUCT_TYPE
         description: Middle level of product hierarchy
       - name: PRODUCT_NAME
         description: Lowest level of product hierarchy
+      - name: VALID_FROM
+        description: Date since when mapping is valid
+      - name: VALID_TO
+        description: Date until mapping is valid

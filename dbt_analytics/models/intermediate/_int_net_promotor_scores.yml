@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: int_net_promotor_scores
+    description: Contains enriched net promotor scores (NPS) data
+    config:
+      enabled: True
+      schema: intermediate
+      materialized: ephemeral
+    columns:
+      # NPS
+      - name: ORDER_ID
+        description: Identifier of order that triggered the survey
+        data_type: INTEGER
+        data_tests:
+          - not_null
+          - unique
+      - name: RATING_VALUE
+        description: NPS rating given by customer
+        data_type: INTEGER
+      - name: RATING_TOOL
+        description: Tool with which the rating was collected
+        data_type: VARCHAR
+        # CALENDAR
+      - name: SURVEY_CALENDAR_DATE
+        description: Calendar date (related to survey)
+        data_type: DATE
+        data_tests:
+          - not_null
+      - name: SURVEY_CALENDAR_WEEK
+        description: Calendar week of year (related to survey)
+        data_type: INTEGER
+      - name: SURVEY_CALENDAR_MONTH
+        description: Calendar month of year (related to survey)
+        data_type: INTEGER
+      - name: SURVEY_CALENDAR_QUARTER
+        description: Calendar quarter of year (related to survey)
+        data_type: INTEGER
+      - name: SURVEY_CALENDAR_YEAR
+        description: Calendar year (related to survey)
+        data_type: INTEGER
+      - name: SURVEY_CALENDAR_DAY_NAME
+        description: Name of day (related to survey)
+        data_type: VARCHAR
+      - name: SURVEY_IS_WEEKEND
+        description: Flag if date is on a weekend (related to survey)
+        data_type: BOOLEAN
+        # PRODUCT_HIERARCHY
+      - name: PRODUCT_GROUP
+        description: Name of ordered product group that triggered the survey
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+      - name: PRODUCT_TYPE
+        description: Name of ordered product type that triggered the survey
+        data_type: VARCHAR
+      - name: PRODUCT_NAME
+        description: Name of ordered product that triggered the survey
+        data_type: VARCHAR

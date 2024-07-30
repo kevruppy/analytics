@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: cre_calendar
+    description: Calendar table with range (2020-01-01, 2030-12-31)
+    config:
+      enabled: True
+      schema: core
+      materialized: table
+      full_refresh: false
+    columns:
+      - name: CALENDAR_DATE
+        description: Calendar date
+        data_type: DATE
+      - name: CALENDAR_WEEK
+        description: Calendar week of year
+        data_type: INTEGER
+      - name: CALENDAR_MONTH
+        description: Calendar month of year
+        data_type: INTEGER
+      - name: CALENDAR_QUARTER
+        description: Calendar quarter of year
+        data_type: INTEGER
+      - name: CALENDAR_QUARTER
+        description: Calendar year
+        data_type: INTEGER
+      - name: CALENDAR_DAY_NAME
+        description: Name of day
+        data_type: VARCHAR
+      - name: IS_WEEKEND
+        description: Flag if date is on a weekend
+        data_type: BOOLEAN

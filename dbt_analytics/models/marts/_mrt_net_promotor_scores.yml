@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: mrt_net_promotor_scores
+    description:
+      "Aggregated data on net promotor scores (NPS) on different levels:
+      PRODUCT GROUP, PRODUCT TYPE & PRODUCT NAME
+      Example: If aggregation is on PRODUCT GROUP values for PRODUCT TYPE & PRODUCT NAME are 'TOTAL'"
+    config:
+      enabled: True
+      schema: marts
+      materialized: view
+    columns:
+      - name: SURVEY_CALENDAR_YEAR (related to survey)
+        description: Calendar year
+        data_type: INTEGER
+      - name: SURVEY_CALENDAR_MONTH
+        description: Calendar month of year (related to survey)
+        data_type: INTEGER
+      - name: PRODUCT_GROUP
+        description: Name of ordered product group that triggered the survey
+        data_type: VARCHAR
+      - name: PRODUCT_TYPE
+        description: Name of ordered product type that triggered the survey
+        data_type: VARCHAR
+      - name: PRODUCT_NAME
+        description: Name of ordered product that triggered the survey
+        data_type: VARCHAR
+      - name: PARTICIPANTS
+        description: Number of survey participants
+        data_type: INTEGER
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "= (DETRACTORS + INDIFFERENTS + PROMOTORS)"
+      - name: DETRACTORS
+        description: Number of participants that gave a rating between 0 and 6
+        data_type: INTEGER
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "= (PARTICIPANTS - INDIFFERENTS - PROMOTORS)"
+      - name: INDIFFERENTS
+        description: Number of participants that gave a rating between 7 and 8
+        data_type: INTEGER
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "= (PARTICIPANTS - DETRACTORS - PROMOTORS)"
+      - name: PROMOTORS
+        description: Number of participants that gave a rating between 9 and 10
+        data_type: INTEGER
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "= (PARTICIPANTS - INDIFFERENTS - DETRACTORS)"
+      - name: DETRACTORS_SHARE
+        description: Detractors divided by participants
+        data_type: INTEGER
+      - name: INDIFFERENTS_SHARE
+        description: Indifferents divided by participants
+        data_type: INTEGER
+      - name: PROMOTORS_SHARE
+        description: Promotors divided by participants
+        data_type: INTEGER
+      - name: NET_PROMOTOR_SCORE
+        description: Share of promotors minus share of detractors
+        data_type: FLOAT

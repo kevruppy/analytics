@@ -12,7 +12,7 @@ WITH CTE_PROV_RULES AS (
 
 ,CTE_PROV_RULES_CASTED AS (
 	SELECT
-		{{ dbt_utils.generate_surrogate_key(['_PRODUCT_NAME', '_START_DATE', '_END_DATE']) }} AS _CHECK_SUM --noqa
+		{{ dbt_utils.generate_surrogate_key(['_PRODUCT_NAME','_START_DATE','_END_DATE']) }} AS _CHECK_SUM --noqa
 		,_PRODUCT_NAME AS PRODUCT_NAME
 		,_START_DATE::DATE AS START_DATE
 		,_END_DATE::DATE AS END_DATE

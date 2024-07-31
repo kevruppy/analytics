@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: orders_with_placement
+    description: Contains rawdata for orders with placement, indicates that order is with placement
+    config:
+      enabled: True
+      schema: stage
+      materialized: incremental
+    columns:
+      - name: ORDER_ID
+        description: "{{ var('dsc_order_id') }}"
+        data_type: INTEGER
+        data_tests:
+          - not_null
+          - unique

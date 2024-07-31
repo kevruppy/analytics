@@ -5,23 +5,34 @@ sources:
     schema: raw_data
     tables:
       - name: orders
-        description: Contains raw data for orders (JSON)
+        description: Contains raw data for orders
         columns:
           - name: _ID
-            description: Incremental id
+            description: "{{ var('dsc_auto_id') }}"
           - name: _ADDED_ON
-            description: Timestamp when record was added
+            description: "{{ var('dsc_added_on') }}"
+          - name: LOAD_RESULT
+            description: Raw load result
+            data_tests:
+              - not_null
+      - name: orders_with_placement
+        description: Contains rawdata for orders with placement, indicates that order is with placement
+        columns:
+          - name: _ID
+            description: "{{ var('dsc_auto_id') }}"
+          - name: _ADDED_ON
+            description: "{{ var('dsc_added_on') }}"
           - name: LOAD_RESULT
             description: Raw load result
             data_tests:
               - not_null
       - name: provision_rules
-        description: Contains raw data for provision rules (JSON)
+        description: Contains raw data for provision rules
         columns:
           - name: _ID
-            description: Incremental id
+            description: "{{ var('dsc_auto_id') }}"
           - name: _ADDED_ON
-            description: Timestamp when record was added
+            description: "{{ var('dsc_added_on') }}"
           - name: LOAD_RESULT
             description: Raw load result
             data_tests:
@@ -30,9 +41,9 @@ sources:
         description: Contains raw data for net promotor scores (NPS)
         columns:
           - name: _ID
-            description: Incremental id
+            description: "{{ var('dsc_auto_id') }}"
           - name: _ADDED_ON
-            description: Timestamp when record was added
+            description: "{{ var('dsc_added_on') }}"
           - name: TRANSACTION_ID
             description: Concatenation of product name prefix and order id
             data_tests:

@@ -1,11 +1,8 @@
 TODO:
 
-- valid_from and valid_to for map_product_hierarchy
---> move some product to another PRODUCT_GROUP
-
-USE DBT VARIABLES
 ENV VARS
-
+unnit tests
+snapshots
 - dbt default schema macro
 - sqlfluff should lint dbt tests properly
 

@@ -35,7 +35,8 @@ query-comment:
 
 vars:
   ### default descriptions
-
+  dsc_auto_id: "Incremental id"
+  dsc_added_on: "Timestamp when record was added"
   dsc_valid_from: "Date since when mapping is valid"
   dsc_valid_to: "Date since until mapping is valid"
   # product_hierarchy

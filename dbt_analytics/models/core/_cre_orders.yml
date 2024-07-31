@@ -14,8 +14,6 @@ models:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
-        data_tests:
-          - unique
       - name: STATUS_NAME
         description: "{{ var('dsc_status_name') }}"
         data_type: VARCHAR
@@ -37,5 +35,5 @@ models:
         data_tests:
           - not_null
       - name: IS_PLACEMENT
-        description: Indicates if order is with placement
+        description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN

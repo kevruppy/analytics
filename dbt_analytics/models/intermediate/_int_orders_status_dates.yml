@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_orders_status_dates
-    description: Contains for each valid (no test) orders status dates and latest status
+    description: Contains all valid (no test) orders status dates and latest status
     config:
       enabled: True
       schema: intermediate
@@ -17,7 +17,7 @@ models:
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
       - name: IS_PLACEMENT
-        description: Indicates if order is with placement
+        description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN
       - name: CURRENT_STATUS
         description: Current status of an order

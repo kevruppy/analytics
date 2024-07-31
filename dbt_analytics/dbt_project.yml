@@ -48,5 +48,6 @@ vars:
   dsc_status_name: "Status of an order"
   dsc_ord_product_name: "Name of the product ordered"
   dsc_creation_date: "Date when order was created"
-  dsc_status_change_date: "Date when status of an order was changed"
+  dsc_status_change_date: "Date when status of an order changed"
   dsc_is_test_order: "Flag if order was a test"
+  dsc_is_placement: "Flag if order was with placement"

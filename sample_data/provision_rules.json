@@ -14,7 +14,7 @@
       "baseProvision": 65,
       "placementProvision": "10",
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 17.5
       }
@@ -36,7 +36,7 @@
       "baseProvision": 170,
       "placementProvision": "10",
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 45
       }
@@ -50,7 +50,7 @@
       "baseProvision": 170,
       "placementProvision": "15",
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 45
       }
@@ -63,7 +63,7 @@
     "provision": {
       "baseProvision": 30,
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 7.5
       }
@@ -76,7 +76,7 @@
     "provision": {
       "baseProvision": 27.5,
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 15
       }
@@ -137,7 +137,7 @@
     "provision": {
       "baseProvision": 170,
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 45
       }
@@ -150,7 +150,7 @@
     "provision": {
       "baseProvision": 180,
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 50
       }
@@ -164,7 +164,7 @@
       "baseProvision": 80,
       "placementProvision": "5",
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 15
       }
@@ -178,7 +178,7 @@
       "baseProvision": 65,
       "placementProvision": "10",
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 17.5
       }
@@ -191,7 +191,7 @@
     "provision": {
       "baseProvision": 180,
       "proportionalProvision": {
-        "target": 100,
+        "target": 50,
         "unit": "month",
         "value": 50
       }

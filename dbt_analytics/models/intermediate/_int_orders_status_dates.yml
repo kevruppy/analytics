@@ -39,3 +39,10 @@ models:
       - name: CANCELLATION_DATE
         description: Date when order was cancelled
         data_type: DATE
+      - name: IS_CANCELLED
+        description: Flag if order was cancelled
+        data_type: BOOLEAN
+      - name: IS_CONFIRMED
+        description: Flag if order was confirmed
+        data_type: BOOLEAN # TODO add test to check no overlap to is_cancelled
+

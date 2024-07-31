@@ -16,6 +16,9 @@ models:
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
+      - name: IS_PLACEMENT
+        description: Indicates if order is with placement
+        data_type: BOOLEAN
       - name: CURRENT_STATUS
         description: Current status of an order
         data_type: VARCHAR

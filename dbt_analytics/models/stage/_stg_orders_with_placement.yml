@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: orders_with_placement
+  - name: stg_orders_with_placement
     description: Contains rawdata for orders with placement, indicates that order is with placement
     config:
       enabled: True

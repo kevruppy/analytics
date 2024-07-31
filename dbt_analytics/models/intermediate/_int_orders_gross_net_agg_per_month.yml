@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_orders_gross_net_agg_per_month
+    description: Aggregation of orders per order type, creation month and product name
+    config:
+      enabled: True
+      schema: intermediate
+      materialized: table
+    columns:
+      - name: ORDER_TYPE
+        description: Either 'GROSS_ORDER' (all orders) or 'NET_ORDER' (only confirmed orders)
+        data_type: VARCHAR
+      - name: CREATION_MONTH
+        description: Month of order creation (truncated to first of month)
+        data_type: DATE
+      - name: PRODUCT_NAME
+        description: "{{ var('dsc_product_name') }}"
+        data_type: DATE
+      - name: CNT_ORDERS
+        description: Count of orders for particular grouping set
+        data_type: INTEGER

@@ -7,6 +7,9 @@ models:
       enabled: True
       schema: intermediate
       materialized: table
+    data_tests:
+      - dbt_utils.expression_is_true:
+          expression: "IS_CANCELLED::INTEGER + IS_CONFIRMED::INTEGER <= 1"
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
@@ -39,10 +42,12 @@ models:
       - name: CANCELLATION_DATE
         description: Date when order was cancelled
         data_type: DATE
+      - name: IS_FORWARDED
+        description: Flag if order was forwarded
+        data_type: BOOLEAN
       - name: IS_CANCELLED
         description: Flag if order was cancelled
         data_type: BOOLEAN
       - name: IS_CONFIRMED
         description: Flag if order was confirmed
-        data_type: BOOLEAN # TODO add test to check no overlap to is_cancelled
-
+        data_type: BOOLEAN

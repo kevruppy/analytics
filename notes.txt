@@ -1,13 +1,13 @@
 TODO:
 
 finish orders
+dbt extension: settings default expansion -> all?
 
 
 
 
 
-
-ENV VARS
+ENV VARS --> db path for profile.yml
 unnit tests
 snapshots
 - dbt default schema macro

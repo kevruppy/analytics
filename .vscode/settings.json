@@ -22,6 +22,7 @@
     "editor.formatOnSave": true
   },
   "dbt.enableNewLineagePanel": true,
+  "dbt.lineage.defaultExpansion": 3,
   "dbt.perspectiveTheme": "Pro Dark",
   "editor.codeActionsOnSave": {
     "source.fixAll.sortJSON": "always"

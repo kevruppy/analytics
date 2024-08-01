@@ -5,3 +5,7 @@ dbt_analytics:
       type: duckdb
       path: "/workspaces/analytics/analytics.duckdb"
       threads: 4
+config:
+  partial_parse: false
+  printer_width: 120
+  send_anonymous_usage_stats: False

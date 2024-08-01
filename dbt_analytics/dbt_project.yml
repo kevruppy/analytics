@@ -51,3 +51,8 @@ vars:
   dsc_status_change_date: "Date when status of an order changed"
   dsc_is_test_order: "Flag if order was a test"
   dsc_is_placement: "Flag if order was with placement"
+
+flags:
+  partial_parse: false
+  printer_width: 120
+  send_anonymous_usage_stats: False

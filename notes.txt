@@ -8,7 +8,6 @@ dbt_project_evaluator
 
 
 
-ENV VARS --> db path for profile.yml
 unnit tests
 snapshots
 - dbt default schema macro

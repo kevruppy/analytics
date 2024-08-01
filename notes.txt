@@ -1,5 +1,6 @@
 TODO:
 
+https://docs.getdbt.com/docs/build/custom-schemas#understanding-custom-schemas
 finish orders
 
 

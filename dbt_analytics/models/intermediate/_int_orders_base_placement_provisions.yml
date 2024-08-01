@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: int_orders_base_placement_provisions
+    description: TBD
+    config:
+      enabled: True
+      schema: intermediate
+      materialized: table
+    columns:
+      - name: ORDER_ID
+        description: TBD
+        data_type: INTEGER
+      - name: GROSS_BASE_PROVISION_VALUE
+        description: TBD
+        data_type: FLOAT
+        data_tests:
+          - not_null
+      - name: GROSS_PLACEMENT_PROVISION_VALUE
+        description: TBD
+        data_type: FLOAT
+        data_tests:
+          - not_null
+      - name: NET_BASE_PROVISION_VALUE
+        description: TBD
+        data_type: FLOAT
+        data_tests:
+          - not_null
+      - name: NET_GROSS_PLACEMENT_PROVISION_VALUE
+        description: TBD
+        data_type: FLOAT
+        data_tests:
+          - not_null

@@ -1,0 +1,29 @@
+version: 2
+
+# for this model we can use mrg
+models:
+  - name: int_orders_proportional_provisions
+    description: TBD
+    config:
+      enabled: True
+      schema: intermediate
+      materialized: incremental
+    columns:
+      - name: ORDER_ID
+        description: "{{ var('dsc_order_id') }}"
+        data_type: INTEGER
+        data_tests:
+          - not_null
+          - unique
+      - name: CREATION_DATE
+        description: TBD
+        data_type: DATE
+      - name: PRODUCT_NAME
+        description: TBD
+        data_type: VARCHAR
+      - name: GROSS_PROPORTIONAL_PROVISION
+        description: TBD
+        data_type: FLOAT
+      - name: NET_PROPORTIONAL_PROVISION
+        description: TBD
+        data_type: FLOAT

@@ -1,13 +1,12 @@
 version: 2
 
-# for this model we can use mrg
 models:
   - name: int_orders_proportional_provisions
-    description: TBD
+    description: Contains orders and their proportional provision (if applicable)
     config:
       enabled: True
       schema: intermediate
-      materialized: incremental
+      materialized: table
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
@@ -15,15 +14,15 @@ models:
         data_tests:
           - not_null
           - unique
-      - name: CREATION_DATE
-        description: TBD
-        data_type: DATE
-      - name: PRODUCT_NAME
-        description: TBD
-        data_type: VARCHAR
       - name: GROSS_PROPORTIONAL_PROVISION
-        description: TBD
+        description: Gross proportional provision of an order (all orders if applicable)
         data_type: FLOAT
+        data_tests:
+          - dbt_utils.accepted_range:
+            min_value: 0
       - name: NET_PROPORTIONAL_PROVISION
-        description: TBD
+        description: Net proportional provision of an order (only confirmed orders if applicable)
         data_type: FLOAT
+        data_tests:
+          - dbt_utils.accepted_range:
+            min_value: 0

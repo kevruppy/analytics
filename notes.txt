@@ -1,6 +1,5 @@
 TODO:
 
-https://docs.getdbt.com/docs/build/custom-schemas#understanding-custom-schemas
 finish orders
 
 
@@ -11,7 +10,6 @@ dbt_project_evaluator
 
 unnit tests
 snapshots
-- dbt default schema macro
 - sqlfluff should lint dbt tests properly
 
 - add more data e.g. product info, web traffic, customer whatever

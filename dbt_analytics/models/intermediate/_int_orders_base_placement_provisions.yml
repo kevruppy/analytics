@@ -2,32 +2,39 @@ version: 2
 
 models:
   - name: int_orders_base_placement_provisions
-    description: TBD
+    description: Contains orders, their base provision & their placement provision (if applicable)
     config:
       enabled: True
       schema: intermediate
       materialized: table
     columns:
       - name: ORDER_ID
-        description: TBD
+        description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
+        data_tests:
+          - not_null
+          - unique
       - name: GROSS_BASE_PROVISION_VALUE
-        description: TBD
+        description: Gross base provision of an order (all orders)
         data_type: FLOAT
         data_tests:
-          - not_null
+          - dbt_utils.accepted_range:
+            min_value: 0
       - name: GROSS_PLACEMENT_PROVISION_VALUE
-        description: TBD
+        description: Gross placement provision of an order (all orders if applicable)
         data_type: FLOAT
         data_tests:
-          - not_null
+          - dbt_utils.accepted_range:
+            min_value: 0
       - name: NET_BASE_PROVISION_VALUE
-        description: TBD
+        description: Net base provision of an order (only confirmed orders)
         data_type: FLOAT
         data_tests:
-          - not_null
-      - name: NET_GROSS_PLACEMENT_PROVISION_VALUE
-        description: TBD
+          - dbt_utils.accepted_range:
+            min_value: 0
+      - name: NET_PLACEMENT_PROVISION_VALUE
+        description: Net placement provision of an order (only confirmed orders if applicable)
         data_type: FLOAT
         data_tests:
-          - not_null
+          - dbt_utils.accepted_range:
+            min_value: 0

@@ -2,8 +2,11 @@ TODO:
 
 finish orders
 
+foreign keys / primary keys in DuckDB?
 
 dbt_project_evaluator
+
+jsonschema only for ci but not in VS Code...
 
 
 
@@ -32,7 +35,7 @@ snapshots
 - check how this project would work with BigQuery
 - check best practives for dockerfile
 - check if we set requirements the right way
-- check dbt hooks (before, post model execution)
+- check dbt hooks (before, post model execution, maybe one as default?)
 - check scheduling
 - cli script to build dbt project (or Python? maybe a class?)
 --> https://docs.getdbt.com/reference/programmatic-invocations

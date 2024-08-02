@@ -25,4 +25,4 @@ models:
         data_type: INTEGER
         data_tests:
           - dbt_utils.accepted_range:
-            min_value: 0
+              min_value: 0

@@ -19,22 +19,22 @@ models:
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
-            min_value: 0
+              min_value: 0
       - name: GROSS_PLACEMENT_PROVISION_VALUE
         description: Gross placement provision of an order (all orders if applicable)
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
-            min_value: 0
+              min_value: 0
       - name: NET_BASE_PROVISION_VALUE
         description: Net base provision of an order (only confirmed orders)
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
-            min_value: 0
+              min_value: 0
       - name: NET_PLACEMENT_PROVISION_VALUE
         description: Net placement provision of an order (only confirmed orders if applicable)
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
-            min_value: 0
+              min_value: 0

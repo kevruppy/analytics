@@ -19,10 +19,10 @@ models:
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
-            min_value: 0
+              min_value: 0
       - name: NET_PROPORTIONAL_PROVISION
         description: Net proportional provision of an order (only confirmed orders if applicable)
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
-            min_value: 0
+              min_value: 0

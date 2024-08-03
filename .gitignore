@@ -10,3 +10,5 @@ dbt_analytics/target/
 dbt_analytics/.user.yml
 
 *.duckdb
+
+service_account.json

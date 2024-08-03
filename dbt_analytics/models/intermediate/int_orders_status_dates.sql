@@ -13,7 +13,7 @@ WITH CTE_ORDERS AS (
 	FROM
 		{{ ref('cre_orders') }}
 	WHERE
-		IS_TEST_ORDER = FALSE
+		IS_INVALID_ORDER = FALSE
 	GROUP BY ALL
 )
 

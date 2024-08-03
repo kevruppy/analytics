@@ -1,4 +1,5 @@
 TODO:
+dbt docs generate / serve
 
 finish orders
 

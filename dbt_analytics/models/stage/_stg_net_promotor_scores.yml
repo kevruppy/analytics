@@ -23,19 +23,19 @@ models:
           - dbt_utils.expression_is_true:
               expression: "~ '^[a-zA-Z]+-[0-9]+$'"
       - name: RATING_DATE
-        description: Date on which rating was collected
+        description: "{{ var('dsc_rating_date') }}"
         data_type: DATE
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
               max_value: "CURRENT_DATE()"
       - name: RATING
-        description: NPS rating given by customer
+        description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
         data_tests:
           - not_null
       - name: TOOL
-        description: Tool with which the rating was collected
+        description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
         data_tests:
           - not_null

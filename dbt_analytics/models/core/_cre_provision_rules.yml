@@ -9,26 +9,26 @@ models:
       materialized: ephemeral
     columns:
       - name: _CHECK_SUM
-        description: Identifier of a provision rule
+        description: "{{ var('dsc_check_sum') }}"
         data_type: VARCHAR
         data_tests:
           - unique
       - name: PRODUCT_NAME
-        description: Name of the product to which rule applies
+        description: "{{ var('dsc_prov_product_name') }}"
         data_type: VARCHAR
         data_tests:
           - not_null
       - name: START_DATE
-        description: Date since when rule is valid
+        description: "{{ var('dsc_start_date') }}"
         data_type: DATE
       - name: END_DATE
-        description: Date until rule is valid
+        description: "{{ var('dsc_end_date') }}"
         data_type: DATE
       - name: BASE_PROVISION_VALUE
-        description: Base provision according to a particular rule
+        description: "{{ var('dsc_base_provision') }}"
         data_type: FLOAT
       - name: PLACEMENT_PROVISION_VALUE
-        description: Placement provision according to a particular rule (can be null)
+        description: "{{ var('dsc_placement_provision') }}"
         data_type: FLOAT
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
         description: Proportional provision according to a particular rule (can be null)

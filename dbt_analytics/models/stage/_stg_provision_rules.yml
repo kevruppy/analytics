@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_provision_rules
-    description: Contains raw provision rules. There might be multiple rules per product
+    description: Contains raw provision rules. There might be multiple rules per product. A base provision is mandatory, other provision types are optional.
     config:
       enabled: True
       schema: stage
@@ -20,23 +20,23 @@ models:
             severity: warn
     columns:
       - name: _CHECK_SUM
-        description: Hashed concatenation of product, start and end to remove duplicates downstream
+        description: Hashed concatenation of product, start and end (to remove duplicates downstream)
         data_type: VARCHAR
       - name: PRODUCT_NAME
-        description: Name of the product to which rule applies
+        description: "{{ var('dsc_prov_product_name') }}"
         data_type: VARCHAR
         data_tests:
           - not_null
           - dbt_utils.not_empty_string
       - name: START_DATE
-        description: Date since when rule is valid
+        description: "{{ var('dsc_start_date') }}"
         data_type: DATE
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
               max_value: "CURRENT_DATE()"
       - name: END_DATE
-        description: Date until rule is valid
+        description: "{{ var('dsc_end_date') }}"
         data_type: DATE
         data_tests:
           - not_null
@@ -45,15 +45,18 @@ models:
           - dbt_utils.expression_is_true:
               expression: "> START_DATE"
       - name: BASE_PROVISION
-        description: Base provision according to a particular rule
+        description: "{{ var('dsc_base_provision') }}"
         data_type: FLOAT
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
               min_value: 0
       - name: PLACEMENT_PROVISION
-        description: Placement provision according to a particular rule (can be null)
+        description: "{{ var('dsc_placement_provision') }}"
         data_type: FLOAT
       - name: PROPORTIONAL_PROVISION
-        description: Proportional provision according to a particular rule (can be null)
+        description: "{{ var('dsc_proportional_provision') }}"
         data_type: JSON
+        data_tests:
+          - dbt_utils.expression_is_true:
+            expression: "COALESCE(PROPORTIONAL_PROVISION::STRING, 'X') != '{}'"

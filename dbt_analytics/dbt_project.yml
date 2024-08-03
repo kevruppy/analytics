@@ -37,8 +37,16 @@ vars:
   ### default descriptions
   dsc_auto_id: "Incremental id"
   dsc_added_on: "Timestamp when record was added"
-  dsc_valid_from: "Date since when mapping is valid"
-  dsc_valid_to: "Date since until mapping is valid"
+  dsc_valid_from: "Date since when record is valid"
+  dsc_valid_to: "Date since until record is valid"
+  # calendar
+  dsc_calendar_date: "Calendar date"
+  dsc_calendar_week: "Calendar week of year"
+  dsc_calendar_month: "Calendar month of year"
+  dsc_calendar_quarter: "Calendar quarter of year"
+  dsc_calendar_year: "Calendar year"
+  dsc_calendar_day_name: "Name of day"
+  dsc_calendar_is_weekend: "Flag if calendar date is on a weekend"
   # product_hierarchy
   dsc_product_group: "Highest level of product hierarchy"
   dsc_product_type: "Middle level of product hierarchy"
@@ -47,10 +55,22 @@ vars:
   dsc_order_id: "Identifier of an order"
   dsc_status_name: "Status of an order"
   dsc_ord_product_name: "Name of the product ordered"
-  dsc_creation_date: "Date when order was created"
-  dsc_status_change_date: "Date when status of an order changed"
-  dsc_is_test_order: "Flag if order was a test"
-  dsc_is_placement: "Flag if order was with placement"
+  dsc_creation_date: "Date of order creation"
+  dsc_status_change_date: "Date of order status change"
+  dsc_is_test_order: "Flag if order is a test"
+  dsc_is_placement: "Flag if order is with placement"
+  # provision rules
+  dsc_start_date: "Date since when rule is valid"
+  dsc_end_date: "Date until rule is valid"
+  dsc_prov_product_name: "Name of the product to which a particular applies"
+  dsc_base_provision: "Base provision according to a particular rule"
+  dsc_placement_provision: "Placement provision according to a particular rule"
+  dsc_proportional_provision: "Proportional provision according to a particular rule"
+  dsc_check_sum: "Identifier of a particular rule"
+  # net promotor scores
+  dsc_rating_date: "Date of rating"
+  dsc_rating_value: "NPS rating by customer"
+  dsc_rating_tool: "Tool used to collect rating"
 
 flags:
   partial_parse: false

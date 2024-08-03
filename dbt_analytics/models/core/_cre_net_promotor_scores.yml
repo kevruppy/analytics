@@ -23,13 +23,13 @@ models:
         description: Name of ordered product that triggered the survey
         data_type: VARCHAR
       - name: RATING_DATE
-        description: Date on which rating was collected
+        description: "{{ var('dsc_rating_date') }}"
         data_type: DATE
       - name: RATING_VALUE
-        description: NPS rating given by customer
+        description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
       - name: RATING_TOOL
-        description: Tool with which the rating was collected
+        description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
         data_tests:
           - accepted_values:

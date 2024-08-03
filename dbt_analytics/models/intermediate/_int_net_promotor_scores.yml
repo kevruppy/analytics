@@ -16,10 +16,10 @@ models:
           - not_null
           - unique
       - name: RATING_VALUE
-        description: NPS rating given by customer
+        description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
       - name: RATING_TOOL
-        description: Tool with which the rating was collected
+        description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
         # CALENDAR
       - name: SURVEY_CALENDAR_DATE

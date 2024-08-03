@@ -10,23 +10,23 @@ models:
       full_refresh: false
     columns:
       - name: CALENDAR_DATE
-        description: Calendar date
+        description: "{{ var('dsc_calendar_date') }}"
         data_type: DATE
       - name: CALENDAR_WEEK
-        description: Calendar week of year
+        description: "{{ var('dsc_calendar_week') }}"
         data_type: INTEGER
       - name: CALENDAR_MONTH
-        description: Calendar month of year
+        description: "{{ var('dsc_calendar_month') }}"
         data_type: INTEGER
       - name: CALENDAR_QUARTER
-        description: Calendar quarter of year
+        description: "{{ var('dsc_calendar_quarter') }}"
         data_type: INTEGER
       - name: CALENDAR_QUARTER
-        description: Calendar year
+        description: "{{ var('dsc_calendar_year') }}"
         data_type: INTEGER
       - name: CALENDAR_DAY_NAME
-        description: Name of day
+        description: "{{ var('dsc_calendar_day_name') }}"
         data_type: VARCHAR
       - name: IS_WEEKEND
-        description: Flag if date is on a weekend
+        description: "{{ var('dsc_calendar_is_weekend') }}"
         data_type: BOOLEAN

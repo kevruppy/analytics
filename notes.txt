@@ -9,9 +9,6 @@ dbt_project_evaluator
 jsonschema only for ci but not in VS Code...
 
 
-
-
-unnit tests
 snapshots
 - sqlfluff should lint dbt tests properly
 

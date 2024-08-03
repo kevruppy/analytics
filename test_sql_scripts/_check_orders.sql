@@ -53,18 +53,20 @@ SELECT
 	,(LOAD_RESULT ->> 'provision' ->> 'placementProvision')::FLOAT AS PLACEMENT_PROVISION
 	,(LOAD_RESULT -> 'provision' -> 'proportionalProvision'->> 'target')::INTEGER AS PROP_PROV_TGT
 	,(LOAD_RESULT -> 'provision' -> 'proportionalProvision'->> 'value')::FLOAT AS PROP_PROV_VAL
-	,CASE WHEN LOAD_RESULT ->> 'productName' = 'dsl' THEN 'DSL' WHEN ...
 FROM
 	RAW_DATA.PROVISION_RULES
 QUALIFY
 	ROW_NUMBER () OVER (PARTITION BY MD5(CONCAT_WS('-', LOAD_RESULT ->> 'productName', LOAD_RESULT ->> 'start', LOAD_RESULT ->> 'end'))  ORDER BY 1) = 1;
 
-SELECT * FROM PROV_RULES
+CREATE OR REPLACE TEMP TABLE PROV_RULES AS 
+SELECT prov_rules.* exclude(product_name), mapping.map_provision_rules_product.PRODUCT_NAME FROM PROV_RULES
+LEFT JOIN mapping.map_provision_rules_product
+ON prov_rules.product_name=mapping.map_provision_rules_product.PROVISION_RULES_PRODUCT_NAME;
+
 
 SELECT
-	_ORDERS.*
+	_ORDERS.*, prov_rules.placement_provision, prov_rules.base_provision
 FROM _ORDERS 
 LEFT JOIN PROV_RULES
 ON _ORDERS.PRODUCT_NAME = PROV_RULES.PRODUCT_NAME
-AND ORDERS.CREATION_DATE BETWEEN PROV_RULES.START_DATE AND PROV_RULES.END_DATE
-
+AND _ORDERS.CREATION_DATE BETWEEN PROV_RULES.START_DATE AND PROV_RULES.END_DATE

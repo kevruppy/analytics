@@ -14,25 +14,25 @@ models:
         data_tests:
           - not_null
           - unique
-      - name: GROSS_BASE_PROVISION_VALUE
+      - name: GROSS_BASE_PROVISION
         description: Gross base provision of an order (all orders)
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0
-      - name: GROSS_PLACEMENT_PROVISION_VALUE
+      - name: GROSS_PLACEMENT_PROVISION
         description: Gross placement provision of an order (all orders if applicable)
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0
-      - name: NET_BASE_PROVISION_VALUE
+      - name: NET_BASE_PROVISION
         description: Net base provision of an order (only confirmed orders)
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0
-      - name: NET_PLACEMENT_PROVISION_VALUE
+      - name: NET_PLACEMENT_PROVISION
         description: Net placement provision of an order (only confirmed orders if applicable)
         data_type: FLOAT
         data_tests:

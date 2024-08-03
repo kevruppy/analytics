@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: mrt_orders
+    description: TBD
+    config:
+      enabled: True
+      schema: marts
+      materialized: view
+    columns:
+      - name: ORDER_ID
+        description: "{{ var('dsc_order_id') }}"
+        data_type: INTEGER
+      - name: PRODUCT_NAME
+        description: TBD
+        data_type: VARCHAR
+      - name: PRODUCT_TYPE
+        description: TBD
+        data_type: VARCHAR
+      - name: PRODUCT_GROUP
+        description: TBD
+        data_type: VARCHAR
+      - name: IS_PLACEMENT
+        description: "{{ var('dsc_is_placement') }}"
+        data_type: BOOLEAN
+      - name: CURRENT_STATUS
+        description: Current status of an order
+        data_type: BOOLEAN
+      - name: CREATION_DATE
+        description: "{{ var('dsc_creation_date') }}"
+        data_type: DATE
+      - name: FORWARDING_DATE
+        description: Date when order was forwarded
+        data_type: DATE
+      - name: CONFIRMATION_DATE
+        description: Date when order was confirmed
+        data_type: DATE
+      - name: CANCELLATION_DATE
+        description: Date when order was cancelled
+        data_type: DATE
+      - name: IS_FORWARDED
+        description: Flag if order was forwarded
+        data_type: BOOLEAN
+      - name: IS_CANCELLED
+        description: Flag if order was cancelled
+        data_type: BOOLEAN
+      - name: IS_CONFIRMED
+        description: Flag if order was confirmed
+        data_type: BOOLEAN
+      - name: GROSS_BASE_PROVISION
+        description: Gross base provision of an order (all orders)
+        data_type: FLOAT
+      - name: NET_BASE_PROVISION
+        description: Net base provision of an order (only confirmed orders)
+        data_type: FLOAT
+      - name: GROSS_PLACEMENT_PROVISION
+        description: Gross placement provision of an order (all orders if applicable)
+        data_type: FLOAT
+      - name: NET_PLACEMENT_PROVISION
+        description: Net placement provision of an order (only confirmed orders if applicable)
+        data_type: FLOAT
+      - name: GROSS_PROPORTIONAL_PROVISION
+        description: Gross proportional provision of an order (all orders if applicable)
+        data_type: FLOAT
+      - name: NET_PROPORTIONAL_PROVISION
+        description: Net proportional provision of an order (only confirmed orders if applicable)
+        data_type: FLOAT

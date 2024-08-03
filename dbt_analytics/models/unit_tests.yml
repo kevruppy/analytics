@@ -2,6 +2,9 @@ unit_tests:
   - name: test_is_invalid_order
     description: "Check if orders are invalidated (if at least one record is flagged as test)"
     model: cre_orders
+    overrides:
+      macros:
+        is_incremental: false
     given:
       - input: ref('stg_orders')
         rows:
@@ -10,10 +13,12 @@ unit_tests:
           - { ORDER_ID: 2, IS_TEST_ORDER: TRUE }
           - { ORDER_ID: 3, IS_TEST_ORDER: FALSE }
           - { ORDER_ID: 3, IS_TEST_ORDER: TRUE }
+      - input: ref('stg_orders_with_placement')
+        rows: []
     expect:
       rows:
-        - { ORDER_ID: 1, IS_TEST_ORDER: FALSE }
-        - { ORDER_ID: 1, IS_TEST_ORDER: FALSE }
-        - { ORDER_ID: 2, IS_TEST_ORDER: TRUE }
-        - { ORDER_ID: 3, IS_TEST_ORDER: TRUE }
-        - { ORDER_ID: 3, IS_TEST_ORDER: TRUE }
+        - { ORDER_ID: 1, IS_INVALID_ORDER: FALSE }
+        - { ORDER_ID: 1, IS_INVALID_ORDER: FALSE }
+        - { ORDER_ID: 2, IS_INVALID_ORDER: TRUE }
+        - { ORDER_ID: 3, IS_INVALID_ORDER: TRUE }
+        - { ORDER_ID: 3, IS_INVALID_ORDER: TRUE }

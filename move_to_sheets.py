@@ -6,8 +6,7 @@ gc = gspread.service_account("/workspaces/analytics/service_account.json")
 sh = gc.open("MARTS")
 
 
-for ws in sh.worksheets():
-    ws.clear()
+# for ws in sh.worksheets(): ws.clear()
 
 con = duckdb.connect("/workspaces/analytics/analytics.duckdb")
 

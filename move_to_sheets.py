@@ -4,8 +4,9 @@ import pandas as pd
 
 gc = gspread.service_account("/workspaces/analytics/service_account.json")
 sh = gc.open("MARTS")
+# https://docs.google.com/spreadsheets/d/1W7WbX3KDRNIhb79xS1xeyVIGWxCBI0m4G3UdN-9EBWk/edit?gid=0#gid=0
 
-
+# TODO: ONLY CLEAN BASE WS & AUTOFIT COLS
 # for ws in sh.worksheets(): ws.clear()
 
 con = duckdb.connect("/workspaces/analytics/analytics.duckdb")

@@ -1,7 +1,8 @@
 TODO:
 dbt docs generate / serve
 
-finish orders
+finish scripts to compare dbt results
+fake data
 
 foreign keys / primary keys in DuckDB?
 
@@ -33,7 +34,7 @@ snapshots
 - check how this project would work with BigQuery
 - check best practives for dockerfile
 - check if we set requirements the right way
-- check dbt hooks (before, post model execution, maybe one as default?)
+- check dbt hooks (maybe one as default?)
 - check scheduling
 - cli script to build dbt project (or Python? maybe a class?)
 --> https://docs.getdbt.com/reference/programmatic-invocations

@@ -21,10 +21,10 @@ models:
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
-        description: Target value (= amount of orders) to be reached according to a particular rule
+        description: "{{ var('dsc_proportional_provision_target_value') }}"
         data_type: INTEGER
       - name: PROPORTIONAL_PROVISION_TARGET_UNIT
-        description: Unit of target value e.g. "month" means that target value needs to be reached within one month
+        description: "{{ var('dsc_proportional_provision_target_unit') }}"
         data_type: VARCHAR
       - name: PROPORTIONAL_PROVISION_VALUE
         description: "{{ var('dsc_proportional_provision') }}"

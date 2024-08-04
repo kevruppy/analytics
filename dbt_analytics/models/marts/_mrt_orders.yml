@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: mrt_orders
-    description: TBD
+    description: Order data prepared for reporting use-cases
     config:
       enabled: True
       schema: marts
@@ -12,56 +12,56 @@ models:
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
       - name: PRODUCT_NAME
-        description: TBD
+        description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
       - name: PRODUCT_TYPE
-        description: TBD
+        description: "{{ var('dsc_product_type') }}"
         data_type: VARCHAR
       - name: PRODUCT_GROUP
-        description: TBD
+        description: "{{ var('dsc_product_group') }}"
         data_type: VARCHAR
       - name: IS_PLACEMENT
         description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN
       - name: CURRENT_STATUS
-        description: Current status of an order
+        description: "{{ var('dsc_current_status') }}"
         data_type: BOOLEAN
       - name: CREATION_DATE
         description: "{{ var('dsc_creation_date') }}"
         data_type: DATE
       - name: FORWARDING_DATE
-        description: Date when order was forwarded
+        description: "{{ var('dsc_forwarding_date') }}"
         data_type: DATE
       - name: CONFIRMATION_DATE
-        description: Date when order was confirmed
+        description: "{{ var('dsc_confirmation_date') }}"
         data_type: DATE
       - name: CANCELLATION_DATE
-        description: Date when order was cancelled
+        description: "{{ var('dsc_cancellation_date') }}"
         data_type: DATE
       - name: IS_FORWARDED
-        description: Flag if order was forwarded
+        description: "{{ var('dsc_is_forwarded') }}"
         data_type: BOOLEAN
       - name: IS_CANCELLED
-        description: Flag if order was cancelled
+        description: "{{ var('dsc_is_cancelled') }}"
         data_type: BOOLEAN
       - name: IS_CONFIRMED
-        description: Flag if order was confirmed
+        description: "{{ var('dsc_is_confirmed') }}"
         data_type: BOOLEAN
       - name: GROSS_BASE_PROVISION
-        description: Gross base provision of an order (all orders)
+        description: "{{ var('dsc_gross_base_provision') }}"
         data_type: FLOAT
       - name: NET_BASE_PROVISION
-        description: Net base provision of an order (only confirmed orders)
+        description: "{{ var('dsc_net_base_provision') }}"
         data_type: FLOAT
       - name: GROSS_PLACEMENT_PROVISION
-        description: Gross placement provision of an order (all orders if applicable)
+        description: "{{ var('dsc_gross_placement_provision') }}"
         data_type: FLOAT
       - name: NET_PLACEMENT_PROVISION
-        description: Net placement provision of an order (only confirmed orders if applicable)
+        description: "{{ var('dsc_net_placement_provision') }}"
         data_type: FLOAT
       - name: GROSS_PROPORTIONAL_PROVISION
-        description: Gross proportional provision of an order (all orders if applicable)
+        description: "{{ var('dsc_gross_proportional_provision') }}"
         data_type: FLOAT
       - name: NET_PROPORTIONAL_PROVISION
-        description: Net proportional provision of an order (only confirmed orders if applicable)
+        description: "{{ var('dsc_net_proportional_provision') }}"
         data_type: FLOAT

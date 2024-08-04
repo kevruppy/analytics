@@ -11,8 +11,8 @@ models:
       schema: marts
       materialized: view
     columns:
-      - name: SURVEY_CALENDAR_YEAR (related to survey)
-        description: Calendar year
+      - name: SURVEY_CALENDAR_YEAR
+        description: Calendar year (related to survey)
         data_type: INTEGER
       - name: SURVEY_CALENDAR_MONTH
         description: Calendar month of year (related to survey)

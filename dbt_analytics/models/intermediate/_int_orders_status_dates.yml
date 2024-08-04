@@ -9,7 +9,7 @@ models:
       materialized: table
     data_tests:
       - dbt_utils.expression_is_true:
-          expression: "IS_CANCELLED::INTEGER + IS_CONFIRMED::INTEGER <= 1"
+          expression: "(IS_CANCELLED::INTEGER + IS_CONFIRMED::INTEGER) <= 1"
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
@@ -23,7 +23,7 @@ models:
         description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN
       - name: CURRENT_STATUS
-        description: Current status of an order
+        description: "{{ var('dsc_current_status') }}"
         data_type: VARCHAR
         data_tests:
           - accepted_values:
@@ -34,20 +34,20 @@ models:
         data_tests:
           - not_null
       - name: FORWARDING_DATE
-        description: Date when order was forwarded
+        description: "{{ var('dsc_forwarding_date') }}"
         data_type: DATE
       - name: CONFIRMATION_DATE
-        description: Date when order was confirmed
+        description: "{{ var('dsc_confirmation_date') }}"
         data_type: DATE
       - name: CANCELLATION_DATE
-        description: Date when order was cancelled
+        description: "{{ var('dsc_cancellation_date') }}"
         data_type: DATE
       - name: IS_FORWARDED
-        description: Flag if order was forwarded
-        data_type: BOOLEAN
-      - name: IS_CANCELLED
-        description: Flag if order was cancelled
+        description: "{{ var('dsc_is_forwarded') }}"
         data_type: BOOLEAN
       - name: IS_CONFIRMED
-        description: Flag if order was confirmed
+        description: "{{ var('dsc_is_confirmed') }}"
+        data_type: BOOLEAN
+      - name: IS_CANCELLED
+        description: "{{ var('dsc_is_cancelled') }}"
         data_type: BOOLEAN

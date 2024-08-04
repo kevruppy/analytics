@@ -33,6 +33,11 @@ sources:
 query-comment:
   append: True
 
+flags:
+  partial_parse: false
+  printer_width: 120
+  send_anonymous_usage_stats: False
+
 vars:
   ### default descriptions
   dsc_auto_id: "Incremental id"
@@ -58,7 +63,15 @@ vars:
   dsc_creation_date: "Date of order creation"
   dsc_status_change_date: "Date of order status change"
   dsc_is_test_order: "Flag if order is a test"
+  dsc_is_invalid_order: "Flag if order is invalid (= test order)"
   dsc_is_placement: "Flag if order is with placement"
+  dsc_current_status: "Current status of an order"
+  dsc_forwarding_date: "Date of order forwarding"
+  dsc_confirmation_date: "Date of order confirmation"
+  dsc_cancellation_date: "Date of order cancellation"
+  dsc_is_forwarded: "Flag if order is forwarded"
+  dsc_is_confirmed: "Flag if order is confirmed"
+  dsc_is_cancelled: "Flag if order is cancelled"
   # provision rules
   dsc_start_date: "Date since when rule is valid"
   dsc_end_date: "Date until rule is valid"
@@ -66,13 +79,20 @@ vars:
   dsc_base_provision: "Base provision according to a particular rule"
   dsc_placement_provision: "Placement provision according to a particular rule"
   dsc_proportional_provision: "Proportional provision according to a particular rule"
+  dsc_proportional_provision_target_value: "Target value (= amount of orders) to be reached according to a particular rule"
+  dsc_proportional_provision_target_unit: "Unit of target value e.g. 'month' means that target value needs to be reached within one month"
   dsc_check_sum: "Identifier of a particular rule"
+
+  dsc_gross_base_provision: "Gross base provision of an order (all orders)"
+  dsc_gross_placement_provision: "Gross placement provision of an order (all orders if applicable)"
+  dsc_gross_proportional_provision: "Gross proportional provision of an order (all orders if applicable)"
+
+  dsc_net_base_provision: "Net base provision of an order (only confirmed orders)"
+  dsc_net_placement_provision: "Net placement provision of an order (only confirmed orders if applicable)"
+  dsc_net_proportional_provision: "Net proportional provision of an order (only confirmed orders if applicable)"
+
   # net promotor scores
   dsc_rating_date: "Date of rating"
   dsc_rating_value: "NPS rating by customer"
   dsc_rating_tool: "Tool used to collect rating"
-
-flags:
-  partial_parse: false
-  printer_width: 120
-  send_anonymous_usage_stats: False
+  dsc_is_valid_rating: "Flag if rating is between 0 and 10 (= valid)"

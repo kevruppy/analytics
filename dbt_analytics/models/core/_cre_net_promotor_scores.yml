@@ -17,10 +17,10 @@ models:
             severity: warn
     columns:
       - name: ORDER_ID
-        description: Identifier of order that triggered the survey
+        description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
       - name: PRODUCT_NAME
-        description: Name of ordered product that triggered the survey
+        description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
       - name: RATING_DATE
         description: "{{ var('dsc_rating_date') }}"
@@ -35,7 +35,7 @@ models:
           - accepted_values:
               values: ["SURVEYMONKEY", "QUALTRICS"]
       - name: IS_VALID_RATING
-        description: Flag if rating is between 0 and 10 (= valid)
+        description: "{{ var('dsc_is_valid_rating') }}"
         data_type: BOOLEAN
         data_tests:
           - not_null

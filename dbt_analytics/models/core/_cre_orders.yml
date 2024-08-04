@@ -30,7 +30,7 @@ models:
         description: "{{ var('dsc_status_change_date') }}"
         data_type: DATE
       - name: IS_INVALID_ORDER
-        description: Flag if order is invalid (= test order)
+        description: "{{ var('dsc_is_invalid_order') }}"
         data_type: BOOLEAN
         data_tests:
           - not_null

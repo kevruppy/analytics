@@ -10,6 +10,3 @@ res: dbtRunnerResult = dbt.invoke(["clean"])
 print(res)
 
 res: dbtRunnerResult = dbt.invoke(["build"])
-
-for r in res.result:
-    print(f"{r.node.name}: {r.status}")

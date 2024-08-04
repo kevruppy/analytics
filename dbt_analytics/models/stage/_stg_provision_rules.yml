@@ -58,5 +58,5 @@ models:
         description: "{{ var('dsc_proportional_provision') }}"
         data_type: JSON
         data_tests:
-          - dbt_utils.expression_is_true:
-            expression: "COALESCE(PROPORTIONAL_PROVISION::STRING, 'X') != '{}'"
+          - dbt_utils.not_accepted_values::
+              values: ["{}"]

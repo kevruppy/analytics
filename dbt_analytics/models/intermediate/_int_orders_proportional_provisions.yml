@@ -15,13 +15,13 @@ models:
           - not_null
           - unique
       - name: GROSS_PROPORTIONAL_PROVISION
-        description: Gross proportional provision of an order (all orders if applicable)
+        description: "{{ var('dsc_gross_proportional_provision') }}"
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0
       - name: NET_PROPORTIONAL_PROVISION
-        description: Net proportional provision of an order (only confirmed orders if applicable)
+        description: "{{ var('dsc_net_proportional_provision') }}"
         data_type: FLOAT
         data_tests:
           - dbt_utils.accepted_range:

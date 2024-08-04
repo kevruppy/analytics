@@ -31,11 +31,11 @@ models:
         description: "{{ var('dsc_placement_provision') }}"
         data_type: FLOAT
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
-        description: Proportional provision according to a particular rule (can be null)
+        description: "{{ var('dsc_proportional_provision_target_value') }}"
         data_type: INTEGER
       - name: PROPORTIONAL_PROVISION_TARGET_UNIT
-        description: Proportional provision according to a particular rule (can be null)
+        description: "{{ var('dsc_proportional_provision_target_unit') }}"
         data_type: VARCHAR
       - name: PROPORTIONAL_PROVISION_VALUE
-        description: Proportional provision according to a particular rule (can be null)
+        description: "{{ var('dsc_proportional_provision') }}"
         data_type: FLOAT

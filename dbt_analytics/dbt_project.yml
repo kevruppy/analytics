@@ -1,10 +1,8 @@
 name: "dbt_analytics"
 version: "1.0.0"
 
-# This setting configures which "profile" dbt uses for this project.
 profile: "dbt_analytics"
 
-# These configurations specify where dbt should look for different types of files
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -12,7 +10,6 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-# Directories to be removed by `dbt clean`
 clean-targets:
   - "logs"
   - "target"
@@ -44,7 +41,8 @@ vars:
   dsc_added_on: "Timestamp when record was added"
   dsc_valid_from: "Date since when record is valid"
   dsc_valid_to: "Date since until record is valid"
-  # calendar
+
+  ### calendar
   dsc_calendar_date: "Calendar date"
   dsc_calendar_week: "Calendar week of year"
   dsc_calendar_month: "Calendar month of year"
@@ -52,17 +50,20 @@ vars:
   dsc_calendar_year: "Calendar year"
   dsc_calendar_day_name: "Name of day"
   dsc_calendar_is_weekend: "Flag if calendar date is on a weekend"
-  # product_hierarchy
+
+  ### product_hierarchy
   dsc_product_group: "Highest level of product hierarchy"
   dsc_product_type: "Middle level of product hierarchy"
   dsc_product_name: "Lowest level of product hierarchy"
-  # orders
+
+  ### orders
   dsc_order_id: "Identifier of an order"
   dsc_status_name: "Status of an order"
   dsc_ord_product_name: "Name of the product ordered"
   dsc_creation_date: "Date of order creation"
   dsc_status_change_date: "Date of order status change"
   dsc_is_test_order: "Flag if order is a test"
+  # derived cols
   dsc_is_invalid_order: "Flag if order is invalid (= test order)"
   dsc_is_placement: "Flag if order is with placement"
   dsc_current_status: "Current status of an order"
@@ -72,7 +73,8 @@ vars:
   dsc_is_forwarded: "Flag if order is forwarded"
   dsc_is_confirmed: "Flag if order is confirmed"
   dsc_is_cancelled: "Flag if order is cancelled"
-  # provision rules
+
+  ### provision rules
   dsc_start_date: "Date since when rule is valid"
   dsc_end_date: "Date until rule is valid"
   dsc_prov_product_name: "Name of the product to which a particular applies"
@@ -82,16 +84,16 @@ vars:
   dsc_proportional_provision_target_value: "Target value (= amount of orders) to be reached according to a particular rule"
   dsc_proportional_provision_target_unit: "Unit of target value e.g. 'month' means that target value needs to be reached within one month"
   dsc_check_sum: "Identifier of a particular rule"
-
+  # gross
   dsc_gross_base_provision: "Gross base provision of an order (all orders)"
   dsc_gross_placement_provision: "Gross placement provision of an order (all orders if applicable)"
   dsc_gross_proportional_provision: "Gross proportional provision of an order (all orders if applicable)"
-
+  # net
   dsc_net_base_provision: "Net base provision of an order (only confirmed orders)"
   dsc_net_placement_provision: "Net placement provision of an order (only confirmed orders if applicable)"
   dsc_net_proportional_provision: "Net proportional provision of an order (only confirmed orders if applicable)"
 
-  # net promotor scores
+  ### net promotor scores
   dsc_rating_date: "Date of rating"
   dsc_rating_value: "NPS rating by customer"
   dsc_rating_tool: "Tool used to collect rating"

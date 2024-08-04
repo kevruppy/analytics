@@ -1,5 +1,5 @@
 version: 2
-
+# TODO: ADD TEST IF IS_CANCELLED = TRUE -> NO NET COMMS
 models:
   - name: mrt_orders
     description: Order data prepared for reporting use-cases
@@ -7,6 +7,10 @@ models:
       enabled: True
       schema: marts
       materialized: view
+    data_tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref("int_orders_status_dates")
+      - value_proportion:
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

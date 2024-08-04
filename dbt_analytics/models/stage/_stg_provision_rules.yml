@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_provision_rules
-    description: Contains raw provision rules. There might be multiple rules per product. A base provision is mandatory, other provision types are optional.
+    description: Contains raw provision rules. Base provision is mandatory, other provision types not. There might be multiple rules per product
     config:
       enabled: True
       schema: stage
@@ -20,7 +20,7 @@ models:
             severity: warn
     columns:
       - name: _CHECK_SUM
-        description: Hashed concatenation of product, start and end (to remove duplicates downstream)
+        description: "{{ var('dsc_check_sum') }}"
         data_type: VARCHAR
       - name: PRODUCT_NAME
         description: "{{ var('dsc_prov_product_name') }}"
@@ -57,6 +57,7 @@ models:
       - name: PROPORTIONAL_PROVISION
         description: "{{ var('dsc_proportional_provision') }}"
         data_type: JSON
+        # Rule can be null but must not be empty object
         data_tests:
           - dbt_utils.not_accepted_values::
               values: ["{}"]

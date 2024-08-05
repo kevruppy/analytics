@@ -1,4 +1,9 @@
 TODO:
+
+DBT TEST: CREATION_DATE < FORWARDING_DATE < CONFIRMATION_DATE
+check min & max diff between these dates
+dist test with this sample (leading 1 appears x %, leadin 2 appears y% log etc.)
+
 dbt docs generate / serve
 
 finish scripts to compare dbt results

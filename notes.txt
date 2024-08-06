@@ -1,5 +1,8 @@
 TODO:
 
+use a for loop for missing orders to write csv file
+
+
 DBT TEST: CREATION_DATE < FORWARDING_DATE < CONFIRMATION_DATE
 - dbt_utils.unique_combination_of_columns:
           combination_of_columns:

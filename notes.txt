@@ -1,17 +1,6 @@
 TODO:
 
-use a for loop for missing orders to write csv file
 
-
-DBT TEST: CREATION_DATE < FORWARDING_DATE < CONFIRMATION_DATE
-- dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - PRODUCT_NAME
-            - START_DATE
-            - END_DATE
-          config:
-            severity: warn
-check min & max diff between these dates
 dist test with this sample (leading 1 appears x %, leadin 2 appears y% log etc.)
 
 dbt docs generate / serve

@@ -10,6 +10,12 @@ models:
     data_tests:
       - dbt_utils.expression_is_true:
           expression: "(IS_CANCELLED::INTEGER + IS_CONFIRMED::INTEGER) <= 1"
+      - dbt_utils.expression_is_true:
+          expression: "DATEDIFF('DAY', CREATION_DATE, COALESCE(FORWARDING_DATE, '9999-12-31')) >= 0"
+      - dbt_utils.expression_is_true:
+          expression: "DATEDIFF('DAY', COALESCE(FORWARDING_DATE, '9999-12-31'), COALESCE(CONFIRMATION_DATE, '9999-12-31')) >= 0"
+      - dbt_utils.expression_is_true:
+          expression: "DATEDIFF('DAY', COALESCE(FORWARDING_DATE, '9999-12-31'), COALESCE(CANCELLATION_DATE, '9999-12-31')) >= 0"
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

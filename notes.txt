@@ -8,8 +8,6 @@ dbt docs generate / serve
 finish scripts to compare dbt results
 fake data
 
-foreign keys / primary keys in DuckDB?
-
 dbt_project_evaluator
 
 jsonschema only for ci but not in VS Code...

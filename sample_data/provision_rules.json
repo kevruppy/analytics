@@ -84,7 +84,7 @@
     "start": "2023-01-01"
   },
   {
-    "end": "2022-05-30",
+    "end": "2022-05-31",
     "productName": "dotInfo",
     "provision": {
       "baseProvision": 13.5
@@ -116,7 +116,7 @@
     "start": "2022-01-01"
   },
   {
-    "end": "2023-05-30",
+    "end": "2023-05-31",
     "productName": "dotOnline",
     "provision": {
       "baseProvision": 17.75

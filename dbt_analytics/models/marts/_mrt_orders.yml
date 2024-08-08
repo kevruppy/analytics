@@ -53,18 +53,30 @@ models:
       - name: GROSS_BASE_PROVISION
         description: "{{ var('dsc_gross_base_provision') }}"
         data_type: FLOAT
-      - name: NET_BASE_PROVISION
-        description: "{{ var('dsc_net_base_provision') }}"
-        data_type: FLOAT
-      - name: GROSS_PLACEMENT_PROVISION
-        description: "{{ var('dsc_gross_placement_provision') }}"
-        data_type: FLOAT
-      - name: NET_PLACEMENT_PROVISION
-        description: "{{ var('dsc_net_placement_provision') }}"
-        data_type: FLOAT
+        data_tests:
+          - not_null
       - name: GROSS_PROPORTIONAL_PROVISION
         description: "{{ var('dsc_gross_proportional_provision') }}"
         data_type: FLOAT
+        data_tests:
+          - not_null
+      - name: GROSS_PLACEMENT_PROVISION
+        description: "{{ var('dsc_gross_placement_provision') }}"
+        data_type: FLOAT
+        data_tests:
+          - not_null
+      - name: NET_BASE_PROVISION
+        description: "{{ var('dsc_net_base_provision') }}"
+        data_type: FLOAT
+        data_tests:
+          - not_null
       - name: NET_PROPORTIONAL_PROVISION
         description: "{{ var('dsc_net_proportional_provision') }}"
         data_type: FLOAT
+        data_tests:
+          - not_null
+      - name: NET_PLACEMENT_PROVISION
+        description: "{{ var('dsc_net_placement_provision') }}"
+        data_type: FLOAT
+        data_tests:
+          - not_null

@@ -1,15 +1,20 @@
 TODO:
+https://neon.tech/
 
+
+data:
 check timediff between statuses
 check if there are days without orders!
 --> maybe a test?
+rename nps rating tools
+nps should be higher (correlating with order volume)
+
 
 some test for count distinct order_id
 
 
 dbt docs generate / serve
 
-fake data
 
 dbt_project_evaluator
 
@@ -19,7 +24,7 @@ jsonschema only for ci but not in VS Code...
 snapshots
 - sqlfluff should lint dbt tests properly
 
-- add more data e.g. product info, web traffic, customer whatever
+(add more data e.g. product info, web traffic, customer whatever)
 
 
 

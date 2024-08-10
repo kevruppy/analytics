@@ -24,7 +24,7 @@ jsonschema only for ci but not in VS Code...
 snapshots
 - sqlfluff should lint dbt tests properly
 
-(add more data e.g. product info, web traffic, customer whatever)
+(add more data e.g. product info, web traffic, customer whatever, channel costs)
 
 
 

@@ -15,6 +15,8 @@ models:
           combination_of_columns:
             - ORDER_ID
             - STATUS_NAME
+      - dbt_utils.expression_is_true:
+          expression: "CASE WHEN STATUS_NAME = 'CREATED' THEN CREATION_DATE = STATUS_CHANGE_DATE ELSE TRUE END"
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

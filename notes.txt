@@ -1,8 +1,8 @@
 TODO:
 
-when status=CREATED -> CREATED=STATUS_CHANGE_DATE
-
 check timediff between statuses
+check if there are days without orders!
+--> maybe a test?
 
 some test for count distinct order_id
 

@@ -91,4 +91,4 @@ SELECT
 	,RATING
 	,TOOL
 FROM
-	'/workspaces/analytics/sample_data/nps.parquet'; --noqa
+	'/workspaces/analytics/sample_data/nps.csv'; --noqa

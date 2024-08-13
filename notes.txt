@@ -1,12 +1,13 @@
 TODO:
 https://neon.tech/
 
+add exposures to models
 
 data:
 check timediff between statuses
 check if there are placement orders but no actual order
 --> maybe a test?
-rename nps rating tools
+
 nps should be higher (correlating with order volume)
 
 

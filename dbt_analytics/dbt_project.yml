@@ -18,6 +18,16 @@ models:
   +persist_docs:
     relation: true
     columns: true
+  dbt_project_evaluator:
+    marts:
+      dag:
+        fct_rejoining_of_upstream_concepts:
+          +enabled: false
+      structure:
+        fct_model_naming_conventions:
+          +enabled: false
+        fct_model_directories:
+          +enabled: false
 
 seeds:
   +persist_docs:
@@ -27,7 +37,9 @@ seeds:
 sources:
   +enabled: true
 
-on-run-end: "VACUUM ANALYZE"
+on-run-end:
+  - "VACUUM ANALYZE"
+  - "{{ dbt_project_evaluator.print_dbt_project_evaluator_issues() }}"
 
 query-comment:
   append: True

@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: raw
     schema: raw_data
+    description: Contains unprocessed rawdata
     tables:
       - name: orders
         description: Contains raw data for orders

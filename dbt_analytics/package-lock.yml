@@ -1,4 +1,6 @@
 packages:
-  - git: https://github.com/dbt-labs/dbt-utils.git
-    revision: 85ade29c3e69bed3a13812c716c19eea9a0551c4
-sha1_hash: c4c136ad4314bafcbe374c3b08b8711f1da046b7
+  - package: dbt-labs/dbt_utils
+    version: 1.2.0
+  - package: dbt-labs/dbt_project_evaluator
+    version: 0.12.2
+sha1_hash: 5b9f3638a8a231773f7d7c437dc61bf8fdcebbd3

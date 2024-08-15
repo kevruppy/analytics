@@ -5,14 +5,7 @@ add exposures to models
 https://blog.streamlit.io/host-your-streamlit-app-for-free/
 
 data:
-check timediff between statuses
-check if there are placement orders but no actual order
---> maybe a test?
 
-nps should be higher (correlating with order volume)
-
-
-some test for count distinct order_id
 
 
 dbt docs generate / serve

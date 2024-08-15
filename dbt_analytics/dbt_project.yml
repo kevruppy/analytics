@@ -27,6 +27,8 @@ seeds:
 sources:
   +enabled: true
 
+on-run-end: "VACUUM ANALYZE"
+
 query-comment:
   append: True
 

@@ -4,8 +4,6 @@ https://neon.tech/
 add exposures to models
 https://blog.streamlit.io/host-your-streamlit-app-for-free/
 
-data:
-
 
 
 dbt docs generate / serve

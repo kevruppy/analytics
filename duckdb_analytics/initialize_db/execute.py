@@ -97,6 +97,8 @@ def main():
     try:
         db = create_db(db_dir=db_dir, db_name=db_name)
         sql_files = get_file_names(sql_dir=sql_dir)
+        if not sql_files:
+            raise FileNotFoundError(f'No SQL files found in directory: "{sql_dir}"')
         execute_sql_statements(db_path=db, sql_files=sql_files)
         logging.info('Removing temp files...')
         temp_files = Path('.').glob('TMP_DUCK_DB_EXPORT_*')

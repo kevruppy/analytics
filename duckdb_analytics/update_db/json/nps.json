@@ -1,0 +1,26 @@
+[
+  {
+    "transaction_id": "mw-136592",
+    "rating_date": "2023-12-31",
+    "rating": 11,
+    "tool": "qualtrixx"
+  },
+  {
+    "transaction_id": "info-183383",
+    "rating_date": "2023-12-31",
+    "rating": 8,
+    "tool": "surveyape"
+  },
+  {
+    "transaction_id": "glass-183611",
+    "rating_date": "2023-12-31",
+    "rating": 10,
+    "tool": "qualtrixx"
+  },
+  {
+    "transaction_id": "clh-183307",
+    "rating_date": "2023-12-31",
+    "rating": 10,
+    "tool": "surveyape"
+  }
+]

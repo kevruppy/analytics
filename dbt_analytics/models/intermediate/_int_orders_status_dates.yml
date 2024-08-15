@@ -21,6 +21,7 @@ models:
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
         data_tests:
+          - not_null
           - unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"

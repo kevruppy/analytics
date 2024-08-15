@@ -8,10 +8,16 @@ models:
       schema: core
       materialized: table
       full_refresh: false
+    data_tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref("stg_calendar")
     columns:
       - name: CALENDAR_DATE
         description: "{{ var('dsc_calendar_date') }}"
         data_type: DATE
+        data_tests:
+          - not_null
+          - unique
       - name: CALENDAR_WEEK
         description: "{{ var('dsc_calendar_week') }}"
         data_type: INTEGER

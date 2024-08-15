@@ -7,6 +7,12 @@ models:
       enabled: True
       schema: intermediate
       materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - ORDER_TYPE
+            - CREATION_MONTH
+            - PRODUCT_NAME
     columns:
       - name: ORDER_TYPE
         description: Either 'GROSS_ORDER' (all orders) or 'NET_ORDER' (only confirmed orders)

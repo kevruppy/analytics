@@ -10,6 +10,14 @@ models:
       enabled: True
       schema: marts
       materialized: view
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - SURVEY_CALENDAR_YEAR
+            - SURVEY_CALENDAR_MONTH
+            - PRODUCT_GROUP
+            - PRODUCT_TYPE
+            - PRODUCT_NAME
     columns:
       - name: SURVEY_CALENDAR_YEAR
         description: Calendar year (related to survey)

@@ -33,6 +33,9 @@ seeds:
   +persist_docs:
     relation: true
     columns: true
+  dbt_project_evaluator:
+    dbt_project_evaluator_exceptions:
+      +enabled: false
 
 sources:
   +enabled: true

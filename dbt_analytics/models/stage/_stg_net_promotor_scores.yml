@@ -16,6 +16,7 @@ models:
         description: Concatenation of product name prefix and order id
         data_type: VARCHAR
         data_tests:
+          - not_null
           - unique
           # Validates if column follows format "STRING-INTEGER" e.g. "ABC-123"
           - dbt_utils.expression_is_true:

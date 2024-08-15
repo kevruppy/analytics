@@ -10,6 +10,10 @@ models:
     data_tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref("stg_orders")
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - ORDER_ID
+            - STATUS_NAME
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

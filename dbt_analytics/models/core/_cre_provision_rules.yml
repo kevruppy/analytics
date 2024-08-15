@@ -12,6 +12,7 @@ models:
         description: "{{ var('dsc_check_sum') }}"
         data_type: VARCHAR
         data_tests:
+          - not_null
           - unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_prov_product_name') }}"

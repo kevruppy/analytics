@@ -18,7 +18,7 @@ models:
         data_tests:
           - not_null
           - unique
-          # Validates if column follows format "STRING-INTEGER" e.g. "ABC-123"
+          # Validates if column follows format "VARCHAR-INTEGER" e.g. "ABC-123"
           - dbt_utils.expression_is_true:
               expression: "~ '^[a-zA-Z]+-[0-9]+$'"
       - name: RATING_DATE

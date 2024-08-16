@@ -1,15 +1,6 @@
 TODO:
 
 - add differen mat strategies
--- update these orders:
-select *
-from marts.mrt_orders mo 
-where CREATION_DATE >= '2023-12-26'
-and IS_CONFIRMED = FALSE
-AND IS_CANCELLED = FALSE
-++ add few new ones
-
-
 
 streamlit
 

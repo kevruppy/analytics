@@ -1,4 +1,5 @@
 import os
+
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
 os.chdir("/workspaces/analytics/dbt_analytics")

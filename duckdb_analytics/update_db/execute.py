@@ -1,5 +1,6 @@
 import logging
 import os
+from typing import List
 
 import duckdb
 
@@ -8,52 +9,61 @@ logging.basicConfig(
 )
 
 
-def load_statements(statements_path: str):
+def load_statements(statements_path: str) -> List[str]:
     """
-    TBD
+    Loads a SQL script to be found under specified path
 
     Params:
-        sql_dir (str): ...
+        sql_dir (str): Path where SQL script is located
 
     Returns:
-        stmt_list (list[str]): ...
+        statements (list[str]): List of SQL statements
     """
     try:
         with open(statements_path, "r") as f:
-            stmt_list = f.read().strip().split(";")[:-1]
-        return stmt_list
+            statements: List[str] = f.read().strip().split(";")[:-1]
+        return statements
     except FileNotFoundError as e:
         logging.error(f'Could not find specified SQL file: "{statements_path}"')
         raise e
 
 
-def execute_statements(db_path, db_name, statements):
+def execute_statements(db_path: str, statements: List[str]):
     """
-    TBD
+    Executes SQL statements in DuckDB
 
     Params:
-        sql_dir (str): TBD
+        db_path (str): Path to DuckDB
+        statements (list[str]): List of SQL statements
     """
     with duckdb.connect(db_path) as con:
-        cnt_stmt_list = len(statements)
-        for i, stmt in enumerate(statements):
+        if not statements:
+            logging.error("No SQL statements provided")
+            raise ValueError("Please provide a list with SQL statements")
+        for i, stmt in enumerate(statements, start=1):
             try:
+                logging.info(f"Executing stmt {i} of {len(statements)}")
                 con.execute(stmt)
+                logging.info(f"Execution of statement {i} finished")
             except Exception as e:
-                logging.error(f"Execution of statement {i+1} failed")
+                logging.error(f"Execution of statement {i} failed")
                 raise e
 
-    logging.info("Done")
+    logging.info("All statements executed")
 
 
 def main():
-    statements_path = (
-        "/workspaces/analytics/duckdb_analytics/update_db/sql/001_update_tables.sql"
-    )
+    statements_path = os.getenv("SQL_UPD_DIR")
     db_path = os.getenv("DB_PATH")
-    db_name = os.getenv("DB_NAME")
+
+    if not statements_path or not db_path:
+        logging.error(
+            "Environment variables for statements_path and db_path must be set"
+        )
+        raise ValueError("Missing required environment variables")
+
     statements = load_statements(statements_path)
-    execute_statements(db_path, db_name, statements)
+    execute_statements(db_path, statements)
 
 
 if __name__ == "__main__":

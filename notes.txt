@@ -1,6 +1,5 @@
 TODO:
 
-seed config for dbt checker seed!
 - add differen mat strategies
 
 streamlit

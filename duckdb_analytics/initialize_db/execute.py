@@ -50,7 +50,7 @@ def get_file_names(sql_dir: str) -> List[str]:
         file_names (list[str]): List of absolute file names 
     '''
     sql_dir_path = Path(sql_dir)
-    file_names = sorted(sql_dir_path.glob('*.sql'))
+    file_names: List[str] = sorted(sql_dir_path.glob('*.sql'))
 
     if file_names:
         logging.info('Found SQL files:')
@@ -88,10 +88,10 @@ def execute_sql_statements(db_path: str, sql_files: List[str]):
 def main():
     db_dir = os.getenv('DB_DIR')
     db_name = os.getenv('DB_NAME')
-    sql_dir = os.getenv('SQL_DIR')
+    sql_dir = os.getenv('SQL_INI_DIR')
     
     if not db_dir or not db_name or not sql_dir:
-        logging.error('Environment variables DB_DIR, DB_NAME, and SQL_DIR must be set')
+        logging.error('Environment variables for db_dir, db_name, and sql_dir must be set')
         raise ValueError('Missing required environment variables')
 
     try:

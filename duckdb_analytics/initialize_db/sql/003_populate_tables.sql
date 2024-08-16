@@ -10,7 +10,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_ORDERS AS
 SELECT COLUMNS(*)
 FROM
 	READ_CSV(
-		'/workspaces/analytics/sample_data/orders.csv'
+		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/orders.csv'
 		,ALL_VARCHAR = TRUE
 		,HEADER = TRUE
 		,SEP = ','
@@ -44,7 +44,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_ORDERS_WITH_PLACEMENT AS
 SELECT COLUMNS(*)
 FROM
 	READ_CSV(
-		'/workspaces/analytics/sample_data/orders_with_placement.csv'
+		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/orders_with_placement.csv'
 		,ALL_VARCHAR = TRUE
 		,HEADER = TRUE
 		,SEP = ','
@@ -76,7 +76,7 @@ INSERT INTO RAW_DATA.PROVISION_RULES (LOAD_RESULT)
 SELECT JSON AS LOAD_RESULT
 FROM
 	READ_JSON(
-		'/workspaces/analytics/sample_data/provision_rules.json'
+		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/provision_rules.json'
 		,RECORDS = FALSE
 	);
 
@@ -91,4 +91,4 @@ SELECT
 	,RATING
 	,TOOL
 FROM
-	'/workspaces/analytics/sample_data/nps.csv'; --noqa
+	'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/nps.csv'; --noqa

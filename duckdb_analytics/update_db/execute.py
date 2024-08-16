@@ -27,16 +27,15 @@ def load_statements(statements_path: str):
         raise e
 
 
-def execute_statements(db_dir, db_name, statements):
+def execute_statements(db_path, db_name, statements):
     """
     TBD
 
     Params:
         sql_dir (str): TBD
     """
-    with duckdb.connect(db_dir) as con:
+    with duckdb.connect(db_path) as con:
         cnt_stmt_list = len(statements)
-        con.execute(f"USE DATABASE {db_name}")
         for i, stmt in enumerate(statements):
             try:
                 con.execute(stmt)
@@ -51,10 +50,10 @@ def main():
     statements_path = (
         "/workspaces/analytics/duckdb_analytics/update_db/sql/001_update_tables.sql"
     )
-    db_dir = os.getenv("DB_DIR")
+    db_path = os.getenv("DB_PATH")
     db_name = os.getenv("DB_NAME")
     statements = load_statements(statements_path)
-    execute_statements(db_dir, db_name, statements)
+    execute_statements(db_path, db_name, statements)
 
 
 if __name__ == "__main__":

@@ -7,6 +7,10 @@ models:
       enabled: True
       schema: core
       materialized: incremental
+      incremental_strategy: delete+insert
+      unique_key:
+        - ORDER_ID
+        - STATUS_NAME
     data_tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref("stg_orders")

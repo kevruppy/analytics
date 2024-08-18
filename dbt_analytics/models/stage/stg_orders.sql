@@ -7,7 +7,7 @@ WITH CTE_ORDERS AS (
 		{{ source('raw', 'orders') }}
 	{% if is_incremental() %}
 		WHERE
-			_EXTRACT[5]::DATE > (SELECT MAX(STATUS_CHANGE_DATE) AS WATERMARK FROM {{ this }})
+			_EXTRACT[4]::DATE > (SELECT MAX(CREATION_DATE) - 60 AS WATERMARK FROM {{ this }})
 	{% endif %}
 )
 

@@ -6,10 +6,6 @@ WITH CTE AS (
 		{{ ref('cre_orders') }}
 	WHERE
 		IS_INVALID_ORDER = TRUE
-		{% if is_incremental() %}
-			AND
-			STATUS_CHANGE_DATE > (SELECT MAX(STATUS_DATE) AS WATERMARK FROM {{ this }})
-		{% endif %}
 	GROUP BY ALL
 )
 

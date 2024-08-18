@@ -15,6 +15,7 @@ clean-targets:
   - "target"
 
 models:
+  +on_schema_change: fail
   +persist_docs:
     relation: true
     columns: true

@@ -54,6 +54,10 @@ models:
       - name: PRODUCT_TYPE
         description: Name of ordered product type that triggered the survey
         data_type: VARCHAR
+        data_tests:
+          - not_null
       - name: PRODUCT_NAME
         description: Name of ordered product that triggered the survey
         data_type: VARCHAR
+        data_tests:
+          - not_null

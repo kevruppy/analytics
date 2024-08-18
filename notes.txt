@@ -1,6 +1,22 @@
 TODO:
+delete + reinsert does not work (write own mat):
+select order_id
+from marts.mrt_orders mo 
+except select * from yy 
 
-- add differen mat strategies
+
+
+create or replace temp table yy as 
+WITH CTE AS (
+select (LOAD_RESULT->>'ORDER_ID')::INTEGER AS ORDER_ID,
+(LOAD_RESULT->>'IS_TEST_ORDER')::BOOLEAN AS IS_TEST
+from RAW_DATA.ORDERS
+), x as (
+SELECT ORDER_ID, CASE WHEN LIST_CONTAINS(ARRAY_AGG(DISTINCT IS_TEST),TRUE) THEN TRUE ELSE FALSE END AS IS_INVALID_ORDER
+FROM CTE 
+GROUP BY ALL 
+)
+SELECT distinct order_id FROM X WHERE IS_INVALID_ORDER = FALSE
 
 streamlit
 

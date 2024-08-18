@@ -7,6 +7,10 @@ models:
       enabled: True
       schema: stage
       materialized: incremental
+      incremental_strategy: delete+insert
+      unique_key:
+        - ORDER_ID
+        - STATUS_NAME
     data_tests:
       - row_count_source_match:
           source_name: raw

@@ -12,7 +12,7 @@ WITH CTE_ORDERS AS (
 		{{ ref('stg_orders') }}
 	{% if is_incremental() %}
 		WHERE
-			STATUS_CHANGE_DATE > (SELECT MAX(STATUS_CHANGE_DATE) AS WATERMARK FROM {{ this }})
+			CREATION_DATE > (SELECT MAX(CREATION_DATE) - 60 AS WATERMARK FROM {{ this }})
 	{% endif %}
 )
 

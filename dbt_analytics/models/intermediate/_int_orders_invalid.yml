@@ -6,7 +6,7 @@ models:
     config:
       enabled: True
       schema: intermediate
-      materialized: incremental
+      materialized: table
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

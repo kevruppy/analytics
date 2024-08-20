@@ -38,6 +38,10 @@ seeds:
 sources:
   +enabled: true
 
+tests:
+  +store_failures: true
+  +store_failures_as: table
+
 on-run-end:
   - "VACUUM ANALYZE"
   - "{{ dbt_project_evaluator.print_dbt_project_evaluator_issues() }}"

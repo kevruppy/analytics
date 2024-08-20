@@ -1,4 +1,7 @@
 TODO:
+adjust models to consider:
+tags
+constraints
 store failures (tests)
 enforce contracts
 

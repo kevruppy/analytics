@@ -7,11 +7,14 @@ models:
       enabled: True
       schema: stage
       materialized: table
+      contract:
+        enforced: true
     data_tests:
       - row_count_source_match:
           source_name: raw
           table_name: provision_rules
       - dbt_utils.unique_combination_of_columns:
+          name: stg_provision_rules__unique_combination_of_columns
           combination_of_columns:
             - PRODUCT_NAME
             - START_DATE

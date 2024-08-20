@@ -1,4 +1,8 @@
 TODO:
+store failures (tests)
+enforce contracts
+
+
 delete + reinsert does not work (write own mat):
 select order_id
 from marts.mrt_orders mo 

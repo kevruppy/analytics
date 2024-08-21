@@ -19,8 +19,6 @@ models:
         data_type: VARCHAR
         constraints:
           - type: primary_key
-          - type: not_null
-          - type: unique
         data_tests:
           - not_null
           - unique
@@ -32,6 +30,8 @@ models:
         data_type: DATE
         constraints:
           - type: not_null
+          - type: check
+            expression: "RATING_DATE <= CURRENT_DATE()"
         data_tests:
           - not_null
           - dbt_utils.accepted_range:

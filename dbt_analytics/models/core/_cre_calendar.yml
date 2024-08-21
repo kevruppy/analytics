@@ -17,24 +17,50 @@ models:
       - name: CALENDAR_DATE
         description: "{{ var('dsc_calendar_date') }}"
         data_type: DATE
+        constraints:
+          - type: primary_key
         data_tests:
           - not_null
           - unique
       - name: CALENDAR_WEEK
         description: "{{ var('dsc_calendar_week') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: CALENDAR_MONTH
         description: "{{ var('dsc_calendar_month') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: CALENDAR_QUARTER
         description: "{{ var('dsc_calendar_quarter') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: CALENDAR_YEAR
         description: "{{ var('dsc_calendar_year') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: CALENDAR_DAY_NAME
         description: "{{ var('dsc_calendar_day_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: IS_WEEKEND
         description: "{{ var('dsc_calendar_is_weekend') }}"
         data_type: BOOLEAN
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null

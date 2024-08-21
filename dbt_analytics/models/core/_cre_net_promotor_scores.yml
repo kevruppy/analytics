@@ -21,26 +21,38 @@ models:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
+        constraints:
+          - type: primary_key
         data_tests:
           - not_null
           - unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
       - name: RATING_DATE
         description: "{{ var('dsc_rating_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
       - name: RATING_VALUE
         description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
       - name: RATING_TOOL
         description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - accepted_values:
               values: ["SURVEYAPE", "QUALTRIXX"]
       - name: IS_VALID_RATING
         description: "{{ var('dsc_is_valid_rating') }}"
         data_type: BOOLEAN
+        constraints:
+          - type: not_null
         data_tests:
           - not_null

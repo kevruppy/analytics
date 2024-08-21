@@ -11,23 +11,33 @@ models:
       - name: _CHECK_SUM
         description: "{{ var('dsc_check_sum') }}"
         data_type: VARCHAR
+        constraints:
+          - type: primary_key
         data_tests:
           - not_null
           - unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_prov_product_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
       - name: START_DATE
         description: "{{ var('dsc_start_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
       - name: END_DATE
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
       - name: BASE_PROVISION_VALUE
         description: "{{ var('dsc_base_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null
       - name: PLACEMENT_PROVISION_VALUE
         description: "{{ var('dsc_placement_provision') }}"
         data_type: FLOAT

@@ -15,8 +15,6 @@ models:
         data_type: INTEGER
         constraints:
           - type: primary_key
-          - type: not_null
-          - type: unique
         data_tests:
           - not_null
           - unique

@@ -25,15 +25,25 @@ models:
       - name: _CHECK_SUM
         description: "{{ var('dsc_check_sum') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: PRODUCT_NAME
         description: "{{ var('dsc_prov_product_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
           - dbt_utils.not_empty_string
       - name: START_DATE
         description: "{{ var('dsc_start_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "START_DATE <= CURRENT_DATE()"
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
@@ -41,6 +51,12 @@ models:
       - name: END_DATE
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "END_DATE <= CURRENT_DATE()"
+          - type: check
+            expression: "END_DATE > START_DATE"
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
@@ -50,6 +66,10 @@ models:
       - name: BASE_PROVISION
         description: "{{ var('dsc_base_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "BASE_PROVISION >= 0"
         data_tests:
           - not_null
           - dbt_utils.accepted_range:

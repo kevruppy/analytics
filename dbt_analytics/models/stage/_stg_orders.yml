@@ -55,6 +55,8 @@ models:
         data_type: DATE
         constraints:
           - type: not_null
+          - type: check
+            expression: "CREATION_DATE <= CURRENT_DATE()"
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
@@ -64,6 +66,8 @@ models:
         data_type: DATE
         constraints:
           - type: not_null
+          - type: check
+            expression: "STATUS_CHANGE_DATE <= CURRENT_DATE()"
         data_tests:
           - not_null
           - dbt_utils.accepted_range:

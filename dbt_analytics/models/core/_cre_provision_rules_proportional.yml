@@ -13,6 +13,8 @@ models:
       - name: _CHECK_SUM
         description: "{{ var('dsc_check_sum') }}"
         data_type: VARCHAR
+        constraints:
+          - type: primary_key
         data_tests:
           - not_null
           - unique

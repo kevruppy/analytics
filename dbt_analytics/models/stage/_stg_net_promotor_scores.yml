@@ -17,6 +17,10 @@ models:
       - name: TRANSACTION_ID
         description: Concatenation of product name prefix and order id
         data_type: VARCHAR
+        constraints:
+          - type: primary_key
+          - type: not_null
+          - type: unique
         data_tests:
           - not_null
           - unique
@@ -26,6 +30,8 @@ models:
       - name: RATING_DATE
         description: "{{ var('dsc_rating_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
@@ -33,11 +39,15 @@ models:
       - name: RATING
         description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
       - name: TOOL
         description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
           - dbt_utils.not_empty_string

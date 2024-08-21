@@ -11,6 +11,9 @@ models:
       unique_key:
         - ORDER_ID
         - STATUS_NAME
+      constraints:
+        - type: primary_key
+          columns: [ORDER_ID, STATUS_NAME]
       contract:
         enforced: true
     data_tests:
@@ -27,23 +30,31 @@ models:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
       - name: STATUS_NAME
         description: "{{ var('dsc_status_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
           - dbt_utils.not_empty_string
       - name: PRODUCT_NAME
         description: "{{ var('dsc_ord_product_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
           - dbt_utils.not_empty_string
       - name: CREATION_DATE
         description: "{{ var('dsc_creation_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
@@ -51,6 +62,8 @@ models:
       - name: STATUS_CHANGE_DATE
         description: "{{ var('dsc_status_change_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
           - dbt_utils.accepted_range:
@@ -60,5 +73,7 @@ models:
       - name: IS_TEST_ORDER
         description: "{{ var('dsc_is_test_order') }}"
         data_type: BOOLEAN
+        constraints:
+          - type: not_null
         data_tests:
           - not_null

@@ -8,6 +8,8 @@ models:
       schema: stage
       materialized: table
       full_refresh: false
+      contract:
+        enforced: true
     columns:
       - name: CALENDAR_DATE
         description: "{{ var('dsc_calendar_date') }}"

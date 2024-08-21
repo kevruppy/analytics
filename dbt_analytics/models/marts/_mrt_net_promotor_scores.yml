@@ -10,6 +10,8 @@ models:
       enabled: True
       schema: marts
       materialized: view
+      contract:
+        enforced: true
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -60,13 +62,16 @@ models:
               expression: "= (PARTICIPANTS - INDIFFERENTS - DETRACTORS)"
       - name: DETRACTORS_SHARE
         description: Detractors divided by participants
-        data_type: INTEGER
+        data_type: FLOAT
       - name: INDIFFERENTS_SHARE
         description: Indifferents divided by participants
-        data_type: INTEGER
+        data_type: FLOAT
       - name: PROMOTORS_SHARE
         description: Promotors divided by participants
-        data_type: INTEGER
+        data_type: FLOAT
       - name: NET_PROMOTOR_SCORE
         description: Share of promotors minus share of detractors
         data_type: FLOAT
+      - name: AGGREGATION_LEVEL
+        description: Indicates to which level (grouping set) figures refer
+        data_type: VARCHAR

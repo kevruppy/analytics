@@ -7,6 +7,8 @@ models:
       enabled: True
       schema: core
       materialized: incremental
+      contract:
+        enforced: true
     columns:
       - name: _CHECK_SUM
         description: "{{ var('dsc_check_sum') }}"
@@ -23,6 +25,6 @@ models:
       - name: END_DATE
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
-      - name: PLACEMENT_PROVISION
+      - name: PLACEMENT_PROVISION_VALUE
         description: "{{ var('dsc_placement_provision') }}"
         data_type: FLOAT

@@ -9,6 +9,8 @@ models:
       materialized: incremental
       incremental_strategy: delete+insert
       unique_key: ORDER_ID
+      contract:
+        enforced: true
     data_tests:
       - dbt_utils.expression_is_true:
           expression: "(IS_CANCELLED::INTEGER + IS_CONFIRMED::INTEGER) <= 1"

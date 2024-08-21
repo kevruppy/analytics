@@ -7,6 +7,8 @@ models:
       enabled: True
       schema: stage
       materialized: incremental
+      contract:
+        enforced: true
     data_tests:
       - row_count_source_match:
           source_name: raw

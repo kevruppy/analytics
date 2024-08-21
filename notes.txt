@@ -1,9 +1,7 @@
 TODO:
 adjust models to consider:
-tags
+
 constraints
-store failures (tests)
-enforce contracts
 
 
 delete + reinsert does not work (write own mat):
@@ -74,6 +72,7 @@ snapshots
 
 
 out of scope:
+- dbt tags
 - python formatters (no need for ruff, pylint is fine)
 - add _added_at and _updated_at
 - dist test with this sample (leading 1 appears x %, leadin 2 appears y% log etc.)

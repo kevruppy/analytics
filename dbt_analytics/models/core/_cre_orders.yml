@@ -11,6 +11,8 @@ models:
       unique_key:
         - ORDER_ID
         - STATUS_NAME
+      contract:
+        enforced: true
     data_tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref("stg_orders")

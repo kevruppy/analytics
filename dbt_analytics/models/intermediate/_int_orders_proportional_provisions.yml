@@ -7,6 +7,8 @@ models:
       enabled: True
       schema: intermediate
       materialized: table
+      contract:
+        enforced: true
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

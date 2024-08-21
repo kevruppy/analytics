@@ -8,6 +8,8 @@ models:
       schema: core
       materialized: table
       full_refresh: false
+      contract:
+        enforced: true
     data_tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref("stg_calendar")
@@ -27,7 +29,7 @@ models:
       - name: CALENDAR_QUARTER
         description: "{{ var('dsc_calendar_quarter') }}"
         data_type: INTEGER
-      - name: CALENDAR_QUARTER
+      - name: CALENDAR_YEAR
         description: "{{ var('dsc_calendar_year') }}"
         data_type: INTEGER
       - name: CALENDAR_DAY_NAME

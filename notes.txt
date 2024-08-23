@@ -2,9 +2,12 @@ TODO:
 adjust models to consider:
 
 constraints
+
+"
 use dbt approach with multiple ctes (to easily find sources of models)
 and the "final" what makes debugging super easy
-
+--> not necessary in stage!
+"
 
 delete + reinsert does not work (write own mat):
 select order_id

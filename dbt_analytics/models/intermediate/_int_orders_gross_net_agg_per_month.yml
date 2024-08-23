@@ -37,9 +37,10 @@ models:
       - name: CNT_ORDERS
         description: Count of orders for particular grouping set
         data_type: INTEGER
-        # TODO: ADD CHECK CONSTRAINT
         constraints:
           - type: not_null
+          - type: check
+            expression: "CNT_ORDERS >= 0"
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0

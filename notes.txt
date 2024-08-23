@@ -1,13 +1,10 @@
 TODO:
 adjust models to consider:
-
+- add _added_at and _updated_at
 constraints
+- dbt tags (for calendar bc stand alone)
+exchange rates via api
 
-"
-use dbt approach with multiple ctes (to easily find sources of models)
-and the "final" what makes debugging super easy
---> not necessary in stage!
-"
 
 delete + reinsert does not work (write own mat):
 select order_id
@@ -77,9 +74,9 @@ snapshots
 
 
 out of scope:
-- dbt tags
+
 - python formatters (no need for ruff, pylint is fine)
-- add _added_at and _updated_at
+
 - dist test with this sample (leading 1 appears x %, leadin 2 appears y% log etc.)
 
 Links:

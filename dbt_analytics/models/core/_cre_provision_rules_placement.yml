@@ -21,12 +21,20 @@ models:
       - name: PRODUCT_NAME
         description: "{{ var('dsc_prov_product_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
       - name: START_DATE
         description: "{{ var('dsc_start_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
       - name: END_DATE
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
       - name: PLACEMENT_PROVISION_VALUE
         description: "{{ var('dsc_placement_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null

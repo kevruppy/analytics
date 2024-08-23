@@ -19,18 +19,27 @@ models:
       - name: ORDER_TYPE
         description: Either 'GROSS_ORDER' (all orders) or 'NET_ORDER' (only confirmed orders)
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - accepted_values:
               values: ["GROSS_ORDER", "NET_ORDER"]
       - name: CREATION_MONTH
         description: Month of order creation (truncated to first of month)
         data_type: DATE
+        constraints:
+          - type: not_null
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
       - name: CNT_ORDERS
         description: Count of orders for particular grouping set
         data_type: INTEGER
+        # TODO: ADD CHECK CONSTRAINT
+        constraints:
+          - type: not_null
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0

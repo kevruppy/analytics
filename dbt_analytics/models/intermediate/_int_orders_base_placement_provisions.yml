@@ -13,30 +13,40 @@ models:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
+        constraints:
+          - type: primary_key
         data_tests:
           - not_null
           - unique
       - name: GROSS_BASE_PROVISION
         description: "{{ var('dsc_gross_base_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0
       - name: GROSS_PLACEMENT_PROVISION
         description: "{{ var('dsc_gross_placement_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0
       - name: NET_BASE_PROVISION
         description: "{{ var('dsc_net_base_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0
       - name: NET_PLACEMENT_PROVISION
         description: "{{ var('dsc_net_placement_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null
         data_tests:
           - dbt_utils.accepted_range:
               min_value: 0

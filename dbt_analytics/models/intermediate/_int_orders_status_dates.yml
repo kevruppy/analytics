@@ -24,24 +24,34 @@ models:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
+        constraints:
+          - type: primary_key
         data_tests:
           - not_null
           - unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
       - name: IS_PLACEMENT
         description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN
+        constraints:
+          - type: not_null
       - name: CURRENT_STATUS
         description: "{{ var('dsc_current_status') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
         data_tests:
           - accepted_values:
               values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: CREATION_DATE
         description: "{{ var('dsc_creation_date') }}"
         data_type: DATE
+        constraints:
+          - type: not_null
         data_tests:
           - not_null
       - name: FORWARDING_DATE
@@ -56,9 +66,15 @@ models:
       - name: IS_FORWARDED
         description: "{{ var('dsc_is_forwarded') }}"
         data_type: BOOLEAN
+        constraints:
+          - type: not_null
       - name: IS_CONFIRMED
         description: "{{ var('dsc_is_confirmed') }}"
         data_type: BOOLEAN
+        constraints:
+          - type: not_null
       - name: IS_CANCELLED
         description: "{{ var('dsc_is_cancelled') }}"
         data_type: BOOLEAN
+        constraints:
+          - type: not_null

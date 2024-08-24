@@ -1,7 +1,6 @@
 TODO:
 adjust models to consider:
 - add _added_at and _updated_at
-constraints
 exchange rates via api
 
 

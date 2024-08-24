@@ -82,5 +82,5 @@ models:
         data_type: JSON
         # Rule can be null but must not be empty object
         data_tests:
-          - dbt_utils.not_accepted_values::
+          - dbt_utils.not_accepted_values:
               values: ["{}"]

@@ -1,5 +1,5 @@
 version: 2
-# TODO: ADD TEST IF IS_CANCELLED = TRUE -> NO NET COMMS
+
 models:
   - name: mrt_orders
     description: Order data prepared for reporting use-cases
@@ -12,6 +12,10 @@ models:
     data_tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref("int_orders_status_dates")
+      - dbt_utils.expression_is_true:
+          expression: "NET_BASE_PROVISION + NET_PROPORTIONAL_PROVISION + NET_PLACEMENT_PROVISION = 0"
+          config:
+            where: "IS_CANCELLED = TRUE"
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

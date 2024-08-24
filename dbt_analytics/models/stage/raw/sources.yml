@@ -4,6 +4,8 @@ sources:
   - name: raw
     schema: raw_data
     description: Contains unprocessed rawdata
+    tags:
+      - raw_data
     tables:
       - name: orders
         description: Contains raw data for orders

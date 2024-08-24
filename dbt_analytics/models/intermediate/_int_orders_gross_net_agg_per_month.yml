@@ -22,6 +22,7 @@ models:
         constraints:
           - type: not_null
         data_tests:
+          - not_null
           - accepted_values:
               values: ["GROSS_ORDER", "NET_ORDER"]
       - name: CREATION_MONTH
@@ -29,11 +30,15 @@ models:
         data_type: DATE
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: CNT_ORDERS
         description: Count of orders for particular grouping set
         data_type: INTEGER
@@ -42,5 +47,6 @@ models:
           - type: check
             expression: "CNT_ORDERS >= 0"
         data_tests:
+          - not_null
           - dbt_utils.accepted_range:
               min_value: 0

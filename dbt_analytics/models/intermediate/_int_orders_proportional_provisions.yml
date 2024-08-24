@@ -24,6 +24,7 @@ models:
         constraints:
           - type: not_null
         data_tests:
+          - not_null
           - dbt_utils.accepted_range:
               min_value: 0
       - name: NET_PROPORTIONAL_PROVISION
@@ -32,5 +33,6 @@ models:
         constraints:
           - type: not_null
         data_tests:
+          - not_null
           - dbt_utils.accepted_range:
               min_value: 0

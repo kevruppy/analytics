@@ -34,17 +34,22 @@ models:
         data_type: VARCHAR
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: IS_PLACEMENT
         description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: CURRENT_STATUS
         description: "{{ var('dsc_current_status') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
+          - not_null
           - accepted_values:
               values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: CREATION_DATE
@@ -68,13 +73,19 @@ models:
         data_type: BOOLEAN
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: IS_CONFIRMED
         description: "{{ var('dsc_is_confirmed') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: IS_CANCELLED
         description: "{{ var('dsc_is_cancelled') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
+        data_tests:
+          - not_null

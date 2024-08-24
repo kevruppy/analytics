@@ -22,11 +22,15 @@ models:
         data_type: INTEGER
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: RATING_TOOL
         description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
         # CALENDAR
       - name: SURVEY_CALENDAR_DATE
         description: Calendar date (related to survey)
@@ -40,31 +44,43 @@ models:
         data_type: INTEGER
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: SURVEY_CALENDAR_MONTH
         description: Calendar month of year (related to survey)
         data_type: INTEGER
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: SURVEY_CALENDAR_QUARTER
         description: Calendar quarter of year (related to survey)
         data_type: INTEGER
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: SURVEY_CALENDAR_YEAR
         description: Calendar year (related to survey)
         data_type: INTEGER
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: SURVEY_CALENDAR_DAY_NAME
         description: Name of day (related to survey)
         data_type: VARCHAR
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: SURVEY_IS_WEEKEND
         description: Flag if date is on a weekend (related to survey)
         data_type: BOOLEAN
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
         # PRODUCT_HIERARCHY
       - name: PRODUCT_GROUP
         description: Name of ordered product group that triggered the survey

@@ -23,22 +23,40 @@ models:
         data_type: VARCHAR
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: START_DATE
         description: "{{ var('dsc_start_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: END_DATE
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: PROPORTIONAL_PROVISION_TARGET_VALUE
         description: "{{ var('dsc_proportional_provision_target_value') }}"
         data_type: INTEGER
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: PROPORTIONAL_PROVISION_TARGET_UNIT
         description: "{{ var('dsc_proportional_provision_target_unit') }}"
         data_type: VARCHAR
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
       - name: PROPORTIONAL_PROVISION_VALUE
         description: "{{ var('dsc_proportional_provision') }}"
         data_type: FLOAT
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null

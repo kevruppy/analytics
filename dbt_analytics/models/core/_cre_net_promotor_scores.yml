@@ -31,22 +31,29 @@ models:
         data_type: VARCHAR
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: RATING_DATE
         description: "{{ var('dsc_rating_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: RATING_VALUE
         description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: RATING_TOOL
         description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
+          - not_null
           - accepted_values:
               values: ["SURVEYAPE", "QUALTRIXX"]
       - name: IS_VALID_RATING

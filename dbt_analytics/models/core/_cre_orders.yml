@@ -26,12 +26,15 @@ models:
         data_type: INTEGER
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: STATUS_NAME
         description: "{{ var('dsc_status_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
+          - not_null
           - accepted_values:
               values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: PRODUCT_NAME
@@ -39,16 +42,22 @@ models:
         data_type: VARCHAR
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: CREATION_DATE
         description: "{{ var('dsc_creation_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: STATUS_CHANGE_DATE
         description: "{{ var('dsc_status_change_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
+        data_tests:
+          - not_null
       - name: IS_INVALID_ORDER
         description: "{{ var('dsc_is_invalid_order') }}"
         data_type: BOOLEAN
@@ -61,3 +70,5 @@ models:
         data_type: BOOLEAN
         constraints:
           - type: not_null
+        data_tests:
+          - not_null

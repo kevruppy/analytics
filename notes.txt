@@ -33,7 +33,7 @@ https://blog.streamlit.io/host-your-streamlit-app-for-free/
 
 
 
-dbt docs generate / serve
+
 
 
 dbt_project_evaluator
@@ -74,7 +74,6 @@ out of scope:
 
 - python formatters (no need for ruff, pylint is fine)
 
-- dist test with this sample (leading 1 appears x %, leadin 2 appears y% log etc.)
 
 Links:
 https://docs.getdbt.com/docs/build/dbt-tips

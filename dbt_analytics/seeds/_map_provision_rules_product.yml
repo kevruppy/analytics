@@ -10,6 +10,8 @@ seeds:
       column_types:
         PROVISION_RULES_PRODUCT_NAME: VARCHAR
         PRODUCT_NAME: VARCHAR
+      contract:
+        enforced: true
     columns:
       - name: PROVISION_RULES_PRODUCT_NAME
         description: Product name used in provision rules

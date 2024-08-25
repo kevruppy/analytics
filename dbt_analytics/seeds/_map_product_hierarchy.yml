@@ -13,6 +13,8 @@ seeds:
         PRODUCT_NAME: VARCHAR
         VALID_FROM: DATE
         VALID_TO: DATE
+      contract:
+        enforced: true
     columns:
       - name: PRODUCT_GROUP
         description: "{{ var('dsc_product_group') }}"

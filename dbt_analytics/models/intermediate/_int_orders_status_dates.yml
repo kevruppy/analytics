@@ -24,8 +24,10 @@ models:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
+        # NOT POSSIBLE AS PRIMARY KEY DUE TO DUCKDB TRANSACTION HANDLING:
+        # https://duckdb.org/docs/sql/indexes.html#index-limitations
         constraints:
-          - type: primary_key
+          - type: not_null
         data_tests:
           - not_null
           - unique

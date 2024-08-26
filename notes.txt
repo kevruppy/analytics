@@ -1,43 +1,12 @@
 TODO:
-adjust models to consider:
-- add _added_at and _updated_at
+
+do some data checks (after running updates!)
+https://github.com/dbt-labs/dbt-jsonschema to be applied
+
 exchange rates via api
 
-
-delete + reinsert does not work (write own mat):
-select order_id
-from marts.mrt_orders mo 
-except select * from yy 
-
-
-
-create or replace temp table yy as 
-WITH CTE AS (
-select (LOAD_RESULT->>'ORDER_ID')::INTEGER AS ORDER_ID,
-(LOAD_RESULT->>'IS_TEST_ORDER')::BOOLEAN AS IS_TEST
-from RAW_DATA.ORDERS
-), x as (
-SELECT ORDER_ID, CASE WHEN LIST_CONTAINS(ARRAY_AGG(DISTINCT IS_TEST),TRUE) THEN TRUE ELSE FALSE END AS IS_INVALID_ORDER
-FROM CTE 
-GROUP BY ALL 
-)
-SELECT distinct order_id FROM X WHERE IS_INVALID_ORDER = FALSE
-
-streamlit
-
-
-
-https://neon.tech/
-
-https://blog.streamlit.io/host-your-streamlit-app-for-free/
-
-
-
-
-
-
+cicd:
 dbt_project_evaluator
-
 jsonschema only for ci but not in VS Code...
 
 
@@ -76,9 +45,5 @@ out of scope:
 
 
 Links:
-https://docs.getdbt.com/docs/build/dbt-tips
-https://github.com/dbt-labs/dbt-utils
-https://hub.getdbt.com/
-https://github.com/Velir/dbt-ga4
-https://docs.getdbt.com/reference/resource-configs/contract
-https://github.com/dbt-labs/dbt-jsonschema
+https://neon.tech/
+https://blog.streamlit.io/host-your-streamlit-app-for-free/

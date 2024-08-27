@@ -1,6 +1,5 @@
 TODO:
 
-https://github.com/dbt-labs/dbt-jsonschema to be applied
 
 exchange rates via api
 

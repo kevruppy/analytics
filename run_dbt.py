@@ -12,6 +12,6 @@ res: dbtRunnerResult = dbt.invoke(["clean"])
 
 res: dbtRunnerResult = dbt.invoke(["build"])
 
-dbt.invoke(["docs", "generate"])
+# dbt.invoke(["docs", "generate"])
 
-dbt.invoke(["docs", "serve"])
+# dbt.invoke(["docs", "serve"])

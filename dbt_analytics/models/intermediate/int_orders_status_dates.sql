@@ -1,3 +1,11 @@
+-- depends_on: {{ ref('int_orders_invalid') }}
+
+{{
+	config(
+		pre_hook="{% if is_incremental() %} DELETE FROM {{ this }} WHERE ORDER_ID IN (SELECT ORDER_ID FROM {{ ref('int_orders_invalid') }} ) {% endif %}"
+		)
+}}
+
 WITH CTE_ORDERS AS (
 	SELECT
 		ORDER_ID

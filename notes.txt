@@ -1,8 +1,5 @@
 TODO:
 
-add pre/post hook to _int_orders_status_dates -> delete test orders!
-
-do some data checks (after running updates!)
 https://github.com/dbt-labs/dbt-jsonschema to be applied
 
 exchange rates via api

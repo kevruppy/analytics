@@ -1,7 +1,7 @@
 TODO:
 
-
-exchange rates via api
+unit tests for exchange rates!
+add table & model for exchange rates + foreign keys!
 
 cicd:
 dbt_project_evaluator

@@ -1,0 +1,194 @@
+[
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-01-31",
+    "rates": {
+      "USD": 1.1156
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-02-28",
+    "rates": {
+      "USD": 1.1199
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-03-31",
+    "rates": {
+      "USD": 1.1101
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-04-29",
+    "rates": {
+      "USD": 1.054
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-05-31",
+    "rates": {
+      "USD": 1.0713
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-06-30",
+    "rates": {
+      "USD": 1.0387
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-07-29",
+    "rates": {
+      "USD": 1.0198
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-08-31",
+    "rates": {
+      "USD": 1.0
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-09-30",
+    "rates": {
+      "USD": 0.9748
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-10-31",
+    "rates": {
+      "USD": 0.9914
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-11-30",
+    "rates": {
+      "USD": 1.0376
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2022-12-30",
+    "rates": {
+      "USD": 1.0666
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-01-31",
+    "rates": {
+      "USD": 1.0833
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-02-28",
+    "rates": {
+      "USD": 1.0619
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-03-31",
+    "rates": {
+      "USD": 1.0875
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-04-28",
+    "rates": {
+      "USD": 1.0981
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-05-31",
+    "rates": {
+      "USD": 1.0683
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-06-30",
+    "rates": {
+      "USD": 1.0866
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-07-31",
+    "rates": {
+      "USD": 1.1023
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-08-31",
+    "rates": {
+      "USD": 1.0868
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-09-29",
+    "rates": {
+      "USD": 1.0594
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-10-31",
+    "rates": {
+      "USD": 1.0619
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-11-30",
+    "rates": {
+      "USD": 1.0931
+    }
+  },
+  {
+    "amount": 1.0,
+    "base": "EUR",
+    "date": "2023-12-29",
+    "rates": {
+      "USD": 1.105
+    }
+  }
+]

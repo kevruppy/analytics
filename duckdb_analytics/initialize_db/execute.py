@@ -86,10 +86,11 @@ def execute_sql_statements(db_path: str, sql_files: List[str]):
 
 
 def main():
+    """Main function to execute script"""
     db_dir = os.getenv('DB_DIR')
     db_name = os.getenv('DB_NAME')
     sql_dir = os.getenv('SQL_INI_DIR')
-    
+
     if not db_dir or not db_name or not sql_dir:
         logging.error('Environment variables for db_dir, db_name, and sql_dir must be set')
         raise ValueError('Missing required environment variables')

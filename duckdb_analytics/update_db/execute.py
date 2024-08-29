@@ -20,7 +20,7 @@ def load_statements(statements_path: str) -> List[str]:
         statements (list[str]): List of SQL statements
     """
     try:
-        with open(statements_path, "r") as f:
+        with open(statements_path, "r", encoding="utf-8") as f:
             statements: List[str] = f.read().strip().split(";")[:-1]
         return statements
     except FileNotFoundError as e:
@@ -53,6 +53,7 @@ def execute_statements(db_path: str, statements: List[str]):
 
 
 def main():
+    """Main function to execute script"""
     statements_path = os.getenv("SQL_UPD_DIR")
     db_path = os.getenv("DB_PATH")
 

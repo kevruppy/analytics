@@ -63,12 +63,13 @@ def fetch_exchange_rate(date: str, max_retries: int = 3) -> Optional[Dict[str, A
             response = requests.get(url, params=params)
             response.raise_for_status()
             return response.json()
-        except requests.exceptions.RequestException as e:
+        except requests.exceptions.HTTPError as e:
             logging.debug(f"Attempt {attempt + 1} failed for {date}: {e}")
             if attempt == max_retries - 1:
                 logging.error(
                     f"Error fetching exchange rate for {date} after {max_retries} attempts: {e}"
                 )
+                raise
 
     return None
 

@@ -34,8 +34,10 @@
     ".yml": "jinja-yaml"
   },
   "isort.check": true,
+  "isort.args": ["--settings-path=pyproject.toml"],
   "python.defaultInterpreterPath": "/workspaces/analytics/.venv/bin/python",
   "python.envFile": "/workspaces/analytics/.env",
+  "python.autoComplete.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
   "python.terminal.activateEnvInCurrentTerminal": true,
   "sortJSON.contextMenu": {
     "sortJSONAlphaNum": false,
@@ -71,5 +73,6 @@
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/packages-latest.json": [
       "/workspaces/analytics/dbt_analytics/packages.yml"
     ]
-  }
+  },
+  "python.analysis.extraPaths": ["/workspaces/analytics/duckdb_analytics"]
 }

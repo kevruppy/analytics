@@ -1,5 +1,3 @@
-# You are an expert Data Engineer and Pythonista that writes nothing but high quality Python code that follows industry standards and best practices and is all the way pythonic. You received this Python script from a Junior. Optimize it. Here is the script:
-
 import calendar
 import json
 import logging
@@ -11,7 +9,7 @@ import requests
 from jsonschema import validate
 
 API_URL = "https://api.frankfurter.app"
-SCHEMA_PATH = "/workspaces/analytics/duckdb_analytics/initialize_db/generate_sample_data/schema.json"
+SCHEMA_PATH = "/workspaces/analytics/duckdb_analytics/initialize_db/generate_sample_data/schema.json"  # pylint: disable=line-too-long
 OUTPUT_FILE = "/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/exchange_rates.json"
 
 
@@ -50,20 +48,20 @@ def fetch_exchange_rate(date: str, max_retries: int = 3) -> Optional[Dict[str, A
 
     Args:
         date (str): Date for which to fetch exchange rate ('YYYY-MM-DD').
-        max_retries (int, optional): Maximum number of retries in case of request failure, defaults to 3.
+        max_retries (int, optional): Maximum number of retries if request fails, defaults to 3.
 
     Returns:
-        Optional[Dict[str, Any]]: Dict containing exchange rate if request is successful, None otherwise.
+        Optional[Dict[str, Any]]: Dict containing exchange rate if request is successful, else None.
     """
     url = f"{API_URL}/{date}"
     params = {"amount": 1, "from": "EUR", "to": "USD"}
 
     for attempt in range(max_retries):
         try:
-            response = requests.get(url, params=params)
+            response = requests.get(url, params=params, timeout=10)
             response.raise_for_status()
             return response.json()
-        except requests.exceptions.HTTPError as e:
+        except (requests.exceptions.ReadTimeout, requests.exceptions.HTTPError) as e:
             logging.debug(f"Attempt {attempt + 1} failed for {date}: {e}")
             if attempt == max_retries - 1:
                 logging.error(
@@ -83,7 +81,7 @@ def write_results_to_json(results: List[Dict[str, Any]], filename: str) -> None:
         filename (str): Name of JSON file.
     """
     try:
-        with open(filename, "w") as f:
+        with open(filename, "w", encoding="utf-8") as f:
             json.dump(results, f, indent=2)
             logging.info(f"Results written to {filename}")
     except IOError as e:
@@ -102,14 +100,14 @@ def main() -> None:
 
     logging.info(f"Fetched {len(results)} exchange rates.")
 
-    with open(SCHEMA_PATH, "r") as f:
+    with open(SCHEMA_PATH, "r", encoding="utf-8") as f:
         schema = json.load(f)
 
     try:
         validate(instance=results, schema=schema)
         logging.info("Validation successful: Data is valid.")
     except jsonschema.exceptions.ValidationError as e:
-        logging.error("Validation error:", e)
+        logging.error(f"Validation error: {e}")
 
     write_results_to_json(results, OUTPUT_FILE)
 

@@ -50,11 +50,17 @@
     "sortJSONValues": false,
     "sortJSONValuesReverse": false
   },
+  "python.testing.pytestArgs": [],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.testing.cwd": "/workspaces/analytics/tests",
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
   "sortJSON.excludedPaths": ["/workspaces/analytics/dbt_templates"],
   "sqlfluff.config": "/workspaces/analytics/.sqlfluff",
   "sqlfluff.executablePath": "/workspaces/analytics/.venv/bin/sqlfluff",
   "sqlfluff.linter.run": "onType",
   "yaml.format.enable": false,
+  "pylint.args": ["--rcfile=pyproject.toml"],
   "yaml.schemas": {
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files-latest.json": [
       "/workspaces/analytics/dbt_analytics/*.yml",

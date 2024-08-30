@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_exchange_rates
+    description: Contains raw exchange rates (EUR/USD) for last date of month
+    config:
+      enabled: True
+      schema: stage
+      materialized: table
+      contract:
+        enforced: true
+    columns:
+      - name: _ID
+        description: "{{ var('dsc_auto_id') }}"
+        constraints:
+          - type: primary_key
+        data_tests:
+          - not_null
+          - unique
+      - name: VALID_FROM
+        description: "{{ var('dsc_valid_from') }}"
+        data_type: DATE
+        constraints:
+          - type: not_null
+          - type: unique
+        data_tests:
+          - not_null
+          - unique
+      - name: VALID_TO
+        description: "{{ var('dsc_valid_to') }}"
+        data_type: DATE
+        constraints:
+          - type: not_null
+          - type: unique
+        data_tests:
+          - not_null
+          - unique
+      - name: EXCHANGE_RATE
+        description: Value for exchange rate (EUR/USD)
+        data_type: FLOAT
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "EXCHANGE_RATE > 0"
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"

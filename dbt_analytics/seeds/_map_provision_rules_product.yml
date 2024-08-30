@@ -15,5 +15,11 @@ seeds:
     columns:
       - name: PROVISION_RULES_PRODUCT_NAME
         description: Product name used in provision rules
+        data_tests:
+          - not_null
+          - unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string

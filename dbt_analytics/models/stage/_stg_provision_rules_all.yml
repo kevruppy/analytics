@@ -36,6 +36,9 @@ models:
         data_tests:
           - not_null
           - dbt_utils.not_empty_string
+          - relationships:
+              to: ref('map_provision_rules_product')
+              field: PROVISION_RULES_PRODUCT_NAME
       - name: START_DATE
         description: "{{ var('dsc_start_date') }}"
         data_type: DATE

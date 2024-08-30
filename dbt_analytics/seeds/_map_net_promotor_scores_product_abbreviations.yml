@@ -15,5 +15,12 @@ seeds:
     columns:
       - name: PRODUCT_ABBREVIATION
         description: Abbreviation of product name
+        data_tests:
+          - not_null
+          - unique
+          - dbt_utils.not_empty_string
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string

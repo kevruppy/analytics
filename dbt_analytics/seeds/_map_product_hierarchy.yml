@@ -15,14 +15,35 @@ seeds:
         VALID_TO: DATE
       contract:
         enforced: true
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - PRODUCT_NAME
+            - VALID_FROM
+            - VALID_TO
+      - dbt_utils.expression_is_true:
+          expression: "VALID_TO >= VALID_FROM"
     columns:
       - name: PRODUCT_GROUP
         description: "{{ var('dsc_product_group') }}"
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
       - name: PRODUCT_TYPE
         description: "{{ var('dsc_product_type') }}"
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
       - name: VALID_FROM
         description: "{{ var('dsc_valid_from') }}"
+        data_tests:
+          - not_null
       - name: VALID_TO
         description: "{{ var('dsc_valid_to') }}"
+        data_tests:
+          - not_null

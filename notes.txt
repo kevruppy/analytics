@@ -1,6 +1,5 @@
 TODO:
 
-add table & model for exchange rates + foreign keys!
 
 make move to sheets generic (takes a sql stmt as arg!)
 

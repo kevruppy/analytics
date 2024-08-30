@@ -12,6 +12,7 @@ models:
     columns:
       - name: _ID
         description: "{{ var('dsc_auto_id') }}"
+        data_type: INTEGER
         constraints:
           - type: primary_key
         data_tests:

@@ -103,7 +103,7 @@ def main():
         execute_sql_statements(db_path=db, sql_files=sql_files)
         logging.info('Removing temp files...')
         temp_files = Path('.').glob('TMP_DUCK_DB_EXPORT_*')
-        if temp_files:
+        if temp_files: # pylint: disable=using-constant-test
             for file in temp_files:
                 logging.info(f'Deleting file: "{file}"')
                 os.remove(file)

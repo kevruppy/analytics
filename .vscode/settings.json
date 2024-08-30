@@ -33,12 +33,23 @@
     "**/dbt_analytics/**/*.sql": "jinja-sql",
     ".yml": "jinja-yaml"
   },
-  "isort.check": true,
+  "files.exclude": {
+    "**/.pytest_cache": true,
+    "**/__pycache__": true
+  },
   "isort.args": ["--settings-path=pyproject.toml"],
+  "isort.check": true,
+  "pylint.args": ["--rcfile=pyproject.toml"],
+  "python.analysis.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
+  "python.autoComplete.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
   "python.defaultInterpreterPath": "/workspaces/analytics/.venv/bin/python",
   "python.envFile": "/workspaces/analytics/.env",
-  "python.autoComplete.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
   "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "python.testing.cwd": "/workspaces/analytics/tests",
+  "python.testing.pytestArgs": [],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
   "sortJSON.contextMenu": {
     "sortJSONAlphaNum": false,
     "sortJSONAlphaNumReverse": false,
@@ -50,18 +61,15 @@
     "sortJSONValues": false,
     "sortJSONValuesReverse": false
   },
-  "python.testing.pytestArgs": [],
-  "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true,
-  "python.testing.cwd": "/workspaces/analytics/tests",
-  "python.testing.autoTestDiscoverOnSaveEnabled": true,
   "sortJSON.excludedPaths": ["/workspaces/analytics/dbt_templates"],
   "sqlfluff.config": "/workspaces/analytics/.sqlfluff",
   "sqlfluff.executablePath": "/workspaces/analytics/.venv/bin/sqlfluff",
   "sqlfluff.linter.run": "onType",
   "yaml.format.enable": false,
-  "pylint.args": ["--rcfile=pyproject.toml"],
   "yaml.schemas": {
+    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_project-latest.json": [
+      "/workspaces/analytics/dbt_analytics/dbt_project.yml"
+    ],
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files-latest.json": [
       "/workspaces/analytics/dbt_analytics/*.yml",
       "!profiles.yml",
@@ -70,15 +78,11 @@
       "!selectors.yml",
       "!profile_template.yml"
     ],
-    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_project-latest.json": [
-      "/workspaces/analytics/dbt_analytics/dbt_project.yml"
+    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/packages-latest.json": [
+      "/workspaces/analytics/dbt_analytics/packages.yml"
     ],
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/selectors-latest.json": [
       "/workspaces/analytics/dbt_analytics/selectors.yml"
-    ],
-    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/packages-latest.json": [
-      "/workspaces/analytics/dbt_analytics/packages.yml"
     ]
-  },
-  "python.analysis.extraPaths": ["/workspaces/analytics/duckdb_analytics"]
+  }
 }

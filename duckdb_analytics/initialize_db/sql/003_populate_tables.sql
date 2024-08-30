@@ -92,3 +92,15 @@ SELECT
 	,TOOL
 FROM
 	'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/nps.csv'; --noqa
+
+/*
+EXCHANGE RATES
+*/
+
+INSERT INTO RAW_DATA.EXCHANGE_RATES (LOAD_RESULT)
+SELECT JSON AS LOAD_RESULT
+FROM
+	READ_JSON(
+		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/exchange_rates.json'
+		,RECORDS = FALSE
+	);

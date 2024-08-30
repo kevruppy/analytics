@@ -1,18 +1,17 @@
 TODO:
 
-unit tests for exchange rates!
 add table & model for exchange rates + foreign keys!
 
 make move to sheets generic (takes a sql stmt as arg!)
 
-snapshots
+snapshots (maybe with cpo values?)
 
 cicd:
 dbt_project_evaluator
 jsonschema only for ci but not in VS Code...
 
 
-- sqlfluff should lint dbt tests properly
+
 
 (add more data e.g. product info, web traffic, customer whatever, channel costs)
 
@@ -41,7 +40,7 @@ jsonschema only for ci but not in VS Code...
 
 
 out of scope:
-
+- sqlfluff should lint dbt tests properly
 - python formatters (no need for ruff, pylint is fine)
 
 

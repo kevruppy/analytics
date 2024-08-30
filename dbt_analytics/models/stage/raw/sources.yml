@@ -99,3 +99,22 @@ sources:
             data_type: VARCHAR
             data_tests:
               - not_null
+      - name: exchange_rates
+        description: Contains raw data for exchange rates
+        columns:
+          - name: _ID
+            description: "{{ var('dsc_auto_id') }}"
+            data_type: INTEGER
+            data_tests:
+              - not_null
+              - unique
+          - name: _ADDED_ON
+            description: "{{ var('dsc_added_on') }}"
+            data_type: TIMESTAMP
+            data_tests:
+              - not_null
+          - name: LOAD_RESULT
+            description: Raw load result
+            data_type: JSON
+            data_tests:
+              - not_null

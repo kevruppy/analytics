@@ -1,68 +1,54 @@
+import argparse
+import datetime
+import logging
 import os
+
+import duckdb
 import gspread
 
 
-class GSheetManager:
-    """TBD"""
+def main():
+    """
+    Executes a query in DuckDB and stores results in Google Sheets
+    """
 
-    def __init__(self):
-        self.gc = gspread.service_account(os.getenv("GCP_SERVICE_ACCOUNT"))
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    )
 
-    def create_spreadsheet(self, title):
-        """Creates a new blank spreadsheet with the given title.
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--query", help="Query for data to be written to sheets", required=True
+    )
+    args = parser.parse_args()
 
-        Args:
-            title (str): The title of the new spreadsheet.
+    try:
+        name = f"ADHOC_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
-        Returns:
-            gspread.models.Spreadsheet: The created spreadsheet object.
-        """
-        return self.gc.create(title)
+        gc = gspread.service_account(os.getenv("GCP_SERVICE_ACCOUNT"))
 
-    def add_worksheet(self, spreadsheet, title):
-        """Adds a new worksheet to the given spreadsheet with the specified title.
+        gc.create(name)
+        sh = gc.open(name)
+        sh.share(os.getenv("GOOGLE_MAIL_ADDRESS"), perm_type="user", role="writer")
+        sh.add_worksheet(title=name, rows=1000, cols=50)
+        sh.del_worksheet(sh.sheet1)
 
-        Args:
-            spreadsheet (gspread.models.Spreadsheet): The spreadsheet object.
-            title (str): The title of the new worksheet.
-        """
-        spreadsheet.add_worksheet(title=title)
+        ws = sh.worksheet(name)
 
-    def share_spreadsheet(self, spreadsheet):
-        """Shares the given spreadsheet with the specified email address and role.
+        with duckdb.connect(os.getenv("DB_PATH")) as con:
+            res = con.execute(args.query)
+            df = res.df()
 
-        Args:
-            spreadsheet (gspread.models.Spreadsheet): The spreadsheet object.
-        """
-        spreadsheet.share(
-            email=os.getenv("GOOGLE_MAIL_ADDRESS"), perm_type="user", role="writer"
+        num_rows, num_cols = df.shape
+        logging.info(
+            f"Writing {num_rows} row(s) and {num_cols} col(s) to sheet '{name}'"
         )
 
-    def open_spreadsheet(self, spreadsheet):
-        """TBD"""
-
-        return self.gc.open(spreadsheet)
-
-    def df2worksheet(self, spreadsheet):
-        """Shares the given spreadsheet with the specified email address and role.
-
-        Args:
-            spreadsheet (gspread.models.Spreadsheet): The spreadsheet object.
-        """
-        spreadsheet.share(
-            email=os.getenv("GOOGLE_MAIL_ADDRESS"), perm_type="user", role="writer"
-        )
+        ws.update([df.columns.values.tolist()] + df.values.tolist())
+        logging.info("SUCCESS")
+    except Exception as e:  # pylint: disable=broad-exception-caught
+        logging.error(f"Execution failed! Error: {e}")
 
 
-# sh = gc.open("MARTS")
-
-# sh.worksheet("INPUT").clear()
-
-# con = duckdb.connect("/workspaces/analytics/analytics.duckdb")
-
-# result = con.execute(qry)
-
-# df = result.df()
-
-# worksheet = sh.worksheet("INPUT")
-# worksheet.update([df.columns.values.tolist()] + df.values.tolist())
+if __name__ == "__main__":
+    main()

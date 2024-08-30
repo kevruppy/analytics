@@ -1,8 +1,6 @@
 TODO:
 
 
-make move to sheets generic (takes a sql stmt as arg!)
-
 cicd:
 dbt_project_evaluator
 jsonschema only for ci but not in VS Code...

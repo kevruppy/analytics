@@ -6,7 +6,7 @@ WITH CTE AS (
 		,END_DATE
 		,PLACEMENT_PROVISION_VALUE
 	FROM
-		{{ ref('cre_provision_rules') }}
+		{{ ref('cre_provision_rules_all') }}
 	WHERE
 		PLACEMENT_PROVISION_VALUE IS NOT NULL
 		{% if is_incremental() %}

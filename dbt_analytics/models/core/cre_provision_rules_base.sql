@@ -6,7 +6,7 @@ WITH CTE AS (
 		,END_DATE
 		,BASE_PROVISION_VALUE
 	FROM
-		{{ ref('cre_provision_rules') }}
+		{{ ref('cre_provision_rules_all') }}
 	{% if is_incremental() %}
 		WHERE
 			_CHECK_SUM NOT IN (SELECT DISTINCT _CHECK_SUM FROM {{ this }})

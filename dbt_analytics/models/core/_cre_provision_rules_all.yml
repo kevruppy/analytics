@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: cre_provision_rules
+  - name: cre_provision_rules_all
     description: Contains clean provision rules. There might be multiple rules per product
     config:
       enabled: True

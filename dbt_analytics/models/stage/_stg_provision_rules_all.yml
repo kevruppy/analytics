@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_provision_rules
+  - name: stg_provision_rules_all
     description: Contains raw provision rules. Base provision is mandatory, other provision types not. There might be multiple rules per product
     config:
       enabled: True

@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_exchange_rates
-    description: Contains raw exchange rates (EUR/USD) for last date of month
+    description: Contains raw exchange rates (EUR/USD) for each months end
     config:
       enabled: True
       schema: stage

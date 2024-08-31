@@ -4,4 +4,5 @@ include_trailing_comma = true
 
 [tool.pylint]
 disable = ["C0114", "W1203"]
+# necessary to run pylint pre-commit hook
 init-hook = 'import sys; sys.path.append("/workspaces/analytics/duckdb_analytics")'

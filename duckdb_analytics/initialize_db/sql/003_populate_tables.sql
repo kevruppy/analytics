@@ -30,7 +30,9 @@ FROM
 	READ_JSON(
 		'~/TMP_DUCK_DB_EXPORT_ORDERS.json'
 		,RECORDS = FALSE
-	);
+	)
+WHERE
+	(SELECT COUNT(*) = 0 AS _CHECK FROM RAW_DATA.ORDERS);
 
 DROP TABLE IF EXISTS TMP_ORDERS;
 
@@ -64,7 +66,9 @@ FROM
 	READ_JSON(
 		'~/TMP_DUCK_DB_EXPORT_ORDERS_WITH_PLACEMENT.json'
 		,RECORDS = FALSE
-	);
+	)
+WHERE
+	(SELECT COUNT(*) = 0 AS _CHECK FROM RAW_DATA.ORDERS_WITH_PLACEMENT);
 
 DROP TABLE IF EXISTS TMP_ORDERS_WITH_PLACEMENT;
 
@@ -78,7 +82,9 @@ FROM
 	READ_JSON(
 		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/provision_rules.json'
 		,RECORDS = FALSE
-	);
+	)
+WHERE
+	(SELECT COUNT(*) = 0 AS _CHECK FROM RAW_DATA.PROVISION_RULES);
 
 /*
 NET PROMOTOR SCORE (NPS)
@@ -91,7 +97,9 @@ SELECT
 	,RATING
 	,TOOL
 FROM
-	'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/nps.csv'; --noqa
+	'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/nps.csv' --noqa
+WHERE
+	(SELECT COUNT(*) = 0 AS _CHECK FROM RAW_DATA.NET_PROMOTOR_SCORES);
 
 /*
 EXCHANGE RATES
@@ -103,4 +111,6 @@ FROM
 	READ_JSON(
 		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/exchange_rates.json'
 		,RECORDS = FALSE
-	);
+	)
+WHERE
+	(SELECT COUNT(*) = 0 AS _CHECK FROM RAW_DATA.EXCHANGE_RATES);

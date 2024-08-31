@@ -1,6 +1,8 @@
 TODO:
 pre-commit run --all-files
-more tests
+
+
+for dbt cloud only postgres and bigquery possible!
 
 cicd:
 dbt_project_evaluator
@@ -8,15 +10,6 @@ https://github.com/dbt-checkpoint/dbt-checkpoint
 jsonschema only for ci but not in VS Code...
 
 
-
-
-
-
-
-
-- prettify dbt stuff (make test.py a pre-commit hook)
-
-- pre-commit hooks (seems to require mounting option in devcontainer json)
 
 
 

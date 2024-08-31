@@ -15,7 +15,7 @@ def create_db(db_dir: str, db_name: str) -> str:
     params:
         db_dir (str): Directory under which the DB shall be created
         db_name (str): Name of the DB to be created
-    
+
     Returns:
         db_file_path (str): File path of the created DuckDB
     '''
@@ -45,9 +45,9 @@ def get_file_names(sql_dir: str) -> List[str]:
 
     Params:
         sql_dir (str): Directory in which SQL scripts can be found
-    
+
     Returns:
-        file_names (list[str]): List of absolute file names 
+        file_names (list[str]): List of absolute file names
     '''
     sql_dir_path = Path(sql_dir)
     file_names: List[str] = sorted(sql_dir_path.glob('*.sql'))

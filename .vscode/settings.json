@@ -39,6 +39,8 @@
   },
   "isort.args": ["--settings-path=pyproject.toml"],
   "isort.check": true,
+  "pre-commit-helper.config": ".pre-commit-config.yaml",
+  "pre-commit-helper.runOnSave": "all hooks",
   "pylint.args": ["--rcfile=pyproject.toml"],
   "python.analysis.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
   "python.autoComplete.extraPaths": ["/workspaces/analytics/duckdb_analytics"],

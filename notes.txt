@@ -1,6 +1,6 @@
 TODO:
 pre-commit run --all-files
-https://github.com/pre-commit/pre-commit-hooks
+more tests
 
 cicd:
 dbt_project_evaluator
@@ -16,7 +16,6 @@ jsonschema only for ci but not in VS Code...
 - prettify dbt stuff (make test.py a pre-commit hook)
 
 - pre-commit hooks (seems to require mounting option in devcontainer json)
-
 
 
 

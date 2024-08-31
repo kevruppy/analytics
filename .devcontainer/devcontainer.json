@@ -18,7 +18,8 @@
         "esbenp.prettier-vscode",
         "ms-python.isort",
         "ms-python.black-formatter",
-        "oderwat.indent-rainbow"
+        "oderwat.indent-rainbow",
+        "elagil.pre-commit-helper"
       ]
     }
   },

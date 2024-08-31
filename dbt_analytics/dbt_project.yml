@@ -26,6 +26,9 @@ models:
           +enabled: false
         fct_model_directories:
           +enabled: false
+      tests:
+        fct_sources_without_freshness:
+          +enabled: false
 
 seeds:
   +persist_docs:
@@ -38,9 +41,8 @@ seeds:
 sources:
   +enabled: true
 
-tests:
+data_tests:
   +store_failures: true
-  +store_failures_as: table
 
 on-run-end:
   - "VACUUM ANALYZE"

@@ -1,5 +1,6 @@
 TODO:
-
+pre-commit run --all-files
+https://github.com/pre-commit/pre-commit-hooks
 
 cicd:
 dbt_project_evaluator

@@ -24,5 +24,5 @@
     }
   },
   "name": "Python Dev Container",
-  "postCreateCommand": "python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt && cd /workspaces/analytics/dbt_analytics && /workspaces/analytics/.venv/bin/dbt deps"
+  "postCreateCommand": "python3 -m venv .venv && ./.venv/bin/pip install --upgrade pip && ./.venv/bin/pip install -r /workspaces/analytics/requirements.txt && cd /workspaces/analytics/dbt_analytics && /workspaces/analytics/.venv/bin/dbt deps && /workspaces/analytics/.venv/bin/pre-commit install"
 }

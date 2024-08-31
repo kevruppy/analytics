@@ -4,6 +4,7 @@ more tests
 
 cicd:
 dbt_project_evaluator
+https://github.com/dbt-checkpoint/dbt-checkpoint
 jsonschema only for ci but not in VS Code...
 
 
@@ -20,7 +21,6 @@ jsonschema only for ci but not in VS Code...
 
 
 - build dim & fact models
-- semantical layer
 - check some BI tool
 - check dbt cloud
 - check github actions

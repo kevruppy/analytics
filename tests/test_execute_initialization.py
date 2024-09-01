@@ -57,7 +57,7 @@ def test_prep_statements():
     secret = {
         "K_VAL": "FAKE_K",
         "S_VAL": "FAKE_S",
-        "R__VAL": "FAKE_R",
+        "R_VAL": "FAKE_R",
     }
 
     try:
@@ -66,7 +66,7 @@ def test_prep_statements():
             json.dump(secret, f)
 
         stmt_list = [
-            "CREATE SECRET _S (TYPE S3, KEY_ID 'K_VAL', SECRET 'S_VAL', REGION 'R__VAL');",
+            "CREATE SECRET _S (TYPE S3, KEY_ID 'K_VAL', SECRET 'S_VAL', REGION 'R_VAL');",
             "SELECT 1;",
         ]
 

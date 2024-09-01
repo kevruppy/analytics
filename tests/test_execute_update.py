@@ -28,30 +28,30 @@ def test_prep_statements():
     """Test prepping SQL statements"""
 
     secret = {
-        "K_VAL": "FAKE_K",
-        "S_VAL": "FAKE_S",
-        "R__VAL": "FAKE_R",
+        "K_VAL": "KKK",
+        "S_VAL": "SSS",
+        "R_VAL": "RRR",
     }
 
     try:
-        tmp_secret_file = "/tmp/tmp_secret.json"
-        with open(tmp_secret_file, "w", encoding="utf-8") as f:
+        temp_secret = "/tmp/tmp_secret.json"
+        with open(temp_secret, "w", encoding="utf-8") as f:
             json.dump(secret, f)
 
         stmt_list = [
-            "CREATE SECRET _S (TYPE S3, KEY_ID 'K_VAL', SECRET 'S_VAL', REGION 'R__VAL');",
-            "SELECT 1;",
+            "CREATE SECRET _X (TYPE S3, KEY_ID 'K_VAL', SECRET 'S_VAL', REGION 'R_VAL');",
+            "SELECT 42;",
         ]
 
         prepped_stmt_list = [
-            "CREATE SECRET _S (TYPE S3, KEY_ID 'FAKE_K', SECRET 'FAKE_S', REGION 'FAKE_R');",
-            "SELECT 1;",
+            "CREATE SECRET _X (TYPE S3, KEY_ID 'KKK', SECRET 'SSS', REGION 'RRR');",
+            "SELECT 42;",
         ]
 
-        assert prep_statements(tmp_secret_file, stmt_list) == prepped_stmt_list
+        assert prep_statements(temp_secret, stmt_list) == prepped_stmt_list
     finally:
-        if os.path.exists(tmp_secret_file):
-            os.remove(tmp_secret_file)
+        if os.path.exists(temp_secret):
+            os.remove(temp_secret)
 
 
 def test_execute_statements():

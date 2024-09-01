@@ -1,8 +1,6 @@
 TODO:
 
-POINT TO AWS SECRETS IN ENV FILE
 
-RUN PRE-COMMIT ALL AND PYLINT MANUALLY AS WELL!
 
 
 put sample data in cloud storage

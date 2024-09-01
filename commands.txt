@@ -1,3 +1,11 @@
 # files in cwd not having file extension ".sock"
 
 find . -type f ! -name "*.sock"
+
+# run pre-commit
+
+pre-commit run --all-files
+
+# run sqlfluff
+
+sqlfluff lint

@@ -1,6 +1,7 @@
 TODO:
 
 write some more docu in readme files using a bit of markdown
+next step is cicd to motherduck!
 
 
 check current env with print(platform.release().endswith("WSL2"))
@@ -46,4 +47,3 @@ out of scope:
 Links:
 https://neon.tech/
 https://blog.streamlit.io/host-your-streamlit-app-for-free/
-pre-commit run --all-files

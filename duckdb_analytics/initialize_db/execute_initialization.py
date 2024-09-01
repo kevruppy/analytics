@@ -1,9 +1,11 @@
 import logging
 import os
+import json
 from pathlib import Path
-from typing import List
+from typing import List, Dict
 
 import duckdb
+
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -60,7 +62,37 @@ def get_file_names(sql_dir: str) -> List[str]:
     return [str(f) for f in file_names]
 
 
-def execute_sql_statements(db_path: str, sql_files: List[str]):
+def prep_stmt_list(secret_file: str, stmt_list: List[str]) -> List[str]:
+    '''
+    Replaces placeholders in SQL statements with secret values
+
+    Params:
+        secret_file (str): Path to secret file
+        stmt_list (list[str]): List of SQL statements
+
+    Returns:
+        prepped_stmt_list (list[str]): List of prepped SQL statements
+    '''
+    try:
+        with open(secret_file, 'r', encoding='utf-8') as f:
+            secret = json.load(f)
+    except FileNotFoundError as e:
+        logging.error(f'Secret file not found: {secret_file}')
+        raise e
+    except json.JSONDecodeError as e:
+        logging.error(f'Invalid JSON format in secret file: {secret_file}')
+        raise e
+
+    prepped_stmt_list = []
+    for stmt in stmt_list:
+        for key, val in secret.items():
+            stmt = stmt.replace(key, val)
+        prepped_stmt_list.append(stmt)
+
+    return prepped_stmt_list
+
+
+def execute_sql_statements(db_path: str, sql_files: List[str], aws_secret: Dict[str, str]):
     '''
     Execute SQL statements on the provided DuckDB
 
@@ -74,7 +106,8 @@ def execute_sql_statements(db_path: str, sql_files: List[str]):
             logging.info(f'Executing SQL script: "{file.split('/')[-1]}"')
             with open(file, 'r', encoding='utf-8') as f:
                 stmt_list = f.read().strip().split(';')
-                for stmt in stmt_list:
+                prepped_stmt_list = prep_stmt_list(secret_file=aws_secret, stmt_list=stmt_list)
+                for stmt in prepped_stmt_list:
                     stmt = stmt.strip()
                     if stmt:
                         try:
@@ -86,13 +119,14 @@ def execute_sql_statements(db_path: str, sql_files: List[str]):
 
 
 def main():
-    """Main function to execute script"""
+    '''Main function to execute script'''
     db_dir = os.getenv('DB_DIR')
     db_name = os.getenv('DB_NAME')
     sql_dir = os.getenv('SQL_INI_DIR')
+    aws_secret = os.getenv('AWS_SECRET')
 
-    if not db_dir or not db_name or not sql_dir:
-        logging.error('Environment variables for db_dir, db_name, and sql_dir must be set')
+    if not db_dir or not db_name or not sql_dir or not aws_secret:
+        logging.error('Environment variables for db_dir, db_name, sql_dir & aws_secret must be set')
         raise ValueError('Missing required environment variables')
 
     try:
@@ -100,7 +134,7 @@ def main():
         sql_files = get_file_names(sql_dir=sql_dir)
         if not sql_files:
             raise FileNotFoundError(f'No SQL files found in directory: "{sql_dir}"')
-        execute_sql_statements(db_path=db, sql_files=sql_files)
+        execute_sql_statements(db_path=db, sql_files=sql_files, aws_secret=aws_secret)
         logging.info('Removing temp files...')
         temp_files = Path('.').glob('TMP_DUCK_DB_EXPORT_*')
         if temp_files: # pylint: disable=using-constant-test

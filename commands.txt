@@ -1,0 +1,3 @@
+# files in cwd not having file extension ".sock"
+
+find . -type f ! -name "*.sock"

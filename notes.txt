@@ -1,5 +1,10 @@
 TODO:
 
+POINT TO AWS SECRETS IN ENV FILE
+
+RUN PRE-COMMIT ALL AND PYLINT MANUALLY AS WELL!
+
+
 put sample data in cloud storage
 make paths to sample data variables that will be exchanged depending on env (can be checked using print(platform.release().endswith("WSL2"))
 )

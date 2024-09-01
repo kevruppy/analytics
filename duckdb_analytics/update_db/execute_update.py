@@ -29,51 +29,51 @@ def load_statements(statements_path: str) -> List[str]:
         raise e
 
 
-def prep_statements(secret_file_path: str, statements: List[str]) -> List[str]:
+def prep_statements(secret_file: str, stmt_list: List[str]) -> List[str]:
     """
     Replaces placeholders in SQL script with secret values
 
     Params:
-        secret_file_path (str): Path to file containing secret
-        statements (list[str]): List of SQL statements
+        secret_file (str): Path to file containing secret
+        stmt_list (list[str]): List of SQL statements
 
     Returns:
-        prepped_statements (list[str]): List of prepped SQL statements
+        prepped_stmt_list (list[str]): List of prepped SQL statements
     """
     try:
-        with open(secret_file_path, "r", encoding="utf-8") as f:
+        with open(secret_file, "r", encoding="utf-8") as f:
             secret = json.load(f)
     except FileNotFoundError as e:
-        logging.error(f"Secret file not found: {secret_file_path}")
+        logging.error(f"Secret file not found: {secret_file}")
         raise e
     except json.JSONDecodeError as e:
-        logging.error(f"Invalid JSON format in secret file: {secret_file_path}")
+        logging.error(f"Invalid JSON format in secret file: {secret_file}")
         raise e
 
-    prepped_statements = []
-    for stmt in statements:
+    prepped_stmt_list = []
+    for stmt in stmt_list:
         for k, v in secret.items():
             stmt = stmt.replace(k, v)
-        prepped_statements.append(stmt)
+        prepped_stmt_list.append(stmt)
 
-    return prepped_statements
+    return prepped_stmt_list
 
 
-def execute_statements(db_path: str, statements: List[str]):
+def execute_statements(db_path: str, stmt_list: List[str]):
     """
     Executes SQL statements in DuckDB
 
     Params:
         db_path (str): Path to DuckDB
-        statements (list[str]): List of SQL statements
+        stmt_list (list[str]): List of SQL statements
     """
     with duckdb.connect(db_path) as con:
-        if not statements:
+        if not stmt_list:
             logging.error("No SQL statements provided")
             raise ValueError("Please provide a list with SQL statements")
-        for i, stmt in enumerate(statements, start=1):
+        for i, stmt in enumerate(stmt_list, start=1):
             try:
-                logging.info(f"Executing stmt {i} of {len(statements)}")
+                logging.info(f"Executing statement {i} of {len(stmt_list)}")
                 con.execute(stmt)
                 logging.info(f"Execution of statement {i} finished")
             except Exception as e:
@@ -87,15 +87,16 @@ def main():
     """Main function to execute script"""
     statements_path = os.getenv("SQL_UPD_DIR")
     db_path = os.getenv("DB_PATH")
+    aws_secret = os.getenv("AWS_SECRET")
 
-    if not statements_path or not db_path:
+    if not statements_path or not db_path or not aws_secret:
         logging.error(
-            "Environment variables for statements_path and db_path must be set"
+            "Environment variables for statements_path, db_path & aws_secret must be set"
         )
         raise ValueError("Missing required environment variables")
 
     statements = load_statements(statements_path)
-    prepped_statements = prep_statements("aws_secret.json", statements)
+    prepped_statements = prep_statements(aws_secret, statements)
     execute_statements(db_path, prepped_statements)
 
 

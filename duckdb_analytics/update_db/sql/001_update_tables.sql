@@ -1,5 +1,9 @@
 -- sqlfluff:rules:references.keywords:ignore_words:HEADER,JSON
 
+/*
+CREATE SECRET TO ALLOW IMPORTING FROM S3 BUCKET
+*/
+
 -- noqa: disable=all
 
 CREATE OR REPLACE SECRET AWS_SECRET (

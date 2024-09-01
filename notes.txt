@@ -1,6 +1,6 @@
 TODO:
 
-
+write some more docu in readme files using a bit of markdown
 
 
 check current env with print(platform.release().endswith("WSL2"))

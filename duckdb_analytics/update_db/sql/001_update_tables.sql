@@ -1,5 +1,16 @@
 -- sqlfluff:rules:references.keywords:ignore_words:HEADER,JSON
 
+-- noqa: disable=all
+
+CREATE OR REPLACE SECRET AWS_SECRET (
+    TYPE S3
+	,KEY_ID 'KEY_ID__VALUE'
+	,SECRET 'SECRET__VALUE'
+	,REGION 'REGION__VALUE'
+);
+
+-- noqa: enable=all
+
 /*
 ORDERS
 */
@@ -10,7 +21,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_ORDERS AS
 SELECT COLUMNS(*)
 FROM
 	READ_CSV(
-		'/workspaces/analytics/duckdb_analytics/update_db/sample_data/update_orders.csv'
+		's3://analytics-rawdata/update_orders.csv'
 		,ALL_VARCHAR = TRUE
 		,HEADER = TRUE
 		,SEP = ','
@@ -53,7 +64,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_NPS AS
 SELECT JSON AS LOAD_RESULT
 FROM
 	READ_JSON(
-		'/workspaces/analytics/duckdb_analytics/update_db/sample_data/update_nps.json'
+		's3://analytics-rawdata/update_nps.json'
 		,RECORDS = FALSE
 	);
 

@@ -13,4 +13,4 @@ dbt_analytics/.user.yml
 
 service_account.json
 
-aws_secret.txt
+aws_secret.json

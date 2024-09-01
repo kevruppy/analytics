@@ -1,6 +1,7 @@
 import logging
 import os
 from typing import List
+import json
 
 import duckdb
 
@@ -26,6 +27,36 @@ def load_statements(statements_path: str) -> List[str]:
     except FileNotFoundError as e:
         logging.error(f'Could not find specified SQL file: "{statements_path}"')
         raise e
+
+
+def prep_statements(secret_file_path: str, statements: List[str]) -> List[str]:
+    """
+    Replaces placeholders in SQL script with secret values
+
+    Params:
+        secret_file_path (str): Path to file containing secret
+        statements (list[str]): List of SQL statements
+
+    Returns:
+        prepped_statements (list[str]): List of prepped SQL statements
+    """
+    try:
+        with open(secret_file_path, "r", encoding="utf-8") as f:
+            secret = json.load(f)
+    except FileNotFoundError as e:
+        logging.error(f"Secret file not found: {secret_file_path}")
+        raise e
+    except json.JSONDecodeError as e:
+        logging.error(f"Invalid JSON format in secret file: {secret_file_path}")
+        raise e
+
+    prepped_statements = []
+    for stmt in statements:
+        for k, v in secret.items():
+            stmt = stmt.replace(k, v)
+        prepped_statements.append(stmt)
+
+    return prepped_statements
 
 
 def execute_statements(db_path: str, statements: List[str]):
@@ -64,7 +95,8 @@ def main():
         raise ValueError("Missing required environment variables")
 
     statements = load_statements(statements_path)
-    execute_statements(db_path, statements)
+    prepped_statements = prep_statements("aws_secret.json", statements)
+    execute_statements(db_path, prepped_statements)
 
 
 if __name__ == "__main__":

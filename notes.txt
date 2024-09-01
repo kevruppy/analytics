@@ -4,15 +4,9 @@ put sample data in cloud storage
 make paths to sample data variables that will be exchanged depending on env (can be checked using print(platform.release().endswith("WSL2"))
 )
 --> eventually we need a mapping for that, maybe in csv, maybe in .py script itself
---> make sql scripts replayable by checking if data is already in table
-this is the way:
-create temp table tmp as select 1 as x
 
-insert into tmp
-select 1
-where (select count(*) = 0 from tmp)
 
-SELECT * from tmp
+
 
 
 static website hosting in s3 for dbt docu?

@@ -12,3 +12,5 @@ dbt_analytics/.user.yml
 *.duckdb
 
 service_account.json
+
+aws_secret.txt

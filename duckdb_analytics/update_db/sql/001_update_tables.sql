@@ -10,7 +10,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_ORDERS AS
 SELECT COLUMNS(*)
 FROM
 	READ_CSV(
-		'/workspaces/analytics/duckdb_analytics/update_db/sample_data/orders.csv'
+		'/workspaces/analytics/duckdb_analytics/update_db/sample_data/update_orders.csv'
 		,ALL_VARCHAR = TRUE
 		,HEADER = TRUE
 		,SEP = ','
@@ -53,7 +53,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_NPS AS
 SELECT JSON AS LOAD_RESULT
 FROM
 	READ_JSON(
-		'/workspaces/analytics/duckdb_analytics/update_db/sample_data/nps.json'
+		'/workspaces/analytics/duckdb_analytics/update_db/sample_data/update_nps.json'
 		,RECORDS = FALSE
 	);
 

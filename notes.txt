@@ -3,10 +3,7 @@ TODO:
 
 
 
-put sample data in cloud storage
-make paths to sample data variables that will be exchanged depending on env (can be checked using print(platform.release().endswith("WSL2"))
-)
---> eventually we need a mapping for that, maybe in csv, maybe in .py script itself
+check current env with print(platform.release().endswith("WSL2"))
 
 
 

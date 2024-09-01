@@ -25,7 +25,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_ORDERS AS
 SELECT COLUMNS(*)
 FROM
 	READ_CSV(
-		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/orders.csv'
+		's3://analytics-rawdata/orders.csv'
 		,ALL_VARCHAR = TRUE
 		,HEADER = TRUE
 		,SEP = ','
@@ -61,7 +61,7 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_ORDERS_WITH_PLACEMENT AS
 SELECT COLUMNS(*)
 FROM
 	READ_CSV(
-		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/orders_with_placement.csv'
+		's3://analytics-rawdata/orders_with_placement.csv'
 		,ALL_VARCHAR = TRUE
 		,HEADER = TRUE
 		,SEP = ','
@@ -95,7 +95,7 @@ INSERT INTO RAW_DATA.PROVISION_RULES (LOAD_RESULT)
 SELECT JSON AS LOAD_RESULT
 FROM
 	READ_JSON(
-		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/provision_rules.json'
+		's3://analytics-rawdata/provision_rules.json'
 		,RECORDS = FALSE
 	)
 WHERE
@@ -112,7 +112,7 @@ SELECT
 	,RATING
 	,TOOL
 FROM
-	'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/nps.csv' --noqa
+	's3://analytics-rawdata/nps.csv'
 WHERE
 	(SELECT COUNT(*) = 0 AS _CHECK FROM RAW_DATA.NET_PROMOTOR_SCORES);
 
@@ -124,7 +124,7 @@ INSERT INTO RAW_DATA.EXCHANGE_RATES (LOAD_RESULT)
 SELECT JSON AS LOAD_RESULT
 FROM
 	READ_JSON(
-		'/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/exchange_rates.json'
+		's3://analytics-rawdata/exchange_rates.json'
 		,RECORDS = FALSE
 	)
 WHERE

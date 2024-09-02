@@ -2,10 +2,7 @@ version: 2
 
 models:
   - name: mrt_net_promotor_scores
-    description:
-      "Aggregated data on net promotor scores (NPS) on different levels:
-      PRODUCT GROUP, PRODUCT TYPE & PRODUCT NAME
-      Example: If aggregation is on PRODUCT GROUP values for PRODUCT TYPE & PRODUCT NAME are 'TOTAL'"
+    description: "{{ doc('mrt_net_promotor_scores') }}"
     config:
       enabled: True
       schema: marts
@@ -22,56 +19,56 @@ models:
             - PRODUCT_NAME
     columns:
       - name: SURVEY_CALENDAR_YEAR
-        description: Calendar year (related to survey)
+        description: "{{ var('dsc_survey_calendar_year') }}"
         data_type: INTEGER
       - name: SURVEY_CALENDAR_MONTH
-        description: Calendar month of year (related to survey)
+        description: "{{ var('dsc_survey_calendar_month') }}"
         data_type: INTEGER
       - name: PRODUCT_GROUP
-        description: Name of ordered product group that triggered the survey
+        description: "{{ var('dsc_survey_product_group') }}"
         data_type: VARCHAR
       - name: PRODUCT_TYPE
-        description: Name of ordered product type that triggered the survey
+        description: "{{ var('dsc_survey_product_type') }}"
         data_type: VARCHAR
       - name: PRODUCT_NAME
-        description: Name of ordered product that triggered the survey
+        description: "{{ var('dsc_survey_product_name') }}"
         data_type: VARCHAR
       - name: PARTICIPANTS
-        description: Number of survey participants
+        description: "{{ doc('dsc_participants') }}"
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
               expression: "= (DETRACTORS + INDIFFERENTS + PROMOTORS)"
       - name: DETRACTORS
-        description: Number of participants that gave a rating between 0 and 6
+        description: "{{ doc('dsc_detractors') }}"
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
               expression: "= (PARTICIPANTS - INDIFFERENTS - PROMOTORS)"
       - name: INDIFFERENTS
-        description: Number of participants that gave a rating between 7 and 8
+        description: "{{ doc('dsc_indifferents') }}"
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
               expression: "= (PARTICIPANTS - DETRACTORS - PROMOTORS)"
       - name: PROMOTORS
-        description: Number of participants that gave a rating between 9 and 10
+        description: "{{ doc('dsc_promotors') }}"
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
               expression: "= (PARTICIPANTS - INDIFFERENTS - DETRACTORS)"
       - name: DETRACTORS_SHARE
-        description: Detractors divided by participants
+        description: "{{ doc('dsc_detractors_share') }}"
         data_type: FLOAT
       - name: INDIFFERENTS_SHARE
-        description: Indifferents divided by participants
+        description: "{{ doc('dsc_indifferents_share') }}"
         data_type: FLOAT
       - name: PROMOTORS_SHARE
-        description: Promotors divided by participants
+        description: "{{ doc('dsc_promotors_share') }}"
         data_type: FLOAT
       - name: NET_PROMOTOR_SCORE
-        description: Share of promotors minus share of detractors
+        description: "{{ doc('dsc_net_promotor_score') }}"
         data_type: FLOAT
       - name: AGGREGATION_LEVEL
-        description: Indicates to which level (grouping set) figures refer
+        description: "{{ doc('dsc_aggregation_level') }}"
         data_type: VARCHAR

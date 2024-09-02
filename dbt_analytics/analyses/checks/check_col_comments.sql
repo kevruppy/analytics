@@ -1,0 +1,7 @@
+-- sqlfluff:rules:references.keywords:ignore_words:COLUMNS
+
+SELECT COUNT(*) = 0 AS _CHECK_PASSED
+FROM ANALYTICS.INFORMATION_SCHEMA.COLUMNS
+WHERE
+	TABLE_SCHEMA NOT IN ('dbt_test__audit','main')
+	AND COLUMN_COMMENT IS NULL

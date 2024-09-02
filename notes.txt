@@ -47,3 +47,4 @@ out of scope:
 Links:
 https://neon.tech/
 https://blog.streamlit.io/host-your-streamlit-app-for-free/
+https://datacoves.com/post/dbt-jinja-functions-cheat-sheet

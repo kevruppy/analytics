@@ -20,7 +20,7 @@ seeds:
           - unique
           - dbt_utils.not_empty_string
       - name: PRODUCT_NAME
-        description: "{{ var('dsc_product_name') }}"
+        description: "{{ var('dsc_survey_product_name') }}"
         data_tests:
           - not_null
           - dbt_utils.not_empty_string

@@ -19,7 +19,7 @@ models:
             severity: warn
     columns:
       - name: ORDER_ID
-        description: "{{ var('dsc_order_id') }}"
+        description: "{{ var('dsc_survey_order_id') }}"
         data_type: INTEGER
         constraints:
           - type: primary_key
@@ -27,7 +27,7 @@ models:
           - not_null
           - unique
       - name: PRODUCT_NAME
-        description: "{{ var('dsc_product_name') }}"
+        description: "{{ var('dsc_survey_product_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null

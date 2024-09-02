@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_net_promotor_scores
-    description: Contains enriched net promotor scores (NPS) data w.o. invalid or test records
+    description: "{{ doc('int_net_promotor_scores') }}"
     config:
       enabled: True
       schema: intermediate
@@ -12,7 +12,7 @@ models:
     columns:
       # NPS
       - name: ORDER_ID
-        description: Identifier of order that triggered the survey
+        description: "{{ var('dsc_survey_order_id') }}"
         data_type: INTEGER
         constraints:
           - type: primary_key
@@ -35,49 +35,49 @@ models:
           - not_null
         # CALENDAR
       - name: SURVEY_CALENDAR_DATE
-        description: Calendar date (related to survey)
+        description: "{{ doc('dsc_survey_calendar_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: SURVEY_CALENDAR_WEEK
-        description: Calendar week of year (related to survey)
+        description: "{{ doc('dsc_survey_calendar_week') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: SURVEY_CALENDAR_MONTH
-        description: Calendar month of year (related to survey)
+        description: "{{ var('dsc_survey_calendar_month') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: SURVEY_CALENDAR_QUARTER
-        description: Calendar quarter of year (related to survey)
+        description: "{{ doc('dsc_survey_calendar_quarter') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: SURVEY_CALENDAR_YEAR
-        description: Calendar year (related to survey)
+        description: "{{ var('dsc_survey_calendar_year') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: SURVEY_CALENDAR_DAY_NAME
-        description: Name of day (related to survey)
+        description: "{{ doc('dsc_survey_calendar_day_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: SURVEY_IS_WEEKEND
-        description: Flag if date is on a weekend (related to survey)
+        description: "{{ doc('dsc_survey_calendar_is_weekend') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
@@ -85,21 +85,21 @@ models:
           - not_null
         # PRODUCT_HIERARCHY
       - name: PRODUCT_GROUP
-        description: Name of ordered product group that triggered the survey
+        description: "{{ var('dsc_survey_product_group') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: PRODUCT_TYPE
-        description: Name of ordered product type that triggered the survey
+        description: "{{ var('dsc_survey_product_type') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
           - not_null
       - name: PRODUCT_NAME
-        description: Name of ordered product that triggered the survey
+        description: "{{ var('dsc_survey_product_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null

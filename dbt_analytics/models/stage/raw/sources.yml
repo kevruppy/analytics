@@ -3,13 +3,14 @@ version: 2
 sources:
   - name: raw
     schema: raw_data
-    description: Contains unprocessed rawdata
-    loader: manual import
+    description: "{{ doc('dsc_sources') }}"
+    # For loader jinja function `doc` cannot be used
+    loader: manual
     tags:
       - raw_data
     tables:
       - name: orders
-        description: Contains raw data for orders
+        description: "{{ doc('dsc_tbl_orders') }}"
         columns:
           - name: _ID
             description: "{{ var('dsc_auto_id') }}"
@@ -23,12 +24,12 @@ sources:
             data_tests:
               - not_null
           - name: LOAD_RESULT
-            description: Raw load result
+            description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
               - not_null
       - name: orders_with_placement
-        description: Contains rawdata for orders with placement, indicates that order is with placement
+        description: "{{ doc('dsc_tbl_orders_with_placement') }}"
         columns:
           - name: _ID
             description: "{{ var('dsc_auto_id') }}"
@@ -42,12 +43,12 @@ sources:
             data_tests:
               - not_null
           - name: LOAD_RESULT
-            description: Raw load result
+            description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
               - not_null
       - name: provision_rules
-        description: Contains raw data for provision rules
+        description: "{{ doc('dsc_tbl_provision_rules') }}"
         columns:
           - name: _ID
             description: "{{ var('dsc_auto_id') }}"
@@ -61,12 +62,12 @@ sources:
             data_tests:
               - not_null
           - name: LOAD_RESULT
-            description: Raw load result
+            description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
               - not_null
       - name: net_promotor_scores
-        description: Contains raw data for net promotor scores (NPS)
+        description: "{{ doc('dsc_tbl_net_promotor_scores') }}"
         columns:
           - name: _ID
             description: "{{ var('dsc_auto_id') }}"
@@ -80,27 +81,27 @@ sources:
             data_tests:
               - not_null
           - name: TRANSACTION_ID
-            description: Concatenation of product name prefix and order id
+            description: "{{ var('dsc_transaction_id') }}"
             data_type: VARCHAR
             data_tests:
               - not_null
           - name: RATING_DATE
-            description: Date on which rating was collected
+            description: "{{ var('dsc_rating_date') }}"
             data_type: DATE
             data_tests:
               - not_null
           - name: RATING
-            description: NPS rating given by customer
+            description: "{{ var('dsc_rating_value') }}"
             data_type: INTEGER
             data_tests:
               - not_null
           - name: TOOL
-            description: Tool with which the rating was collected
+            description: "{{ var('dsc_rating_tool') }}"
             data_type: VARCHAR
             data_tests:
               - not_null
       - name: exchange_rates
-        description: Contains raw data for exchange rates
+        description: "{{ doc('dsc_tbl_exchange_rates') }}"
         columns:
           - name: _ID
             description: "{{ var('dsc_auto_id') }}"
@@ -114,7 +115,7 @@ sources:
             data_tests:
               - not_null
           - name: LOAD_RESULT
-            description: Raw load result
+            description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
               - not_null

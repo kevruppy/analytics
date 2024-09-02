@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_orders_base_placement_provisions
-    description: Contains orders, their base provision & their placement provision (if applicable)
+    description: "{{ doc('dsc_int_orders_base_placement_provisions') }}"
     config:
       enabled: True
       schema: intermediate

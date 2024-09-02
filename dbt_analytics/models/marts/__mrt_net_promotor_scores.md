@@ -1,9 +1,18 @@
 # model desc
 
-{% docs mrt_net_promotor_scores %}
-Aggregated data on net promotor scores (NPS) on different levels:
-PRODUCT GROUP, PRODUCT TYPE & PRODUCT NAME
-Example: If aggregation is on PRODUCT GROUP values for PRODUCT TYPE & PRODUCT NAME are 'TOTAL'
+{% docs dsc_mrt_net_promotor_scores %}
+### Aggregated Data on Net Promoter Scores (NPS)
+
+**By Level**
+
+* **TOTAL**
+* **PRODUCT GROUP**
+* **PRODUCT TYPE**
+* **PRODUCT NAME**
+
+**Example:**
+
+When aggregation level is **PRODUCT GROUP**, the values for **PRODUCT TYPE** and **PRODUCT NAME** are "TOTAL".
 {% enddocs %}
 
 # cols desc

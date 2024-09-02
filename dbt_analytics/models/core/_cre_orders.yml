@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: cre_orders
-    description: Contains clean order data. Orders appear multiple times due to status changes
+    description: "{{ doc('dsc_cre_orders') }}"
     config:
       enabled: True
       schema: core

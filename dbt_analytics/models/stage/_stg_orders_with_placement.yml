@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_orders_with_placement
-    description: Contains rawdata for orders with placement, indicates that order is with placement
+    description: "{{ doc('dsc_stg_orders_with_placement') }}"
     config:
       enabled: True
       schema: stage

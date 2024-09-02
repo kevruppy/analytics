@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: cre_calendar
-    description: Calendar table with range (2020-01-01, 2030-12-31)
+    description: "{{ doc('dsc_cre_calendar') }}"
     config:
       enabled: True
       schema: core

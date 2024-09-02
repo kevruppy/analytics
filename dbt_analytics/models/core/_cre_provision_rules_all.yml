@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: cre_provision_rules_all
-    description: Contains clean provision rules. There might be multiple rules per product
+    description: "{{ doc('dsc_cre_provision_rules_all') }}"
     config:
       enabled: True
       schema: core

@@ -62,6 +62,7 @@ vars:
   dsc_added_on: "Timestamp when record was added"
   dsc_valid_from: "Date since when record is valid"
   dsc_valid_to: "Date since until record is valid"
+  dsc_load_result: "Raw load result"
 
   ### calendar
   dsc_calendar_date: "Calendar date"
@@ -115,6 +116,7 @@ vars:
   dsc_net_proportional_provision: "Net proportional provision of an order (only confirmed orders if applicable)"
 
   ### net promotor scores
+  dsc_transaction_id: "Concatenation of product name prefix and order id"
   dsc_rating_date: "Date of rating"
   dsc_rating_value: "NPS rating by customer"
   dsc_rating_tool: "Tool used to collect rating"

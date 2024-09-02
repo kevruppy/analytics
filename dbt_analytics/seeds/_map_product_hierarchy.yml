@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: map_product_hierarchy
-    description: Maps products to product_type & product_group (= product hierarchy)
+    description: "{{ doc('dsc_map_product_hierarchy') }}"
     config:
       enabled: True
       delimiter: ","

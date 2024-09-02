@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: cre_provision_rules_placement
-    description: Contains clean placement provision rules. There might be multiple rules per product
+    description: "{{ doc('dsc_cre_provision_rules_placement') }}"
     config:
       enabled: True
       schema: core

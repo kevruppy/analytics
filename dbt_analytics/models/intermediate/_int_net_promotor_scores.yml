@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_net_promotor_scores
-    description: "{{ doc('int_net_promotor_scores') }}"
+    description: "{{ doc('dsc_int_net_promotor_scores') }}"
     config:
       enabled: True
       schema: intermediate

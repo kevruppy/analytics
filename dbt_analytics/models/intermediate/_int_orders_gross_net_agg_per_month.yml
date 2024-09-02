@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_orders_gross_net_agg_per_month
-    description: Aggregation of orders per order type, creation month and product name
+    description: "{{ doc('dsc_int_orders_gross_net_agg_per_month') }}"
     config:
       enabled: True
       schema: intermediate
@@ -17,7 +17,7 @@ models:
             - PRODUCT_NAME
     columns:
       - name: ORDER_TYPE
-        description: Either 'GROSS_ORDER' (all orders) or 'NET_ORDER' (only confirmed orders)
+        description: "{{ doc('dsc_order_type') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
@@ -26,7 +26,7 @@ models:
           - accepted_values:
               values: ["GROSS_ORDER", "NET_ORDER"]
       - name: CREATION_MONTH
-        description: Month of order creation (truncated to first of month)
+        description: "{{ doc('dsc_creation_month') }}"
         data_type: DATE
         constraints:
           - type: not_null
@@ -40,7 +40,7 @@ models:
         data_tests:
           - not_null
       - name: CNT_ORDERS
-        description: Count of orders for particular grouping set
+        description: "{{ doc('dsc_cnt_orders') }}"
         data_type: INTEGER
         constraints:
           - type: not_null

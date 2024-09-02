@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_orders_proportional_provisions
-    description: Contains orders and their proportional provision (if applicable)
+    description: "{{ doc('dsc_int_orders_proportional_provisions') }}"
     config:
       enabled: True
       schema: intermediate

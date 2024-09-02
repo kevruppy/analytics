@@ -1,6 +1,6 @@
 # model desc
 
-{% docs int_net_promotor_scores %}
+{% docs dsc_int_net_promotor_scores %}
 Contains enriched net promotor scores (NPS) data w.o. invalid or test records
 {% enddocs %}
 

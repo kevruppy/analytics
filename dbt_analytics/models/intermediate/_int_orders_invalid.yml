@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_orders_invalid
-    description: Contains invalid orders (IS_TEST_ORDER = TRUE)
+    description: "{{ doc('dsc_int_orders_invalid') }}"
     config:
       enabled: True
       schema: intermediate
@@ -19,7 +19,7 @@ models:
           - not_null
           - unique
       - name: STATUS_DATE
-        description: Status data of test order aka MAX(STATUS_CHANGE_DATE)
+        description: "{{ doc('dsc_status_date') }}"
         data_type: DATE
         constraints:
           - type: not_null

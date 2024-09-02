@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: cre_provision_rules_proportional
-    description: Contains clean proportional provision rules. There might be multiple rules per product
+    description: "{{ doc('dsc_cre_provision_rules_proportional') }}"
     config:
       enabled: True
       schema: core

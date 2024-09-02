@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_net_promotor_scores
-    description: Contains raw net promotor scores (NPS) data
+    description: "{{ doc('dsc_stg_net_promotor_scores') }}"
     config:
       enabled: True
       schema: stage
@@ -15,7 +15,7 @@ models:
           table_name: net_promotor_scores
     columns:
       - name: TRANSACTION_ID
-        description: Concatenation of product name prefix and order id
+        description: "{{ var('dsc_transaction_id') }}"
         data_type: VARCHAR
         constraints:
           - type: primary_key

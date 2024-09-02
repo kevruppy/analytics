@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_provision_rules_all
-    description: Contains raw provision rules. Base provision is mandatory, other provision types not. There might be multiple rules per product
+    description: "{{ doc('dsc_stg_provision_rules_all') }}"
     config:
       enabled: True
       schema: stage

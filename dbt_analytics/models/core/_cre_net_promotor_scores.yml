@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: cre_net_promotor_scores
-    description: Contains clean net promotor scores (NPS) data
+    description: "{{ doc('dsc_cre_net_promotor_scores') }}"
     config:
       enabled: True
       schema: core

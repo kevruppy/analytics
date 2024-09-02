@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: map_provision_rules_product
-    description: Maps product names used in provision rules to common product names
+    description: "{{ doc('dsc_map_provision_rules_product') }}"
     config:
       enabled: True
       delimiter: ","
@@ -14,7 +14,7 @@ seeds:
         enforced: true
     columns:
       - name: PROVISION_RULES_PRODUCT_NAME
-        description: Product name used in provision rules
+        description: "{{ doc('dsc_provision_rules_product_name') }}"
         data_tests:
           - not_null
           - unique

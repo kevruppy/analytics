@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_orders_status_dates
-    description: Contains all valid (no test) orders status dates and latest status
+    description: "{{ doc('dsc_int_orders_status_dates') }}"
     config:
       enabled: True
       schema: intermediate

@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: map_net_promotor_scores_product_abbreviations
-    description: Maps product abbreviations used in net promotor scores (NPS) surveys to product names
+    description: "{{ doc('dsc_map_net_promotor_scores_product_abbreviations') }}"
     config:
       enabled: True
       delimiter: ","
@@ -14,7 +14,7 @@ seeds:
         enforced: true
     columns:
       - name: PRODUCT_ABBREVIATION
-        description: Abbreviation of product name
+        description: "{{ doc('dsc_product_abbreviation') }}"
         data_tests:
           - not_null
           - unique

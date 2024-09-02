@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_calendar
-    description: Calendar table with range (2020-01-01, 2030-12-31)
+    description: "{{ doc('dsc_stg_calendar') }}"
     config:
       enabled: True
       schema: stage

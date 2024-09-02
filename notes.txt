@@ -1,6 +1,15 @@
 TODO:
 
-write some more docu in readme files using a bit of markdown
+prettify markdowns (underline/ bold for not for example and in red!)
+enforce contracts for sources (rawdata schema)
+snapshots for partner!
+
+check if column descriptions are unique!
+check if all cols are described
+-> maybe both as on-run-end test!!!
+
+check dbt operations!
+
 next step is cicd to motherduck!
 
 
@@ -48,3 +57,4 @@ Links:
 https://neon.tech/
 https://blog.streamlit.io/host-your-streamlit-app-for-free/
 https://datacoves.com/post/dbt-jinja-functions-cheat-sheet
+https://dillinger.io/

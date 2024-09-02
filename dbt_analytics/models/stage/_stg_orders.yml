@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_orders
-    description: Contains raw order data. Orders appear multiple times due to status changes
+    description: "{{ doc('dsc_stg_orders') }}"
     config:
       enabled: True
       schema: stage

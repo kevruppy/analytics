@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_exchange_rates
-    description: Contains raw exchange rates (EUR/USD) for each months end
+    description: "{{ doc('dsc_stg_exchange_rates') }}"
     config:
       enabled: True
       schema: stage
@@ -37,7 +37,7 @@ models:
           - not_null
           - unique
       - name: EXCHANGE_RATE
-        description: Value for exchange rate (EUR/USD)
+        description: "{{ doc('dsc_exchange_rate') }}"
         data_type: FLOAT
         constraints:
           - type: not_null

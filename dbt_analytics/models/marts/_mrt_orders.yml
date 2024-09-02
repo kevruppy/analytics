@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: mrt_orders
-    description: Order data prepared for reporting use-cases
+    description: "{{ doc('dsc_mrt_orders') }}"
     config:
       enabled: True
       schema: marts

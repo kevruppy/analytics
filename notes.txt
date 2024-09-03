@@ -1,10 +1,9 @@
 TODO:
 
-prettify markdowns (underline/ bold for not for example and in red!)
-enforce contracts for sources (rawdata schema)
+
 snapshots for partner!
 
-check if column descriptions are unique!
+
 check if all cols are described
 -> maybe both as on-run-end test!!!
 
@@ -46,6 +45,7 @@ jsonschema only for ci but not in VS Code...
 - cli script to build dbt project (or Python? maybe a class?)
 --> https://docs.getdbt.com/reference/programmatic-invocations
 
+green blue deployment
 
 
 out of scope:
@@ -58,3 +58,5 @@ https://neon.tech/
 https://blog.streamlit.io/host-your-streamlit-app-for-free/
 https://datacoves.com/post/dbt-jinja-functions-cheat-sheet
 https://dillinger.io/
+https://github.com/nydasco/dbt_with_duckdb/
+https://medium.com/@nydas/kimball-star-schemas-in-data-warehousing-part-1-0ed765574712

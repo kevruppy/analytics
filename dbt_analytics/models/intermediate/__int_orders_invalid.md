@@ -1,7 +1,7 @@
 # model desc
 
 {% docs dsc_int_orders_invalid %}
-Contains invalid orders (IS_TEST_ORDER = TRUE)
+Contains *invalid* orders (IS_TEST_ORDER = TRUE)
 {% enddocs %}
 
 # cols desc

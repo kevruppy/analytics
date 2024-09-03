@@ -5,7 +5,9 @@ sources:
     schema: raw_data
     description: "{{ doc('dsc_sources') }}"
     # For loader jinja function `doc` cannot be used
+    # To avoid confusion we treat loader & loaded_at_field the same way
     loader: manual
+    loaded_at_field: _ADDED_ON
     tags:
       - raw_data
     tables:

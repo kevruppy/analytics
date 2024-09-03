@@ -1,11 +1,17 @@
-# files in cwd not having file extension ".sock"
+### bash
 
+# files in cwd not having file extension ".sock"
 find . -type f ! -name "*.sock"
 
-# run pre-commit
+### dbt
 
+# run macro
+dbt run-operation check_for_comments_on_cols
+
+### linting
+
+# run pre-commit
 pre-commit run --all-files
 
 # run sqlfluff
-
 sqlfluff lint

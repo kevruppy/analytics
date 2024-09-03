@@ -60,3 +60,5 @@ https://datacoves.com/post/dbt-jinja-functions-cheat-sheet
 https://dillinger.io/
 https://github.com/nydasco/dbt_with_duckdb/
 https://medium.com/@nydas/kimball-star-schemas-in-data-warehousing-part-1-0ed765574712
+https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros
+https://datacoves.com/post/dbt-jinja-cheat-sheet

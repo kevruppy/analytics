@@ -1,7 +1,7 @@
 {% macro check_for_comments_on_cols() %}
 	{% set query %}
     SELECT
-        COUNT(*)+1 = 0
+        1
     FROM
         INFORMATION_SCHEMA.COLUMNS
     WHERE
@@ -12,7 +12,7 @@
 
   {% set results = run_query(query) %}
 
-  {% if results.rows[0][0] %}
-    {% do log(level='warning', message='Some columns are not commented!') %}
+  {% if results|length > 0 %}
+    {% do exceptions.warn("Some columns are not commented!") %}
   {% endif %}
 {% endmacro %}

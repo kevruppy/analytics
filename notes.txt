@@ -1,11 +1,14 @@
 TODO:
 
+check why on run end does not allow my macro
+check why its sometimes {-} and sometimes {}
+-> make code consistent to one style (if its optional otherwise adjust)
+--> seems to be a whitespace thing!
 
 snapshots for partner!
 
 
-check if all cols are described
--> maybe both as on-run-end test!!!
+
 
 check dbt operations!
 

@@ -7,7 +7,7 @@
     WHERE
         TABLE_SCHEMA NOT IN ({{ var('ignored_schemas') }})
     AND
-        COLUMN_COMMENT IS NULL
+        COLUMN_COMMENT IS NULL UNION ALL SELECT 1
   {% endset %}
 
   {% set results = run_query(query) %}

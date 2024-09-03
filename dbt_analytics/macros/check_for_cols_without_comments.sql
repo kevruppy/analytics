@@ -1,4 +1,4 @@
-{% macro check_for_comments_on_cols() %}
+{% macro check_for_cols_without_comments() %}
 	{% set query %}
     SELECT
         1

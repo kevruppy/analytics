@@ -1,13 +1,5 @@
 TODO:
 
-add some print statements to my macro for col check (using flags)
---> or logging?
---> use as inspiration: https://github.com/dbt-labs/dbt-project-evaluator/blob/main/macros/on-run-end/print_dbt_project_evaluator_issues.sql
-
-also wrap vacuum anaylze in a macro + add flags to not run this when doing dbt docs!
-check why its sometimes {-} and sometimes {}
--> make code consistent to one style (if its optional otherwise adjust)
---> seems to be a whitespace thing!
 
 snapshots for partner!
 

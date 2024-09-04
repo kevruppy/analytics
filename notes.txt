@@ -2,11 +2,10 @@ TODO:
 
 
 snapshots for partner!
+--> USE NEW CSV!
 
 
 
-
-check dbt operations!
 
 next step is cicd to motherduck!
 

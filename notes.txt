@@ -60,3 +60,4 @@ https://github.com/nydasco/dbt_with_duckdb/
 https://medium.com/@nydas/kimball-star-schemas-in-data-warehousing-part-1-0ed765574712
 https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros
 https://datacoves.com/post/dbt-jinja-cheat-sheet
+https://github.com/mattermost/mattermost-data-warehouse/tree/master/transform/snowflake-dbt

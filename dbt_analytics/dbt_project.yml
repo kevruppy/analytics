@@ -15,11 +15,24 @@ clean-targets:
   - "target"
 
 models:
-  # incremental models require this setting so we keep it as default
-  +on_schema_change: append_new_columns
-  +persist_docs:
-    relation: true
-    columns: true
+  dbt_analytics:
+    # incremental models require this setting so we keep it as default
+    +on_schema_change: append_new_columns
+    +persist_docs:
+      relation: true
+      columns: true
+
+    # set tags for schemas
+    stage:
+      +tags: stage
+    core:
+      +tags: core
+    intermediate:
+      +tags: intermediate
+    marts:
+      +tags: marts
+
+  # config for package `dbt_project_evaluator`
   dbt_project_evaluator:
     marts:
       structure:
@@ -38,6 +51,11 @@ seeds:
   dbt_project_evaluator:
     dbt_project_evaluator_exceptions:
       +enabled: false
+
+snapshots:
+  +persist_docs:
+    relation: true
+    columns: true
 
 sources:
   +enabled: true
@@ -68,6 +86,7 @@ vars:
   dsc_valid_from: "Date since when record is valid"
   dsc_valid_to: "Date since until record is valid"
   dsc_load_result: "Raw load result"
+  dsc_hash_key: "Surrogate key based on natural key or concatenation of multiple attributes"
 
   ### calendar
   dsc_calendar_date: "Calendar date"
@@ -132,3 +151,8 @@ vars:
   dsc_survey_product_name: "Name of ordered product that triggered the survey"
   dsc_survey_product_type: "Name of ordered product type that triggered the survey"
   dsc_survey_product_group: "Name of ordered product group that triggered the survey"
+
+  ### partners
+  dsc_partner_updated_on: "date since when we cooperate with partner"
+  dsc_partner_product_name: "name of product that partner handles"
+  dsc_partner_name: "name of partner"

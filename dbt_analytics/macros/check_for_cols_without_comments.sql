@@ -10,6 +10,8 @@
       WHERE
         TABLE_SCHEMA NOT IN ({{ var('ignored_schemas') }})
       AND
+        LEFT(COLUMN_NAME,4) != 'dbt_' -- DO NOT CHECK COLS SET UP BY DBT
+      AND
         COLUMN_COMMENT IS NULL
     {% endset %}
 

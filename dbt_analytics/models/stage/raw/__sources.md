@@ -25,3 +25,7 @@ Contains raw data for net promotor scores (NPS)
 {% docs dsc_tbl_exchange_rates %}
 Contains raw data for exchange rates
 {% enddocs %}
+
+{% docs dsc_tbl_partners %}
+Contains rawdata for partners
+{% enddocs %}

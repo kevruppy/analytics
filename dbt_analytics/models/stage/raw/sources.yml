@@ -11,6 +11,7 @@ sources:
     tags:
       - raw_data
     tables:
+      # orders
       - name: orders
         description: "{{ doc('dsc_tbl_orders') }}"
         columns:
@@ -30,6 +31,7 @@ sources:
             data_type: JSON
             data_tests:
               - not_null
+      # orders_with_placement
       - name: orders_with_placement
         description: "{{ doc('dsc_tbl_orders_with_placement') }}"
         columns:
@@ -49,6 +51,7 @@ sources:
             data_type: JSON
             data_tests:
               - not_null
+      # provision_rules
       - name: provision_rules
         description: "{{ doc('dsc_tbl_provision_rules') }}"
         columns:
@@ -68,6 +71,7 @@ sources:
             data_type: JSON
             data_tests:
               - not_null
+      # net_promotor_scores
       - name: net_promotor_scores
         description: "{{ doc('dsc_tbl_net_promotor_scores') }}"
         columns:
@@ -102,6 +106,7 @@ sources:
             data_type: VARCHAR
             data_tests:
               - not_null
+      # exchange_rates
       - name: exchange_rates
         description: "{{ doc('dsc_tbl_exchange_rates') }}"
         columns:
@@ -119,5 +124,35 @@ sources:
           - name: LOAD_RESULT
             description: "{{ var('dsc_load_result') }}"
             data_type: JSON
+            data_tests:
+              - not_null
+      # partners
+      - name: partners
+        description: "{{ doc('dsc_tbl_partners') }}"
+        columns:
+          - name: _ID
+            description: "{{ var('dsc_auto_id') }}"
+            data_type: INTEGER
+            data_tests:
+              - not_null
+              - unique
+          - name: _ADDED_ON
+            description: "{{ var('dsc_added_on') }}"
+            data_type: TIMESTAMP
+            data_tests:
+              - not_null
+          - name: UPDATED_ON
+            description: "{{ var('dsc_partner_updated_on') }}"
+            data_type: DATE
+            data_tests:
+              - not_null
+          - name: PRODUCT_NAME
+            description: "{{ var('dsc_partner_product_name') }}"
+            data_type: VARCHAR
+            data_tests:
+              - not_null
+          - name: PARTNER_NAME
+            description: "{{ var('dsc_partner_name') }}"
+            data_type: VARCHAR
             data_tests:
               - not_null

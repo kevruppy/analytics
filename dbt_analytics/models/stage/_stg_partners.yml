@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_partners
+    description: "{{ doc('dsc_stg_partners') }}"
+    config:
+      enabled: True
+      schema: stage
+      materialized: table
+      contract:
+        enforced: true
+    data_tests:
+      - row_count_source_match:
+          source_name: raw
+          table_name: partners
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - UPDATED_ON
+            - PRODUCT_NAME
+          config:
+            severity: warn
+    columns:
+      - name: HASH_KEY
+        description: "{{ var('dsc_hash_key') }}"
+        data_type: VARCHAR
+        constraints:
+          - type: primary_key
+        data_tests:
+          - not_null
+          - unique
+      - name: UPDATED_ON
+        description: "{{ var('dsc_partner_updated_on') }}"
+        data_type: DATE
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "UPDATED_ON <= CURRENT_DATE()"
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              max_value: "CURRENT_DATE()"
+      - name: PRODUCT_NAME
+        description: "{{ var('dsc_partner_product_name') }}"
+        data_type: VARCHAR
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
+      - name: PARTNER_NAME
+        description: "{{ var('dsc_partner_name') }}"
+        data_type: VARCHAR
+        constraints:
+          - type: not_null
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string

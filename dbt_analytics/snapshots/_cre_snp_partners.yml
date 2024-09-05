@@ -1,0 +1,27 @@
+version: 2
+
+snapshots:
+  - name: cre_snp_partners
+    description: "{{ doc('dsc_snp_partners') }}"
+    config:
+      enabled: true
+    columns:
+      - name: UPDATED_ON
+        description: "{{ var('dsc_partner_updated_on') }}"
+        data_type: DATE
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              max_value: "CURRENT_DATE()"
+      - name: PRODUCT_NAME
+        description: "{{ var('dsc_partner_product_name') }}"
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string
+      - name: PARTNER_NAME
+        description: "{{ var('dsc_partner_name') }}"
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+          - dbt_utils.not_empty_string

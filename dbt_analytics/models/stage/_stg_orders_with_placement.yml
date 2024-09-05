@@ -9,6 +9,10 @@ models:
       materialized: incremental
       contract:
         enforced: true
+    data_tests:
+      - row_count_source_match:
+          source_name: raw
+          table_name: orders_with_placement
     columns:
       - name: ORDER_ID
         description: "{{ var('dsc_order_id') }}"

@@ -9,6 +9,10 @@ models:
       materialized: table
       contract:
         enforced: true
+    data_tests:
+      - row_count_source_match:
+          source_name: raw
+          table_name: exchange_rates
     columns:
       - name: _ID
         description: "{{ var('dsc_auto_id') }}"

@@ -1,8 +1,8 @@
 TODO:
-
+coloring for documentation!
 
 snapshots for partner!
---> USE NEW CSV!
+-->
 
 
 

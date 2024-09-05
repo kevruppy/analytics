@@ -24,12 +24,20 @@ models:
 
     # set tags for schemas
     stage:
+      +docs:
+        node_color: black
       +tags: stage
     core:
+      +docs:
+        node_color: gray
       +tags: core
     intermediate:
+      +docs:
+        node_color: orange
       +tags: intermediate
     marts:
+      +docs:
+        node_color: red
       +tags: marts
 
   # config for package `dbt_project_evaluator`
@@ -59,6 +67,7 @@ snapshots:
 
 sources:
   +enabled: true
+  +tags: source
 
 data_tests:
   +store_failures: true

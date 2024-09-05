@@ -1,0 +1,28 @@
+version: 2
+
+analyses:
+  # check_nps
+  - name: check_nps
+    description: Analyses are only used ad-hoc & not documented
+    docs:
+      show: false
+  # check_orders
+  - name: check_orders
+    description: Analyses are only used ad-hoc & not documented
+    docs:
+      show: false
+  # agg_provisions_eur_usd
+  - name: agg_provisions_eur_usd
+    description: Analyses are only used ad-hoc & not documented
+    docs:
+      show: false
+  # corr_order_amount_nps
+  - name: corr_order_amount_nps
+    description: Analyses are only used ad-hoc & not documented
+    docs:
+      show: false
+  # orders_per_day
+  - name: orders_per_day
+    description: Analyses are only used ad-hoc & not documented
+    docs:
+      show: false

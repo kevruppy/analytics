@@ -19,7 +19,8 @@
         "ms-python.isort",
         "ms-python.black-formatter",
         "oderwat.indent-rainbow",
-        "elagil.pre-commit-helper"
+        "elagil.pre-commit-helper",
+        "Postman.postman-for-vscode"
       ]
     }
   },

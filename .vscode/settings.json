@@ -39,6 +39,7 @@
   },
   "isort.args": ["--settings-path=pyproject.toml"],
   "isort.check": true,
+  "postman.telemetry.enabled": false,
   "pre-commit-helper.config": ".pre-commit-config.yaml",
   "pre-commit-helper.runOnSave": "all hooks",
   "pylint.args": ["--rcfile=pyproject.toml"],

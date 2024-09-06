@@ -1,6 +1,6 @@
+import json
 import os
 from pathlib import Path
-import json
 
 import duckdb
 from initialize_db.execute_initialization import (
@@ -52,7 +52,9 @@ def test_get_file_names():
 
 
 def test_prep_statements():
-    """Test prepping SQL statements"""
+    """
+    Test prepping SQL statements
+    """
 
     secret = {
         "K_VAL": "FAKE_K",

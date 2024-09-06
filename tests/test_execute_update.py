@@ -11,7 +11,9 @@ from update_db.execute_update import (
 
 
 def test_load_statements():
-    """Test loading SQL statements"""
+    """
+    Test loading SQL statements
+    """
     try:
         sql_file = Path("/tmp") / "test.sql"
         sql_file.write_text("SELECT 1; SELECT 2;")
@@ -25,8 +27,9 @@ def test_load_statements():
 
 
 def test_prep_statements():
-    """Test prepping SQL statements"""
-
+    """
+    Test prepping SQL statements
+    """
     secret = {
         "K_VAL": "KKK",
         "S_VAL": "SSS",
@@ -55,9 +58,11 @@ def test_prep_statements():
 
 
 def test_execute_statements():
-    """Test executing statements"""
+    """
+    Test executing statements
+    """
     sql_file = Path("/tmp") / "test.sql"
-    sql_file.write_text("CREATE TABLE TEST (ID INT);")
+    sql_file.write_text("CREATE TEMP TABLE TEST (ID INT);")
 
     db_path = "/tmp/test_db"
 

@@ -1,11 +1,10 @@
+import json
 import logging
 import os
-import json
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List
 
 import duckdb
-
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 

@@ -56,3 +56,25 @@ https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros
 https://datacoves.com/post/dbt-jinja-cheat-sheet
 https://github.com/mattermost/mattermost-data-warehouse/tree/master/transform/snowflake-dbt
 https://motherduck.com/docs/integrations/sql-ides/dbeaver/
+
+
+name: Run Python Script on Push
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python environment
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12.5"
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Initialize db
+        run: python duckdb_analytics/initialize_db/execute_initialization.py

@@ -13,11 +13,15 @@ from db_utils.db_utils import (
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def get_file_names(sql_dir: str) -> List[str]:
+def get_file_names(env: str, sql_dir: str) -> List[str]:
     '''
     Retrieve names of SQL scripts to be executed
+    Note:
+        If executed locally there is no need to create db via SQL
+        For this reason the script prefixed with `000` is ignored
 
     Params:
+        env (str): Environment (local, prod)
         sql_dir (str): Directory in which SQL scripts can be found
 
     Returns:
@@ -25,6 +29,9 @@ def get_file_names(sql_dir: str) -> List[str]:
     '''
     sql_dir_path = Path(sql_dir)
     file_names: List[str] = sorted(sql_dir_path.glob('*.sql'))
+
+    if env == "LOCAL":
+        file_names.pop(0)
 
     if file_names:
         logging.info('Found SQL files:')
@@ -64,25 +71,27 @@ def prep_stmt_list(secret_file: str, stmt_list: List[str]) -> List[str]:
     return prepped_stmt_list
 
 
-def execute_sql_statements(sql_files: List[str], aws_secret: Dict[str, str]) -> str | None:
+def execute_sql_statements(env:str, sql_files: List[str], aws_secret: Dict[str, str]) -> str | None:
     '''
     Execute SQL statements on the provided DuckDB
 
     Params:
+        env (str): Environment (local, prod)
         sql_files (list[str]): List of files containing SQL to be executed
+        aws_secret (dict[str, str]): AWS credentials to allow reads from S3
 
     Returns:
         str | None: "SUCCESS" or None in case of failure
     '''
 
-    con = get_duckb_conn() if get_environment() == 'LOCAL' else get_motherduck_conn()
+    con = get_duckb_conn() if env == 'LOCAL' else get_motherduck_conn()
 
     try:
         for file in sql_files:
             logging.info(f'Executing SQL script: "{file.split('/')[-1]}"')
             with open(file, 'r', encoding='utf-8') as f:
                 stmt_list = f.read().strip().split(';')
-                prepped_stmt_list = prep_stmt_list(secret_file=aws_secret, stmt_list=stmt_list)
+                prepped_stmt_list = prep_stmt_list(aws_secret, stmt_list)
                 for stmt in prepped_stmt_list:
                     stmt = stmt.strip()
                     if stmt:
@@ -101,9 +110,9 @@ def execute_sql_statements(sql_files: List[str], aws_secret: Dict[str, str]) -> 
 def main():
     '''Main function to execute script'''
 
-    environment = get_environment()
+    env = get_environment()
 
-    logging.info(f'Executing in environment: {environment}')
+    logging.info(f'Executing in environment: {env}')
 
     logging.info('Collecting env variables')
 
@@ -115,10 +124,10 @@ def main():
         raise ValueError('Missing required env variables')
 
     try:
-        sql_files = get_file_names(sql_dir=sql_dir)
+        sql_files = get_file_names(env, sql_dir)
         if not sql_files:
             raise FileNotFoundError(f'No SQL files found in directory: "{sql_dir}"')
-        _ = execute_sql_statements(sql_files=sql_files, aws_secret=aws_secret)
+        _ = execute_sql_statements(env, sql_files, aws_secret)
         logging.info('Removing temp files...')
         temp_files = Path('.').glob('TMP_DUCK_DB_EXPORT_*')
         if temp_files: # pylint: disable=using-constant-test

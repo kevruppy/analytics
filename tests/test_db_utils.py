@@ -1,4 +1,15 @@
-from db_utils.db_utils import get_duckb_conn, get_motherduck_conn
+import os
+
+from db_utils.db_utils import create_db, get_duckb_conn, get_motherduck_conn
+
+
+def test_create_db():
+    """
+    Test creating a DuckDB database.
+    """
+    db = create_db()
+
+    assert db == os.getenv("DB_PATH")
 
 
 def test_get_duckb_conn():

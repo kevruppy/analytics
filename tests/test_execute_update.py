@@ -30,13 +30,13 @@ def test_prep_statements():
     """
     Test prepping SQL statements
     """
-    secret = {
-        "K_VAL": "KKK",
-        "S_VAL": "SSS",
-        "R_VAL": "RRR",
-    }
-
     try:
+        secret = {
+            "K_VAL": "KKK",
+            "S_VAL": "SSS",
+            "R_VAL": "RRR",
+        }
+
         temp_secret = "/tmp/tmp_secret.json"
         with open(temp_secret, "w", encoding="utf-8") as f:
             json.dump(secret, f)

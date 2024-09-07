@@ -4,40 +4,13 @@ import os
 from pathlib import Path
 from typing import Dict, List
 
-import duckdb
+from db_utils.db_utils import (
+    get_duckb_conn,
+    get_environment,
+    get_motherduck_conn,
+)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-
-def create_db(db_dir: str, db_name: str) -> str:
-    '''
-    (Re-)Creates DuckDB
-
-    params:
-        db_dir (str): Directory under which the DB shall be created
-        db_name (str): Name of the DB to be created
-
-    Returns:
-        db_file_path (str): File path of the created DuckDB
-    '''
-    db_dir_path = Path(db_dir)
-    db_dir_path.mkdir(parents=True, exist_ok=True)
-    full_db_name = db_dir_path / f'{db_name}.duckdb'
-
-    try:
-        if full_db_name.exists():
-            logging.info(f'Database "{db_name}" already exists - deleting...')
-            full_db_name.unlink()
-            logging.info(f'Database "{db_name}" deleted')
-
-        with duckdb.connect(str(full_db_name)):
-            logging.info(f'Database "{db_name}" created')
-
-    except Exception as e:
-        logging.error(f'Failed to create database "{db_name}": {e}')
-        raise
-
-    return str(full_db_name)
 
 
 def get_file_names(sql_dir: str) -> List[str]:
@@ -91,16 +64,20 @@ def prep_stmt_list(secret_file: str, stmt_list: List[str]) -> List[str]:
     return prepped_stmt_list
 
 
-def execute_sql_statements(db_path: str, sql_files: List[str], aws_secret: Dict[str, str]):
+def execute_sql_statements(sql_files: List[str], aws_secret: Dict[str, str]) -> str | None:
     '''
     Execute SQL statements on the provided DuckDB
 
     Params:
-        db_path (str): Path to the DuckDB
         sql_files (list[str]): List of files containing SQL to be executed
+
+    Returns:
+        str | None: "SUCCESS" or None in case of failure
     '''
-    logging.info(f'Connecting to DuckDB "{db_path}"...')
-    with duckdb.connect(db_path) as con:
+
+    con = get_duckb_conn() if get_environment() == 'LOCAL' else get_motherduck_conn()
+
+    try:
         for file in sql_files:
             logging.info(f'Executing SQL script: "{file.split('/')[-1]}"')
             with open(file, 'r', encoding='utf-8') as f:
@@ -112,28 +89,36 @@ def execute_sql_statements(db_path: str, sql_files: List[str], aws_secret: Dict[
                         try:
                             con.execute(stmt)
                         except Exception as e:
+                            con.close()
                             logging.error(f'Execution of statement failed: {stmt}\nError: {e}')
                             raise e
         logging.info('All SQL statements executed')
+        return "SUCCESS"
+    finally:
+        con.close()
 
 
 def main():
     '''Main function to execute script'''
-    db_dir = os.getenv('DB_DIR')
-    db_name = os.getenv('DB_NAME')
+
+    environment = get_environment()
+
+    logging.info(f'Executing in environment: {environment}')
+
+    logging.info('Collecting env variables')
+
     sql_dir = os.getenv('SQL_INI_DIR')
     aws_secret = os.getenv('AWS_SECRET')
 
-    if not db_dir or not db_name or not sql_dir or not aws_secret:
-        logging.error('Environment variables for db_dir, db_name, sql_dir & aws_secret must be set')
-        raise ValueError('Missing required environment variables')
+    if not sql_dir or not aws_secret:
+        logging.error('Env variables for sql_dir & aws_secret must be set')
+        raise ValueError('Missing required env variables')
 
     try:
-        db = create_db(db_dir=db_dir, db_name=db_name)
         sql_files = get_file_names(sql_dir=sql_dir)
         if not sql_files:
             raise FileNotFoundError(f'No SQL files found in directory: "{sql_dir}"')
-        execute_sql_statements(db_path=db, sql_files=sql_files, aws_secret=aws_secret)
+        _ = execute_sql_statements(sql_files=sql_files, aws_secret=aws_secret)
         logging.info('Removing temp files...')
         temp_files = Path('.').glob('TMP_DUCK_DB_EXPORT_*')
         if temp_files: # pylint: disable=using-constant-test

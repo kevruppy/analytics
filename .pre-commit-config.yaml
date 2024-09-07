@@ -28,5 +28,6 @@ repos:
       - id: check-model-has-properties-file
       - id: check-source-columns-have-desc
       - id: check-source-table-has-description
+      - id: check-script-ref-and-source
       - id: check-script-semicolon
       - id: check-source-has-loader

@@ -1,6 +1,16 @@
 TODO:
 
 pre-commit: https://github.com/dbt-checkpoint/dbt-
+--> check models has all cols not working (same for sourc)
+--> count of tests not working (mods+sources)
+--> script has no tbl name not working
+
+--> dbt parse not working:
+can be fixed using custom pre-commit hook:
+bash -c "export DB_PATH='/workspaces/analytics/analytics.duckdb' && source /workspaces/analytics/.venv/bin/activate && cd /workspaces/analytics/dbt_analytics && dbt parse --project-dir /workspaces/analytics/dbt_analytics
+
+--> write a little bash script for that
+
 
 next step is cicd to motherduck!
 

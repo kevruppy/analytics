@@ -11,12 +11,11 @@ logger = logging.getLogger(__name__)
 def get_environment() -> str:
     """
     Determines current environment (LOCAL,PROD).
-    Local development uses WSL whereas prod uses Linux
+    Local development uses WSL2 whereas prod uses Linux
 
     Returns:
         str: Current environment
     """
-
     return "LOCAL" if platform.release().endswith("WSL2") else "PROD"
 
 

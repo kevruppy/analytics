@@ -30,7 +30,7 @@ def get_file_names(env: str, sql_dir: str) -> List[str]:
     sql_dir_path = Path(sql_dir)
     file_names: List[str] = sorted(sql_dir_path.glob('*.sql'))
 
-    if env == "LOCAL":
+    if env == 'LOCAL':
         file_names.pop(0)
 
     if file_names:
@@ -81,7 +81,7 @@ def execute_sql_statements(env:str, sql_files: List[str], aws_secret: Dict[str, 
         aws_secret (dict[str, str]): AWS credentials to allow reads from S3
 
     Returns:
-        str | None: "SUCCESS" or None in case of failure
+        str | None: 'SUCCESS' or None in case of failure
     '''
 
     con = get_duckb_conn() if env == 'LOCAL' else get_motherduck_conn()
@@ -102,7 +102,7 @@ def execute_sql_statements(env:str, sql_files: List[str], aws_secret: Dict[str, 
                             logging.error(f'Execution of statement failed: {stmt}\nError: {e}')
                             raise e
         logging.info('All SQL statements executed')
-        return "SUCCESS"
+        return 'SUCCESS'
     finally:
         con.close()
 

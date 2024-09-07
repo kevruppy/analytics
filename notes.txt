@@ -1,13 +1,11 @@
 TODO:
 
-run "create_db" only if local
-env var check fail different local/prod
-adjust func execute_sql_statements
+
 
 next step is cicd to motherduck!
 
 
-check current env with print(platform.release().endswith("WSL2"))
+
 
 
 

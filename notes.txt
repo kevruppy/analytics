@@ -1,8 +1,9 @@
 TODO:
 
-
+pre-commit: https://github.com/dbt-checkpoint/dbt-
 
 next step is cicd to motherduck!
+
 
 
 
@@ -18,8 +19,8 @@ for dbt cloud only postgres and bigquery possible!
 
 cicd:
 dbt_project_evaluator
-https://github.com/dbt-checkpoint/dbt-checkpoint
-jsonschema only for ci but not in VS Code...
+https://github.com/dbt-checkpoint/dbt-
+
 
 
 
@@ -67,7 +68,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
+    stecheckpointps:
       - uses: actions/checkout@v3
       - name: Set up Python environment
         uses: actions/setup-python@v3

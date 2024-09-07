@@ -41,7 +41,7 @@
   "isort.check": true,
   "postman.telemetry.enabled": false,
   "pre-commit-helper.config": ".pre-commit-config.yaml",
-  "pre-commit-helper.runOnSave": "all hooks",
+  "pre-commit-helper.runOnSave": "none",
   "pylint.args": ["--rcfile=pyproject.toml"],
   "python.analysis.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
   "python.autoComplete.extraPaths": ["/workspaces/analytics/duckdb_analytics"],

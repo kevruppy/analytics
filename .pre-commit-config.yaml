@@ -19,3 +19,8 @@ repos:
         types: [python]
         require_serial: true
         args: ["-rn", "--rcfile=pyproject.toml"]
+
+  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+    rev: v2.0.3
+    hooks:
+      - id: check-model-columns-have-desc

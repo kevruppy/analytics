@@ -24,3 +24,6 @@ repos:
     rev: v2.0.3
     hooks:
       - id: check-model-columns-have-desc
+      - id: check-model-has-description
+      - id: check-source-columns-have-desc
+      - id: check-source-table-has-description

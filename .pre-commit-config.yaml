@@ -19,6 +19,17 @@ repos:
         types: [python]
         require_serial: true
         args: ["-rn", "--rcfile=pyproject.toml"]
+    # dbt-checkpoint has some flaws therefore custom hook for `dbt parse` is used
+    # NOTE: For simplicity this hook always runs, regardless of whether dbt-related files are committed
+  - repo: local
+    hooks:
+      - id: dbt_parse
+        name: dbt_parse
+        entry: bash -c 'source /workspaces/analytics/utils/hook_dbt_parse.sh'
+        language: system
+        types: [bash]
+        require_serial: true
+        always_run: true
 
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.3

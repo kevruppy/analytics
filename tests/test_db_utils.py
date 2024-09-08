@@ -1,6 +1,6 @@
 import os
 
-from db_utils.db_utils import (
+from db_utils.utils import (
     create_db,
     get_duckb_conn,
     get_environment,

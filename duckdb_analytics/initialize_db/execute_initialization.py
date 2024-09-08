@@ -4,11 +4,7 @@ import os
 from pathlib import Path
 from typing import Dict, List
 
-from db_utils.db_utils import (
-    get_duckb_conn,
-    get_environment,
-    get_motherduck_conn,
-)
+from db_utils.utils import get_duckb_conn, get_environment, get_motherduck_conn
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 

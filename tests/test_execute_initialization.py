@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 
-from db_utils.db_utils import get_environment
+from db_utils.utils import get_environment
 from initialize_db.execute_initialization import (
     execute_sql_statements,
     get_file_names,

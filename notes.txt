@@ -1,5 +1,6 @@
 TODO:
 
+re-activate dbt hooks!
 github action should have a pretty name
 check what else can be automated :)
 make pythonpath var "better"

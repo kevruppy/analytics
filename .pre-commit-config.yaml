@@ -30,6 +30,12 @@ repos:
         types: [bash]
         require_serial: true
         always_run: true
+    # The following hooks would be valuable but are currently not functioning correctly (possibly in a future release):
+    # check-model-has-all-columns
+    # check-model-has-tests
+    # check-script-has-no-table-name
+    # check-source-has-all-columns
+    # check-source-has-tests
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.3
     hooks:

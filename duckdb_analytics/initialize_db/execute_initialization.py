@@ -14,7 +14,7 @@ def get_file_names(env: str, sql_dir: str) -> List[str]:
     Retrieve names of SQL scripts to be executed
     Note:
         If executed locally there is no need to create db via SQL
-        For this reason the script prefixed with `000` is ignored
+        For this reason the script prefixed with '000' is ignored
 
     Params:
         env (str): Environment (local, prod)

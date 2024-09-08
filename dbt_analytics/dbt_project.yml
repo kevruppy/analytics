@@ -40,7 +40,7 @@ models:
         node_color: red
       +tags: marts
 
-  # config for package `dbt_project_evaluator`
+  # config for package "dbt_project_evaluator"
   dbt_project_evaluator:
     marts:
       structure:

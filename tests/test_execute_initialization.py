@@ -12,7 +12,7 @@ from initialize_db.execute_initialization import (
 
 def test_get_file_names():
     """
-    Test retrieving names of SQL scripts.
+    Test retrieving names of SQL scripts
     """
     try:
         # for simplicity assume local execution
@@ -71,7 +71,7 @@ def test_prep_statements():
 
 def test_execute_sql_statements():
     """
-    Test executing SQL statements on DuckDB.
+    Test executing SQL statements on DuckDB
     """
     try:
         env = get_environment()

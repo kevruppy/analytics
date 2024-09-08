@@ -1,7 +1,6 @@
 TODO:
 
 create dev brach and work on that
-can we silent the requirements install in action?
 
 next step is cicd to motherduck!
 

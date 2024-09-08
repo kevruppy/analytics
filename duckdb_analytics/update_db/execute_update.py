@@ -1,7 +1,8 @@
+import json
 import logging
 import os
+from pathlib import Path
 from typing import List
-import json
 
 import duckdb
 
@@ -85,14 +86,14 @@ def execute_statements(db_path: str, stmt_list: List[str]):
 
 def main():
     """Main function to execute script"""
-    statements_path = os.getenv("SQL_UPD_DIR")
+    statements_dir = Path(__file__).parent / "sql"
+    # Dir contains only one SQL file
+    statements_path = statements_dir / sorted(os.listdir(statements_dir))[0]
     db_path = os.getenv("DB_PATH")
     aws_secret = os.getenv("AWS_SECRET")
 
-    if not statements_path or not db_path or not aws_secret:
-        logging.error(
-            "Environment variables for statements_path, db_path & aws_secret must be set"
-        )
+    if not db_path or not aws_secret:
+        logging.error("Environment variables for db_path & aws_secret must be set")
         raise ValueError("Missing required environment variables")
 
     statements = load_statements(statements_path)

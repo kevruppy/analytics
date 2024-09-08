@@ -1,15 +1,10 @@
 TODO:
 
-create dev brach and work on that
+make pythonpath var "better"
+make sql update db env aware!
+https://github.com/sqlfluff/sqlfluff-github-actions/blob/main/menu_of_workflows/tails.com/sqlfluff_lint.yml
 
-next step is cicd to motherduck!
-
-
-
-
-
-
-
+create dev branch & work on that
 
 static website hosting in s3 for dbt docu?
 --> ionos subdomain!

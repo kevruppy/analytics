@@ -114,16 +114,14 @@ def main():
 
     logging.info(f'Executing in environment: {env}')
 
-    logging.info('Collecting env variables')
-
-    sql_dir = os.getenv('SQL_INI_DIR')
     aws_secret = os.getenv('AWS_SECRET')
 
-    if not sql_dir or not aws_secret:
-        logging.error('Env variables for sql_dir & aws_secret must be set')
-        raise ValueError('Missing required env variables')
+    if not aws_secret:
+        logging.error('Env variable "aws_secret" must be set')
+        raise ValueError('Missing required env variable')
 
     try:
+        sql_dir = Path(__file__).parent / "sql"
         sql_files = get_file_names(env, sql_dir)
         if not sql_files:
             raise FileNotFoundError(f'No SQL files found in directory: "{sql_dir}"')

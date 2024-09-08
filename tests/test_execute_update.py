@@ -1,12 +1,12 @@
-import os
 import json
+import os
 from pathlib import Path
 
 import duckdb
 from update_db.execute_update import (
+    execute_statements,
     load_statements,
     prep_statements,
-    execute_statements,
 )
 
 

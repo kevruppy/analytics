@@ -19,6 +19,10 @@ repos:
         types: [python]
         require_serial: true
         args: ["-rn", "--rcfile=pyproject.toml"]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
     # dbt-checkpoint has some flaws therefore custom hook for `dbt parse` is used
     # NOTE: For simplicity this hook always runs, regardless of whether dbt-related files are committed
   - repo: local

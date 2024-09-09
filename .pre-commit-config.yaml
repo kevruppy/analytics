@@ -36,18 +36,19 @@ repos:
         always_run: true
     # The following hooks would be valuable but are currently not functioning correctly (possibly in a future release):
     # check-model-has-all-columns
+    # check-model-has-description
+    # check-model-has-properties-file
     # check-model-has-tests
     # check-script-has-no-table-name
+    # check-script-ref-and-source
+    # check-script-semicolon
+    # check-source-columns-have-desc
     # check-source-has-all-columns
+    # check-source-has-loader
     # check-source-has-tests
+    # check-source-table-has-description
+    # -> Use just one hook to show-case how it would work
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.3
     hooks:
       - id: check-model-columns-have-desc
-      - id: check-model-has-description
-      - id: check-model-has-properties-file
-      # - id: check-source-columns-have-desc
-      #- id: check-source-table-has-description
-      - id: check-script-ref-and-source
-      - id: check-script-semicolon
-      #- id: check-source-has-loader

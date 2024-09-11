@@ -38,10 +38,10 @@ repos:
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.3
     hooks:
-      #- id: check-macro-arguments-have-desc
-      #  exclude: '^(?!dbt_analytics/macros/)|^\.md$'
-      #- id: check-macro-has-description
-      #  exclude: '^(?!dbt_analytics/macros/)|^\.md$'
+      - id: check-macro-arguments-have-desc
+        exclude: '^(?!dbt_analytics/macros/)|^\.md$'
+      - id: check-macro-has-description
+        exclude: '^(?!dbt_analytics/macros/)|^\.md$'
       - id: check-model-columns-have-desc
         exclude: '^(?!dbt_analytics/models/)|^\.md$'
       - id: check-model-has-all-columns

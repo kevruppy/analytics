@@ -8,24 +8,6 @@ add macro desc, adjust exclude pattern for macro hooks!
 prettier pre-commit and cicd
 
 
-re-activate dbt hooks!
---> seems to be the only way: https://stackoverflow.com/questions/75560681/how-to-exclude-multiple-directories-in-pre-commit
-Simplify pattern:
-
-1. Only files in dbt_analytics
-2. Only files in subfolders:
-	- analyses (only some hooks)
-	- macros
-	- models
-	- seeds
-	- snapshots
-	- tests
-3. Exclude CSV files
-
---> Then try to commit all file types: sql, yaml, md
---> All dbt types (meaning also unit tests)
-
-
 
 github action should have a pretty name
 check what else can be automated :)

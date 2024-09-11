@@ -1,0 +1,5 @@
+version: 2
+
+macros:
+  - name: check_for_cols_without_comments
+    description: "{{ doc('dsc_check_for_cols_without_comments') }}"

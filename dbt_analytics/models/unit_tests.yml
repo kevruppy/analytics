@@ -1,6 +1,6 @@
 unit_tests:
   - name: test_is_invalid_order
-    description: "Check if orders are invalidated (invalid if at least one record is flagged as test)"
+    description: "Check if orders are invalidated (-> invalid if at least one record is flagged as test)"
     model: cre_orders
     overrides:
       macros:

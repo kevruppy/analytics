@@ -34,20 +34,37 @@ repos:
         types: [bash]
         require_serial: true
         always_run: true
-    # The following hooks would be valuable but are currently not functioning correctly (possibly in a future release):
-    # check-model-has-all-columns
-    # check-model-has-tests
-    # check-script-has-no-table-name
-    # check-source-has-all-columns
-    # check-source-has-tests
+    # Excluding files using regex necessary due to flaws of dbt-checkpoint
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.3
     hooks:
+      #- id: check-macro-arguments-have-desc
+      #  exclude: '^(?!dbt_analytics/macros/)|^\.md$'
+      #- id: check-macro-has-description
+      #  exclude: '^(?!dbt_analytics/macros/)|^\.md$'
       - id: check-model-columns-have-desc
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
+      - id: check-model-has-all-columns
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
       - id: check-model-has-description
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
       - id: check-model-has-properties-file
-      # - id: check-source-columns-have-desc
-      # - id: check-source-table-has-description
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
+      - id: check-model-has-tests
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
+      - id: check-script-has-no-table-name
+        exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
       - id: check-script-ref-and-source
+        exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
       - id: check-script-semicolon
-      # - id: check-source-has-loader
+        exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
+      - id: check-source-columns-have-desc
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-has-all-columns
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-has-loader
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-has-tests
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-table-has-description
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'

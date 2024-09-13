@@ -156,3 +156,53 @@ sources:
             data_type: VARCHAR
             data_tests:
               - not_null
+      # calendar
+      - name: calendar
+        description: "{{ doc('dsc_tbl_calendar') }}"
+        columns:
+          - name: _ID
+            description: "{{ var('dsc_auto_id') }}"
+            data_type: INTEGER
+            data_tests:
+              - not_null
+              - unique
+          - name: _ADDED_ON
+            description: "{{ var('dsc_added_on') }}"
+            data_type: TIMESTAMP
+            data_tests:
+              - not_null
+          - name: CALENDAR_DATE
+            description: "{{ var('dsc_calendar_date') }}"
+            data_type: DATE
+            data_tests:
+              - not_null
+          - name: CALENDAR_WEEK
+            description: "{{ var('dsc_calendar_week') }}"
+            data_type: INTEGER
+            data_tests:
+              - not_null
+          - name: CALENDAR_MONTH
+            description: "{{ var('dsc_calendar_month') }}"
+            data_type: INTEGER
+            data_tests:
+              - not_null
+          - name: CALENDAR_QUARTER
+            description: "{{ var('dsc_calendar_quarter') }}"
+            data_type: INTEGER
+            data_tests:
+              - not_null
+          - name: CALENDAR_YEAR
+            description: "{{ var('dsc_calendar_year') }}"
+            data_type: INTEGER
+            data_tests:
+              - not_null
+          - name: CALENDAR_DAY_NAME
+            description: "{{ var('dsc_calendar_day_name') }}"
+            data_type: VARCHAR
+            data_tests:
+              - not_null
+          - name: IS_WEEKEND
+            description: "{{ var('dsc_calendar_is_weekend') }}"
+            data_type: BOOLEAN
+            data_tests:
+              - not_null

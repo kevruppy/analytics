@@ -29,3 +29,7 @@ Contains raw data for exchange rates
 {% docs dsc_tbl_partners %}
 Contains rawdata for partners
 {% enddocs %}
+
+{% docs dsc_tbl_calendar %}
+Calendar table
+{% enddocs %}

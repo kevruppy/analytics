@@ -1,6 +1,9 @@
 TODO:
 
 
+fix pre-commit dbt checkpoint
+
+
 prettier cicd
 Exception Seed
 --> for product names in "orders.csv"!
@@ -13,7 +16,7 @@ Evidence Cloud
 github action should have a pretty name
 check what else can be automated :)
 make pythonpath var "better"
-make sql update db env aware!
+
 https://github.com/sqlfluff/sqlfluff-github-actions/blob/main/menu_of_workflows/tails.com/sqlfluff_lint.yml
 
 dbt-slim-ci!

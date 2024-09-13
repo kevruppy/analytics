@@ -1,6 +1,6 @@
 import json
-import os
 from datetime import datetime
+from pathlib import Path
 
 import pytest
 import requests
@@ -53,13 +53,15 @@ def test_write_results_to_json():
     """
     Test to check function write_results_to_json
     """
-    temp_file = "test_results.json"
-    results = [{"date": "2023-01-01", "rates": {"USD": 1.05}}]
-    write_results_to_json(results, temp_file)
+    try:
+        tmp_file = Path("/tmp/test_results.json")
+        results = [{"date": "2023-01-01", "rates": {"USD": 1.05}}]
+        write_results_to_json(results, tmp_file)
 
-    assert os.path.exists(temp_file)
-    with open(temp_file, "r", encoding="utf-8") as f:
-        data = json.load(f)
-        assert data == results
-
-    os.remove(temp_file)
+        assert tmp_file.exists()
+        with open(tmp_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            assert data == results
+    finally:
+        if tmp_file.exists():
+            tmp_file.unlink()

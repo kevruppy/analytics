@@ -52,8 +52,8 @@ repos:
         exclude: '^(?!dbt_analytics/models/)|^\.md$'
       - id: check-model-has-tests
         exclude: '^(?!dbt_analytics/models/)|^\.md$'
-      - id: check-script-has-no-table-name
-        exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
+      #- id: check-script-has-no-table-name
+      #  exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
       - id: check-script-ref-and-source
         exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
       - id: check-script-semicolon

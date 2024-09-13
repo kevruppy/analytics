@@ -1,4 +1,4 @@
-# model desc
+# seed desc
 
 {% docs dsc_map_provision_rules_product %}
 Maps product names used in provision rules to common product names

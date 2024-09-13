@@ -1,12 +1,13 @@
 TODO:
 
+hook_dbt_parse also needs to build catalog!
 
-fix pre-commit dbt checkpoint
+more pre-commits:
+flake8
+black
 
 
 prettier cicd
-Exception Seed
---> for product names in "orders.csv"!
 AWS Cost Explorer
 AWS IAM (s3 read-only)
 Evidence Cloud
@@ -53,7 +54,6 @@ green blue deployment
 
 out of scope:
 - sqlfluff should lint dbt tests properly
-- python formatters (no need for ruff, pylint is fine)
 (add more data e.g. product info, web traffic, customer whatever, channel costs)
 
 Links:

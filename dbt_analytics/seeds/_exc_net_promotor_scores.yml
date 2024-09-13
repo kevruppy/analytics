@@ -1,0 +1,19 @@
+version: 2
+
+seeds:
+  - name: exc_net_promotor_scores
+    description: "{{ doc('dsc_exc_net_promotor_scores') }}"
+    config:
+      enabled: True
+      delimiter: ","
+      schema: mapping
+      column_types:
+        ORDER_ID: INTEGER
+    columns:
+      - name: ORDER_ID
+        description: "{{ doc('dsc_exc_nps_order_id') }}"
+        data_tests:
+          - not_null
+          - unique
+          - dbt_utils.expression_is_true:
+              expression: "> 0"

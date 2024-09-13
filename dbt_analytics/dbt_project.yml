@@ -164,6 +164,6 @@ vars:
   dsc_survey_product_group: "Name of ordered product group that triggered the survey"
 
   ### partners
-  dsc_partner_updated_on: "date since when we cooperate with partner"
-  dsc_partner_product_name: "name of product that partner handles"
-  dsc_partner_name: "name of partner"
+  dsc_partner_updated_on: "Date since when we cooperate with partner"
+  dsc_partner_product_name: "Name of product that partner handles"
+  dsc_partner_name: "Name of partner"

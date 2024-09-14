@@ -38,8 +38,7 @@ repos:
     rev: 24.8.0
     hooks:
       - id: black
-        args: [--line-length=100]
-    # dbt-checkpoint has some flaws therefore custom hook for `dbt_parse_docs_generate` is used
+    # dbt-checkpoint has some flaws therefore custom hook for `dbt_parse_docs_generate` is used!
     # NOTE: For simplicity this hook always runs, regardless of whether dbt-related files are committed
   - repo: local
     hooks:

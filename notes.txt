@@ -1,5 +1,8 @@
 TODO:
 
+fix black in VS Code to use 100 line lenght!
+Github Actions disable by-pass option (branch protection)
+
 
 prettier cicd
 AWS Cost Explorer
@@ -11,7 +14,7 @@ Evidence Cloud
 check what else can be automated :)
 make pythonpath var "better"
 
-https://github.com/sqlfluff/sqlfluff-github-actions/blob/main/menu_of_workflows/tails.com/sqlfluff_lint.yml
+
 
 dbt-slim-ci!
 

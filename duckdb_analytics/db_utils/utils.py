@@ -84,6 +84,8 @@ def get_duckb_conn(env: str, db_path: str = None) -> duckdb.DuckDBPyConnection |
 def get_motherduck_conn(env: str) -> duckdb.DuckDBPyConnection:
     """
     Creates connection to MotherDuck (prod)
+    Locally env var `MOTHERDUCK_SECRET` is a path (as string)
+    On prod env var `MOTHERDUCK_SECRET` equals a token
 
     Params:
         env (str): Environment (local, prod)

@@ -48,7 +48,11 @@ jobs:
           pytest
 
       - name: Lint dbt models with SQLFluff
-        run: "cd dbt_analytics/ && sqlfluff lint analyses/ models/"
+        run: |
+          cd dbt_analytics
+          sqlfluff lint analyses/ models/
 
       - name: Lint DuckDB SQL files with SQLFluff
-        run: "cd duckdb_analytics/ && sqlfluff lint"
+        run: |
+          cd duckdb_analytics
+          sqlfluff lint

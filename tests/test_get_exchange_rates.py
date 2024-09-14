@@ -44,7 +44,7 @@ def test_fetch_exchange_rate_failure():
     """
     Test to check function fetch_exchange_rate in case of failure
     """
-    date = "invalid_date"
+    date = "INVALID_DATE"
     with pytest.raises(requests.exceptions.HTTPError):
         fetch_exchange_rate(date)
 

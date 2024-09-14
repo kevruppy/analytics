@@ -12,9 +12,7 @@ from db_utils.utils import (
     prep_stmt_list,
 )
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def main():
@@ -31,6 +29,7 @@ def main():
         logging.error("Env variable `AWS_SECRET` must be set")
         raise ValueError("Missing required env variable")
 
+    # Locally `AWS_SECRET` is a path (as string)
     _ = os.getenv("AWS_SECRET")
     aws_secret = load_secret_json(Path(_)) if env == "LOCAL" else _
 

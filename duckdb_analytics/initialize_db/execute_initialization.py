@@ -14,9 +14,7 @@ from db_utils.utils import (
     prep_stmt_list,
 )
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def main():
@@ -30,6 +28,7 @@ def main():
         logging.error("Env variable `AWS_SECRET` must be set")
         raise ValueError("Missing required env variable")
 
+    # Locally `AWS_SECRET` is a path (as string)
     _ = os.getenv("AWS_SECRET")
     aws_secret = load_secret_json(Path(_)) if env == "LOCAL" else _
     # pylint: enable=duplicate-code
@@ -40,6 +39,7 @@ def main():
         if not sql_files:
             raise FileNotFoundError(f"No SQL files found in directory: '{sql_dir}'")
 
+        # If not executed locally `create_db()` will return None
         _ = create_db(env)
         conn = get_duckb_conn(env) if env == "LOCAL" else get_motherduck_conn(env)
 
@@ -65,7 +65,7 @@ def main():
                 tf.unlink()
         else:
             logging.info("No temp files found")
-        logging.info("SUCCESS: Database setup successful")
+        logging.info("SUCCESS: Database setup finished")
     except Exception as e:
         logging.error(f"An error occurred during database setup: {e}")
         raise

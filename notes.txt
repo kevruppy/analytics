@@ -1,7 +1,5 @@
 TODO:
 
-https://github.com/pre-commit/pre-commit-hooks/blob/main/README.md --> some more
-
 
 more pre-commits:
 flake8

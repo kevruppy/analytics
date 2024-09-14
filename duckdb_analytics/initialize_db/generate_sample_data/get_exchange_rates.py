@@ -15,14 +15,12 @@ schema_path = Path(__file__).parent / "schema.json"
 output_file = Path(__file__).parents[1] / "sample_data" / "exchange_rates.json"
 
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def generate_dates(start_date: datetime, end_date: datetime) -> List[str]:
     """
-    Generates a list of month-end dates between start_date and end_date.
+    Generates a list of month-end dates between start_date & end_date.
 
     Args:
         start_date (datetime): Starting date of range.

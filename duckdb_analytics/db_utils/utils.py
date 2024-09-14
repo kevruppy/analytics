@@ -194,11 +194,9 @@ def prep_stmt_list(aws_secret: Dict[str, str], stmt_list: List[str]) -> List[str
     return prepped_stmt_list
 
 
-def execute_stmt_list(
-    conn: duckdb.DuckDBPyConnection, stmt_list: List[str]
-) -> str | None:
+def execute_stmt_list(conn: duckdb.DuckDBPyConnection, stmt_list: List[str]) -> str | None:
     """
-    Iterates over list of SQL statements and executes them in DuckDB/ MotherDuck (local, prod)
+    Iterates over list of SQL statements & executes them in DuckDB/ MotherDuck (local, prod)
 
     Params:
         conn (duckdb.DuckDBPyConnection): Connection to DuckDB/ MotherDuck (local, prod)
@@ -217,8 +215,6 @@ def execute_stmt_list(
                 logger.info(f"Execution of statement {stmt_num} finished")
             except Exception as e:
                 conn.close()
-                logger.error(
-                    f"Execution of statement {stmt_num} failed: {stmt}\nError: {e}"
-                )
+                logger.error(f"Execution of statement {stmt_num} failed: {stmt}\nError: {e}")
                 raise e
     return "SUCCESS"

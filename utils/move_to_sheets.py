@@ -9,16 +9,12 @@ import gspread
 
 def main():
     """
-    Executes a query in DuckDB (local) and stores results in Google Sheets
+    Executes a query in DuckDB (local) & stores results in Google Sheets
     """
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-    )
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--query", help="Query for data to be written to sheets", required=True
-    )
+    parser.add_argument("--query", help="Query for data to be written to sheets", required=True)
     args = parser.parse_args()
 
     if (
@@ -49,9 +45,7 @@ def main():
             df = res.df()
 
         num_rows, num_cols = df.shape
-        logging.info(
-            f"Writing {num_rows} row(s) and {num_cols} col(s) to sheet '{name}'"
-        )
+        logging.info(f"Writing {num_rows} row(s) & {num_cols} col(s) to sheet '{name}'")
 
         ws.update([df.columns.values.tolist()] + df.values.tolist())
         logging.info("SUCCESS")

@@ -23,13 +23,13 @@ repos:
     rev: 5.13.2
     hooks:
       - id: isort
-    # dbt-checkpoint has some flaws therefore custom hook for `dbt parse` is used
+    # dbt-checkpoint has some flaws therefore custom hook for `dbt_parse_docs_generate` is used
     # NOTE: For simplicity this hook always runs, regardless of whether dbt-related files are committed
   - repo: local
     hooks:
-      - id: dbt_parse
-        name: dbt_parse
-        entry: bash -c 'source /workspaces/analytics/utils/hook_dbt_parse.sh'
+      - id: dbt_parse_docs_generate
+        name: dbt_parse_docs_generate
+        entry: bash -c 'source /workspaces/analytics/utils/dbt_parse_docs_generate.sh'
         language: system
         types: [bash]
         require_serial: true

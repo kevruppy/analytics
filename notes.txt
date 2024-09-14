@@ -11,7 +11,7 @@ Evidence Cloud
 check what else can be automated :)
 make pythonpath var "better"
 
-https://github.com/sqlfluff/sqlfluff-github-actions/blob/main/menu_of_workflows/tails.com/sqlfluff_lint.yml
+
 
 dbt-slim-ci!
 

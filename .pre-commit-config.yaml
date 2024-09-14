@@ -4,6 +4,25 @@ ci:
   autoupdate_branch: dev
   autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
   autoupdate_schedule: monthly
+  skip:
+    - pylint
+    # dbt related hooks are ignored due to dbt-checkpoint having flaws
+    - dbt_parse_docs_generate
+    - check-macro-arguments-have-desc
+    - check-macro-has-description
+    - check-model-columns-have-desc
+    - check-model-has-all-columns
+    - check-model-has-description
+    - check-model-has-properties-file
+    - check-model-has-tests
+    #- check-script-has-no-table-name
+    - check-script-ref-and-source
+    - check-script-semicolon
+    - check-source-columns-have-desc
+    - check-source-has-all-columns
+    - check-source-has-loader
+    - check-source-has-tests
+    - check-source-table-has-description
   submodules: false
 
 repos:
@@ -29,7 +48,7 @@ repos:
     hooks:
       - id: pylint
         name: pylint
-        entry: /workspaces/analytics/.venv/bin/pylint
+        entry: ./.venv/bin/pylint
         language: system
         types: [python]
         require_serial: true
@@ -46,13 +65,13 @@ repos:
     rev: 24.8.0
     hooks:
       - id: black
-    # dbt-checkpoint has some flaws therefore custom hook for `dbt_parse_docs_generate` is used!
+    # dbt-checkpoint has some flaws therefore custom hook for `dbt_parse_docs_generate` is used
     # NOTE: For simplicity this hook always runs, regardless of whether dbt-related files are committed
   - repo: local
     hooks:
       - id: dbt_parse_docs_generate
         name: dbt_parse_docs_generate
-        entry: bash -c 'source /workspaces/analytics/utils/dbt_parse_docs_generate.sh'
+        entry: bash -c 'source ./utils/dbt_parse_docs_generate.sh'
         language: system
         types: [bash]
         require_serial: true

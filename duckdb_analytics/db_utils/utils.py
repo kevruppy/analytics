@@ -84,7 +84,7 @@ def get_duckb_conn(env: str, db_path: str = None) -> duckdb.DuckDBPyConnection |
 def get_motherduck_conn(env: str) -> duckdb.DuckDBPyConnection:
     """
     Creates connection to MotherDuck (prod)
-    Locally env var `MOTHERDUCK_SECRET` is a path (as string)
+    Locally env var `MOTHERDUCK_SECRET` is a path (as string) pointing to file with token
     On prod env var `MOTHERDUCK_SECRET` equals a token
 
     Params:
@@ -110,7 +110,7 @@ def get_motherduck_conn(env: str) -> duckdb.DuckDBPyConnection:
 
 def get_sql_files(env: str, sql_dir: Path) -> List[Path]:
     """
-    Retrieve paths of SQL files (scripts) to be executed
+    Retrieves paths of SQL files (scripts) to be executed
     Note:
         If executed locally there is no need to create db using SQL
         For this reason first script (prefixed with "000") is ignored

@@ -1,11 +1,6 @@
 TODO:
 
 
-more pre-commits:
-flake8
-black
-
-
 prettier cicd
 AWS Cost Explorer
 AWS IAM (s3 read-only)

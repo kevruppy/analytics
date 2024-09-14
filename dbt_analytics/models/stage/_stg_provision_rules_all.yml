@@ -18,6 +18,7 @@ models:
             - PRODUCT_NAME
             - START_DATE
             - END_DATE
+          # Not an error!
           config:
             severity: warn
     columns:

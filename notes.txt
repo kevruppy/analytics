@@ -1,14 +1,20 @@
 TODO:
 
+
+prettier cicd
+AWS Cost Explorer
+AWS IAM (s3 read-only)
+Evidence Cloud
+
+
+
 github action should have a pretty name
 check what else can be automated :)
 make pythonpath var "better"
-make sql update db env aware!
+
 https://github.com/sqlfluff/sqlfluff-github-actions/blob/main/menu_of_workflows/tails.com/sqlfluff_lint.yml
 
 dbt-slim-ci!
-
-create dev branch & work on that
 
 static website hosting in s3 for dbt docu?
 --> ionos subdomain!
@@ -42,17 +48,14 @@ green blue deployment
 
 out of scope:
 - sqlfluff should lint dbt tests properly
-- python formatters (no need for ruff, pylint is fine)
 (add more data e.g. product info, web traffic, customer whatever, channel costs)
 
 Links:
 https://neon.tech/
 https://blog.streamlit.io/host-your-streamlit-app-for-free/
 https://datacoves.com/post/dbt-jinja-functions-cheat-sheet
-https://dillinger.io/
 https://github.com/nydasco/dbt_with_duckdb/
 https://medium.com/@nydas/kimball-star-schemas-in-data-warehousing-part-1-0ed765574712
 https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros
 https://datacoves.com/post/dbt-jinja-cheat-sheet
 https://github.com/mattermost/mattermost-data-warehouse/tree/master/transform/snowflake-dbt
-https://motherduck.com/docs/integrations/sql-ides/dbeaver/

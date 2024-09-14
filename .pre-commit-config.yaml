@@ -6,8 +6,15 @@ repos:
       - id: check-docstring-first
       - id: check-json
       - id: check-toml
+      - id: check-xml
       - id: check-yaml
+      - id: detect-private-key
       - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-submodules
+      - id: name-tests-test
+        args:
+          - --pytest-test-first
       - id: requirements-txt-fixer
       - id: trailing-whitespace
   - repo: local
@@ -23,31 +30,62 @@ repos:
     rev: 5.13.2
     hooks:
       - id: isort
-    # dbt-checkpoint has some flaws therefore custom hook for `dbt parse` is used
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+        args: [--line-length=100]
+    # dbt-checkpoint has some flaws therefore custom hook for `dbt_parse_docs_generate` is used
     # NOTE: For simplicity this hook always runs, regardless of whether dbt-related files are committed
   - repo: local
     hooks:
-      - id: dbt_parse
-        name: dbt_parse
-        entry: bash -c 'source /workspaces/analytics/utils/hook_dbt_parse.sh'
+      - id: dbt_parse_docs_generate
+        name: dbt_parse_docs_generate
+        entry: bash -c 'source /workspaces/analytics/utils/dbt_parse_docs_generate.sh'
         language: system
         types: [bash]
         require_serial: true
         always_run: true
-    # The following hooks would be valuable but are currently not functioning correctly (possibly in a future release):
-    # check-model-has-all-columns
-    # check-model-has-tests
-    # check-script-has-no-table-name
-    # check-source-has-all-columns
-    # check-source-has-tests
+    # Excluding files using regex necessary due to flaws of dbt-checkpoint
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v2.0.3
     hooks:
+      - id: check-macro-arguments-have-desc
+        exclude: '^(?!dbt_analytics/macros/)|^\.md$'
+      - id: check-macro-has-description
+        exclude: '^(?!dbt_analytics/macros/)|^\.md$'
       - id: check-model-columns-have-desc
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
+      - id: check-model-has-all-columns
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
       - id: check-model-has-description
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
       - id: check-model-has-properties-file
-      # - id: check-source-columns-have-desc
-      # - id: check-source-table-has-description
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
+      - id: check-model-has-tests
+        exclude: '^(?!dbt_analytics/models/)|^\.md$'
+      #- id: check-script-has-no-table-name
+      #  exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
       - id: check-script-ref-and-source
+        exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
       - id: check-script-semicolon
-      # - id: check-source-has-loader
+        exclude: ^(?!dbt_analytics/models/)|^\.md$|^\.yml$'
+      - id: check-source-columns-have-desc
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-has-all-columns
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-has-loader
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-has-tests
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+      - id: check-source-table-has-description
+        exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 3.1.0
+    hooks:
+      - id: sqlfluff-lint
+      - id: sqlfluff-fix

@@ -2,6 +2,7 @@ import calendar
 import json
 import logging
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import jsonschema
@@ -9,18 +10,17 @@ import requests
 from jsonschema import validate
 
 API_URL = "https://api.frankfurter.app"
-SCHEMA_PATH = "/workspaces/analytics/duckdb_analytics/initialize_db/generate_sample_data/schema.json"  # pylint: disable=line-too-long
-OUTPUT_FILE = "/workspaces/analytics/duckdb_analytics/initialize_db/sample_data/exchange_rates.json"
+
+schema_path = Path(__file__).parent / "schema.json"
+output_file = Path(__file__).parents[1] / "sample_data" / "exchange_rates.json"
 
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def generate_dates(start_date: datetime, end_date: datetime) -> List[str]:
     """
-    Generates a list of month-end dates between start_date and end_date.
+    Generates a list of month-end dates between start_date & end_date.
 
     Args:
         start_date (datetime): Starting date of range.
@@ -72,13 +72,13 @@ def fetch_exchange_rate(date: str, max_retries: int = 3) -> Optional[Dict[str, A
     return None
 
 
-def write_results_to_json(results: List[Dict[str, Any]], filename: str) -> None:
+def write_results_to_json(results: List[Dict[str, Any]], filename: Path):
     """
     Writes the given results to a JSON file.
 
     Args:
         results (List[Dict[str, Any]]): List of exchange rates.
-        filename (str): Name of JSON file.
+        filename (Path): Path of JSON file.
     """
     try:
         with open(filename, "w", encoding="utf-8") as f:
@@ -88,7 +88,7 @@ def write_results_to_json(results: List[Dict[str, Any]], filename: str) -> None:
         logging.error(f"Failed to write results to {filename}: {e}")
 
 
-def main() -> None:
+def main():
     """
     Main function to generate dates & fetch exchange rate for each date.
     """
@@ -100,16 +100,16 @@ def main() -> None:
 
     logging.info(f"Fetched {len(results)} exchange rates.")
 
-    with open(SCHEMA_PATH, "r", encoding="utf-8") as f:
+    with open(schema_path, "r", encoding="utf-8") as f:
         schema = json.load(f)
 
     try:
         validate(instance=results, schema=schema)
         logging.info("Validation successful: Data is valid.")
     except jsonschema.exceptions.ValidationError as e:
-        logging.error(f"Validation error: {e}")
+        logging.error(f"Validation failed with error: {e}")
 
-    write_results_to_json(results, OUTPUT_FILE)
+    write_results_to_json(results, output_file)
 
 
 if __name__ == "__main__":

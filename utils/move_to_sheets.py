@@ -9,18 +9,23 @@ import gspread
 
 def main():
     """
-    Executes a query in DuckDB and stores results in Google Sheets
+    Executes a query in DuckDB (local) & stores results in Google Sheets
     """
-
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-    )
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--query", help="Query for data to be written to sheets", required=True
-    )
+    parser.add_argument("--query", help="Query for data to be written to sheets", required=True)
     args = parser.parse_args()
+
+    if (
+        not os.getenv("GCP_SERVICE_ACCOUNT")
+        or not os.getenv("GOOGLE_MAIL_ADDRESS")
+        or not os.getenv("DB_PATH")
+    ):
+        logging.error(
+            "Env vars `GCP_SERVICE_ACCOUNT`, `GOOGLE_MAIL_ADDRESS` & `DB_PATH` cannot be found"
+        )
+        raise ValueError("Aborted due to missing required env vars")
 
     try:
         name = f"ADHOC_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
@@ -35,14 +40,12 @@ def main():
 
         ws = sh.worksheet(name)
 
-        with duckdb.connect(os.getenv("DB_PATH")) as con:
-            res = con.execute(args.query)
+        with duckdb.connect(os.getenv("DB_PATH")) as conn:
+            res = conn.execute(args.query)
             df = res.df()
 
         num_rows, num_cols = df.shape
-        logging.info(
-            f"Writing {num_rows} row(s) and {num_cols} col(s) to sheet '{name}'"
-        )
+        logging.info(f"Writing {num_rows} row(s) & {num_cols} col(s) to sheet '{name}'")
 
         ws.update([df.columns.values.tolist()] + df.values.tolist())
         logging.info("SUCCESS")

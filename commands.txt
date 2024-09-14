@@ -1,7 +1,7 @@
 ### bash
 
-# files in cwd not having file extension ".sock"
-find . -type f ! -name "*.sock"
+# files in cwd not having file extensions ".sock", ".log" or ".js"
+find . -type f ! -name "*.sock" ! -name "*.log" ! -name "*.js"
 
 ### dbt
 

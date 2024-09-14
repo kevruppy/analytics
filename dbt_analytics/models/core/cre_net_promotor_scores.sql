@@ -26,6 +26,7 @@ WITH CTE_NET_PROMOTOR_SCORES AS (
 		CTE_NET_PROMOTOR_SCORES AS _NPS
 	INNER JOIN {{ ref('map_net_promotor_scores_product_abbreviations') }} AS _MAP
 		ON _NPS.PRODUCT_ABBREVIATION = _MAP.PRODUCT_ABBREVIATION
+	-- HANDLE EXCEPTIONS
 	LEFT OUTER JOIN {{ ref('exc_net_promotor_scores') }} AS _EXC
 		ON _NPS.ORDER_ID = _EXC.ORDER_ID
 )

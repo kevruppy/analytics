@@ -9,7 +9,7 @@ sql_file_exts = .sql
 max_line_length = 120
 
 [sqlfluff:templater:dbt]
-project_dir = /workspaces/analytics/dbt_analytics
+project_dir = ./dbt_analytics
 
 [sqlfluff:indentation]
 indent_unit = tab

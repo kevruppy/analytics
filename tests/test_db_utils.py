@@ -156,7 +156,7 @@ def test_prep_stmt_list():
 
 def test_execute_stmt_list():
     """
-    Test executing statements
+    Test executing statements (uses DuckDB, not MotherDuck)
     """
     try:
         db_path_str = "/tmp/test_db.duckdb"

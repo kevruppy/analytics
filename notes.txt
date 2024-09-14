@@ -1,5 +1,6 @@
 TODO:
 
+Write some docu!
 
 prettier cicd
 AWS Cost Explorer

@@ -9,4 +9,4 @@ include_trailing_comma = true
 # C0114:missing-module-docstring, W1203:logging-fstring-interpolation
 disable = ["C0114", "W1203"]
 # necessary to run pylint pre-commit hook
-init-hook = 'import sys; import platform; sys.path.append("/workspaces/analytics/duckdb_analytics") if platform.release().endswith("WSL2") else None'
+init-hook = 'import sys; import platform; sys.path.append("./duckdb_analytics") if platform.release().endswith("WSL2") else None'

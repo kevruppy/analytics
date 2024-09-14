@@ -24,41 +24,37 @@ def test_get_environment():
 
 def test_create_db():
     """
-    Test creating a DuckDB database (only local testing)
+    Test creating a DuckDB database
     """
-    env = get_environment()
+    # For simplicity assume local execution
+    env = "LOCAL"
     db_path = Path("/tmp/test.duckdb")
 
-    if env == "LOCAL":
-        try:
-            db = create_db(env, db_path)
-            assert db == str(db_path)
-        finally:
-            if db_path.exists():
-                db_path.unlink()
-    else:
-        assert True
+    try:
+        db = create_db(env, db_path)
+        assert db == str(db_path)
+    finally:
+        if db_path.exists():
+            db_path.unlink()
 
 
 def test_get_duckb_conn():
     """
-    Test getting DuckDB connection (only local testing)
+    Test getting DuckDB connection
     """
-    env = get_environment()
+    # For simplicity assume local execution
+    env = "LOCAL"
     db_path = Path("/tmp/test.duckdb")
 
-    if env == "LOCAL":
-        try:
-            db = create_db(env, db_path)
-            conn = get_duckb_conn(env, db)
-            assert conn.query("SELECT 1").to_df().iloc[0, 0] == 1
-        finally:
-            if conn:
-                conn.close()
-            if Path(db_path).exists():
-                Path(db_path).unlink()
-    else:
-        assert True
+    try:
+        db = create_db(env, db_path)
+        conn = get_duckb_conn(env, db)
+        assert conn.query("SELECT 1").to_df().iloc[0, 0] == 1
+    finally:
+        if conn:
+            conn.close()
+        if Path(db_path).exists():
+            Path(db_path).unlink()
 
 
 def test_get_motherduck_conn():

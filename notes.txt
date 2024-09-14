@@ -8,7 +8,6 @@ Evidence Cloud
 
 
 
-github action should have a pretty name
 check what else can be automated :)
 make pythonpath var "better"
 

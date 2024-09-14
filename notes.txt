@@ -1,8 +1,5 @@
 TODO:
 
-fix black in VS Code to use 100 line lenght!
-Github Actions disable by-pass option (branch protection)
-
 
 prettier cicd
 AWS Cost Explorer

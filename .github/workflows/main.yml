@@ -33,8 +33,11 @@ jobs:
         run: |
           isort $(git ls-files '*.py')
 
-      - name: flake8 Lint
+      - name: Lint with flake8
         uses: py-actions/flake8@v2
+
+      - name: Format with black
+        uses: psf/black@stable
 
       - name: Test with pytest
         env:

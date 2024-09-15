@@ -2,10 +2,18 @@ TODO:
 
 Write some docu!
 
-prettier cicd
+check auto deletion of workflow runs!
+https://github.com/marketplace/actions/delete-workflow-runs
+
+check if we can rename github action (from main to something more exact)
+create new github action that executes ini_db
+
+prettier cicd --> good thing is that it wont touch sql or python (only yaml, json and markdown)
+--> no solution for pre-commit prettier!
 AWS Cost Explorer
 AWS IAM (s3 read-only)
 Evidence Cloud
+--> vscode extension needs: apt-get update && apt-get install -y nodejs=20.9.0
 
 
 
@@ -32,9 +40,7 @@ https://github.com/dbt-checkpoint/dbt-
 
 
 - build dim & fact models
-- check some BI tool
 - check dbt cloud
-- check github actions
 - check github branching
 - check how this project would work with BigQuery
 - check best practives for dockerfile

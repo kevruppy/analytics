@@ -4,4 +4,8 @@ dbt_analytics:
     dev:
       type: duckdb
       path: "{{ env_var('DB_PATH') }}"
-      threads: 4
+      threads: 1
+    prod:
+      type: duckdb
+      path: "{{ env_var('MOTHERDUCK_TOKEN') }}"
+      threads: 1

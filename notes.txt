@@ -2,10 +2,19 @@ TODO:
 
 Write some docu!
 
-prettier cicd
+prttier shall ignore txt
+
+check auto deletion of workflow runs!
+https://github.com/marketplace/actions/delete-workflow-runs
+
+
+create new github action that executes ini_db
+
+
 AWS Cost Explorer
 AWS IAM (s3 read-only)
 Evidence Cloud
+--> vscode extension needs: apt-get update && apt-get install -y nodejs=20.9.0
 
 
 
@@ -32,9 +41,7 @@ https://github.com/dbt-checkpoint/dbt-
 
 
 - build dim & fact models
-- check some BI tool
 - check dbt cloud
-- check github actions
 - check github branching
 - check how this project would work with BigQuery
 - check best practives for dockerfile

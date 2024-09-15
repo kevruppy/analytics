@@ -1,4 +1,4 @@
-name: Run CICD
+name: Run CI
 
 on:
   pull_request:
@@ -7,38 +7,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Python environment
         uses: actions/setup-python@v5
         with:
           python-version: 3.12.5
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
       - name: Lint with pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
           pylint $(git ls-files '*.py')
-
       - name: isort
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
           isort $(git ls-files '*.py')
-
       - name: Lint with flake8
         uses: py-actions/flake8@v2
-
       - name: Format with black
         uses: psf/black@stable
-
+        with:
+          options: "--check --diff --verbose"
       - name: Test with pytest
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
@@ -46,13 +40,17 @@ jobs:
         run: |
           cd tests
           pytest
-
       - name: Lint dbt models with SQLFluff
         run: |
           cd dbt_analytics
           sqlfluff lint analyses/ models/
-
       - name: Lint DuckDB SQL files with SQLFluff
         run: |
           cd duckdb_analytics
           sqlfluff lint
+      - name: Format with prettier
+        uses: creyD/prettier_action@v4.3
+        with:
+          dry: True
+          prettier_options: "--check"
+          only_changed: True

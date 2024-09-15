@@ -6,7 +6,8 @@ ci:
   autoupdate_schedule: monthly
   skip:
     - pylint
-    # dbt related hooks are ignored due to dbt-checkpoint having flaws
+    # dbt related hooks are ignored
+    - dbt_debug
     - dbt_parse_docs_generate
     - check-macro-arguments-have-desc
     - check-macro-has-description
@@ -65,8 +66,18 @@ repos:
     rev: 24.8.0
     hooks:
       - id: black
+  # NOTE: Shell script called by hook checks if any dbt related files are shown by `git status`
+  - repo: local
+    hooks:
+      - id: dbt_debug
+        name: dbt_debug
+        entry: bash -c 'source ./utils/dbt_debug.sh'
+        language: system
+        types: [bash]
+        require_serial: true
+        always_run: true
     # dbt-checkpoint has some flaws therefore custom hook for `dbt_parse_docs_generate` is used
-    # NOTE: For simplicity this hook always runs, regardless of whether dbt-related files are committed
+    # NOTE: Shell script called by hook checks if any dbt related files are shown by `git status`
   - repo: local
     hooks:
       - id: dbt_parse_docs_generate

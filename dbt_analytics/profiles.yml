@@ -7,5 +7,5 @@ dbt_analytics:
       threads: 1
     prod:
       type: duckdb
-      path: "{{ env_var('MOTHERDUCK_TOKEN') }}"
+      path: "md:my_db?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
       threads: 1

@@ -16,3 +16,7 @@ service_account.json
 aws_secret.json
 
 MOTHERDUCK_TOKEN.txt
+
+zzz_dbt_debug.log
+zzz_dbt_parse.log
+zzz_dbt_docs_generate.log

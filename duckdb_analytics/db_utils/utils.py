@@ -84,8 +84,8 @@ def get_duckb_conn(env: str, db_path: str = None) -> duckdb.DuckDBPyConnection |
 def get_motherduck_conn(env: str) -> duckdb.DuckDBPyConnection:
     """
     Creates connection to MotherDuck (prod)
-    Locally env var `MOTHERDUCK_SECRET` is a path (as string) pointing to file with token
-    On prod env var `MOTHERDUCK_SECRET` equals a token
+    Locally env var `MOTHERDUCK_TOKEN` is a path (as string) pointing to file with token
+    On prod env var `MOTHERDUCK_TOKEN` equals a token
 
     Params:
         env (str): Environment (local, prod)
@@ -93,9 +93,9 @@ def get_motherduck_conn(env: str) -> duckdb.DuckDBPyConnection:
     Returns:
         duckdb.DuckDBPyConnection: Connection to MotherDuck (prod)
     """
-    secret = os.getenv("MOTHERDUCK_SECRET")
+    secret = os.getenv("MOTHERDUCK_TOKEN")
     if not secret:
-        logger.error("Env variable `MOTHERDUCK_SECRET` must be set")
+        logger.error("Env variable `MOTHERDUCK_TOKEN` must be set")
         raise ValueError("Missing required env variable")
 
     if env == "LOCAL":

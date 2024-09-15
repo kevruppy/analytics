@@ -15,4 +15,4 @@ service_account.json
 
 aws_secret.json
 
-motherduck_secret.txt
+MOTHERDUCK_TOKEN.txt

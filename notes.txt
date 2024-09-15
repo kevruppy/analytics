@@ -2,6 +2,8 @@ TODO:
 
 Write some docu!
 
+check if pre-commit ci works as it should!
+
 prttier shall ignore txt
 
 check auto deletion of workflow runs!
@@ -23,7 +25,7 @@ make pythonpath var "better"
 
 
 
-dbt-slim-ci!
+dbt-slim-ci! use dbt build --empty for checks! & dbt debug
 
 static website hosting in s3 for dbt docu?
 --> ionos subdomain!

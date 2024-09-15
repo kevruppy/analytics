@@ -31,6 +31,8 @@ jobs:
         uses: py-actions/flake8@v2
       - name: Format with black
         uses: psf/black@stable
+        with:
+          options: "--check --diff --verbose"
       - name: Test with pytest
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
@@ -50,5 +52,5 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           dry: True
-          prettier_options: --check
+          prettier_options: "--check"
           only_changed: True

@@ -2,14 +2,15 @@ TODO:
 
 Write some docu!
 
+prttier shall ignore txt
+
 check auto deletion of workflow runs!
 https://github.com/marketplace/actions/delete-workflow-runs
 
-check if we can rename github action (from main to something more exact)
+
 create new github action that executes ini_db
 
-prettier cicd --> good thing is that it wont touch sql or python (only yaml, json and markdown)
---> no solution for pre-commit prettier!
+
 AWS Cost Explorer
 AWS IAM (s3 read-only)
 Evidence Cloud

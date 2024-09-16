@@ -1,8 +1,7 @@
 name: Delete old workflow runs
 on:
   schedule:
-    - cron: '0 6 * * *'
-
+    - cron: "0 6 * * *"
 jobs:
   del_runs:
     runs-on: ubuntu-latest

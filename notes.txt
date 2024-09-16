@@ -1,8 +1,10 @@
 TODO:
 
-Write some docu!
+change shell scripts to Python
+prettify move to sheets
 
 check if pre-commit ci works as it should!
+https://github.com/creyD/prettier_action/issues/106
 
 prttier shall ignore txt
 
@@ -56,6 +58,7 @@ green blue deployment
 
 
 out of scope:
+Write some docu!
 - sqlfluff should lint dbt tests properly
 (add more data e.g. product info, web traffic, customer whatever, channel costs)
 

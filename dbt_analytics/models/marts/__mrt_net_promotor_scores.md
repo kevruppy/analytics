@@ -1,14 +1,15 @@
 # model desc
 
 {% docs dsc_mrt_net_promotor_scores %}
+
 ### Aggregated Data on Net Promoter Scores (NPS)
 
 **By Level**
 
-* **TOTAL**
-* **PRODUCT GROUP**
-* **PRODUCT TYPE**
-* **PRODUCT NAME**
+- **TOTAL**
+- **PRODUCT GROUP**
+- **PRODUCT TYPE**
+- **PRODUCT NAME**
 
 **Example:**
 

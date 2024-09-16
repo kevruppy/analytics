@@ -57,7 +57,7 @@ def create_db(env: str, db_path: Path = None) -> str | None:
     return None
 
 
-def get_duckb_conn(env: str, db_path: str = None) -> duckdb.DuckDBPyConnection | None:
+def get_duckb_conn(env: str, in_memory: bool = False) -> duckdb.DuckDBPyConnection | None:
     """
     Creates connection to DuckDB (local)
     Per default env var is used to retrieve file path to DuckDB
@@ -65,18 +65,18 @@ def get_duckb_conn(env: str, db_path: str = None) -> duckdb.DuckDBPyConnection |
 
     Params:
         env (str): Environment (local, prod)
-        db_path (str, optional): Path (as string) to DuckDB (default: None -> env var)
+        in_memory (bool, optional): If in-memory DuckDB shall be used (default: False -> env var)
 
     Returns:
         duckdb.DuckDBPyConnection | None: Connection to DuckDB (local) | None
     """
     if env == "LOCAL":
-        if not db_path:
+        if not in_memory:
             if not os.getenv("DB_PATH"):
                 logger.error("Env variable `DB_PATH` must be set")
                 raise ValueError("Missing required env variable")
 
-        return duckdb.connect(db_path if db_path else os.getenv("DB_PATH"))
+        return duckdb.connect(":memory:") if in_memory else duckdb.connect(os.getenv("DB_PATH"))
 
     return None
 

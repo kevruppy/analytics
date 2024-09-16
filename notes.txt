@@ -1,6 +1,7 @@
 TODO:
 
 change shell scripts to Python
+prettify move to sheets
 
 check if pre-commit ci works as it should!
 https://github.com/creyD/prettier_action/issues/106

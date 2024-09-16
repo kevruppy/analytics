@@ -43,18 +43,9 @@ def test_get_duckb_conn():
     Test getting DuckDB connection
     """
     # For simplicity assume local execution
-    env = "LOCAL"
-    db_path = Path("/tmp/test.duckdb")
 
-    try:
-        db = create_db(env, db_path)
-        conn = get_duckb_conn(env, db)
-        assert conn.query("SELECT 1").to_df().iloc[0, 0] == 1
-    finally:
-        if conn:
-            conn.close()
-        if Path(db_path).exists():
-            Path(db_path).unlink()
+    conn = get_duckb_conn(env="LOCAL", in_memory=True)
+    assert conn.query("SELECT 1").to_df().iloc[0, 0] == 1
 
 
 def test_get_motherduck_conn():
@@ -158,15 +149,9 @@ def test_execute_stmt_list():
     """
     Test executing statements (uses DuckDB, not MotherDuck)
     """
-    try:
-        db_path_str = "/tmp/test_db.duckdb"
+    conn = duckdb.connect(":memory:")
 
-        conn = duckdb.connect(db_path_str)
+    statements = ["SELECT 1;", "SELECT 2;"]
 
-        statements = ["SELECT 1;", "SELECT 2;"]
-
-        result = execute_stmt_list(conn, statements)
-        assert result == "SUCCESS"
-    finally:
-        if Path(db_path_str).exists():
-            Path(db_path_str).unlink()
+    result = execute_stmt_list(conn, statements)
+    assert result == "SUCCESS"

@@ -1,9 +1,7 @@
 name: Run CI
-
 on:
   pull_request:
     branches: [main]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -52,5 +50,5 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           dry: True
-          prettier_options: "--check"
+          prettier_options: "--check **/*.{json,md,yaml,yml}"
           only_changed: True

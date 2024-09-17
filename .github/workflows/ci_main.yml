@@ -31,6 +31,8 @@ jobs:
           isort $(git ls-files '*.py')
       - name: Lint with flake8
         uses: py-actions/flake8@v2
+        with:
+          exclude: ".venv"
       - name: Format with black
         uses: psf/black@stable
         with:

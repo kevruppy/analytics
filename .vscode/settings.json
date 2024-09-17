@@ -69,7 +69,6 @@
     "sortJSONValues": false,
     "sortJSONValuesReverse": false
   },
-  "sortJSON.excludedPaths": ["/workspaces/analytics/dbt_templates"],
   "sqlfluff.config": "/workspaces/analytics/.sqlfluff",
   "sqlfluff.executablePath": "/workspaces/analytics/.venv/bin/sqlfluff",
   "sqlfluff.linter.run": "onType",

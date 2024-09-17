@@ -1,12 +1,13 @@
 TODO:
 
+swap databse for green/blue deployment
+-> https://motherduck.com/docs/sql-reference/motherduck-sql-reference/create-database/
+
+
 change shell scripts to Python
-prettify move to sheets
 
 check if pre-commit ci works as it should!
 https://github.com/creyD/prettier_action/issues/106
-
-prttier shall ignore txt
 
 check auto deletion of workflow runs!
 https://github.com/marketplace/actions/delete-workflow-runs

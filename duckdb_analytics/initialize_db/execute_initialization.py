@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 from pathlib import Path
@@ -30,7 +31,7 @@ def main():
 
     # Locally `AWS_SECRET` is a path (as string)
     _ = os.getenv("AWS_SECRET")
-    aws_secret = load_secret_json(Path(_)) if env == "LOCAL" else _
+    aws_secret = load_secret_json(Path(_)) if env == "LOCAL" else json.loads(_)
     # pylint: enable=duplicate-code
 
     try:

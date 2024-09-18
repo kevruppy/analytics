@@ -1,8 +1,9 @@
 import os
+from pathlib import Path
 
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
-os.chdir("/workspaces/analytics/dbt_analytics")
+os.chdir(Path(__file__).parents[1] / "dbt_analytics")
 
 dbt = dbtRunner()
 

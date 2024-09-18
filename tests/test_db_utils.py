@@ -1,14 +1,16 @@
 import json
 from pathlib import Path
 
-import duckdb
 from db_utils.utils import (
+    cleanup,
     create_db,
+    execute_sql_files,
     execute_stmt_list,
     get_duckb_conn,
     get_environment,
     get_motherduck_conn,
     get_sql_files,
+    load_aws_secret,
     load_secret_json,
     load_stmt_list,
     prep_stmt_list,
@@ -17,14 +19,14 @@ from db_utils.utils import (
 
 def test_get_environment():
     """
-    Test getting environment (dummy)
+    (Dummy) Test getting environment
     """
     assert True
 
 
 def test_create_db():
     """
-    Test creating a DuckDB database
+    Test creating DuckDB database
     """
     # For simplicity assume local execution
     env = "LOCAL"
@@ -43,8 +45,9 @@ def test_get_duckb_conn():
     Test getting DuckDB connection
     """
     # For simplicity assume local execution
+    env = "LOCAL"
 
-    conn = get_duckb_conn(env="LOCAL", in_memory=True)
+    conn = get_duckb_conn(env, in_memory=True)
     assert conn.query("SELECT 1").to_df().iloc[0, 0] == 1
 
 
@@ -79,10 +82,10 @@ def test_get_sql_files():
         file2.write_text("SELECT 2;")
         file3.write_text("SELECT 3;")
 
-        file_names = get_sql_files(env, tmp_dir)
+        files = get_sql_files(env, tmp_dir)
 
         # First file shall be ignored if executed locally
-        assert [str(f) for f in file_names] == [str(file2), str(file3)]
+        assert [str(f) for f in files] == [str(file2), str(file3)]
     finally:
         for f in [file1, file2, file3]:
             if f.exists():
@@ -122,6 +125,17 @@ def test_load_secret_json():
             secret_file.unlink()
 
 
+def test_load_aws_secret():
+    """
+    Test loading AWS secret
+    """
+    env = get_environment()
+
+    _ = load_aws_secret(env)
+
+    assert list(_.keys()) == ["KEY_ID__VALUE", "SECRET__VALUE", "REGION__VALUE"]
+
+
 def test_prep_stmt_list():
     """
     Test prepping SQL statements
@@ -149,9 +163,48 @@ def test_execute_stmt_list():
     """
     Test executing statements (uses DuckDB, not MotherDuck)
     """
-    conn = duckdb.connect(":memory:")
+    conn = get_duckb_conn(env="LOCAL", in_memory=True)
 
     statements = ["SELECT 1;", "SELECT 2;"]
 
     result = execute_stmt_list(conn, statements)
+
     assert result == "SUCCESS"
+
+
+def test_execute_sql_files():
+    """
+    Test executing SQL files (scripts)
+    """
+    env = get_environment()
+
+    file1 = "/tmp/test1.sql"
+    file2 = "/tmp/test2.sql"
+
+    try:
+        with open(file1, "w", encoding="utf-8") as f:
+            f.write("SELECT 1 AS X;")
+
+        with open(file2, "w", encoding="utf-8") as f:
+            f.write("SELECT 2 AS Y;")
+
+        sql_files = get_sql_files(env, Path("/tmp"))
+        aws_secret = load_aws_secret(env)
+        conn = get_duckb_conn(env, in_memory=True) if env == "LOCAL" else get_motherduck_conn(env)
+
+        assert execute_sql_files(sql_files, aws_secret, conn) == "SUCCESS"
+    finally:
+        for f in [file1, file2]:
+            _ = Path(f)
+            if _.exists():
+                _.unlink()
+
+
+def test_cleanup():
+    """
+    Test cleanup
+    """
+    with open("/tmp/TMP_DUCK_DB_EXPORT_1.json", "w", encoding="utf-8") as f:
+        json.dump({"K": "V"}, f)
+
+    assert cleanup() == "SUCCESS"

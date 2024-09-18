@@ -28,7 +28,7 @@ jobs:
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          isort $(git ls-files '*.py')
+          isort $(git ls-files '*.py') --check-only
       - name: Lint with flake8
         uses: py-actions/flake8@v2
         with:

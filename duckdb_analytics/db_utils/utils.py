@@ -1,9 +1,10 @@
+from pathlib import Path
+from typing import Dict, List
 import json
 import logging
 import os
-from pathlib import Path
 import platform
-from typing import Dict, List
+
 
 import duckdb
 

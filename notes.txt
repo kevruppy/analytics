@@ -3,8 +3,12 @@ TODO:
 swap databse for green/blue deployment
 -> https://motherduck.com/docs/sql-reference/motherduck-sql-reference/create-database/
 
+Adjust all hardcodings and then rebuild container
+check if pylint complains!
 
-change shell scripts to Python
+
+
+change shell scripts to Python?
 
 check if pre-commit ci works as it should!
 https://github.com/creyD/prettier_action/issues/106

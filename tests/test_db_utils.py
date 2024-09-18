@@ -1,9 +1,11 @@
 import json
+import os
 from pathlib import Path
 
-import duckdb
 from db_utils.utils import (
+    cleanup,
     create_db,
+    execute_sql_files,
     execute_stmt_list,
     get_duckb_conn,
     get_environment,
@@ -17,7 +19,7 @@ from db_utils.utils import (
 
 def test_get_environment():
     """
-    Test getting environment (dummy)
+    (Dummy) Test getting environment
     """
     assert True
 
@@ -122,6 +124,16 @@ def test_load_secret_json():
             secret_file.unlink()
 
 
+def test_load_aws_secret():
+    """
+    Test loading AWS secret
+    """
+    if get_environment() == "LOCAL":
+        load_secret_json(os.getenv("AWS_SECRET"))
+
+    assert True
+
+
 def test_prep_stmt_list():
     """
     Test prepping SQL statements
@@ -149,9 +161,48 @@ def test_execute_stmt_list():
     """
     Test executing statements (uses DuckDB, not MotherDuck)
     """
-    conn = duckdb.connect(":memory:")
+    conn = get_duckb_conn(env="LOCAL", in_memory=True)
 
     statements = ["SELECT 1;", "SELECT 2;"]
 
     result = execute_stmt_list(conn, statements)
     assert result == "SUCCESS"
+
+
+def test_execute_sql_files():
+    """
+    Test executing SQL files (scripts)
+    """
+    # For simplicity assume local execution
+    env = "LOCAL"
+
+    file1 = "/tmp/test1.sql"
+    file2 = "/tmp/test2.sql"
+
+    try:
+        with open(file1, "w", encoding="utf-8") as f:
+            f.write("SELECT 1 AS X;")
+
+        with open(file2, "w", encoding="utf-8") as f:
+            f.write("SELECT 2 AS Y;")
+
+        sql_files = get_sql_files(env, Path("/tmp"))
+        aws_secret = load_secret_json(os.getenv("AWS_SECRET"))
+        conn = get_duckb_conn(env="LOCAL", in_memory=True)
+
+        assert execute_sql_files(sql_files, aws_secret, conn) == "SUCCESS"
+    finally:
+        for f in [file1, file2]:
+            _ = Path(f)
+            if _.exists():
+                _.unlink()
+
+
+def test_cleanup():
+    """
+    Test cleanup
+    """
+    with open("/tmp/TMP_DUCK_DB_EXPORT_1.json", "w", encoding="utf-8") as f:
+        json.dump({"K": "V"}, f)
+
+    assert cleanup() == "SUCCESS"

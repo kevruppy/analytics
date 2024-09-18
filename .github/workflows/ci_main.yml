@@ -40,6 +40,7 @@ jobs:
       - name: Test with pytest
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
+          AWS_SECRET: ${{ secrets.AWS_SECRET }}
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
         run: |
           cd tests

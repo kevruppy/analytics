@@ -1,8 +1,8 @@
 import json
 import logging
 import os
-import platform
 from pathlib import Path
+import platform
 from typing import Dict, List
 
 import duckdb

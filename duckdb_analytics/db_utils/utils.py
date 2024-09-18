@@ -1,6 +1,5 @@
-import logging
 import json
-
+import logging
 import os
 import platform
 from pathlib import Path

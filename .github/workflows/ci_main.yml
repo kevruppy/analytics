@@ -23,12 +23,12 @@ jobs:
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          pylint $(git ls-files '*.py')
+          pylint $(git ls-files '*.py') 
       - name: isort
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          isort $(git ls-files '*.py') --check-only
+          isort $(git ls-files '*.py') --check-only --diff
       - name: Lint with flake8
         uses: py-actions/flake8@v2
         with:

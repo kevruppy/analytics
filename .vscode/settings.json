@@ -48,13 +48,13 @@
   "pre-commit-helper.config": ".pre-commit-config.yaml",
   "pre-commit-helper.runOnSave": "none",
   "pylint.args": ["--rcfile=pyproject.toml"],
-  "python.analysis.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
-  "python.autoComplete.extraPaths": ["/workspaces/analytics/duckdb_analytics"],
-  "python.defaultInterpreterPath": "/workspaces/analytics/.venv/bin/python",
-  "python.envFile": "/workspaces/analytics/.env",
+  "python.analysis.extraPaths": ["${workspaceFolder}/duckdb_analytics"],
+  "python.autoComplete.extraPaths": ["${workspaceFolder}/duckdb_analytics"],
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.envFile": "${workspaceFolder}/.env",
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.testing.autoTestDiscoverOnSaveEnabled": true,
-  "python.testing.cwd": "/workspaces/analytics/tests",
+  "python.testing.cwd": "${workspaceFolder}/tests",
   "python.testing.pytestArgs": [],
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
@@ -69,27 +69,28 @@
     "sortJSONValues": false,
     "sortJSONValuesReverse": false
   },
-  "sqlfluff.config": "/workspaces/analytics/.sqlfluff",
-  "sqlfluff.executablePath": "/workspaces/analytics/.venv/bin/sqlfluff",
+  "sqlfluff.config": ".sqlfluff",
+  "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
   "sqlfluff.linter.run": "onType",
   "yaml.format.enable": false,
   "yaml.schemas": {
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_project-latest.json": [
-      "/workspaces/analytics/dbt_analytics/dbt_project.yml"
+      "/dbt_analytics/dbt_project.yml"
     ],
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files-latest.json": [
-      "/workspaces/analytics/dbt_analytics/*.yml",
+      "/dbt_analytics/**/*.yml",
       "!profiles.yml",
       "!dbt_project.yml",
       "!packages.yml",
+      "!package-lock.yml",
       "!selectors.yml",
       "!profile_template.yml"
     ],
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/packages-latest.json": [
-      "/workspaces/analytics/dbt_analytics/packages.yml"
+      "/dbt_analytics/packages.yml"
     ],
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/selectors-latest.json": [
-      "/workspaces/analytics/dbt_analytics/selectors.yml"
+      "/dbt_analytics/selectors.yml"
     ]
   }
 }

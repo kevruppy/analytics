@@ -23,7 +23,7 @@ jobs:
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          pylint $(git ls-files '*.py') 
+          pylint $(git ls-files '*.py')
       - name: isort
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}

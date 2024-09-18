@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 
 from db_utils.utils import (
@@ -11,6 +10,7 @@ from db_utils.utils import (
     get_environment,
     get_motherduck_conn,
     get_sql_files,
+    load_aws_secret,
     load_secret_json,
     load_stmt_list,
     prep_stmt_list,
@@ -26,7 +26,7 @@ def test_get_environment():
 
 def test_create_db():
     """
-    Test creating a DuckDB database
+    Test creating DuckDB database
     """
     # For simplicity assume local execution
     env = "LOCAL"
@@ -45,8 +45,9 @@ def test_get_duckb_conn():
     Test getting DuckDB connection
     """
     # For simplicity assume local execution
+    env = "LOCAL"
 
-    conn = get_duckb_conn(env="LOCAL", in_memory=True)
+    conn = get_duckb_conn(env, in_memory=True)
     assert conn.query("SELECT 1").to_df().iloc[0, 0] == 1
 
 
@@ -81,10 +82,10 @@ def test_get_sql_files():
         file2.write_text("SELECT 2;")
         file3.write_text("SELECT 3;")
 
-        file_names = get_sql_files(env, tmp_dir)
+        files = get_sql_files(env, tmp_dir)
 
         # First file shall be ignored if executed locally
-        assert [str(f) for f in file_names] == [str(file2), str(file3)]
+        assert [str(f) for f in files] == [str(file2), str(file3)]
     finally:
         for f in [file1, file2, file3]:
             if f.exists():
@@ -128,10 +129,11 @@ def test_load_aws_secret():
     """
     Test loading AWS secret
     """
-    if get_environment() == "LOCAL":
-        load_secret_json(os.getenv("AWS_SECRET"))
+    env = get_environment()
 
-    assert True
+    _ = load_aws_secret(env)
+
+    assert list(_.keys()) == ["KEY_ID__VALUE", "SECRET__VALUE", "REGION__VALUE"]
 
 
 def test_prep_stmt_list():
@@ -166,6 +168,7 @@ def test_execute_stmt_list():
     statements = ["SELECT 1;", "SELECT 2;"]
 
     result = execute_stmt_list(conn, statements)
+
     assert result == "SUCCESS"
 
 
@@ -173,8 +176,7 @@ def test_execute_sql_files():
     """
     Test executing SQL files (scripts)
     """
-    # For simplicity assume local execution
-    env = "LOCAL"
+    env = get_environment()
 
     file1 = "/tmp/test1.sql"
     file2 = "/tmp/test2.sql"
@@ -187,8 +189,8 @@ def test_execute_sql_files():
             f.write("SELECT 2 AS Y;")
 
         sql_files = get_sql_files(env, Path("/tmp"))
-        aws_secret = load_secret_json(os.getenv("AWS_SECRET"))
-        conn = get_duckb_conn(env="LOCAL", in_memory=True)
+        aws_secret = load_aws_secret(env)
+        conn = get_duckb_conn(env=env, in_memory=True)
 
         assert execute_sql_files(sql_files, aws_secret, conn) == "SUCCESS"
     finally:

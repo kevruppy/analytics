@@ -190,7 +190,7 @@ def test_execute_sql_files():
 
         sql_files = get_sql_files(env, Path("/tmp"))
         aws_secret = load_aws_secret(env)
-        conn = get_duckb_conn(env=env, in_memory=True)
+        conn = get_duckb_conn(env, in_memory=True) if env == "LOCAL" else get_motherduck_conn(env)
 
         assert execute_sql_files(sql_files, aws_secret, conn) == "SUCCESS"
     finally:

@@ -28,7 +28,7 @@ jobs:
         id: py_files_to_lint
         run: |
           files=$(git diff --name-only --cached | grep '.py$')
-          echo "py_files=${files}" >> $GITHUB_OUTPUT
+          #echo "py_files=${files}" >> $GITHUB_OUTPUT
       - name: Lint with Pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}

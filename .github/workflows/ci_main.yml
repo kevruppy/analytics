@@ -10,24 +10,24 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Set up Python environment
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12.5
-      - name: Create virtual environment
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      #- name: Set up Python environment
+      #  uses: actions/setup-python@v5
+      #  with:
+      #    python-version: 3.12.5
+      #- name: Create virtual environment
+      #  run: |
+      #    python -m venv .venv
+      #    source .venv/bin/activate
+      #- name: Install dependencies
+      #  run: |
+      #    python -m pip install --upgrade pip
+      #    pip install -r requirements.txt
       - name: Get Python files to lint
         id: py_files_to_lint
         run: |
-          files="$(git diff --name-only --cached | grep '.py$')"
+          files=$(git diff --name-only --cached | grep '.py$')
           echo "Found files:$files"
-          echo "$files" >> $GITHUB_OUTPUT
+          echo $files >> $GITHUB_OUTPUT
       - name: Lint with Pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}

@@ -10,3 +10,6 @@ include_trailing_comma = true
 disable = ["C0114", "W1203"]
 # necessary to run pylint pre-commit hook
 init-hook = 'import sys; import platform; sys.path.append("./duckdb_analytics") if platform.release().endswith("WSL2") else None'
+
+[tool.pytest.ini_options]
+pythonpath = ["./duckdb_analytics"]

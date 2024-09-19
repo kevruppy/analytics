@@ -6,10 +6,11 @@ if [[ "$git_status_output" =~ "dbt_analytics/" ]]; then
     echo "### dbt related changes shown by 'git status' ###"
 
     ini_dir=$(pwd)
-    export DB_PATH="./analytics.duckdb"
     source ./.venv/bin/activate
 
     cd ./dbt_analytics
+
+    export DB_PATH="$(dirname "$PWD")/analytics.duckdb"
 
     echo "### dbt debug... ###"
 

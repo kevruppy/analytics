@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      py_files_to_lint: ${{ steps.py_files_to_lint.outputs.py_files}}
+      py_files_to_lint: ${{ steps.py_files_to_lint.outputs.py_files }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -28,8 +28,7 @@ jobs:
         id: py_files_to_lint
         run: |
           files=$(git diff --name-only --cached | grep '.py$')
-          echo "Found files:$files"
-          echo "py_files=$files" >> $GITHUB_OUTPUT
+          echo "py_files=${files}" >> $GITHUB_OUTPUT
       - name: Lint with Pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}

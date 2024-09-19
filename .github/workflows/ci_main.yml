@@ -25,7 +25,9 @@ jobs:
       - name: Get Python files to lint
         id: py_files_to_lint
         run: |
-          echo "$(git diff --name-only --cached | grep '.py$')" >> $GITHUB_OUTPUT
+          files="$(git diff --name-only --cached | grep '.py$')"
+          echo "Found files:$files"
+          echo "$files" >> $GITHUB_OUTPUT
       - name: Lint with Pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}

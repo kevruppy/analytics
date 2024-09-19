@@ -5,7 +5,7 @@ Checks if there are any undocumented columns
 {% enddocs %}
 
 {% docs dsc_generate_schema_name %}
-TBD
+Determines the name of the schema that a model should be built in
 {% enddocs %}
 
 {% docs dsc_run_vacuum_analyze %}

@@ -10,7 +10,7 @@ import gspread
 def main():
     """
     Executes a query in DuckDB & stores results in Google Sheets
-    If argument for `--query` is not provided:
+    If cli argument `--query` is not provided:
         - In-memory DuckDB is used to execute dummy query
         - Result set is written to Google Sheets
         - Spreadsheet is removed

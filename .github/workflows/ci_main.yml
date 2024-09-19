@@ -23,15 +23,16 @@ jobs:
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          pylint $(git ls-files '*.py')
+          pylint $(git diff --name-only --cached | grep '.py$')
       - name: isort
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          isort $(git ls-files '*.py') --check-only --diff
+          isort $(git diff --name-only --cached | grep '.py$') --check-only --diff
       - name: Lint with flake8
         uses: py-actions/flake8@v2
         with:
+          args: "--vv"
           exclude: ".venv"
       - name: Format with black
         uses: psf/black@stable
@@ -45,14 +46,12 @@ jobs:
         run: |
           cd tests
           pytest
-      - name: Lint dbt models with SQLFluff
+      - name: Lint dbt analyses & models with SQLFluff
         run: |
-          cd dbt_analytics
-          sqlfluff lint analyses/ models/
+          sqlfluff lint $(git diff --name-only --cached | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')
       - name: Lint DuckDB SQL files with SQLFluff
         run: |
-          cd duckdb_analytics
-          sqlfluff lint
+          sqlfluff lint $(git diff --name-only --cached | grep '.sql$' | grep 'duckdb_analytics')
       - name: Format with prettier
         uses: creyD/prettier_action@v4.3
         with:

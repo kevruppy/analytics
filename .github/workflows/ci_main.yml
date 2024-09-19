@@ -27,7 +27,7 @@ jobs:
       - name: Get Python files to lint
         id: py_files_to_lint
         run: |
-          bash -c "files=${git diff --name-only --cached | grep '.py$'}"
+          bash -c "files=$(git diff --name-only --cached | grep '.py$')"
           #echo "py_files=$files" >> $GITHUB_OUTPUT
       - name: Lint with Pylint
         env:

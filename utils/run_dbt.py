@@ -17,4 +17,4 @@ dbt.invoke(["docs", "generate"])
 
 # show docs
 
-# dbt.invoke(["docs", "serve"])
+dbt.invoke(["docs", "serve"])

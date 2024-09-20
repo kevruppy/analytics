@@ -27,6 +27,7 @@ jobs:
         shell: bash
         run: |
           echo "PY_FILES=$(git diff --name-only --cached | grep '.py$')" >> $GITHUB_OUTPUT
+          echo "HELLO WORLD!"
       - name: Show Python files to lint
         shell: bash
         run: |

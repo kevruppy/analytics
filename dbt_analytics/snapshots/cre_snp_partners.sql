@@ -1,4 +1,5 @@
 -- noqa: disable=all
+
 {% snapshot cre_snp_partners %}
   {{config(
     target_schema='core',

@@ -6,7 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Python environment
         uses: actions/setup-python@v5
         with:
@@ -19,19 +22,33 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Lint with pylint
+      - name: Get Python files to lint
+        id: py_files_to_lint
+        shell: bash
+        run: |
+          echo "PY_FILES=$(git diff --name-only --cached | grep '.py$')" >> $GITHUB_OUTPUT
+      - name: Lint with Pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          pylint $(git ls-files '*.py')
-      - name: isort
+          if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
+            pylint ${{ steps.py_files_to_lint.outputs.PY_FILES }}
+          else
+            echo "No .py files to be linted found. Skipping Pylint."
+          fi
+      - name: Lint with isort
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          isort $(git ls-files '*.py') --check-only --diff
+          if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
+            isort ${{ steps.py_files_to_lint.outputs.PY_FILES }}
+          else
+            echo "No .py files to be linted found. Skipping isort."
+          fi
       - name: Lint with flake8
         uses: py-actions/flake8@v2
         with:
+          args: "-vv"
           exclude: ".venv"
       - name: Format with black
         uses: psf/black@stable
@@ -45,14 +62,30 @@ jobs:
         run: |
           cd tests
           pytest
-      - name: Lint dbt models with SQLFluff
+      - name: Get dbt analyses & models to lint
+        id: dbt_sql_files_to_lint
+        shell: bash
         run: |
-          cd dbt_analytics
-          sqlfluff lint analyses/ models/
+          echo "DBT_SQL_FILES=$(git diff --name-only --cached | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')" >> $GITHUB_OUTPUT
+      - name: Get DuckDB SQL files to lint
+        id: duckdb_sql_files_to_lint
+        shell: bash
+        run: |
+          echo "DUCKDB_SQL_FILES=$(git diff --name-only --cached | grep '.sql$' | grep 'duckdb_analytics')" >> $GITHUB_OUTPUT
+      - name: Lint dbt analyses & models with SQLFluff
+        run: |
+          if [[ -n "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}" ]]; then
+            sqlfluff lint "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}"
+          else
+            echo "No dbt SQL files to be linted found. Skipping."
+          fi
       - name: Lint DuckDB SQL files with SQLFluff
         run: |
-          cd duckdb_analytics
-          sqlfluff lint
+          if [[ -n "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}" ]]; then
+            sqlfluff lint "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}"
+          else
+            echo "No DuckDB SQL files to be linted found. Skipping."
+          fi
       - name: Format with prettier
         uses: creyD/prettier_action@v4.3
         with:

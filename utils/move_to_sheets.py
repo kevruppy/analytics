@@ -32,7 +32,7 @@ def main():
         dry_run = False
     else:
         db_path = None
-        query = "SELECT 1 AS X"
+        query = "SELECT 1 AS COL"
         dry_run = True
 
     if not os.getenv("GCP_SERVICE_ACCOUNT") or not os.getenv("GOOGLE_MAIL_ADDRESS"):

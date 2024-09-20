@@ -21,7 +21,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements_ci.txt
+          pip install -r requirements_cicd.txt
+      - name: Set env variable for PYTHONPATH
+        id: env-var-python-path
+        run: echo "PYTHONPATH=$(pwd)/duckdb_analytics" >> $GITHUB_ENV
       - name: Get changed Python files
         id: changed-py-files
         uses: tj-actions/changed-files@v45
@@ -32,27 +35,27 @@ jobs:
       - name: Lint with Pylint
         if: steps.changed-py-files.outputs.any_changed == 'true'
         env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
+          PYTHONPATH: ${{ steps.env-var-python-path.outputs.PYTHONPATH }}
         run: pylint ${{ steps.changed-py-files.outputs.all_changed_files }}
       - name: Lint with isort
         if: steps.changed-py-files.outputs.any_changed == 'true'
         env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
+          PYTHONPATH: ${{ steps.env-var-python-path.outputs.PYTHONPATH }}
         run: isort ${{ steps.changed-py-files.outputs.all_changed_files }}
       - name: Lint with flake8
         if: steps.changed-py-files.outputs.any_changed == 'true'
         env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
+          PYTHONPATH: ${{ steps.env-var-python-path.outputs.PYTHONPATH }}
         run: flake8 ${{ steps.changed-py-files.outputs.all_changed_files }} --verbose
       - name: Format with black
         if: steps.changed-py-files.outputs.any_changed == 'true'
         env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
+          PYTHONPATH: ${{ steps.env-var-python-path.outputs.PYTHONPATH }}
         run: black ${{ steps.changed-py-files.outputs.all_changed_files }} --check --diff --verbose
       - name: Test with pytest
         if: steps.changed-py-files.outputs.any_changed == 'true'
         env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
+          PYTHONPATH: ${{ steps.env-var-python-path.outputs.PYTHONPATH }}
           AWS_SECRET: ${{ secrets.AWS_SECRET }}
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
         run: |

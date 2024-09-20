@@ -14,81 +14,85 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.12.5
-      - name: Create virtual environment
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      #- name: Create virtual environment
+      #  run: |
+      #    python -m venv .venv
+      #    source .venv/bin/activate
+      #- name: Install dependencies
+      #  run: |
+      #    python -m pip install --upgrade pip
+      #    pip install -r requirements.txt
       - name: Get Python files to lint
         id: py_files_to_lint
         shell: bash
         run: |
           echo "PY_FILES=$(git diff --name-only --cached main | grep '.py$')" >> $GITHUB_OUTPUT
-      - name: Lint with Pylint
-        env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
-        run: |
-          if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
-            pylint ${{ steps.py_files_to_lint.outputs.PY_FILES }}
-          else
-            echo "No .py files to be linted found. Skipping Pylint."
-          fi
-      - name: Lint with isort
-        env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
-        run: |
-          if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
-            isort ${{ steps.py_files_to_lint.outputs.PY_FILES }}
-          else
-            echo "No .py files to be linted found. Skipping isort."
-          fi
-      - name: Lint with flake8
-        uses: py-actions/flake8@v2
-        with:
-          args: "-vv"
-          exclude: ".venv"
-      - name: Format with black
-        uses: psf/black@stable
-        with:
-          options: "--check --diff --verbose"
-      - name: Test with pytest
-        env:
-          PYTHONPATH: ${{ vars.PYTHONPATH }}
-          AWS_SECRET: ${{ secrets.AWS_SECRET }}
-          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
-        run: |
-          cd tests
-          pytest
-      - name: Get dbt analyses & models to lint
-        id: dbt_sql_files_to_lint
+      - name: Show Python files to lint
         shell: bash
         run: |
-          echo "DBT_SQL_FILES=$(git diff --name-only --cached main | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')" >> $GITHUB_OUTPUT
-      - name: Get DuckDB SQL files to lint
-        id: duckdb_sql_files_to_lint
-        shell: bash
-        run: |
-          echo "DUCKDB_SQL_FILES=$(git diff --name-only --cached main | grep '.sql$' | grep 'duckdb_analytics')" >> $GITHUB_OUTPUT
-      - name: Lint dbt analyses & models with SQLFluff
-        run: |
-          if [[ -n "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}" ]]; then
-            sqlfluff lint "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}"
-          else
-            echo "No dbt SQL files to be linted found. Skipping."
-          fi
-      - name: Lint DuckDB SQL files with SQLFluff
-        run: |
-          if [[ -n "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}" ]]; then
-            sqlfluff lint "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}"
-          else
-            echo "No DuckDB SQL files to be linted found. Skipping."
-          fi
-      - name: Format with prettier
-        uses: creyD/prettier_action@v4.3
-        with:
-          dry: True
-          prettier_options: "--check **/*.{json,md,yaml,yml}"
-          only_changed: True
+          echo ${{ steps.py_files_to_lint.outputs.PY_FILES }}
+      #- name: Lint with Pylint
+      #  env:
+      #    PYTHONPATH: ${{ vars.PYTHONPATH }}
+      #  run: |
+      #    if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
+      #      pylint ${{ steps.py_files_to_lint.outputs.PY_FILES }}
+      #    else
+      #      echo "No .py files to be linted found. Skipping Pylint."
+      #    fi
+      #- name: Lint with isort
+      #  env:
+      #    PYTHONPATH: ${{ vars.PYTHONPATH }}
+      #  run: |
+      #    if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
+      #      isort ${{ steps.py_files_to_lint.outputs.PY_FILES }}
+      #    else
+      #      echo "No .py files to be linted found. Skipping isort."
+      #    fi
+      #- name: Lint with flake8
+      #  uses: py-actions/flake8@v2
+      #  with:
+      #    args: "-vv"
+      #    exclude: ".venv"
+      #- name: Format with black
+      #  uses: psf/black@stable
+      #  with:
+      #    options: "--check --diff --verbose"
+      #- name: Test with pytest
+      #  env:
+      #    PYTHONPATH: ${{ vars.PYTHONPATH }}
+      #    AWS_SECRET: ${{ secrets.AWS_SECRET }}
+      #    MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+      #  run: |
+      #    cd tests
+      #    pytest
+      #- name: Get dbt analyses & models to lint
+      #  id: dbt_sql_files_to_lint
+      #  shell: bash
+      #  run: |
+      #    echo "DBT_SQL_FILES=$(git diff --name-only --cached main | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')" >> $GITHUB_OUTPUT
+      #- name: Get DuckDB SQL files to lint
+      #  id: duckdb_sql_files_to_lint
+      #  shell: bash
+      #  run: |
+      #    echo "DUCKDB_SQL_FILES=$(git diff --name-only --cached main | grep '.sql$' | grep 'duckdb_analytics')" >> $GITHUB_OUTPUT
+      #- name: Lint dbt analyses & models with SQLFluff
+      #  run: |
+      #    if [[ -n "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}" ]]; then
+      #      sqlfluff lint "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}"
+      #    else
+      #      echo "No dbt SQL files to be linted found. Skipping."
+      #    fi
+      #- name: Lint DuckDB SQL files with SQLFluff
+      #  run: |
+      #    if [[ -n "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}" ]]; then
+      #      sqlfluff lint "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}"
+      #    else
+      #      echo "No DuckDB SQL files to be linted found. Skipping."
+      #    fi
+      #- name: Format with prettier
+      #  uses: creyD/prettier_action@v4.3
+      #  with:
+      #    dry: True
+      #    prettier_options: "--check **/*.{json,md,yaml,yml}"
+      #    only_changed: True

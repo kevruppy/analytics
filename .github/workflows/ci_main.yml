@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements_cicd.txt
       - name: Set env variable for PYTHONPATH
         id: env-var-python-path
-        run: echo "PYTHONPATH=duckdb_analytics" >> $GITHUB_ENV
+        run: echo "PYTHONPATH=./duckdb_analytics" >> $GITHUB_ENV
       - name: Get changed Python files
         id: changed-py-files
         uses: tj-actions/changed-files@v45

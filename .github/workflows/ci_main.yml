@@ -26,7 +26,7 @@ jobs:
         id: py_files_to_lint
         shell: bash
         run: |
-          echo "PY_FILES=$(git diff --name-only --cached | grep '.py$')" >> $GITHUB_OUTPUT
+          echo "PY_FILES=$(git diff --name-only --cached main | grep '.py$')" >> $GITHUB_OUTPUT
       - name: Lint with Pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
@@ -66,12 +66,12 @@ jobs:
         id: dbt_sql_files_to_lint
         shell: bash
         run: |
-          echo "DBT_SQL_FILES=$(git diff --name-only --cached | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')" >> $GITHUB_OUTPUT
+          echo "DBT_SQL_FILES=$(git diff --name-only --cached main | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')" >> $GITHUB_OUTPUT
       - name: Get DuckDB SQL files to lint
         id: duckdb_sql_files_to_lint
         shell: bash
         run: |
-          echo "DUCKDB_SQL_FILES=$(git diff --name-only --cached | grep '.sql$' | grep 'duckdb_analytics')" >> $GITHUB_OUTPUT
+          echo "DUCKDB_SQL_FILES=$(git diff --name-only --cached main | grep '.sql$' | grep 'duckdb_analytics')" >> $GITHUB_OUTPUT
       - name: Lint dbt analyses & models with SQLFluff
         run: |
           if [[ -n "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}" ]]; then

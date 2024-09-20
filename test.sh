@@ -1,1 +1,1 @@
-echo "py_files=$(git diff --name-only --cached | grep '.py$')"
+echo "py_files=$(git diff --name-only main | grep '.py$')"

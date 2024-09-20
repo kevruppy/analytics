@@ -10,18 +10,18 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      #- name: Set up Python environment
-      #  uses: actions/setup-python@v5
-      #  with:
-      #    python-version: 3.12.5
-      #- name: Create virtual environment
-      #  run: |
-      #    python -m venv .venv
-      #    source .venv/bin/activate
-      #- name: Install dependencies
-      #  run: |
-      #    python -m pip install --upgrade pip
-      #    pip install -r requirements.txt
+      - name: Set up Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12.5
+      - name: Create virtual environment
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - name: Get Python files to lint
         id: py_files_to_lint
         shell: bash
@@ -40,8 +40,8 @@ jobs:
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          if [[ -n "${{ steps.py_files_to_lint.outputs }}" ]]; then
-            isort ${{ steps.py_files_to_lint.outputs }}
+          if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
+            isort ${{ steps.py_files_to_lint.outputs.PY_FILES }}
           else
             echo "No .py files to be linted found. Skipping isort."
           fi
@@ -64,23 +64,25 @@ jobs:
           pytest
       - name: Get dbt analyses & models to lint
         id: dbt_sql_files_to_lint
+        shell: bash
         run: |
-          echo "$(git diff --name-only --cached | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')" >> $GITHUB_OUTPUT
+          echo "DBT_SQL_FILES=$(git diff --name-only --cached | grep '.sql$' | grep -E 'dbt_analytics/(analyses|models)')" >> $GITHUB_OUTPUT
       - name: Get DuckDB SQL files to lint
         id: duckdb_sql_files_to_lint
+        shell: bash
         run: |
-          echo "$(git diff --name-only --cached | grep '.sql$' | grep 'duckdb_analytics')" >> $GITHUB_OUTPUT
+          echo "DUCKDB_SQL_FILES=$(git diff --name-only --cached | grep '.sql$' | grep 'duckdb_analytics')" >> $GITHUB_OUTPUT
       - name: Lint dbt analyses & models with SQLFluff
         run: |
-          if [[ -n "${{ steps.dbt_sql_files_to_lint.outputs }}" ]]; then
-            sqlfluff lint "${{ steps.dbt_sql_files_to_lint.outputs }}"
+          if [[ -n "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}" ]]; then
+            sqlfluff lint "${{ steps.dbt_sql_files_to_lint.outputs.DBT_SQL_FILES }}"
           else
             echo "No dbt SQL files to be linted found. Skipping."
           fi
       - name: Lint DuckDB SQL files with SQLFluff
         run: |
-          if [[ -n "${{ steps.duckdb_sql_files_to_lint.outputs }}" ]]; then
-            sqlfluff lint "${{ steps.duckdb_sql_files_to_lint.outputs }}"
+          if [[ -n "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}" ]]; then
+            sqlfluff lint "${{ steps.duckdb_sql_files_to_lint.outputs.DUCKDB_SQL_FILES }}"
           else
             echo "No DuckDB SQL files to be linted found. Skipping."
           fi

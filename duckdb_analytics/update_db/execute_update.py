@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 
 def main():
-    """Main function to execute script (update db)"""
+    """Main function to run script (update db)"""
 
     env = get_environment()
     aws_secret = load_aws_secret(env)

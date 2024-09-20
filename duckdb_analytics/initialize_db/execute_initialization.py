@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 
 def main():
-    """Main function to execute script (initialize db)"""
+    """Main function to run script (initialize db)"""
 
     env = get_environment()
     aws_secret = load_aws_secret(env)

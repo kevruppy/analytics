@@ -26,8 +26,7 @@ jobs:
         id: py_files_to_lint
         shell: bash
         run: |
-          echo "PY_FILES=$(git diff origin/main HEAD --name-only | grep '.py$')" >> $GITHUB_OUTPUT
-          echo "HELLO WORLD!"
+          echo "PY_FILES=$(git diff origin/main HEAD --name-only | grep '.py$' | xargs)" >> $GITHUB_OUTPUT
       - name: Show Python files to lint
         shell: bash
         run: |

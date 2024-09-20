@@ -20,11 +20,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements_cicd.txt
       - name: Set env variable for PYTHONPATH
-        id: env-var-python-path
-        run: echo "PYTHONPATH=./duckdb_analytics" >> $GITHUB_ENV
+        run: echo "PYTHONPATH=$(pwd)/duckdb_analytics" >> $GITHUB_ENV
       - name: Deploy to MotherDuck
         env:
-          PYTHONPATH: ${{ steps.env-var-python-path.outputs.PYTHONPATH }}
           AWS_SECRET: ${{ secrets.AWS_SECRET }}
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
         run: |

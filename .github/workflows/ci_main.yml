@@ -31,7 +31,7 @@ jobs:
       - name: Show Python files to lint
         shell: bash
         run: |
-          echo ${{ steps.py_files_to_lint.outputs.PY_FILES }}
+          echo "${{ steps.py_files_to_lint.outputs.PY_FILES }}"
       #- name: Lint with Pylint
       #  env:
       #    PYTHONPATH: ${{ vars.PYTHONPATH }}

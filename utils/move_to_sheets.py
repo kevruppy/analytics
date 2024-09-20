@@ -67,7 +67,7 @@ def main():
 
     except Exception as e:  # pylint: disable=broad-exception-caught
         gc.del_spreadsheet(sh.id)
-        logging.error(f"Execution failed! Error: {e}")
+        logging.error(f"Execution failed with error: {e}")
     finally:
         if dry_run:
             gc.del_spreadsheet(sh.id)

@@ -5,8 +5,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      py_files_to_lint: ${{ steps.py_files_to_lint.outputs.py_files }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -28,14 +26,13 @@ jobs:
         id: py_files_to_lint
         shell: bash
         run: |
-          files=$(git diff --name-only --cached | grep '.py$')
-          echo "py_files=$files" >> $GITHUB_OUTPUT
+          echo "PY_FILES=$(git diff --name-only --cached | grep '.py$')" >> $GITHUB_OUTPUT"
       - name: Lint with Pylint
         env:
           PYTHONPATH: ${{ vars.PYTHONPATH }}
         run: |
-          if [[ -n "${{ steps.py_files_to_lint.outputs }}" ]]; then
-            pylint ${{ steps.py_files_to_lint.outputs }}
+          if [[ -n "${{ steps.py_files_to_lint.outputs.PY_FILES }}" ]]; then
+            pylint ${{ steps.py_files_to_lint.outputs.PY_FILES }}
           else
             echo "No .py files to be linted found. Skipping Pylint."
           fi

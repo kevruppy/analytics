@@ -21,7 +21,7 @@ jobs:
       - name: Install dbt dependencies
         run: |
           cd dbt_analytics
-          ../.venv/bin/dbt deps
+          dbt deps
       - name: dbt build
         env:
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}

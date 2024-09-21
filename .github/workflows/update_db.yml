@@ -1,0 +1,29 @@
+name: Update db
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12.5
+      - name: Create virtual environment
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements_cicd.txt
+      - name: Set env variable for PYTHONPATH
+        run: echo "PYTHONPATH=$(pwd)/duckdb_analytics" >> $GITHUB_ENV
+      - name: Update data in MotherDuck
+        env:
+          AWS_SECRET: ${{ secrets.AWS_SECRET }}
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+        run: |
+          cd duckdb_analytics/update_db
+          python execute_update.py

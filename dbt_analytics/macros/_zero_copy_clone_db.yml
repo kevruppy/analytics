@@ -1,0 +1,10 @@
+version: 2
+
+macros:
+  - name: zero_copy_clone_db
+    description: "{{ doc('dsc_zero_copy_clone_db') }}"
+    arguments:
+      - name: tgt_db
+        description: "{{ doc('dsc_tgt_db') }}"
+      - name: src_db
+        description: "{{ doc('dsc_src_db') }}"

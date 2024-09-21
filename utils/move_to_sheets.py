@@ -14,7 +14,7 @@ def main():
         - In-memory DuckDB is used to execute dummy query
         - Result set is written to Google Sheets
         - Spreadsheet is removed
-        -> Simplifies testing this function
+        -> Simplifies checking this function
     """
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 

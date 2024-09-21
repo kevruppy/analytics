@@ -8,8 +8,6 @@ WITH CTE AS (
 		{{ source('raw', 'net_promotor_scores') }}
 	{% if is_incremental() %}
 		WHERE
-			TRUE
-			AND
 			TRANSACTION_ID NOT IN (SELECT DISTINCT TRANSACTION_ID FROM {{ this }})
 	{% endif %}
 )

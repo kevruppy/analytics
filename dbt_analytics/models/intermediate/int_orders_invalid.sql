@@ -5,6 +5,8 @@ WITH CTE AS (
 	FROM
 		{{ ref('cre_orders') }}
 	WHERE
+		TRUE
+		AND
 		IS_INVALID_ORDER = TRUE
 	GROUP BY ALL
 )

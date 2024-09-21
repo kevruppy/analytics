@@ -9,6 +9,8 @@ WITH CTE AS (
 		{{ ref('cre_provision_rules_all') }}
 	{% if is_incremental() %}
 		WHERE
+			TRUE
+			AND
 			_CHECK_SUM NOT IN (SELECT DISTINCT _CHECK_SUM FROM {{ this }})
 	{% endif %}
 )

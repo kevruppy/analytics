@@ -8,6 +8,8 @@ WITH CTE AS (
 	FROM
 		{{ ref('cre_provision_rules_all') }}
 	WHERE
+		TRUE
+		AND
 		PLACEMENT_PROVISION_VALUE IS NOT NULL
 		{% if is_incremental() %}
 			AND

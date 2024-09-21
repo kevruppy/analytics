@@ -10,6 +10,8 @@ WITH CTE_NET_PROMOTOR_SCORES AS (
 		{{ ref('stg_net_promotor_scores') }}
 	{% if is_incremental() %}
 		WHERE
+			TRUE
+			AND
 			SPLIT_PART(TRANSACTION_ID,'-',-1)::INTEGER NOT IN (SELECT DISTINCT ORDER_ID FROM {{ this }})
 	{% endif %}
 )

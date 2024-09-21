@@ -8,6 +8,8 @@
       FROM
         INFORMATION_SCHEMA.COLUMNS
       WHERE
+        TRUE
+      AND
         TABLE_SCHEMA NOT IN ({{ var('ignored_schemas') }})
       AND
         LEFT(COLUMN_NAME,4) != 'dbt_' -- DO NOT CHECK COLS SET UP BY DBT

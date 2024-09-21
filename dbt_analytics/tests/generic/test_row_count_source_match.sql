@@ -26,5 +26,7 @@ SELECT
 FROM
     CTE_CHECK
 WHERE
+    TRUE
+    AND
     CHECK_RESULT = 'FAILED'
 {% endtest %}

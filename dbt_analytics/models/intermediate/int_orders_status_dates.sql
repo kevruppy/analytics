@@ -2,7 +2,7 @@
 
 {{
 	config(
-		pre_hook="{% if is_incremental() %} DELETE FROM {{ this }} WHERE ORDER_ID IN (SELECT ORDER_ID FROM {{ ref('int_orders_invalid') }} ) {% endif %}"
+		pre_hook="{% if is_incremental() %} DELETE FROM {{ this }} WHERE TRUE AND ORDER_ID IN (SELECT ORDER_ID FROM {{ ref('int_orders_invalid') }} ) {% endif %}"
 		)
 }}
 
@@ -19,6 +19,8 @@ WITH CTE_ORDERS AS (
 	FROM
 		{{ ref('cre_orders') }}
 	WHERE
+		TRUE
+		AND
 		IS_INVALID_ORDER = FALSE
 	GROUP BY ALL
 	{% if is_incremental() %}

@@ -11,5 +11,7 @@ SELECT
 FROM
     CTE_CHECK
 WHERE
+    TRUE
+    AND
     _CHECK = FALSE
 {% endtest %}

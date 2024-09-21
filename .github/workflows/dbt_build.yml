@@ -1,0 +1,32 @@
+name: Run dbt
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12.5
+      - name: Create virtual environment
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements_cicd.txt
+      - name: dbt build
+        env:
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+        run: |
+          cd dbt_analytics
+          dbt build --target prod
+      - name: Clone database
+        env:
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+        run: |
+          cd dbt_analytics
+          dbt run-operation zero_copy_clone_db --args '{tgt_db: ANALYTICS_PROD, src_db: ANALYTICS}' --target prod

@@ -12,6 +12,10 @@ Determines the name of the schema that a model should be built in
 Runs `VACUUM ANALYZE`
 {% enddocs %}
 
+{% docs dsc_zero_copy_clone_db %}
+Clones a database
+{% enddocs %}
+
 # arg desc
 
 {% docs dsc_custom_schema_name %}
@@ -20,4 +24,12 @@ The configured value of `schema` in the specified node, or `none` if a value is 
 
 {% docs dsc_node %}
 The `node` that is currently being processed by dbt
+{% enddocs %}
+
+{% docs dsc_tgt_db %}
+Name of the database to be created as a clone
+{% enddocs %}
+
+{% docs dsc_src_db %}
+Name of the database to be cloned
 {% enddocs %}

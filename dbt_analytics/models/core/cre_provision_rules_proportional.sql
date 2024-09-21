@@ -10,6 +10,8 @@ WITH CTE AS (
 	FROM
 		{{ ref('cre_provision_rules_all') }}
 	WHERE
+		TRUE
+		AND
 		PROPORTIONAL_PROVISION_TARGET_VALUE IS NOT NULL
 		{% if is_incremental() %}
 			AND

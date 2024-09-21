@@ -3,6 +3,8 @@ WITH CTE_CAL AS (
 	FROM
 		{{ ref('stg_calendar') }} --noqa
 	WHERE
+		TRUE
+		AND
 		CALENDAR_DATE BETWEEN '2022-01-01' AND '2023-12-31'
 )
 

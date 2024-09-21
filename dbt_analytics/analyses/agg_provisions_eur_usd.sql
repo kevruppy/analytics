@@ -7,6 +7,8 @@ WITH CTE_ORDERS AS (
 	FROM
 		{{ ref('mrt_orders') }}
 	WHERE
+		TRUE
+		AND
 		CREATION_DATE < '2023-12-01'
 	GROUP BY
 		ALL

@@ -8,6 +8,8 @@ WITH CTE_NPS_VALID AS (
 	FROM
 		{{ ref('cre_net_promotor_scores') }}
 	WHERE
+		TRUE
+		AND
 		IS_VALID_RATING = TRUE
 )
 
@@ -16,6 +18,8 @@ WITH CTE_NPS_VALID AS (
 	FROM
 		CTE_NPS_VALID
 	WHERE
+		TRUE
+		AND
 		ORDER_ID
 		NOT IN (
 			SELECT ORDER_ID FROM {{ ref('int_orders_invalid') }}

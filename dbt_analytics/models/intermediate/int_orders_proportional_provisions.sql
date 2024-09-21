@@ -60,6 +60,8 @@ WITH CTE_GROSS_APPLICABLE_FOR_PROP_PROV AS (
 	FROM
 		{{ ref('int_orders_status_dates') }}
 	WHERE
+		TRUE
+		AND
 		IS_CONFIRMED = TRUE
 )
 

@@ -12,6 +12,8 @@ WITH CTE_ORDERS AS (
 		{{ ref('stg_orders') }}
 	{% if is_incremental() %}
 		WHERE
+			TRUE
+			AND
 			CREATION_DATE > (SELECT MAX(CREATION_DATE) - 60 AS WATERMARK FROM {{ this }})
 	{% endif %}
 )

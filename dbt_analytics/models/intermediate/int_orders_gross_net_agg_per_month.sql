@@ -16,6 +16,8 @@ WITH CTE AS (
 	FROM
 		{{ ref('int_orders_status_dates') }}
 	WHERE
+		TRUE
+		AND
 		IS_CONFIRMED = TRUE
 	GROUP BY ALL
 )

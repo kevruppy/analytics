@@ -2,7 +2,7 @@ name: Update db
 on:
   workflow_dispatch:
 jobs:
-  deploy:
+  run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

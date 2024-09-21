@@ -2,6 +2,9 @@ name: Run CD
 on:
   push:
     branches: [main]
+    paths:
+      - "**.sql"
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest

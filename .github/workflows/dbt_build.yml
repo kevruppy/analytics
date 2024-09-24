@@ -28,3 +28,9 @@ jobs:
         run: |
           cd dbt_analytics
           dbt build --target prod
+      - name: Clone database
+        env:
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+        run: |
+          cd dbt_analytics
+          dbt run-operation zero_copy_clone_db --args '{tgt_db: ANALYTICS_PROD, src_db: ANALYTICS}' --target prod

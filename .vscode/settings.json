@@ -69,6 +69,7 @@
     "sortJSONValues": false,
     "sortJSONValuesReverse": false
   },
+  "sortJSON.excludedFiles": ["aws_secret.json"],
   "sqlfluff.config": ".sqlfluff",
   "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
   "sqlfluff.linter.run": "onType",

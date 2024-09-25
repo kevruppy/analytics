@@ -331,7 +331,6 @@ quoted_identifiers_policy = all
 unquoted_identifiers_policy = all
 
 [sqlfluff:rules:references.quoting]
-force_enable = True
 prefer_quoted_identifiers = False
 prefer_quoted_keywords = False
 

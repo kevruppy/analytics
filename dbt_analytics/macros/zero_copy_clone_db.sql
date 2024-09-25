@@ -2,7 +2,7 @@
   {% if target.name == 'prod' %}
 
     {% set qry %}
-      CREATE DATABASE {{ tgt_db }} FROM {{ src_db }}
+      CREATE OR REPLACE DATABASE {{ tgt_db }} FROM {{ src_db }}
     {% endset %}
 
     {% do run_query(qry) %}

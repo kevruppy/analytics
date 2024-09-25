@@ -36,8 +36,6 @@ npm run dev
 
 Check out the docs for [alternative install methods](https://docs.evidence.dev/getting-started/install-evidence) including Docker, Github Codespaces, and alongside dbt.
 
-
-
 ## Learning More
 
 - [Docs](https://docs.evidence.dev/)

@@ -2,13 +2,11 @@
 title: Welcome to Evidence
 ---
 
-
 ```test_connection
 
 select 1 from motherduck.nyc_service_request_volume limit 1
 
 ```
-
 
 {#if dev && !test_connection.ready}
 
@@ -40,13 +38,14 @@ from motherduck.nyc_service_request_volume
 
 ```
 
-
 <Chart
-    data={daily_service_requests}
-    x=created_date
-    title={`Daily Request Volume and ${inputs.rolling_avg} Day Rolling Average`}
-    renderer='svg'
+data={daily_service_requests}
+x=created_date
+title={`Daily Request Volume and ${inputs.rolling_avg} Day Rolling Average`}
+renderer='svg'
+
 >
+
     <Line
         y=rolling_average
         lineColor=black
@@ -57,8 +56,8 @@ from motherduck.nyc_service_request_volume
         opacity=0.3
         fillColor=gray
     />
-</Chart>
 
+</Chart>
 
 <Histogram
     data={daily_service_requests}
@@ -66,14 +65,14 @@ from motherduck.nyc_service_request_volume
     fillColor=black
 />
 
-
 ## What's Next?
+
 - Edit the markdown files in the `pages` folder
 - Add new queries to `sources/motherduck`
 - Deploy your project with [Evidence Cloud](https://evidence.dev/cloud)
 
-
 ## Resources
+
 - Message us on [Slack](https://slack.evidence.dev/)
 - Read the [Docs](https://docs.evidence.dev/)
 - Open an issue on [Github](https://github.com/evidence-dev/evidence)

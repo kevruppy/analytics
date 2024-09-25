@@ -13,7 +13,7 @@ Runs `VACUUM ANALYZE`
 {% enddocs %}
 
 {% docs dsc_zero_copy_clone_db %}
-Clones a database
+Clones a database (re-creation)
 {% enddocs %}
 
 # arg desc

@@ -1,6 +1,15 @@
 name: Run dbt
 on:
   workflow_dispatch:
+    inputs:
+      clone_db:
+        description: Flag to indicate if db shall be cloned after `dbt build`
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - true
+          - false
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -29,6 +38,7 @@ jobs:
           cd dbt_analytics
           dbt build --target prod
       - name: Clone database
+        if: ${{ inputs.clone_db }}
         env:
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
         run: |

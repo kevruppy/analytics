@@ -5,7 +5,7 @@ on:
       clone_db:
         description: Flag to indicate if db shall be cloned after `dbt build`
         required: true
-        default: 'true'
+        default: "true"
         type: choice
         options:
           - true

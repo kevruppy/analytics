@@ -77,6 +77,6 @@ jobs:
         if: success()
         run: |
           echo "SUCCESS! :rocket:" >> $GITHUB_STEP_SUMMARY
-          echo "# changed Python files: ${{ steps.changed-py-files.outputs.all_changed_files_count }}" >> $GITHUB_STEP_SUMMARY
-          echo "# changed dbt files: ${{ steps.changed-dbt-analyses-models.outputs.all_changed_files_count }}" >> $GITHUB_STEP_SUMMARY
-          echo "# changed DuckDB SQL files: ${{ steps.changed-duckdb-sql-files.outputs.all_changed_files_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "Changed Python files: ${{ steps.changed-py-files.outputs.all_changed_files_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "Changed dbt files: ${{ steps.changed-dbt-analyses-models.outputs.all_changed_files_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "Changed DuckDB SQL files: ${{ steps.changed-duckdb-sql-files.outputs.all_changed_files_count }}" >> $GITHUB_STEP_SUMMARY

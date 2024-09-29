@@ -17,22 +17,26 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: int_net_promotor_scores__order_id__not_null
+          - unique:
+              name: int_net_promotor_scores__order_id__unique
       - name: RATING_VALUE
         description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__rating_value__not_null
       - name: RATING_TOOL
         description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__rating_tool__not_null
         # CALENDAR
       - name: SURVEY_CALENDAR_DATE
         description: "{{ doc('dsc_survey_calendar_date') }}"
@@ -40,49 +44,56 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__survey_calendar_date__not_null
       - name: SURVEY_CALENDAR_WEEK
         description: "{{ doc('dsc_survey_calendar_week') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__survey_calendar_week__not_null
       - name: SURVEY_CALENDAR_MONTH
         description: "{{ var('dsc_survey_calendar_month') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__survey_calendar_month__not_null
       - name: SURVEY_CALENDAR_QUARTER
         description: "{{ doc('dsc_survey_calendar_quarter') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__survey_calendar_quarter__not_null
       - name: SURVEY_CALENDAR_YEAR
         description: "{{ var('dsc_survey_calendar_year') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__survey_calendar_year__not_null
       - name: SURVEY_CALENDAR_DAY_NAME
         description: "{{ doc('dsc_survey_calendar_day_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__survey_calendar_day_name__not_null
       - name: SURVEY_IS_WEEKEND
         description: "{{ doc('dsc_survey_calendar_is_weekend') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__survey_is_weekend__not_null
         # PRODUCT_HIERARCHY
       - name: PRODUCT_GROUP
         description: "{{ var('dsc_survey_product_group') }}"
@@ -90,18 +101,21 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__product_group__not_null
       - name: PRODUCT_TYPE
         description: "{{ var('dsc_survey_product_type') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__product_type__not_null
       - name: PRODUCT_NAME
         description: "{{ var('dsc_survey_product_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_net_promotor_scores__product_name__not_null

@@ -11,6 +11,7 @@ models:
         enforced: true
     data_tests:
       - row_count_source_match:
+          name: stg_orders_with_placement__row_count_source_match
           source_name: raw
           table_name: orders_with_placement
     columns:
@@ -20,5 +21,7 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: stg_orders_with_placement__order_id__not_null
+          - unique:
+              name: stg_orders_with_placement__order_id__unique

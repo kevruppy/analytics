@@ -11,8 +11,10 @@ models:
         enforced: true
     data_tests:
       - dbt_utils.equal_rowcount:
+          name: cre_net_promotor_scores__dbt_utils_dot_equal_rowcount
           compare_model: ref("stg_net_promotor_scores")
       - value_proportion:
+          name: cre_net_promotor_scores__value_proportion
           expression: "IS_VALID_RATING=TRUE"
           threshold: 0.99
           config:
@@ -24,37 +26,44 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: cre_net_promotor_scores__order_id__not_null
+          - unique:
+              name: cre_net_promotor_scores__order_id__unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_survey_product_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_net_promotor_scores__product_name__not_null
       - name: RATING_DATE
         description: "{{ var('dsc_rating_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_net_promotor_scores__rating_date__not_null
       - name: RATING_VALUE
         description: "{{ var('dsc_rating_value') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_net_promotor_scores__rating_value__not_null
       - name: RATING_TOOL
         description: "{{ var('dsc_rating_tool') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_net_promotor_scores__rating_tool__not_null
           - accepted_values:
+              name: cre_net_promotor_scores__rating_tool__accepted_values
               values: ["SURVEYAPE", "QUALTRIXX"]
       - name: IS_VALID_RATING
         description: "{{ var('dsc_is_valid_rating') }}"
@@ -62,4 +71,5 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_net_promotor_scores__is_valid_rating__not_null

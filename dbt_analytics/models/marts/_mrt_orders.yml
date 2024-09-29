@@ -11,8 +11,10 @@ models:
         enforced: true
     data_tests:
       - dbt_utils.equal_rowcount:
+          name: mrt_orders__dbt_utils_equal_rowcount
           compare_model: ref("int_orders_status_dates")
       - dbt_utils.expression_is_true:
+          name: mrt_orders__dbt_utils_dot_expression_is_true
           expression: "NET_BASE_PROVISION + NET_PROPORTIONAL_PROVISION + NET_PLACEMENT_PROVISION = 0"
           config:
             where: "IS_CANCELLED = TRUE"
@@ -21,8 +23,10 @@ models:
         description: "{{ var('dsc_order_id') }}"
         data_type: INTEGER
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: mrt_orders__order_id__not_null
+          - unique:
+              name: mrt_orders__order_id__unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
@@ -63,29 +67,35 @@ models:
         description: "{{ var('dsc_gross_base_provision') }}"
         data_type: FLOAT
         data_tests:
-          - not_null
+          - not_null:
+              name: mrt_orders__gross_base_provision__not_null
       - name: GROSS_PROPORTIONAL_PROVISION
         description: "{{ var('dsc_gross_proportional_provision') }}"
         data_type: FLOAT
         data_tests:
-          - not_null
+          - not_null:
+              name: mrt_orders__gross_proportional_provision__not_null
       - name: GROSS_PLACEMENT_PROVISION
         description: "{{ var('dsc_gross_placement_provision') }}"
         data_type: FLOAT
         data_tests:
-          - not_null
+          - not_null:
+              name: mrt_orders__gross_placement_provision__not_null
       - name: NET_BASE_PROVISION
         description: "{{ var('dsc_net_base_provision') }}"
         data_type: FLOAT
         data_tests:
-          - not_null
+          - not_null:
+              name: mrt_orders__net_base_provision__not_null
       - name: NET_PROPORTIONAL_PROVISION
         description: "{{ var('dsc_net_proportional_provision') }}"
         data_type: FLOAT
         data_tests:
-          - not_null
+          - not_null:
+              name: mrt_orders__net_proportional_provision__not_null
       - name: NET_PLACEMENT_PROVISION
         description: "{{ var('dsc_net_placement_provision') }}"
         data_type: FLOAT
         data_tests:
-          - not_null
+          - not_null:
+              name: mrt_orders__net_placement_provision__not_null

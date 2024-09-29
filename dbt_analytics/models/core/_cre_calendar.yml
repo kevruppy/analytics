@@ -12,6 +12,7 @@ models:
         enforced: true
     data_tests:
       - dbt_utils.equal_rowcount:
+          name: cre_calendar__dbt_utils_dot_equal_rowcount
           compare_model: ref("stg_calendar")
     columns:
       - name: CALENDAR_DATE
@@ -20,47 +21,55 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: cre_calendar__calendar_date__not_null
+          - unique:
+              name: cre_calendar__calendar_date__unique
       - name: CALENDAR_WEEK
         description: "{{ var('dsc_calendar_week') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_calendar__calendar_week__not_null
       - name: CALENDAR_MONTH
         description: "{{ var('dsc_calendar_month') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_calendar__calendar_month__not_null
       - name: CALENDAR_QUARTER
         description: "{{ var('dsc_calendar_quarter') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_calendar__calendar_quarter__not_null
       - name: CALENDAR_YEAR
         description: "{{ var('dsc_calendar_year') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_calendar__calendar_year__not_null
       - name: CALENDAR_DAY_NAME
         description: "{{ var('dsc_calendar_day_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_calendar__calendar_day_name__not_null
       - name: IS_WEEKEND
         description: "{{ var('dsc_calendar_is_weekend') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_calendar__is_weekend__not_null

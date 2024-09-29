@@ -15,33 +15,43 @@ seeds:
         VALID_TO: DATE
     data_tests:
       - dbt_utils.unique_combination_of_columns:
+          name: map_product_hierarchy__dbt_utils_dot_unique_combination_of_columns
           combination_of_columns:
             - PRODUCT_NAME
             - VALID_FROM
             - VALID_TO
       - dbt_utils.expression_is_true:
+          name: map_product_hierarchy__dbt_utils_dot_expression_is_true
           expression: "VALID_TO >= VALID_FROM"
     columns:
       - name: PRODUCT_GROUP
         description: "{{ var('dsc_product_group') }}"
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: map_product_hierarchy__product_group__not_null
+          - dbt_utils.not_empty_string:
+              name: map_product_hierarchy__product_group__dbt_utils_dot_not_empty_string
       - name: PRODUCT_TYPE
         description: "{{ var('dsc_product_type') }}"
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: map_product_hierarchy__product_type__not_null
+          - dbt_utils.not_empty_string:
+              name: map_product_hierarchy__product_type__dbt_utils_dot_not_empty_string
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: map_product_hierarchy__product_name__not_null
+          - dbt_utils.not_empty_string:
+              name: map_product_hierarchy__product_name__dbt_utils_dot_not_empty_string
       - name: VALID_FROM
         description: "{{ var('dsc_valid_from') }}"
         data_tests:
-          - not_null
+          - not_null:
+              name: map_product_hierarchy__valid_from__not_null
       - name: VALID_TO
         description: "{{ var('dsc_valid_to') }}"
         data_tests:
-          - not_null
+          - not_null:
+              name: map_product_hierarchy__valid_to__not_null

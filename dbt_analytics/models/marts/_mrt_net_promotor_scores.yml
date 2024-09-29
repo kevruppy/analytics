@@ -11,6 +11,7 @@ models:
         enforced: true
     data_tests:
       - dbt_utils.unique_combination_of_columns:
+          name: mrt_net_promotor_scores__dbt_utils_dot_unique_combination_of_columns
           combination_of_columns:
             - SURVEY_CALENDAR_YEAR
             - SURVEY_CALENDAR_MONTH
@@ -38,24 +39,28 @@ models:
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
+              name: mrt_net_promotor_scores__participants__dbt_utils_dot_expression_is_true
               expression: "= (DETRACTORS + INDIFFERENTS + PROMOTORS)"
       - name: DETRACTORS
         description: "{{ doc('dsc_detractors') }}"
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
+              name: mrt_net_promotor_scores__detractors__dbt_utils_dot_expression_is_true
               expression: "= (PARTICIPANTS - INDIFFERENTS - PROMOTORS)"
       - name: INDIFFERENTS
         description: "{{ doc('dsc_indifferents') }}"
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
+              name: mrt_net_promotor_scores__indifferents__dbt_utils_dot_expression_is_true
               expression: "= (PARTICIPANTS - DETRACTORS - PROMOTORS)"
       - name: PROMOTORS
         description: "{{ doc('dsc_promotors') }}"
         data_type: INTEGER
         data_tests:
           - dbt_utils.expression_is_true:
+              name: mrt_net_promotor_scores__promotors__dbt_utils_dot_expression_is_true
               expression: "= (PARTICIPANTS - INDIFFERENTS - DETRACTORS)"
       - name: DETRACTORS_SHARE
         description: "{{ doc('dsc_detractors_share') }}"

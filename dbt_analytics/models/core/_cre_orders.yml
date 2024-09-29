@@ -15,8 +15,10 @@ models:
         enforced: true
     data_tests:
       - dbt_utils.equal_rowcount:
+          name: cre_orders__dbt_utils_dot_equal_rowcount
           compare_model: ref("stg_orders")
       - dbt_utils.unique_combination_of_columns:
+          name: cre_orders__unique_combination_of_columns
           combination_of_columns:
             - ORDER_ID
             - STATUS_NAME
@@ -27,15 +29,18 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_orders__order_id__not_null
       - name: STATUS_NAME
         description: "{{ var('dsc_status_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_orders__status_name__not_null
           - accepted_values:
+              name: cre_orders__status_name__accepted_values
               values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: PRODUCT_NAME
         description: "{{ var('dsc_ord_product_name') }}"
@@ -43,32 +48,37 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_orders__product_name__not_null
       - name: CREATION_DATE
         description: "{{ var('dsc_creation_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_orders__creation_date__not_null
       - name: STATUS_CHANGE_DATE
         description: "{{ var('dsc_status_change_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_orders__status_change_date__not_null
       - name: IS_INVALID_ORDER
         description: "{{ var('dsc_is_invalid_order') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_orders__is_invalid_order__not_null
       - name: IS_PLACEMENT
         description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_orders__is_placement__not_null

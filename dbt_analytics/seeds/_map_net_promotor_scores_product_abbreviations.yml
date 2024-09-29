@@ -14,11 +14,16 @@ seeds:
       - name: PRODUCT_ABBREVIATION
         description: "{{ doc('dsc_product_abbreviation') }}"
         data_tests:
-          - not_null
-          - unique
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: map_net_promotor_scores_product_abbreviations__product_abbreviation__not_null
+          - unique:
+              name: map_net_promotor_scores_product_abbreviations__product_abbreviation__unique
+          - dbt_utils.not_empty_string:
+              name: map_net_promotor_scores_product_abbreviations__product_abbreviation__dbt_utils_dot_not_empty_string
       - name: PRODUCT_NAME
         description: "{{ var('dsc_survey_product_name') }}"
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: map_net_promotor_scores_product_abbreviations__product_name__not_null
+          - dbt_utils.not_empty_string:
+              name: map_net_promotor_scores_product_abbreviations__product_name__dbt_utils_dot_not_empty_string

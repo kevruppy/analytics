@@ -11,6 +11,7 @@ models:
         enforced: true
     data_tests:
       - row_count_source_match:
+          name: stg_exchange_rates__row_count_source_match
           source_name: raw
           table_name: exchange_rates
     columns:
@@ -20,8 +21,10 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: stg_exchange_rates___id__not_null
+          - unique:
+              name: stg_exchange_rates___id__unique
       - name: VALID_FROM
         description: "{{ var('dsc_valid_from') }}"
         data_type: DATE
@@ -29,8 +32,10 @@ models:
           - type: not_null
           - type: unique
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: stg_exchange_rates__valid_from__not_null
+          - unique:
+              name: stg_exchange_rates__valid_from__unique
       - name: VALID_TO
         description: "{{ var('dsc_valid_to') }}"
         data_type: DATE
@@ -38,8 +43,10 @@ models:
           - type: not_null
           - type: unique
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: stg_exchange_rates__valid_to__not_null
+          - unique:
+              name: stg_exchange_rates__valid_to__unique
       - name: EXCHANGE_RATE
         description: "{{ doc('dsc_exchange_rate') }}"
         data_type: FLOAT
@@ -48,6 +55,8 @@ models:
           - type: check
             expression: "EXCHANGE_RATE > 0"
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_exchange_rates__exchange_rate__not_null
           - dbt_utils.expression_is_true:
+              name: stg_exchange_rates__exchange_rate__dbt_utils_dot_expression_is_true
               expression: "> 0"

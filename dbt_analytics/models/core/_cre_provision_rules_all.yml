@@ -12,28 +12,34 @@ models:
         description: "{{ var('dsc_check_sum') }}"
         data_type: VARCHAR
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: cre_provision_rules_all___check_sum__not_null
+          - unique:
+              name: cre_provision_rules_all___check_sum__unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_prov_product_name') }}"
         data_type: VARCHAR
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_all__product_name__not_null
       - name: START_DATE
         description: "{{ var('dsc_start_date') }}"
         data_type: DATE
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_all__start_date__not_null
       - name: END_DATE
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_all__end_date__not_null
       - name: BASE_PROVISION_VALUE
         description: "{{ var('dsc_base_provision') }}"
         data_type: FLOAT
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_all__base_provision_value__not_null
       - name: PLACEMENT_PROVISION_VALUE
         description: "{{ var('dsc_placement_provision') }}"
         data_type: FLOAT

@@ -13,8 +13,8 @@ res: dbtRunnerResult = dbt.invoke(["build"])
 
 # generate `catalog.json`
 
-dbt.invoke(["docs", "generate"])
+# dbt.invoke(["docs", "generate"])
 
 # show docs
 
-dbt.invoke(["docs", "serve"])
+# dbt.invoke(["docs", "serve"])

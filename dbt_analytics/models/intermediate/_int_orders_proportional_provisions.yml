@@ -16,16 +16,20 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: int_orders_proportional_provisions__order_id__not_null
+          - unique:
+              name: int_orders_proportional_provisions__order_id__unique
       - name: GROSS_PROPORTIONAL_PROVISION
         description: "{{ var('dsc_gross_proportional_provision') }}"
         data_type: FLOAT
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_proportional_provisions__gross_proportional_provision__not_null
           - dbt_utils.accepted_range:
+              name: int_orders_proportional_provisions__gross_proportional_provision__dbt_utils_dot_accepted_range
               min_value: 0
       - name: NET_PROPORTIONAL_PROVISION
         description: "{{ var('dsc_net_proportional_provision') }}"
@@ -33,6 +37,8 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_proportional_provisions__net_proportional_provision__not_null
           - dbt_utils.accepted_range:
+              name: int_orders_proportional_provisions__net_proportional_provision__dbt_utils_dot_accepted_range
               min_value: 0

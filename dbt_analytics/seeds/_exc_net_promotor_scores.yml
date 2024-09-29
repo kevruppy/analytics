@@ -13,7 +13,10 @@ seeds:
       - name: ORDER_ID
         description: "{{ doc('dsc_exc_nps_order_id') }}"
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: exc_net_promotor_scores__order_id__not_null
+          - unique:
+              name: exc_net_promotor_scores__order_id__unique
           - dbt_utils.expression_is_true:
+              name: exc_net_promotor_scores__order_id__dbt_utils_dot_expression_is_true
               expression: "> 0"

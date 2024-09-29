@@ -10,18 +10,24 @@ snapshots:
         description: "{{ var('dsc_partner_updated_on') }}"
         data_type: DATE
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_snp_partners__updated_on__not_null
           - dbt_utils.accepted_range:
+              name: cre_snp_partners__updated_on__dbt_utils_dot_accepted_range
               max_value: "CURRENT_DATE()"
       - name: PRODUCT_NAME
         description: "{{ var('dsc_partner_product_name') }}"
         data_type: VARCHAR
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: cre_snp_partners__product_name__not_null
+          - dbt_utils.not_empty_string:
+              name: cre_snp_partners__product_name__dbt_utils_dot_not_empty_string
       - name: PARTNER_NAME
         description: "{{ var('dsc_partner_name') }}"
         data_type: VARCHAR
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: cre_snp_partners__partner_name__not_null
+          - dbt_utils.not_empty_string:
+              name: cre_snp_partners__partner_name__dbt_utils_dot_not_empty_string

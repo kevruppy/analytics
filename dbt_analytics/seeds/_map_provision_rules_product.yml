@@ -14,10 +14,14 @@ seeds:
       - name: PROVISION_RULES_PRODUCT_NAME
         description: "{{ doc('dsc_provision_rules_product_name') }}"
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: map_provision_rules_product__provision_rules_product_name__not_null
+          - unique:
+              name: map_provision_rules_product__provision_rules_product_name__unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: map_provision_rules_product__product_name__not_null
+          - dbt_utils.not_empty_string:
+              name: map_provision_rules_product__product_name__dbt_utils_dot_not_empty_string

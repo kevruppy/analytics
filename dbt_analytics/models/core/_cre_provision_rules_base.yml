@@ -16,33 +16,39 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: cre_provision_rules_base___check_sum__not_null
+          - unique:
+              name: cre_provision_rules_base___check_sum__unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_prov_product_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_base__product_name__not_null
       - name: START_DATE
         description: "{{ var('dsc_start_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_base__start_date__not_null
       - name: END_DATE
         description: "{{ var('dsc_end_date') }}"
         data_type: DATE
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_base__end_date__not_null
       - name: BASE_PROVISION_VALUE
         description: "{{ var('dsc_base_provision') }}"
         data_type: FLOAT
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: cre_provision_rules_base__base_provision_value__not_null

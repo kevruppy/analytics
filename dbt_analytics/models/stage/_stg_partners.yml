@@ -11,9 +11,11 @@ models:
         enforced: true
     data_tests:
       - row_count_source_match:
+          name: stg_partners__row_count_source_match
           source_name: raw
           table_name: partners
       - dbt_utils.unique_combination_of_columns:
+          name: stg_partners__dbt_utils_dot_unique_combination_of_columns
           combination_of_columns:
             - UPDATED_ON
             - PRODUCT_NAME
@@ -26,8 +28,10 @@ models:
         constraints:
           - type: primary_key
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: stg_partners__hash_key__not_null
+          - unique:
+              name: stg_partners__hash_key__unique
       - name: UPDATED_ON
         description: "{{ var('dsc_partner_updated_on') }}"
         data_type: DATE
@@ -36,8 +40,10 @@ models:
           - type: check
             expression: "UPDATED_ON <= CURRENT_DATE()"
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_partners__updated_on__not_null
           - dbt_utils.accepted_range:
+              name: stg_partners__updated_on__dbt_utils_dot_accepted_range
               max_value: "CURRENT_DATE()"
       - name: PRODUCT_NAME
         description: "{{ var('dsc_partner_product_name') }}"
@@ -45,13 +51,17 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: stg_partners__product_name__not_null
+          - dbt_utils.not_empty_string:
+              name: stg_partners__product_name__dbt_utils_dot_not_empty_string
       - name: PARTNER_NAME
         description: "{{ var('dsc_partner_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
-          - dbt_utils.not_empty_string
+          - not_null:
+              name: stg_partners__partner_name__not_null
+          - dbt_utils.not_empty_string:
+              name: stg_partners__partner_name__dbt_utils_dot_not_empty_string

@@ -19,9 +19,12 @@ models:
           - type: check
             expression: "CALENDAR_DATE BETWEEN '2020-01-01'::DATE AND '2030-12-31'::DATE"
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: stg_calendar__calendar_date__not_null
+          - unique:
+              name: stg_calendar__calendar_date__unique
           - dbt_utils.accepted_range:
+              name: stg_calendar__calendar_date__dbt_utils_dot_accepted_range
               min_value: "'2020-01-01'::DATE"
               max_value: "'2030-12-31'::DATE"
       - name: CALENDAR_WEEK
@@ -30,39 +33,45 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_calendar__calendar_week__not_null
       - name: CALENDAR_MONTH
         description: "{{ var('dsc_calendar_month') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_calendar__calendar_month__not_null
       - name: CALENDAR_QUARTER
         description: "{{ var('dsc_calendar_quarter') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_calendar__calendar_quarter__not_null
       - name: CALENDAR_YEAR
         description: "{{ var('dsc_calendar_year') }}"
         data_type: INTEGER
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_calendar__calendar_year__not_null
       - name: CALENDAR_DAY_NAME
         description: "{{ var('dsc_calendar_day_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_calendar__calendar_day_name__not_null
       - name: IS_WEEKEND
         description: "{{ var('dsc_calendar_is_weekend') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: stg_calendar__is_weekend__not_null

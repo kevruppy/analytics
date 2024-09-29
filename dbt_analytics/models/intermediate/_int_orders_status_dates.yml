@@ -13,12 +13,16 @@ models:
         enforced: true
     data_tests:
       - dbt_utils.expression_is_true:
+          name: int_orders_status_dates__dbt_utils_dot_expression_is_true_1
           expression: "(IS_CANCELLED::INTEGER + IS_CONFIRMED::INTEGER) <= 1"
       - dbt_utils.expression_is_true:
+          name: int_orders_status_dates__dbt_utils_dot_expression_is_true_2
           expression: "DATEDIFF('DAY', CREATION_DATE, COALESCE(FORWARDING_DATE, '9999-12-31')) >= 0"
       - dbt_utils.expression_is_true:
+          name: int_orders_status_dates__dbt_utils_dot_expression_is_true_3
           expression: "DATEDIFF('DAY', COALESCE(FORWARDING_DATE, '9999-12-31'), COALESCE(CONFIRMATION_DATE, '9999-12-31')) >= 0"
       - dbt_utils.expression_is_true:
+          name: int_orders_status_dates__dbt_utils_dot_expression_is_true_4
           expression: "DATEDIFF('DAY', COALESCE(FORWARDING_DATE, '9999-12-31'), COALESCE(CANCELLATION_DATE, '9999-12-31')) >= 0"
     columns:
       - name: ORDER_ID
@@ -29,30 +33,36 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
-          - unique
+          - not_null:
+              name: int_orders_status_dates__order_id__not_null
+          - unique:
+              name: int_orders_status_dates__order_id__unique
       - name: PRODUCT_NAME
         description: "{{ var('dsc_product_name') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_status_dates__product_name__not_null
       - name: IS_PLACEMENT
         description: "{{ var('dsc_is_placement') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_status_dates__is_placement__not_null
       - name: CURRENT_STATUS
         description: "{{ var('dsc_current_status') }}"
         data_type: VARCHAR
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_status_dates__current_status__not_null
           - accepted_values:
+              name: int_orders_status_dates__current_status__accepted_values
               values: ["CANCELLED", "CONFIRMED", "CREATED", "IN_PROGRESS"]
       - name: CREATION_DATE
         description: "{{ var('dsc_creation_date') }}"
@@ -60,7 +70,8 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_status_dates__creation_date__not_null
       - name: FORWARDING_DATE
         description: "{{ var('dsc_forwarding_date') }}"
         data_type: DATE
@@ -76,18 +87,21 @@ models:
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_status_dates__is_forwarded__not_null
       - name: IS_CONFIRMED
         description: "{{ var('dsc_is_confirmed') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_status_dates__is_confirmed__not_null
       - name: IS_CANCELLED
         description: "{{ var('dsc_is_cancelled') }}"
         data_type: BOOLEAN
         constraints:
           - type: not_null
         data_tests:
-          - not_null
+          - not_null:
+              name: int_orders_status_dates__is_cancelled__not_null

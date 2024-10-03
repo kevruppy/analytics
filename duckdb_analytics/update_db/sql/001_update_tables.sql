@@ -4,7 +4,7 @@
 CREATE SECRET TO ALLOW IMPORTING DATA FROM S3 BUCKET
 */
 
--- noqa: disable=all
+--noqa: disable=all
 
 CREATE OR REPLACE SECRET AWS_SECRET (
     TYPE S3
@@ -13,7 +13,7 @@ CREATE OR REPLACE SECRET AWS_SECRET (
 	,REGION 'REGION__VALUE'
 );
 
--- noqa: enable=all
+--noqa: enable=all
 
 /*
 ORDERS
@@ -49,7 +49,7 @@ WHERE
 	(SELECT COUNT(*) > 0 AS _CHECK FROM RAW_DATA.ORDERS)
 	AND
 	NOT EXISTS
-	-- noqa: disable=RF03
+	--noqa: disable=RF03
 	(
 		SELECT 1 AS COL
 		FROM RAW_DATA.ORDERS AS TGT
@@ -60,7 +60,7 @@ WHERE
 			AND (TGT.LOAD_RESULT ->> 'STATUS_NAME')::VARCHAR = SRC.STATUS_NAME
 	);
 
--- noqa: enable=all
+--noqa: enable=all
 
 DROP TABLE IF EXISTS TMP_ORDERS;
 

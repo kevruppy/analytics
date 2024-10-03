@@ -22,7 +22,7 @@ WITH CTE_NPS_VALID AS (
 		AND
 		ORDER_ID
 		NOT IN (
-			SELECT ORDER_ID FROM {{ ref('int_orders_invalid') }}
+			SELECT IOI.ORDER_ID FROM {{ ref('int_orders_invalid') }} AS IOI
 		)
 )
 

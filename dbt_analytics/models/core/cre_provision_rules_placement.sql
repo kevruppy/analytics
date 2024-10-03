@@ -13,7 +13,7 @@ WITH CTE AS (
 		PLACEMENT_PROVISION_VALUE IS NOT NULL
 		{% if is_incremental() %}
 			AND
-			_CHECK_SUM NOT IN (SELECT DISTINCT _CHECK_SUM FROM {{ this }})
+			_CHECK_SUM NOT IN (SELECT DISTINCT TGT._CHECK_SUM FROM {{ this }} AS TGT)
 		{% endif %}
 )
 

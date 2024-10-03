@@ -121,6 +121,6 @@ repos:
       - id: check-source-table-has-description
         exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
   - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 3.1.0
+    rev: 3.2.0
     hooks:
       - id: sqlfluff-lint

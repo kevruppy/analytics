@@ -1,4 +1,4 @@
--- noqa: disable=AM04,RF04,ST02
+--noqa: disable=AM04,RF04,ST02
 
 WITH TEST_ORDERS_PREP AS (
 	SELECT

@@ -27,7 +27,7 @@ ci:
   submodules: false
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: check-ast
       - id: check-docstring-first
@@ -62,7 +62,7 @@ repos:
     hooks:
       - id: flake8
   - repo: https://github.com/psf/black
-    rev: 24.8.0
+    rev: 24.10.0
     hooks:
       - id: black
   # NOTE: Shell script called by hook checks if any dbt related files are shown by `git status`
@@ -88,7 +88,7 @@ repos:
         always_run: true
     # Excluding files using regex necessary due to flaws of dbt-checkpoint
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
-    rev: v2.0.3
+    rev: v2.0.4
     hooks:
       - id: check-macro-arguments-have-desc
         exclude: '^(?!dbt_analytics/macros/)|^\.md$'
@@ -121,6 +121,6 @@ repos:
       - id: check-source-table-has-description
         exclude: '^(?!dbt_analytics/models/stage/raw/)|^\.md$'
   - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 3.2.0
+    rev: 3.2.2
     hooks:
       - id: sqlfluff-lint

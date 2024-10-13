@@ -19,18 +19,22 @@ sources:
             description: "{{ var('dsc_auto_id') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
-              - unique
+              - not_null:
+                  name: src__orders___id__not_null
+              - unique:
+                  name: src__orders___id__unique
           - name: _ADDED_ON
             description: "{{ var('dsc_added_on') }}"
             data_type: TIMESTAMP
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__orders___added_on__not_null
           - name: LOAD_RESULT
             description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__orders__load_result__not_null
       # orders_with_placement
       - name: orders_with_placement
         description: "{{ doc('dsc_tbl_orders_with_placement') }}"
@@ -39,18 +43,22 @@ sources:
             description: "{{ var('dsc_auto_id') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
-              - unique
+              - not_null:
+                  name: src__orders_with_placement___id__not_null
+              - unique:
+                  name: src__orders_with_placement___id__unique
           - name: _ADDED_ON
             description: "{{ var('dsc_added_on') }}"
             data_type: TIMESTAMP
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__orders_with_placement___added_on__not_null
           - name: LOAD_RESULT
             description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__orders_with_placement__load_result__not_null
       # provision_rules
       - name: provision_rules
         description: "{{ doc('dsc_tbl_provision_rules') }}"
@@ -59,18 +67,22 @@ sources:
             description: "{{ var('dsc_auto_id') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
-              - unique
+              - not_null:
+                  name: src__provision_rules___id__not_null
+              - unique:
+                  name: src__provision_rules___id__unique
           - name: _ADDED_ON
             description: "{{ var('dsc_added_on') }}"
             data_type: TIMESTAMP
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__provision_rules___added_on__not_null
           - name: LOAD_RESULT
             description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__provision_rules__load_result__not_null
       # net_promotor_scores
       - name: net_promotor_scores
         description: "{{ doc('dsc_tbl_net_promotor_scores') }}"
@@ -79,33 +91,40 @@ sources:
             description: "{{ var('dsc_auto_id') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
-              - unique
+              - not_null:
+                  name: src__net_promotor_scores___id__not_null
+              - unique:
+                  name: src__net_promotor_scores___id__unique
           - name: _ADDED_ON
             description: "{{ var('dsc_added_on') }}"
             data_type: TIMESTAMP
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__net_promotor_scores___added_on__not_null
           - name: TRANSACTION_ID
             description: "{{ var('dsc_transaction_id') }}"
             data_type: VARCHAR
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__net_promotor_scores__transaction_id__not_null
           - name: RATING_DATE
             description: "{{ var('dsc_rating_date') }}"
             data_type: DATE
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__net_promotor_scores__rating_date__not_null
           - name: RATING
             description: "{{ var('dsc_rating_value') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__net_promotor_scores__rating__not_null
           - name: TOOL
             description: "{{ var('dsc_rating_tool') }}"
             data_type: VARCHAR
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__net_promotor_scores__tool__not_null
       # exchange_rates
       - name: exchange_rates
         description: "{{ doc('dsc_tbl_exchange_rates') }}"
@@ -114,18 +133,22 @@ sources:
             description: "{{ var('dsc_auto_id') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
-              - unique
+              - not_null:
+                  name: src__exchange_rates___id__not_null
+              - unique:
+                  name: src__exchange_rates___id__unique
           - name: _ADDED_ON
             description: "{{ var('dsc_added_on') }}"
             data_type: TIMESTAMP
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__exchange_rates___added_on__not_null
           - name: LOAD_RESULT
             description: "{{ var('dsc_load_result') }}"
             data_type: JSON
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__exchange_rates__load_result__not_null
       # partners
       - name: partners
         description: "{{ doc('dsc_tbl_partners') }}"
@@ -134,28 +157,34 @@ sources:
             description: "{{ var('dsc_auto_id') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
-              - unique
+              - not_null:
+                  name: src__partners___id__not_null
+              - unique:
+                  name: src__partners___id__unique
           - name: _ADDED_ON
             description: "{{ var('dsc_added_on') }}"
             data_type: TIMESTAMP
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__partners___added_on__not_null
           - name: UPDATED_ON
             description: "{{ var('dsc_partner_updated_on') }}"
             data_type: DATE
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__partners__updated_on__not_null
           - name: PRODUCT_NAME
             description: "{{ var('dsc_partner_product_name') }}"
             data_type: VARCHAR
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__partners__product_name__not_null
           - name: PARTNER_NAME
             description: "{{ var('dsc_partner_name') }}"
             data_type: VARCHAR
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__partners__partner_name__not_null
       # calendar
       - name: calendar
         description: "{{ doc('dsc_tbl_calendar') }}"
@@ -164,45 +193,55 @@ sources:
             description: "{{ var('dsc_auto_id') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
-              - unique
+              - not_null:
+                  name: src__calendar___id__not_null
+              - unique:
+                  name: src__calendar___id__unique
           - name: _ADDED_ON
             description: "{{ var('dsc_added_on') }}"
             data_type: TIMESTAMP
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar___added_on__not_null
           - name: CALENDAR_DATE
             description: "{{ var('dsc_calendar_date') }}"
             data_type: DATE
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar__calendar_date__not_null
           - name: CALENDAR_WEEK
             description: "{{ var('dsc_calendar_week') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar__calendar_week__not_null
           - name: CALENDAR_MONTH
             description: "{{ var('dsc_calendar_month') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar__calendar_month__not_null
           - name: CALENDAR_QUARTER
             description: "{{ var('dsc_calendar_quarter') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar__calendar_quarter__not_null
           - name: CALENDAR_YEAR
             description: "{{ var('dsc_calendar_year') }}"
             data_type: INTEGER
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar__calendar_year__not_null
           - name: CALENDAR_DAY_NAME
             description: "{{ var('dsc_calendar_day_name') }}"
             data_type: VARCHAR
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar__calendar_day_name__not_null
           - name: IS_WEEKEND
             description: "{{ var('dsc_calendar_is_weekend') }}"
             data_type: BOOLEAN
             data_tests:
-              - not_null
+              - not_null:
+                  name: src__calendar__is_weekend__not_null

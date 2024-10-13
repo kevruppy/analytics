@@ -1,0 +1,5 @@
+{
+  "models": "../dbt_analytics/models",
+  "seeds": "../dbt_analytics/seeds",
+  "snapshots": "../dbt_analytics/snapshots"
+}

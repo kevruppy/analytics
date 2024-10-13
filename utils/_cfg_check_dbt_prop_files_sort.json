@@ -1,0 +1,8 @@
+{
+  "analyses": "../dbt_analytics/analyses/_analyses.yml",
+  "macros": "../dbt_analytics/macros",
+  "models": "../dbt_analytics/models",
+  "seeds": "../dbt_analytics/seeds",
+  "snapshots": "../dbt_analytics/snapshots",
+  "sources": "../dbt_analytics/models/stage/raw/sources.yml"
+}

@@ -186,7 +186,7 @@ def load_aws_secret(env: str) -> Dict[str, str]:
     Loading approach differs between environments
 
     Params:
-        env(str): Current environment (local, prod)
+        env (str): Current environment (local, prod)
 
     Returns:
         dict[str, str]: Loaded AWS secret

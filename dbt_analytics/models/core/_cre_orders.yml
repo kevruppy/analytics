@@ -18,7 +18,7 @@ models:
           name: cre_orders__dbt_utils_dot_equal_rowcount
           compare_model: ref("stg_orders")
       - dbt_utils.unique_combination_of_columns:
-          name: cre_orders__unique_combination_of_columns
+          name: cre_orders__dbt_utils_dot_unique_combination_of_columns
           combination_of_columns:
             - ORDER_ID
             - STATUS_NAME

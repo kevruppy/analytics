@@ -1,0 +1,8 @@
+{
+  "analyses": "../dbt_analytics/analyses",
+  "macros": "../dbt_analytics/macros",
+  "models": "../dbt_analytics/models",
+  "seeds": "../dbt_analytics/seeds",
+  "snapshots": "../dbt_analytics/snapshots",
+  "tests": "../dbt_analytics/tests"
+}

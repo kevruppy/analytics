@@ -11,7 +11,7 @@ models:
         enforced: true
     data_tests:
       - dbt_utils.equal_rowcount:
-          name: mrt_orders__dbt_utils_equal_rowcount
+          name: mrt_orders__dbt_utils_dot_equal_rowcount
           compare_model: ref("int_orders_status_dates")
       - dbt_utils.expression_is_true:
           name: mrt_orders__dbt_utils_dot_expression_is_true

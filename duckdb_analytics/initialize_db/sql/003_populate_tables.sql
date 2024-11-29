@@ -118,7 +118,12 @@ SELECT
 	,RATING
 	,TOOL
 FROM
-	's3://analytics-rawdata/nps.csv'
+	READ_CSV(
+		's3://analytics-rawdata/nps.csv'
+		,ALL_VARCHAR = TRUE
+		,HEADER = TRUE
+		,SEP = ','
+	)
 WHERE
 	TRUE
 	AND
@@ -150,7 +155,12 @@ SELECT
 	,PRODUCT_NAME
 	,PARTNER_NAME
 FROM
-	's3://analytics-rawdata/partners.csv'
+	READ_CSV(
+		's3://analytics-rawdata/partners.csv'
+		,ALL_VARCHAR = TRUE
+		,HEADER = TRUE
+		,SEP = ','
+	)
 WHERE
 	TRUE
 	AND

@@ -110,4 +110,9 @@ SELECT
 	,PRODUCT_NAME
 	,PARTNER_NAME
 FROM
-	's3://analytics-rawdata/update_partners.csv';
+	READ_CSV(
+		's3://analytics-rawdata/update_partners.csv'
+		,ALL_VARCHAR = TRUE
+		,HEADER = TRUE
+		,SEP = ','
+	)
